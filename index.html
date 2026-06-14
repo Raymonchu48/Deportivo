@@ -280,10 +280,11 @@
       pointer-events: none;
     }
 .hero-photo {
-  align-self: center;
+  align-self: end;
   justify-self: center;
   position: relative;
   z-index: 3;
+  margin-top: 30px;
 }
 
 .hero-photo::before {
@@ -298,13 +299,14 @@
 }
 
 .hero-photo img {
-  width: 220px;
-  max-width: 220px;
-  aspect-ratio: 1 / 1;
+  width: 260px;
+  max-width: 260px;
+  height: 360px;
   object-fit: cover;
+  object-position: center top;
   border-radius: 28px;
-  border: 7px solid rgba(255,255,255,.85);
-  box-shadow: 0 24px 60px rgba(18,23,61,.32);
+  border: 7px solid rgba(255,255,255,.9);
+  box-shadow: 0 28px 70px rgba(18,23,61,.38);
 }
 
     .hero-copy {
@@ -320,6 +322,7 @@
       text-transform: uppercase;
       color: var(--navy);
       margin-bottom: 14px;
+      margin-left: -20px;
     }
     .hero-copy p {
       color: rgba(255,255,255,.95);
@@ -687,7 +690,7 @@
     @media (max-width: 920px) {
       .menu { display: none; }
       .section-heading, .executive, .contact-card { grid-template-columns: 1fr; }
-      .hero-visual { grid-template-columns: 1fr; }
+      .hero-visual { grid-template-columns: 1.15fr .85fr; }
       .hero-copy p { max-width: none; }
       .contact-links { justify-items: start; }
     }
@@ -729,7 +732,7 @@
           <a href="#contacto">contacto</a>
         </div>
         <div class="nav-actions">
-          <a class="btn btn-secondary" href="assets/CV_Ramon_Curbalan_placeholder.pdf" download>descargar cv</a>
+          <a class="btn btn-secondary" href="CV_Deporte.pdf" download>descargar cv</a>
           <a class="btn btn-primary" href="#contacto">contacto</a>
         </div>
       </nav>
