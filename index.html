@@ -261,8 +261,8 @@
       box-shadow: 0 28px 60px rgba(44,52,114,.24);
       padding: 30px;
       display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 24px;
+      grid-template-columns: 340fr 1fr;
+      gap: 42px;
       align-items: center;
       position: relative;
       overflow: hidden;
@@ -280,11 +280,11 @@
       pointer-events: none;
     }
 .hero-photo {
-  align-self: end;
+  align-self: center;
   justify-self: center;
   position: relative;
   z-index: 3;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .hero-photo::before {
@@ -299,12 +299,12 @@
 }
 
 .hero-photo img {
-  width: 260px;
-  max-width: 260px;
-  height: 360px;
+  width: 300px;
+  max-width: 300px;
+  height: 390px;
   object-fit: cover;
   object-position: center top;
-  border-radius: 28px;
+  border-radius: 30px;
   border: 7px solid rgba(255,255,255,.9);
   box-shadow: 0 28px 70px rgba(18,23,61,.38);
 }
@@ -315,14 +315,16 @@
       z-index: 2;
     }
     .hero-copy h1 {
-      font-size: clamp(2.2rem, 4vw, 4.2rem);
-      line-height: .96;
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+      line-height: .9;
       font-style: italic;
       letter-spacing: -.05em;
       text-transform: uppercase;
       color: var(--navy);
-      margin-bottom: 14px;
-      margin-left: -20px;
+      margin-bottom: 18px;
+      margin-left: 0;
+      max-width: 520px;
+      
     }
     .hero-copy p {
       color: rgba(255,255,255,.95);
