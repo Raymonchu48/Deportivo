@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramón Curbalán · Sport, Health & Performance</title>
+  <meta name="description" content="Portfolio profesional de Ramón Curbalán. Entrenamiento, nutrición deportiva, psicología deportiva, actividad física adaptada y gestión deportiva." />
+  <style>
+    :root {
+      --navy: #2C3472;
+      --navy-dark: #171c49;
+      --navy-soft: #4550a2;
+      --pink: #ff2d6f;
+      --coral: #ff5b63;
+      --blue: #2185e4;
+      --cyan: #51d2ff;
+      --white: #ffffff;
+      --ice: #f5f8ff;
+      --ink: #101433;
+      --muted: #5f6785;
+      --border: rgba(44, 52, 114, 0.12);
+      --shadow-xl: 0 28px 80px rgba(18, 23, 61, 0.14);
+      --shadow-md: 0 18px 48px rgba(18, 23, 61, 0.08);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Arial Nova", Arial, system-ui, sans-serif;
+      background: linear-gradient(180deg, #eef3ff 0%, #f8fbff 100%);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(var(--container), calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: linear-gradient(180deg, rgba(245,248,255,.96), rgba(245,248,255,.82));
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 12px 18px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: 0 12px 32px rgba(18, 23, 61, 0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: .02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--pink), var(--blue));
+      box-shadow: 0 12px 24px rgba(255,45,111,.28);
+      font-size: .8rem;
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: lowercase;
+    }
+    .menu a { opacity: .82; transition: .2s ease; }
+    .menu a:hover { opacity: 1; color: var(--pink); }
+
+    .nav-actions { display: flex; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 900;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+      will-change: transform;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), var(--coral));
+      color: var(--white);
+      box-shadow: 0 16px 36px rgba(255,45,111,.28);
+    }
+    .btn-secondary {
+      background: rgba(44,52,114,.08);
+      color: var(--navy);
+      border: 1px solid rgba(44,52,114,.1);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.22);
+    }
+
+    .hero-shell {
+      padding: 18px 0 0;
+    }
+
+    .hero-wrap {
+      background: var(--navy);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-wrap::before,
+    .hero-wrap::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(10px);
+      opacity: .7;
+      z-index: -1;
+      animation: floatGlow 12s ease-in-out infinite;
+    }
+    .hero-wrap::before {
+      width: 340px; height: 340px; left: -120px; top: -100px;
+      background: radial-gradient(circle, rgba(255,45,111,.42), transparent 68%);
+    }
+    .hero-wrap::after {
+      width: 380px; height: 380px; right: -140px; bottom: -120px;
+      background: radial-gradient(circle, rgba(33,133,228,.34), transparent 68%);
+      animation-delay: -5s;
+    }
+
+    .hero-card {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1fr 1.08fr;
+      background: var(--white);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 41%;
+      background: linear-gradient(155deg, var(--coral), var(--pink));
+      clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-left, .hero-right { position: relative; z-index: 1; }
+
+    .hero-left {
+      padding: 56px 34px 52px 58px;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .8rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 10px; height: 10px; border-radius: 50%; background: currentColor;
+    }
+
+    .hero-title { margin-top: 54px; }
+    .hero-title .big {
+      display: block;
+      font-size: clamp(3.5rem, 8vw, 6.8rem);
+      line-height: .84;
+      font-style: italic;
+      font-weight: 1000;
+      letter-spacing: -.08em;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+    .hero-title .small {
+      margin-top: 14px;
+      display: block;
+      font-size: clamp(1.4rem, 3vw, 2.1rem);
+      font-style: italic;
+      font-weight: 1000;
+      letter-spacing: .05em;
+    }
+    .hero-title .subcopy {
+      margin-top: 24px;
+      max-width: 360px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.94);
+    }
+
+    .hero-counter {
+      margin-top: 42px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.6rem;
+      font-weight: 1000;
+      font-style: italic;
+    }
+    .hero-counter span:last-child {
+      width: 170px;
+      height: 4px;
+      border-radius: 99px;
+      background: var(--navy);
+      display: block;
+    }
+
+    .hero-right {
+      padding: 54px 46px 40px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-visual {
+      width: 100%;
+      min-height: 470px;
+      margin-left: -34px;
+      background: linear-gradient(145deg, rgba(33,133,228,.98), rgba(81,210,255,.88));
+      box-shadow: 0 28px 60px rgba(44,52,114,.24);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 42px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp .9s ease both;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 76% 24%, rgba(255,45,111,.56), transparent 24%),
+        linear-gradient(112deg, rgba(255,255,255,.14), transparent 36%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+.hero-photo {
+  align-self: center;
+  justify-self: center;
+  position: relative;
+  z-index: 3;
+  margin-top: 0px;
+}
+
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 34px;
+  background: linear-gradient(135deg, var(--pink), var(--blue));
+  opacity: .75;
+  filter: blur(12px);
+  z-index: -1;
+}
+
+.hero-photo img {
+  width: 300px;
+  max-width: 300px;
+  height: 390px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 30px;
+  border: 7px solid rgba(255,255,255,.9);
+  box-shadow: 0 28px 70px rgba(18,23,61,.38);
+}
+
+    .hero-copy {
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+    }
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+      line-height: .9;
+      font-style: italic;
+      letter-spacing: -.05em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 18px;
+      margin-left: 0;
+      max-width: 520px;
+      
+    }
+    .hero-copy p {
+      color: rgba(255,255,255,.95);
+      font-weight: 700;
+      max-width: 360px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0 24px;
+    }
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.94);
+      font-size: .86rem;
+      font-weight: 850;
+    }
+
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 32px; right: 116px;
+      display: flex; gap: 18px;
+    }
+    .hero-dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--navy); }
+    .hero-dots span:last-child { background: transparent; border: 2px solid var(--navy); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .stat-card {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      animation: fadeUp 1.1s ease both;
+    }
+    .stat-card strong {
+      display: block;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--navy);
+      letter-spacing: -.06em;
+      margin-bottom: 6px;
+    }
+    .stat-card span {
+      color: var(--muted);
+      font-size: .94rem;
+      font-weight: 700;
+    }
+
+    .section { padding: 88px 0 0; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: .84fr 1.16fr;
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+    .kicker {
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .8rem;
+      font-weight: 1000;
+    }
+    h2 {
+      font-size: clamp(2.05rem, 4vw, 3.5rem);
+      line-height: 1.03;
+      color: var(--navy);
+      letter-spacing: -.045em;
+      margin-top: 10px;
+    }
+    .lead {
+      color: #4e5675;
+      font-size: 1.07rem;
+      font-weight: 680;
+    }
+
+    .executive {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-md);
+    }
+    .panel h3 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .panel p, .panel li { color: var(--muted); font-weight: 680; }
+    .panel ul { list-style: none; display: grid; gap: 10px; }
+    .panel li { position: relative; padding-left: 28px; }
+    .panel li::before {
+      content: "";
+      position: absolute; left: 0; top: 9px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--blue));
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .feature {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+    }
+    .feature b {
+      display: block;
+      color: var(--navy);
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .feature span { color: var(--muted); font-size: .94rem; font-weight: 650; }
+
+    .highlight-band {
+      margin-top: 88px;
+      padding: 56px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    .highlight-band::before {
+      content: "";
+      position: absolute;
+      right: -120px; top: -40px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(33,133,228,.34), transparent 66%);
+    }
+    .highlight-band h2 { color: var(--white); }
+    .highlight-band .lead { color: rgba(255,255,255,.82); }
+
+    .cert-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .cert {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      transition: transform .25s ease, background .25s ease;
+      animation: fadeUp 1s ease both;
+    }
+    .cert:hover { transform: translateY(-4px); background: rgba(255,255,255,.12); }
+    .cert .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.9);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .cert strong { display: block; line-height: 1.2; color: var(--white); margin-bottom: 8px; }
+    .cert span { color: rgba(255,255,255,.72); font-size: .94rem; font-weight: 650; }
+    .cert-link {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 40px;
+      padding: 0 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), var(--coral));
+      color: var(--white);
+      font-size: .84rem;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(255,45,111,.24);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cert-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(255,45,111,.34);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .exp {
+      background: linear-gradient(180deg, #ffffff, #f7f9ff);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+    }
+    .exp .year {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(44,52,114,.08);
+      color: var(--pink);
+      font-size: .78rem;
+      font-weight: 1000;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .exp h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .exp p { color: var(--muted); font-size: .92rem; font-weight: 650; }
+
+    .contact-card {
+      margin-top: 90px;
+      padding: 46px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: var(--shadow-xl);
+    }
+    .contact-card h2 { color: var(--white); }
+    .contact-card p { margin-top: 14px; color: rgba(255,255,255,.8); font-weight: 700; }
+    .contact-links {
+      display: grid;
+      gap: 14px;
+      justify-items: end;
+    }
+    .contact-item {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.94);
+      font-weight: 800;
+    }
+    .contact-item small {
+      display: block;
+      color: rgba(255,255,255,.64);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 3px;
+    }
+
+
+    .transition-banner {
+      margin-top: 54px;
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(44,52,114,.98), rgba(23,28,73,.98));
+      box-shadow: var(--shadow-xl);
+      isolation: isolate;
+    }
+    .transition-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 50%, rgba(255,45,111,.22), transparent 26%),
+        radial-gradient(circle at 85% 50%, rgba(33,133,228,.24), transparent 26%),
+        linear-gradient(90deg, rgba(255,255,255,.05), transparent 28%, transparent 72%, rgba(255,255,255,.05));
+      pointer-events: none;
+      z-index: 1;
+    }
+    .transition-banner-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 260px;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      padding: 34px 40px 30px;
+      text-align: center;
+    }
+    .transition-banner .kicker-light {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: rgba(255,255,255,.86);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .76rem;
+      font-weight: 1000;
+    }
+    .transition-banner h3 {
+      color: var(--white);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      letter-spacing: -.04em;
+      line-height: 1.02;
+      margin-bottom: 10px;
+    }
+    .transition-banner p {
+      color: rgba(255,255,255,.8);
+      font-size: 1rem;
+      font-weight: 700;
+      max-width: 760px;
+      margin: 0 auto 18px;
+    }
+    .transition-banner img {
+      width: 100%;
+      max-width: 920px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 36px rgba(10,12,33,.28));
+      opacity: .96;
+    }
+
+    footer {
+      padding: 34px 0 18px;
+      color: #6a738f;
+      font-weight: 650;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .fade-in { animation: fadeUp .9s ease both; }
+    .delay-1 { animation-delay: .08s; }
+    .delay-2 { animation-delay: .16s; }
+    .delay-3 { animation-delay: .24s; }
+    .delay-4 { animation-delay: .32s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatGlow {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(18px) scale(1.06); }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-card { grid-template-columns: 1fr; }
+      .hero-card::before { width: 100%; clip-path: polygon(0 0, 100% 0, 100% 52%, 0 70%); }
+      .hero-left { min-height: 360px; }
+      .hero-right { padding: 0 26px 30px; }
+      .hero-visual { margin-left: 0; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+      .experience-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 920px) {
+      .menu { display: none; }
+      .section-heading, .executive, .contact-card { grid-template-columns: 1fr; }
+      .hero-visual { grid-template-columns: 1.15fr .85fr; }
+      .hero-copy p { max-width: none; }
+      .contact-links { justify-items: start; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(var(--container), calc(100% - 20px)); }
+      .topbar { padding: 12px 0; }
+      .nav { border-radius: 24px; }
+      .brand span:last-child { display: none; }
+      .nav-actions { display: none; }
+      .hero-wrap { padding: 14px; border-radius: 22px; }
+      .hero-left { padding: 30px; }
+      .hero-right { padding: 0 14px 18px; }
+      .hero-visual { min-height: auto; padding: 22px; }
+      .hero-photo img { max-width: 360px; }
+      .hero-dots { display: none; }
+      .stats, .feature-grid, .cert-grid, .experience-grid { grid-template-columns: 1fr; }
+      .highlight-band, .contact-card { padding: 30px; border-radius: 22px; }
+      .transition-banner-inner { min-height: 0; padding: 26px 18px 24px; }
+      .panel, .feature, .stat-card, .exp { padding: 22px; }
+      .section { padding-top: 62px; }
+      footer { font-size: .88rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#inicio" class="brand">
+          <span class="brand-mark">RC</span>
+          <span>Sport · Health · Performance</span>
+        </a>
+        <div class="menu">
+          <a href="#sobre-mi">sobre mí</a>
+          <a href="#formacion">formación</a>
+          <a href="#experiencia">experiencia</a>
+          <a href="#certificados">certificados</a>
+          <a href="#contacto">contacto</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="CV_Deporte.pdf" download>Descargar CV</a>
+          <a class="btn btn-primary" href="Cartas_Recomendacion.pdf">Recomendaciones</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio" class="container hero-shell">
+    <section class="hero-wrap fade-in">
+      <div class="hero-card">
+        <div class="hero-left">
+          <div>
+            <span class="eyebrow">Portfolio deportivo</span>
+            <div class="hero-title">
+              <span class="big">Sport</span>
+              <span class="small">health & performance</span>
+              <p class="subcopy">Portfolio profesional sólido, multidisciplinar y orientado a salud, rendimiento y gestión deportiva.</p>
+            </div>
+          </div>
+          <div class="hero-counter"><span>02</span><span></span></div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-visual" aria-label="Foto profesional y resumen del perfil">
+            <div class="hero-photo">
+              <img src="Mi_imagen.png" alt="Retrato profesional de Ramón Curbalán" />
+            </div>
+            <div class="hero-copy">
+              <h1>Ramón A.<br />C. Vega</h1>
+              <p>Entrenamiento, nutrición deportiva, psicología aplicada al deporte y gestión de instalaciones deportivas.</p>
+              <div class="pill-row">
+                <span class="pill">Fitness</span>
+                <span class="pill">Nutrición</span>
+                <span class="pill">Psicología deportiva</span>
+                <span class="pill">Gestión deportiva</span>
+              </div>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="Proyecto_final_Adm_Deportiva.pdf">Proyecto Administracion Deportiva</a>
+                <a class="btn btn-outline" href="Trabajo_Final_Nutricional.pdf">Trabajo Final de Nutricion</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card fade-in delay-1"><strong>1000 h</strong><span>Máster en alimentación y nutrición</span></article>
+      <article class="stat-card fade-in delay-2"><strong>Nivel 3</strong><span>Certificado profesional SEP</span></article>
+      <article class="stat-card fade-in delay-3"><strong>300 h</strong><span>Musculación, fitness y dietética</span></article>
+      <article class="stat-card fade-in delay-4"><strong>360°</strong><span>Salud, rendimiento, mente y gestión</span></article>
+    </section>
+
+    <section id="sobre-mi" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="kicker">presentación ejecutiva</span>
+          <h2>Un perfil deportivo con visión integral y criterio profesional.</h2>
+        </div>
+        <p class="lead">Soy Ramón Alberto Curbalán Vega. Mi propuesta combina actividad física, acondicionamiento en sala, nutrición deportiva, psicología aplicada al rendimiento y gestión deportiva para construir procesos de mejora sólidos, realistas y sostenibles.</p>
+      </div>
+
+      <div class="executive">
+        <article class="panel fade-in delay-1">
+          <h3>Propuesta de valor</h3>
+          <p>No me limito a prescribir ejercicio o hábitos aislados. Integro entrenamiento, alimentación, seguridad, motivación y seguimiento para ayudar a personas, grupos e instalaciones a avanzar con método.</p>
+        </article>
+        <article class="panel fade-in delay-2">
+          <h3>Fortalezas clave</h3>
+          <ul>
+            <li>Base técnica en fitness, sala polivalente, musculación y entrenamiento funcional.</li>
+            <li>Formación sólida en nutrición, dietética y coaching nutricional.</li>
+            <li>Psicología deportiva, liderazgo, adherencia y dinámica de grupos.</li>
+            <li>Visión de gestión, dirección y marketing aplicado al entorno deportivo.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature fade-in delay-1"><b>Entrenamiento y fitness</b><span>Programación de ejercicio, acondicionamiento físico, musculación y mejora progresiva de hábitos activos.</span></div>
+        <div class="feature fade-in delay-2"><b>Nutrición y hábitos</b><span>Educación alimentaria, nutrición deportiva, dietética y acompañamiento en adherencia.</span></div>
+        <div class="feature fade-in delay-3"><b>Psicología deportiva</b><span>Motivación, liderazgo, objetivos, confianza y enfoque mental aplicado al rendimiento.</span></div>
+        <div class="feature fade-in delay-4"><b>Gestión deportiva</b><span>Dirección de instalaciones, planificación, marketing deportivo y visión estratégica del servicio.</span></div>
+      </div>
+    </section>
+
+
+    <section class="transition-banner fade-in delay-2" aria-label="Banner de transición deportiva">
+      <div class="transition-banner-inner">
+        <span class="kicker-light">multidisciplina deportiva</span>
+        <h3>Movimiento, energía y especialización en una misma dirección.</h3>
+        <p>Una visión integral del deporte: entrenamiento, nutrición, psicología, inclusión y gestión trabajando en la misma dirección para mejorar salud, rendimiento y hábitos sostenibles.</p>
+        <img src="mi_banner.png" alt="Ilustración con siluetas deportivas de varias disciplinas" />
+      </div>
+    </section>
+
+
+        <section id="formacion" class="highlight-band">
+      <div class="section-heading" style="margin-bottom:0;">
+        <div>
+          <span class="kicker" style="color: rgba(255,255,255,.84);">formación acreditada</span>
+          <h2>Formación visual, clara y potente.</h2>
+        </div>
+        <p class="lead">Una combinación de alto rendimiento: acondicionamiento físico, nutrición, psicología deportiva, seguridad, fútbol y gestión de instalaciones deportivas.</p>
+      </div>
+      <div class="cert-grid">
+        <article class="cert"><span class="tag">Oficial</span><strong>Certificado Profesional de Acondicionamiento Físico en Sala Polivalente</strong><span>Nivel 3 · Validez oficial nacional.</span><a class="cert-link" href="assets/certificados/certificado-profesional-sep.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+        <article class="cert"><span class="tag">Fitness</span><strong>Monitor de Musculación y Fitness</strong><span>300 h · Bases anatómicas, entrenamiento, lesiones y primeros auxilios.</span><a class="cert-link" href="assets/certificados/monitor-musculacion-fitness.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+        <article class="cert"><span class="tag">Nutrición</span><strong>Máster Experto en Alimentación y Nutrición</strong><span>1.000 h · Nutrición deportiva, dietoterapia y planificación dietética.</span><a class="cert-link" href="assets/certificados/master-alimentacion-nutricion.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+        <article class="cert"><span class="tag">Dietética</span><strong>Técnico Superior en Dietética y Nutrición</strong><span>300 h · Nutrición humana, dietoterapia y práctica deportiva.</span><a class="cert-link" href="assets/certificados/tecnico-dietetica-nutricion.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+        <article class="cert"><span class="tag">Psicología</span><strong>Máster en Coaching y Psicología Deportiva</strong><span>650 h · Motivación, liderazgo, emociones y rendimiento.</span><a class="cert-link" href="assets/certificados/master-coaching-psicologia-deportiva.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+        <article class="cert"><span class="tag">Dirección</span><strong>Director Deportivo</strong><span>110 h · 4 ECTS · Liderazgo, emprendimiento y gestión.</span><a class="cert-link" href="assets/certificados/director-deportivo.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+        <article class="cert"><span class="tag">Gestión</span><strong>Gestión de Instalaciones Deportivas</strong><span>45 h · Legislación, infraestructura y planificación.</span><a class="cert-link" href="assets/certificados/gestion-instalaciones-deportivas.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+        <article class="cert"><span class="tag">Marketing</span><strong>Marketing Deportivo</strong><span>40 h · Mercado, comunicación y gestión promocional.</span><a class="cert-link" href="assets/certificados/marketing-deportivo.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+        <article class="cert"><span class="tag">Especiales</span><strong>Actividad Física para Colectivos Especiales y Tercera Edad</strong><span>100 h · Envejecimiento activo, planificación y seguridad.</span><a class="cert-link" href="assets/certificados/actividad-fisica-tercera-edad.pdf" target="_blank" rel="noopener">Ver certificado PDF</a></article>
+      </div>
+    </section>
+
+    <section id="certificados" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="kicker">galería de certificados</span>
+          <h2>Lectura visual de especialidades.</h2>
+        </div>
+        <p class="lead">Resume de formación profesional especialización y valor de mi perfil.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature"><b>Nutrición deportiva</b><span>Dietética, planificación nutricional, coaching nutricional y mejora de hábitos.</span></div>
+        <div class="feature"><b>Actividad física adaptada</b><span>Tercera edad, colectivos especiales, salud funcional y envejecimiento activo.</span></div>
+        <div class="feature"><b>Fútbol y rendimiento</b><span>Preparación física, planificación, readaptación y psicología aplicada al fútbol.</span></div>
+        <div class="feature"><b>Seguridad deportiva</b><span>Socorrismo, primeros auxilios, prevención de riesgos y respuesta inicial.</span></div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="kicker">experiencia deportiva</span>
+          <h2>Aqui se puede ver mi experiencia .</h2>
+        </div>
+        <p class="lead">Además de la formación, esta es mi experiencia y aplicación profesional: entrenamiento, trabajo con grupos, entorno fitness, fútbol base, mayores y seguridad deportiva.</p>
+      </div>
+      <div class="experience-grid">
+        <article class="exp fade-in delay-1"><span class="year">Fútbol base</span><h3>Entrenador y responsable de PreBenjamines</h3><p>Colaboración en la formación integral del grupo en Club Esportiu Artà.</p></article>
+        <article class="exp fade-in delay-2"><span class="year">Fitness</span><h3>Acondicionamiento físico en sala polivalente</h3><p>Programación, instrucción y dirección de actividades orientadas a salud y rendimiento.</p></article>
+        <article class="exp fade-in delay-3"><span class="year">Mayores</span><h3>Actividad física para tercera edad y colectivos especiales</h3><p>Enfoque seguro, adaptado y centrado en movilidad, funcionalidad y adherencia.</p></article>
+        <article class="exp fade-in delay-4"><span class="year">Nutrición</span><h3>Educación alimentaria y hábitos saludables</h3><p>Base sólida en nutrición general, deportiva, dietoterapia y coaching nutricional.</p></article>
+        <article class="exp fade-in delay-4"><span class="year">Seguridad</span><h3>Socorrismo y primeros auxilios</h3><p>Actuación inicial, prevención y seguridad aplicada al entorno deportivo y acuático.</p></article>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-card">
+      <div>
+        <span class="kicker" style="color: rgba(255,255,255,.84);">contacto profesional</span>
+        <h2>Construyamos un proyecto deportivo con método y visión profesional.</h2>
+        <p>
+
+Integro entrenamiento, nutrición, psicología deportiva y gestión para diseñar programas sostenibles de salud, rendimiento y bienestar. Puedo aportar valor en centros fitness, clubes deportivos, programas para mayores, 
+          fútbol base y proyectos orientados a la mejora de hábitos.</p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-item" href="mailto:ramonalberto.curbalvega@gmail.com">
+          <span><small>Email</small>ramonalberto.curbalvega@gmail.com</span>
+          <strong>Enviar</strong>
+        </a>
+        <a class="contact-item" href="assets/CV_Ramon_Curbalan_placeholder.pdf">
+          <span><small>CV</small> Perfil Profecional</span>
+          <strong>PDF</strong>
+        </a>
+        <a class="contact-item" href="#" onclick="return false;">
+          <span><small>LinkedIn</small>Añadir URL real del perfil</span>
+          <strong>Perfil</strong>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Ramón Curbalán · Sport, Health & Performance</span>
+      <span>Portfolio deportivo profecional ·</span>
+    </footer>
+  </main>
+</body>
+</html>
