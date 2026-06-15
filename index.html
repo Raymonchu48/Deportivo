@@ -259,14 +259,14 @@
       margin-left: -34px;
       background: linear-gradient(145deg, rgba(33,133,228,.98), rgba(81,210,255,.88));
       box-shadow: 0 28px 60px rgba(44,52,114,.24);
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 42px;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      animation: fadeUp .9s ease both;
+      padding: 46px;
+      display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: flex-start;
+     position: relative;
+     overflow: hidden;
+     animation: fadeUp .9s ease both;
     }
 
     .hero-visual::before {
@@ -280,11 +280,10 @@
       pointer-events: none;
     }
 .hero-photo {
-  align-self: center;
-  justify-self: center;
+  width: 260px;
+  margin-top: 34px;
   position: relative;
   z-index: 3;
-  margin-top: 0px;
 }
 
 .hero-photo::before {
@@ -299,12 +298,11 @@
 }
 
 .hero-photo img {
-  width: 300px;
-  max-width: 300px;
-  height: 390px;
+  width: 260px;
+  height: 320px;
   object-fit: cover;
   object-position: center top;
-  border-radius: 30px;
+  border-radius: 28px;
   border: 7px solid rgba(255,255,255,.9);
   box-shadow: 0 28px 70px rgba(18,23,61,.38);
 }
@@ -777,11 +775,19 @@
         </div>
         <div class="hero-right">
           <div class="hero-visual" aria-label="Foto profesional y resumen del perfil">
-            <div class="hero-photo">
-              <img src="Mi_imagen.png" alt="Retrato profesional de Ramón Curbalán" />
-            </div>
+           <div class="hero-left">
+  <div>
+    <span class="eyebrow">Portfolio deportivo</span>
+    <div class="hero-title">
+      <span class="big">Sport</span>
+      <span class="small">health & performance</span>
+      <p class="subcopy">Portfolio profesional sólido, multidisciplinar y orientado a salud, rendimiento y gestión deportiva.</p>
+    </div>
+
+  <div class="hero-counter"><span>02</span><span></span></div>
+</div>
             <div class="hero-copy">
-              <h1>Ramón A.<br />C. Vega</h1>
+              <h1>Ramón Alberto.<br />Curbalan Vega</h1>
               <p>Entrenamiento, nutrición deportiva, psicología aplicada al deporte y gestión de instalaciones deportivas.</p>
               <div class="pill-row">
                 <span class="pill">Fitness</span>
