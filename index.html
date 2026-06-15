@@ -171,25 +171,19 @@
     }
 
     .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 41%;
-      background: linear-gradient(155deg, var(--coral), var(--pink));
-      clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+     display: none;
     }
 
     .hero-left, .hero-right { position: relative; z-index: 1; }
 
     .hero-left {
-      padding: 56px 34px 52px 58px;
-      color: var(--white);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-     position: relative;
-  z-index: 2;
-  overflow: hidden; 
+     padding: 0;
+    color: var(--white);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    min-height: 620px;
+    background: #171c49;
     }
 
     .eyebrow {
@@ -233,25 +227,26 @@
       color: rgba(255,255,255,.94);
     }
 .left-discipline-banner {
-  width: 100%;
-  max-width: 340px;
-  min-height: 430px;
-  margin-top: 34px;
-  border-radius: 28px;
+ width: 100%;
+  height: 100%;
+  min-height: 620px;
+  margin: 0;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
-  border: 2px solid rgba(255,255,255,.24);
-  box-shadow: 0 24px 60px rgba(18,23,61,.28);
-  background: rgba(255,255,255,.08);
+  border: none;
+  box-shadow: none;
+  background: #171c49;
 }
 
 .left-discipline-banner img {
   width: 100%;
   height: 100%;
+  min-height: 620px;
   object-fit: cover;
   object-position: center;
   display: block;
-  opacity: .96;
+  opacity: 1;
 }
 
 .left-discipline-banner::after {
@@ -259,16 +254,16 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(23,28,73,.12), rgba(23,28,73,.76)),
-    radial-gradient(circle at 30% 18%, rgba(255,45,111,.28), transparent 34%);
+ linear-gradient(180deg, rgba(10,14,45,.12), rgba(10,14,45,.72)),
+    linear-gradient(90deg, rgba(10,14,45,.18), transparent 55%);  
   z-index: 1;
 }
 
 .left-banner-overlay {
   position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 24px;
+  left: 34px;
+  right: 34px;
+  bottom: 42px;
   z-index: 2;
   color: var(--white);
 }
