@@ -229,7 +229,74 @@
       font-weight: 700;
       color: rgba(255,255,255,.94);
     }
+.left-discipline-banner {
+  width: 100%;
+  max-width: 360px;
+  min-height: 430px;
+  margin-top: 34px;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid rgba(255,255,255,.22);
+  box-shadow: 0 28px 70px rgba(18,23,61,.28);
+  background: rgba(255,255,255,.08);
+}
 
+.left-discipline-banner img {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  opacity: .96;
+}
+
+.left-discipline-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(23,28,73,.12), rgba(23,28,73,.72)),
+    radial-gradient(circle at 30% 18%, rgba(255,45,111,.28), transparent 34%);
+  z-index: 1;
+}
+
+.left-banner-overlay {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 26px;
+  z-index: 2;
+  color: var(--white);
+}
+
+.left-banner-overlay span {
+  display: inline-flex;
+  margin-bottom: 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.22);
+  font-size: .74rem;
+  font-weight: 1000;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.left-banner-overlay h2 {
+  color: var(--white);
+  font-size: 1.55rem;
+  line-height: 1.08;
+  letter-spacing: -.03em;
+  margin: 0 0 10px;
+}
+
+.left-banner-overlay p {
+  color: rgba(255,255,255,.86);
+  font-size: .95rem;
+  font-weight: 750;
+}
     .hero-counter {
       margin-top: 42px;
       display: flex;
@@ -764,12 +831,14 @@
       <div class="hero-card">
         <div class="hero-left">
           <div>
-            <span class="eyebrow">Portfolio deportivo</span>
-            <div class="hero-title">
-              <span class="big">Sport</span>
-              <span class="small">health & performance</span>
-              <p class="subcopy">Portfolio profesional sólido, multidisciplinar y orientado a salud, rendimiento y gestión deportiva.</p>
-            </div>
+          <div class="left-discipline-banner">
+  <img src="mi_banner.png" alt="Banner de multidisciplina deportiva" />
+  <div class="left-banner-overlay">
+    <span>Multidisciplina deportiva</span>
+    <h2>Entrenamiento · Nutrición · Psicología · Inclusión · Gestión</h2>
+    <p>Una visión integral para mejorar salud, rendimiento y hábitos sostenibles.</p>
+  </div>
+</div>
           </div>
           <div class="hero-counter"><span>02</span><span></span></div>
         </div>
