@@ -803,6 +803,251 @@
       .section { padding-top: 62px; }
       footer { font-size: .88rem; }
     }
+  
+
+    /* =====================================================
+       HERO PROFESIONAL - BANNER IZQUIERDO A TODO EL ROJO
+       ===================================================== */
+    .hero-card {
+      grid-template-columns: .92fr 1.08fr;
+      min-height: 680px;
+      background: var(--white);
+    }
+
+    .hero-card::before {
+      display: none;
+    }
+
+    .hero-left {
+      min-height: 680px;
+      padding: 0;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+      background: linear-gradient(155deg, var(--coral), var(--pink));
+      display: block;
+    }
+
+    .left-discipline-banner {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      min-height: 100%;
+      margin: 0;
+      border-radius: 0;
+      border: 0;
+      box-shadow: none;
+      overflow: hidden;
+      background: linear-gradient(155deg, var(--coral), var(--pink));
+    }
+
+    .left-discipline-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: .78;
+      filter: saturate(1.18) contrast(1.06);
+      mix-blend-mode: multiply;
+    }
+
+    .left-discipline-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(155deg, rgba(255,91,99,.72), rgba(255,45,111,.86)),
+        linear-gradient(180deg, rgba(23,28,73,.08), rgba(23,28,73,.58));
+    }
+
+    .left-banner-overlay {
+      position: absolute;
+      left: 58px;
+      right: 88px;
+      bottom: 78px;
+      z-index: 2;
+      color: var(--white);
+    }
+
+    .left-banner-overlay span {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.24);
+      font-size: .75rem;
+      font-weight: 1000;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    .left-banner-overlay h2 {
+      color: var(--white);
+      font-size: clamp(1.65rem, 2.3vw, 2.28rem);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+      margin: 0 0 14px;
+      text-shadow: 0 16px 36px rgba(15,18,44,.32);
+    }
+
+    .left-banner-overlay p {
+      max-width: 340px;
+      color: rgba(255,255,255,.9);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .hero-left .hero-counter {
+      position: absolute;
+      left: 58px;
+      bottom: 34px;
+      z-index: 3;
+      margin: 0;
+    }
+
+    .hero-left .hero-counter span:first-child {
+      color: var(--white);
+    }
+
+    .hero-left .hero-counter span:last-child {
+      background: var(--navy);
+    }
+
+    .hero-right {
+      padding: 50px 46px 50px 0;
+      display: flex;
+      align-items: stretch;
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-visual {
+      width: 100%;
+      min-height: 580px;
+      margin-left: -54px;
+      padding: 58px 58px 48px 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      color: var(--white);
+      background: linear-gradient(145deg, rgba(33,133,228,.98), rgba(81,210,255,.9));
+      box-shadow: 0 28px 70px rgba(44,52,114,.25);
+      overflow: hidden;
+    }
+
+    .hero-visual > .eyebrow {
+      color: var(--white);
+      margin-bottom: 30px;
+    }
+
+    .hero-visual .hero-title {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+
+    .hero-visual .hero-title .big {
+      font-size: clamp(4rem, 7vw, 6.4rem);
+      color: var(--navy);
+    }
+
+    .hero-visual .hero-title .small {
+      color: var(--white);
+      max-width: 520px;
+    }
+
+    .hero-visual .hero-title .subcopy {
+      max-width: 460px;
+    }
+
+    .hero-photo {
+      width: 270px;
+      margin: 0 0 34px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-photo img {
+      width: 270px;
+      height: 330px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 30px;
+      border: 7px solid rgba(255,255,255,.92);
+      box-shadow: 0 30px 76px rgba(18,23,61,.38);
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.7rem, 4.6vw, 4.6rem);
+      line-height: .92;
+      max-width: 620px;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy p {
+      max-width: 520px;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-card {
+        grid-template-columns: 1fr;
+      }
+      .hero-left {
+        min-height: 520px;
+        clip-path: none;
+      }
+      .left-banner-overlay {
+        left: 36px;
+        right: 36px;
+        bottom: 72px;
+      }
+      .hero-left .hero-counter {
+        left: 36px;
+      }
+      .hero-right {
+        padding: 0 26px 30px;
+      }
+      .hero-visual {
+        margin-left: 0;
+        padding: 46px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-left {
+        min-height: 440px;
+      }
+      .left-banner-overlay {
+        left: 26px;
+        right: 26px;
+        bottom: 62px;
+      }
+      .left-banner-overlay h2 {
+        font-size: 1.55rem;
+      }
+      .hero-left .hero-counter {
+        left: 26px;
+        bottom: 26px;
+      }
+      .hero-visual {
+        padding: 28px;
+      }
+      .hero-photo,
+      .hero-photo img {
+        width: 230px;
+      }
+      .hero-photo img {
+        height: 290px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -831,36 +1076,32 @@
   <main id="inicio" class="container hero-shell">
     <section class="hero-wrap fade-in">
       <div class="hero-card">
-        <div class="hero-left">
-          <div>
+        <div class="hero-left" aria-label="Banner de multidisciplina deportiva">
           <div class="left-discipline-banner">
-  <img src="imagen_deportiva.jpg" alt="Banner de multidisciplina deportiva" />
-  <div class="left-banner-overlay">
-    <span>Multidisciplina deportiva</span>
-    <h2>Entrenamiento · Nutrición · Psicología · Inclusión · Gestión</h2>
-    <p>Una visión integral para mejorar salud, rendimiento y hábitos sostenibles.</p>
-  </div>
-</div>
+            <img src="imagen_deportiva.jpg" alt="Banner de multidisciplina deportiva" />
+            <div class="left-banner-overlay">
+              <span>Multidisciplina deportiva</span>
+              <h2>Entrenamiento · Nutrición · Psicología · Inclusión · Gestión</h2>
+              <p>Una visión integral para mejorar salud, rendimiento y hábitos sostenibles.</p>
+            </div>
           </div>
-          <div class="hero-counter"><span></span><span></span></div>
+          <div class="hero-counter"><span>02</span><span></span></div>
         </div>
+
         <div class="hero-right">
           <div class="hero-visual" aria-label="Foto profesional y resumen del perfil">
-           <div class="hero-left">
-  <div>
-    <span class="eyebrow">Portfolio deportivo</span>
-    <div class="hero-title">
-      <span class="big">Sport</span>
-      <span class="small">health & performance</span>
-      <p class="subcopy">Portfolio profesional sólido, multidisciplinar y orientado a salud, rendimiento y gestión deportiva.</p>
-    </div>
-    <div class="hero-photo">
-      <img src="Mi_imagen.png" alt="Retrato profesional de Ramón Curbalán" />
-    </div>
-  </div>
+            <span class="eyebrow">Portfolio deportivo</span>
 
-  <div class="hero-counter"><span></span><span></span></div>
-</div>
+            <div class="hero-title">
+              <span class="big">Sport</span>
+              <span class="small">health & performance</span>
+              <p class="subcopy">Portfolio profesional sólido, multidisciplinar y orientado a salud, rendimiento y gestión deportiva.</p>
+            </div>
+
+            <div class="hero-photo">
+              <img src="Mi_imagen.png" alt="Retrato profesional de Ramón Curbalán" />
+            </div>
+
             <div class="hero-copy">
               <h1>Ramón Alberto.<br />Curbalan Vega</h1>
               <p>Entrenamiento, nutrición deportiva, psicología aplicada al deporte y gestión de instalaciones deportivas.</p>
