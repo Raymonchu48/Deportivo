@@ -113,7 +113,19 @@
     .btn-primary {
       color: var(--white);
       box-shadow: 0 16px 36px rgba(255,45,111,.28);
+      
     }
+    .nav-recommendation {
+  background: linear-gradient(135deg, var(--pink), var(--coral));
+  color: var(--white);
+  border: none;
+  box-shadow: 0 16px 36px rgba(255,45,111,.28);
+}
+
+.nav-recommendation:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 42px rgba(255,45,111,.36);
+}
     .btn-secondary {
       background: rgba(44,52,114,.08);
       color: var(--navy);
@@ -1060,7 +1072,8 @@
         </div>
         <div class="nav-actions">
           <a class="btn btn-secondary" href="CV_Deporte.pdf" download>Descargar CV</a>
-          <a class="btn btn-primary" href="Cartas_Recomendacion.pdf">Recomendaciones</a>
+          <a class="btn btn-primary" href="Cartas_Recomendacion.pdf" target="_blank" rel="noopener">
+  Recomendaciones </a>
         </div>
       </nav>
     </div>
