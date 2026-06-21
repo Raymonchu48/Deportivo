@@ -164,11 +164,14 @@
     .left-discipline-banner::before {
       content: "";
       position: absolute;
-      inset: 34px 28px 150px;
+      left: 22px;
+      right: 22px;
+      top: 92px;
+      height: 250px;
       background: url("imagen_deportiva.jpg") center center / contain no-repeat;
-      opacity: .98;
-      z-index: 0;
-      filter: drop-shadow(0 18px 42px rgba(18,23,61,.15));
+      opacity: 1;
+      z-index: 1;
+      filter: drop-shadow(0 18px 42px rgba(18,23,61,.18));
     }
     .left-discipline-banner > img { display: none !important; }
     .left-discipline-banner::after {
@@ -176,9 +179,10 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(16,20,51,0) 0%, rgba(16,20,51,.10) 46%, rgba(16,20,51,.72) 100%),
+        linear-gradient(180deg, rgba(239,231,220,.05) 0%, rgba(16,20,51,.08) 45%, rgba(16,20,51,.76) 100%),
+        radial-gradient(circle at 50% 32%, rgba(255,255,255,.28), transparent 34%),
         linear-gradient(90deg, rgba(16,20,51,.06), transparent 58%);
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
     }
     .left-banner-overlay {
@@ -186,7 +190,7 @@
       left: 34px;
       right: 34px;
       bottom: 40px;
-      z-index: 2;
+      z-index: 3;
       color: var(--white);
     }
     .left-banner-overlay span {
@@ -259,6 +263,57 @@
     .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 24px; }
     .pill { padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.20); background: rgba(255,255,255,.13); color: rgba(255,255,255,.96); font-size: .86rem; font-weight: 850; }
     .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .hero-video-card {
+      width: 100%;
+      max-width: 440px;
+      margin-top: 26px;
+      padding: 14px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.22);
+      box-shadow: 0 22px 54px rgba(18,23,61,.18);
+      backdrop-filter: blur(12px);
+    }
+    .hero-video-card video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      border-radius: 18px;
+      object-fit: cover;
+      background: rgba(23,28,73,.34);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .hero-video-card h3 {
+      margin-top: 14px;
+      color: var(--white);
+      font-size: 1.05rem;
+      line-height: 1.18;
+      letter-spacing: -.02em;
+    }
+    .hero-video-card p {
+      margin-top: 6px;
+      color: rgba(255,255,255,.84);
+      font-size: .9rem;
+      font-weight: 720;
+      max-width: none;
+    }
+    .hero-video-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,45,111,.92);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 1000;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 28px rgba(255,45,111,.26);
+      margin-bottom: 10px;
+    }
+
     .hero-dots { position: absolute; bottom: 28px; right: 80px; display: flex; gap: 14px; z-index: 4; }
     .hero-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--navy); }
     .hero-dots span:last-child { background: transparent; border: 2px solid var(--navy); }
@@ -347,7 +402,7 @@
       .hero-card { grid-template-columns: 1fr; }
       .hero-left, .left-discipline-banner, .hero-right, .hero-visual { min-height: auto; }
       .left-discipline-banner { min-height: 520px; }
-      .left-discipline-banner::before { inset: 34px 22px 140px; }
+      .left-discipline-banner::before { left: 22px; right: 22px; top: 66px; height: 220px; }
       .stats, .cert-grid, .experience-grid { grid-template-columns: repeat(2, 1fr); }
       .feature-grid, .method-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -367,7 +422,7 @@
       .hero-wrap { padding: 14px; border-radius: 22px; }
       .hero-card { border-radius: 12px; }
       .left-discipline-banner { min-height: 420px; }
-      .left-discipline-banner::before { inset: 20px 14px 130px; }
+      .left-discipline-banner::before { left: 14px; right: 14px; top: 54px; height: 170px; }
       .left-banner-overlay { left: 22px; right: 22px; bottom: 26px; }
       .left-banner-overlay h2 { font-size: 1.22rem; }
       .left-banner-overlay p { font-size: .86rem; }
@@ -440,9 +495,14 @@
                 <span class="pill">Psicología deportiva</span>
                 <span class="pill">Gestión deportiva</span>
               </div>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="Proyecto_final_Adm_Deportiva.pdf" target="_blank" rel="noopener">Proyecto Administración Deportiva</a>
-                <a class="btn btn-primary" href="Trabajo_Final_Nutricional.pdf" target="_blank" rel="noopener">Trabajo Final de Nutrición</a>
+              <div class="hero-video-card" id="potencial">
+                <span class="hero-video-label">Potencial aplicado</span>
+                <video controls playsinline preload="metadata" poster="Mi_imagen.png">
+                  <source src="Potencial_al_Máximo__Cuerpo_y_Mente.mp4" type="video/mp4" />
+                  Tu navegador no puede reproducir este video.
+                </video>
+                <h3>Potencial al máximo: cuerpo y mente</h3>
+                <p>Una muestra visual de conocimientos, capacidad de entrenamiento, motivación y enfoque integral del rendimiento.</p>
               </div>
             </div>
           </div>
