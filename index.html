@@ -111,21 +111,10 @@
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
+      background: linear-gradient(135deg, var(--pink), var(--coral));
       color: var(--white);
       box-shadow: 0 16px 36px rgba(255,45,111,.28);
-      
     }
-    .nav-recommendation {
-  background: linear-gradient(135deg, var(--pink), var(--coral));
-  color: var(--white);
-  border: none;
-  box-shadow: 0 16px 36px rgba(255,45,111,.28);
-}
-
-.nav-recommendation:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 20px 42px rgba(255,45,111,.36);
-}
     .btn-secondary {
       background: rgba(44,52,114,.08);
       color: var(--navy);
@@ -136,6 +125,19 @@
       color: var(--white);
       border: 1px solid rgba(255,255,255,.22);
     }
+    .nav-recommendation {
+      min-width: 178px;
+      background: linear-gradient(135deg, var(--pink), var(--coral)) !important;
+      color: var(--white) !important;
+      border: none !important;
+      box-shadow: 0 16px 36px rgba(255,45,111,.30) !important;
+      white-space: nowrap;
+    }
+    .nav-recommendation:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(255,45,111,.38) !important;
+    }
+
 
     .hero-shell {
       padding: 18px 0 0;
@@ -182,20 +184,20 @@
     }
 
     .hero-card::before {
-     display: none;
+      content: none !important;
+      display: none !important;
     }
-
-    .hero-left, .hero-right { position: relative; z-index: 1; }
 
     .hero-left {
-     padding: 0;
-    color: var(--white);
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-    min-height: 620px;
-    background: #171c49;
+      padding: 0;
+      color: var(--white);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      min-height: 620px;
+      background: #f3eadf;
     }
+
 
     .eyebrow {
       display: inline-flex;
@@ -238,26 +240,44 @@
       color: rgba(255,255,255,.94);
     }
 .left-discipline-banner {
- width: 100%;
+  width: 100%;
   height: 100%;
   min-height: 620px;
   margin: 0;
+  max-width: none;
   border-radius: 0;
   overflow: hidden;
   position: relative;
   border: none;
   box-shadow: none;
-  background: #171c49;
+  background: #f3eadf;
+}
+.left-discipline-banner::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  background: url("imagen_deportiva.jpg") center center / cover no-repeat;
+  filter: blur(10px) saturate(1.08);
+  opacity: .42;
+  transform: scale(1.06);
+  z-index: 0;
 }
 
+
 .left-discipline-banner img {
-  width: 100%;
-  height: 100%;
-  min-height: 620px;
-  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 92%;
+  height: auto;
+  max-height: 58%;
+  object-fit: contain;
   object-position: center;
+  transform: translate(-50%, -50%);
   display: block;
   opacity: 1;
+  z-index: 1;
+  filter: drop-shadow(0 18px 34px rgba(10,14,45,.18));
 }
 
 .left-discipline-banner::after {
@@ -265,9 +285,10 @@
   position: absolute;
   inset: 0;
   background:
- linear-gradient(180deg, rgba(10,14,45,.12), rgba(10,14,45,.72)),
-    linear-gradient(90deg, rgba(10,14,45,.18), transparent 55%);  
-  z-index: 1;
+    linear-gradient(180deg, rgba(10,14,45,.02), rgba(10,14,45,.66)),
+    linear-gradient(90deg, rgba(10,14,45,.08), transparent 64%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .left-banner-overlay {
@@ -275,7 +296,7 @@
   left: 34px;
   right: 34px;
   bottom: 42px;
-  z-index: 2;
+  z-index: 3;
   color: var(--white);
 }
 
@@ -336,12 +357,12 @@
       box-shadow: 0 28px 60px rgba(44,52,114,.24);
       padding: 46px;
       display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: flex-start;
-     position: relative;
-     overflow: hidden;
-     animation: fadeUp .9s ease both;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp .9s ease both;
     }
 
     .hero-visual::before {
@@ -772,8 +793,8 @@
 
     @media (max-width: 1080px) {
       .hero-card { grid-template-columns: 1fr; }
-      .hero-card::before { width: 100%; clip-path: polygon(0 0, 100% 0, 100% 52%, 0 70%); }
-      .hero-left { min-height: 360px; }
+      .hero-card::before { content: none !important; display: none !important; }
+      .hero-left { min-height: 420px; }
       .hero-right { padding: 0 26px 30px; }
       .hero-visual { margin-left: 0; }
       .stats { grid-template-columns: repeat(2, 1fr); }
@@ -785,7 +806,7 @@
     @media (max-width: 920px) {
       .menu { display: none; }
       .section-heading, .executive, .contact-card { grid-template-columns: 1fr; }
-      .hero-visual { grid-template-columns: 1.15fr .85fr; }
+      .hero-visual { align-items: flex-start; }
       .hero-copy p { max-width: none; }
       .contact-links { justify-items: start; }
     }
@@ -797,7 +818,15 @@
       .brand span:last-child { display: none; }
       .nav-actions { display: none; }
       .hero-wrap { padding: 14px; border-radius: 22px; }
-      .hero-left { padding: 30px; }
+      .hero-left { padding: 0; }
+      .hero-left { min-height: 420px; }
+      .left-discipline-banner { min-height: 420px; }
+      .left-discipline-banner img { top: 36%; width: 96%; max-height: 46%; }
+      .left-banner-overlay { left: 22px; right: 22px; bottom: 26px; }
+      .left-banner-overlay h2 { font-size: 1.22rem; }
+      .left-banner-overlay p { font-size: .86rem; }
+      .nav-recommendation { min-width: 0; }
+
       .hero-right { padding: 0 14px 18px; }
       .hero-visual { min-height: auto; padding: 22px; }
       .hero-photo img { max-width: 360px; }
@@ -809,250 +838,6 @@
       .section { padding-top: 62px; }
       footer { font-size: .88rem; }
     }
-  
-
-    /* =====================================================
-       HERO PROFESIONAL - BANNER IZQUIERDO A TODO EL ROJO
-       ===================================================== */
-    .hero-card {
-      grid-template-columns: .92fr 1.08fr;
-      min-height: 680px;
-      background: var(--white);
-    }
-
-    .hero-card::before {
-      display: none;
-    }
-
-    .hero-left {
-      min-height: 680px;
-      padding: 0;
-      position: relative;
-      z-index: 2;
-      overflow: hidden;
-      clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
-      display: block;
-    }
-
-    .left-discipline-banner {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      max-width: none;
-      height: 100%;
-      min-height: 100%;
-      margin: 0;
-      border-radius: 0;
-      border: 0;
-      box-shadow: none;
-      overflow: hidden;
-      background: linear-gradient(155deg, var(--coral), var(--pink));
-    }
-
-    .left-discipline-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      opacity: .78;
-      filter: saturate(1.18) contrast(1.06);
-      mix-blend-mode: multiply;
-    }
-
-    .left-discipline-banner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(155deg, rgba(255,91,99,.72), rgba(255,45,111,.86)),
-        linear-gradient(180deg, rgba(23,28,73,.08), rgba(23,28,73,.58));
-    }
-
-    .left-banner-overlay {
-      position: absolute;
-      left: 58px;
-      right: 88px;
-      bottom: 78px;
-      z-index: 2;
-      color: var(--white);
-    }
-
-    .left-banner-overlay span {
-      display: inline-flex;
-      margin-bottom: 16px;
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.24);
-      font-size: .75rem;
-      font-weight: 1000;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      backdrop-filter: blur(8px);
-    }
-
-    .left-banner-overlay h2 {
-      color: var(--white);
-      font-size: clamp(1.65rem, 2.3vw, 2.28rem);
-      line-height: 1.08;
-      letter-spacing: -.035em;
-      margin: 0 0 14px;
-      text-shadow: 0 16px 36px rgba(15,18,44,.32);
-    }
-
-    .left-banner-overlay p {
-      max-width: 340px;
-      color: rgba(255,255,255,.9);
-      font-size: 1rem;
-      font-weight: 800;
-    }
-
-    .hero-left .hero-counter {
-      position: absolute;
-      left: 58px;
-      bottom: 34px;
-      z-index: 3;
-      margin: 0;
-    }
-
-    .hero-left .hero-counter span:first-child {
-      color: var(--white);
-    }
-
-    .hero-left .hero-counter span:last-child {
-      background: var(--navy);
-    }
-
-    .hero-right {
-      padding: 50px 46px 50px 0;
-      display: flex;
-      align-items: stretch;
-      position: relative;
-      z-index: 3;
-    }
-
-    .hero-visual {
-      width: 100%;
-      min-height: 580px;
-      margin-left: -54px;
-      padding: 58px 58px 48px 92px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      color: var(--white);
-      background: linear-gradient(145deg, rgba(33,133,228,.98), rgba(81,210,255,.9));
-      box-shadow: 0 28px 70px rgba(44,52,114,.25);
-      overflow: hidden;
-    }
-
-    .hero-visual > .eyebrow {
-      color: var(--white);
-      margin-bottom: 30px;
-    }
-
-    .hero-visual .hero-title {
-      margin-top: 0;
-      margin-bottom: 30px;
-    }
-
-    .hero-visual .hero-title .big {
-      font-size: clamp(4rem, 7vw, 6.4rem);
-      color: var(--navy);
-    }
-
-    .hero-visual .hero-title .small {
-      color: var(--white);
-      max-width: 520px;
-    }
-
-    .hero-visual .hero-title .subcopy {
-      max-width: 460px;
-    }
-
-    .hero-photo {
-      width: 270px;
-      margin: 0 0 34px;
-      position: relative;
-      z-index: 3;
-    }
-
-    .hero-photo img {
-      width: 270px;
-      height: 330px;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 30px;
-      border: 7px solid rgba(255,255,255,.92);
-      box-shadow: 0 30px 76px rgba(18,23,61,.38);
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(2.7rem, 4.6vw, 4.6rem);
-      line-height: .92;
-      max-width: 620px;
-      margin-bottom: 18px;
-    }
-
-    .hero-copy p {
-      max-width: 520px;
-    }
-
-    @media (max-width: 1080px) {
-      .hero-card {
-        grid-template-columns: 1fr;
-      }
-      .hero-left {
-        min-height: 520px;
-        clip-path: none;
-      }
-      .left-banner-overlay {
-        left: 36px;
-        right: 36px;
-        bottom: 72px;
-      }
-      .hero-left .hero-counter {
-        left: 36px;
-      }
-      .hero-right {
-        padding: 0 26px 30px;
-      }
-      .hero-visual {
-        margin-left: 0;
-        padding: 46px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero-left {
-        min-height: 440px;
-      }
-      .left-banner-overlay {
-        left: 26px;
-        right: 26px;
-        bottom: 62px;
-      }
-      .left-banner-overlay h2 {
-        font-size: 1.55rem;
-      }
-      .hero-left .hero-counter {
-        left: 26px;
-        bottom: 26px;
-      }
-      .hero-visual {
-        padding: 28px;
-      }
-      .hero-photo,
-      .hero-photo img {
-        width: 230px;
-      }
-      .hero-photo img {
-        height: 290px;
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -1072,8 +857,7 @@
         </div>
         <div class="nav-actions">
           <a class="btn btn-secondary" href="CV_Deporte.pdf" download>Descargar CV</a>
-          <a class="btn btn-primary" href="Cartas_Recomendacion.pdf" target="_blank" rel="noopener">
-  Recomendaciones </a>
+          <a class="btn btn-primary nav-recommendation" href="Cartas_Recomendacion.pdf" target="_blank" rel="noopener">Recomendaciones</a>
         </div>
       </nav>
     </div>
@@ -1082,7 +866,7 @@
   <main id="inicio" class="container hero-shell">
     <section class="hero-wrap fade-in">
       <div class="hero-card">
-        <div class="hero-left" aria-label="Banner de multidisciplina deportiva">
+        <div class="hero-left">
           <div class="left-discipline-banner">
             <img src="imagen_deportiva.jpg" alt="Banner de multidisciplina deportiva" />
             <div class="left-banner-overlay">
@@ -1091,25 +875,21 @@
               <p>Una visión integral para mejorar salud, rendimiento y hábitos sostenibles.</p>
             </div>
           </div>
-          <div class="hero-counter"><span></span><span></span></div>
         </div>
 
         <div class="hero-right">
           <div class="hero-visual" aria-label="Foto profesional y resumen del perfil">
             <span class="eyebrow">Portfolio deportivo</span>
-
             <div class="hero-title">
               <span class="big">Sport</span>
               <span class="small">health & performance</span>
               <p class="subcopy">Portfolio profesional sólido, multidisciplinar y orientado a salud, rendimiento y gestión deportiva.</p>
             </div>
-
             <div class="hero-photo">
               <img src="Mi_imagen.png" alt="Retrato profesional de Ramón Curbalán" />
             </div>
-
             <div class="hero-copy">
-              <h1>Ramón Alberto.<br />Curbalan Vega</h1>
+              <h1>Ramón Alberto.<br />Curbalán Vega</h1>
               <p>Entrenamiento, nutrición deportiva, psicología aplicada al deporte y gestión de instalaciones deportivas.</p>
               <div class="pill-row">
                 <span class="pill">Fitness</span>
@@ -1220,7 +1000,7 @@
       <div class="section-heading">
         <div>
           <span class="kicker">experiencia deportiva</span>
-          <h2>Aqui se puede ver mi experiencia .</h2>
+          <h2>Experiencia aplicada en el ámbito deportivo</h2>
         </div>
         <p class="lead">Además de la formación, esta es mi experiencia y aplicación profesional: entrenamiento, trabajo con grupos, entorno fitness, fútbol base, mayores y seguridad deportiva.</p>
       </div>
@@ -1248,11 +1028,11 @@ Integro entrenamiento, nutrición, psicología deportiva y gestión para diseña
           <strong>Enviar</strong>
         </a>
         <a class="contact-item" href="Carta_presentacion_deportiva_profesional.pdf">
-          <span><small>CV</small> Perfil Profecional</span>
+          <span><small>CV</small> Perfil Profesional</span>
           <strong>PDF</strong>
         </a>
-        <a class="contact-item" href="www.linkedin.com/in/ramon-alberto-vega-976084417">
-          <span><small>LinkedIn</small></span>
+        <a class="contact-item" href="#" onclick="return false;">
+          <span><small>LinkedIn</small>Añadir URL real del perfil</span>
           <strong>Perfil</strong>
         </a>
       </div>
@@ -1260,7 +1040,7 @@ Integro entrenamiento, nutrición, psicología deportiva y gestión para diseña
 
     <footer>
       <span>© 2026 Ramón Curbalán · Sport, Health & Performance</span>
-      <span>Portfolio deportivo profecional ·</span>
+      <span>Portfolio deportivo profesional ·</span>
     </footer>
   </main>
 </body>
