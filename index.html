@@ -173,6 +173,75 @@
       z-index: 1;
       filter: drop-shadow(0 18px 42px rgba(18,23,61,.18));
     }
+    .left-gif-banner {
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  background: #070914;
+}
+
+.left-gif-banner img {
+  width: 100%;
+  height: 100%;
+  min-height: 620px;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  opacity: 1;
+}
+
+.left-gif-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,9,20,.08), rgba(7,9,20,.72)),
+    linear-gradient(90deg, rgba(7,9,20,.18), transparent 58%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.left-gif-overlay {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  bottom: 42px;
+  z-index: 2;
+  color: var(--white);
+}
+
+.left-gif-overlay span {
+  display: inline-flex;
+  margin-bottom: 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.22);
+  font-size: .72rem;
+  font-weight: 1000;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.left-gif-overlay h2 {
+  color: var(--white);
+  font-size: 1.55rem;
+  line-height: 1.08;
+  letter-spacing: -.03em;
+  margin: 0 0 10px;
+  text-shadow: 0 4px 18px rgba(10,14,45,.45);
+}
+
+.left-gif-overlay p {
+  color: rgba(255,255,255,.9);
+  font-size: .92rem;
+  font-weight: 750;
+  text-shadow: 0 4px 18px rgba(10,14,45,.42);
+}
     .left-discipline-banner > img { display: none !important; }
     .left-discipline-banner::after {
       content: "";
@@ -434,6 +503,26 @@
       .panel, .feature, .stat-card, .exp, .method-step, .project-card { padding: 22px; }
       .section { padding-top: 62px; }
       footer { font-size: .88rem; }
+      .left-gif-banner {
+  min-height: 420px;
+}
+
+.left-gif-banner img {
+  min-height: 420px;
+}
+
+.left-gif-overlay {
+  left: 22px;
+  right: 22px;
+  bottom: 26px;
+}
+
+.left-gif-overlay h2 {
+  font-size: 1.25rem;
+}
+
+.left-gif-overlay p {
+  font-size: .86rem;
     }
   </style>
 </head>
@@ -466,11 +555,11 @@
       <div class="hero-card">
         <div class="hero-left">
           <div class="left-discipline-banner" aria-label="Banner de multidisciplina deportiva">
-            <img src="imagen_deportiva.jpg" alt="Banner de multidisciplina deportiva" />
+            <img src="presentacion.gif" alt="Entrenamiento deportivo en movimiento" />
             <div class="left-banner-overlay">
-              <span>Multidisciplina deportiva</span>
-              <h2>Entrenamiento · Nutrición · Psicología · Inclusión · Gestión</h2>
-              <p>Una visión integral para mejorar salud, rendimiento y hábitos sostenibles.</p>
+              <span>Potencial aplicado</span>
+              <h2>Cuerpo . Mente . Rendimiento</h2>
+              <p>Una visión integral del entrenamiento, la motivación y la mejora física .</p>
             </div>
           </div>
         </div>
