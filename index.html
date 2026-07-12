@@ -174,74 +174,77 @@
       filter: drop-shadow(0 18px 42px rgba(18,23,61,.18));
     }
     .left-gif-banner {
-  width: 100%;
-  height: 100%;
-  min-height: 620px;
-  margin: 0;
-  position: relative;
-  overflow: hidden;
-  background: #070914;
-}
+      width: 100%;
+      height: 100%;
+      min-height: 680px;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      background: #070914;
+    }
 
-.left-gif-banner img {
-  width: 100%;
-  height: 100%;
-  min-height: 620px;
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-  opacity: 1;
-}
+    .left-gif-banner img {
+      width: 100%;
+      height: 100%;
+      min-height: 680px;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      opacity: 1;
+      filter: saturate(1.08) contrast(1.05);
+    }
 
-.left-gif-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(7,9,20,.08), rgba(7,9,20,.72)),
-    linear-gradient(90deg, rgba(7,9,20,.18), transparent 58%);
-  z-index: 1;
-  pointer-events: none;
-}
+    .left-gif-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7,9,20,.04), rgba(7,9,20,.74)),
+        linear-gradient(90deg, rgba(7,9,20,.24), transparent 62%);
+      z-index: 1;
+      pointer-events: none;
+    }
 
-.left-gif-overlay {
-  position: absolute;
-  left: 34px;
-  right: 34px;
-  bottom: 42px;
-  z-index: 2;
-  color: var(--white);
-}
+    .left-gif-overlay {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 42px;
+      z-index: 2;
+      color: var(--white);
+    }
 
-.left-gif-overlay span {
-  display: inline-flex;
-  margin-bottom: 12px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.16);
-  border: 1px solid rgba(255,255,255,.22);
-  font-size: .72rem;
-  font-weight: 1000;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  backdrop-filter: blur(8px);
-}
+    .left-gif-overlay span {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.22);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 1000;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      text-shadow: 0 4px 16px rgba(0,0,0,.45);
+    }
 
-.left-gif-overlay h2 {
-  color: var(--white);
-  font-size: 1.55rem;
-  line-height: 1.08;
-  letter-spacing: -.03em;
-  margin: 0 0 10px;
-  text-shadow: 0 4px 18px rgba(10,14,45,.45);
-}
+    .left-gif-overlay h2 {
+      color: var(--white);
+      font-size: clamp(1.35rem, 2vw, 1.7rem);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+      margin: 0 0 10px;
+      text-shadow: 0 4px 18px rgba(10,14,45,.50);
+    }
 
-.left-gif-overlay p {
-  color: rgba(255,255,255,.9);
-  font-size: .92rem;
-  font-weight: 750;
-  text-shadow: 0 4px 18px rgba(10,14,45,.42);
-}
+    .left-gif-overlay p {
+      color: rgba(255,255,255,.92);
+      font-size: .94rem;
+      font-weight: 780;
+      text-shadow: 0 4px 18px rgba(10,14,45,.46);
+    }
     .left-discipline-banner > img { display: none !important; }
     .left-discipline-banner::after {
       content: "";
@@ -469,9 +472,9 @@
 
     @media (max-width: 1080px) {
       .hero-card { grid-template-columns: 1fr; }
-      .hero-left, .left-discipline-banner, .hero-right, .hero-visual { min-height: auto; }
-      .left-discipline-banner { min-height: 520px; }
-      .left-discipline-banner::before { left: 22px; right: 22px; top: 66px; height: 220px; }
+      .hero-left, .left-gif-banner, .hero-right, .hero-visual { min-height: auto; }
+      .left-gif-banner { min-height: 520px; }
+      .left-gif-banner img { min-height: 520px; }
       .stats, .cert-grid, .experience-grid { grid-template-columns: repeat(2, 1fr); }
       .feature-grid, .method-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -490,11 +493,11 @@
       .nav-actions { display: none; }
       .hero-wrap { padding: 14px; border-radius: 22px; }
       .hero-card { border-radius: 12px; }
-      .left-discipline-banner { min-height: 420px; }
-      .left-discipline-banner::before { left: 14px; right: 14px; top: 54px; height: 170px; }
-      .left-banner-overlay { left: 22px; right: 22px; bottom: 26px; }
-      .left-banner-overlay h2 { font-size: 1.22rem; }
-      .left-banner-overlay p { font-size: .86rem; }
+      .left-gif-banner { min-height: 420px; }
+      .left-gif-banner img { min-height: 420px; }
+      .left-gif-overlay { left: 22px; right: 22px; bottom: 26px; }
+      .left-gif-overlay h2 { font-size: 1.25rem; }
+      .left-gif-overlay p { font-size: .86rem; }
       .hero-visual { padding: 26px 22px; }
       .hero-photo, .hero-photo img { width: 100%; max-width: 300px; height: 300px; }
       .hero-dots { display: none; }
@@ -523,6 +526,8 @@
 
 .left-gif-overlay p {
   font-size: .86rem;
+    }
+
     }
   </style>
 </head>
@@ -554,12 +559,12 @@
     <section class="hero-wrap fade-in">
       <div class="hero-card">
         <div class="hero-left">
-          <div class="left-discipline-banner" aria-label="Banner de multidisciplina deportiva">
+          <div class="left-gif-banner" aria-label="Banner visual de entrenamiento deportivo">
             <img src="presentacion.gif" alt="Entrenamiento deportivo en movimiento" />
-            <div class="left-banner-overlay">
+            <div class="left-gif-overlay">
               <span>Potencial aplicado</span>
-              <h2>Cuerpo . Mente . Rendimiento</h2>
-              <p>Una visión integral del entrenamiento, la motivación y la mejora física .</p>
+              <h2>Cuerpo · Mente · Rendimiento</h2>
+              <p>Una visión integral del entrenamiento, la motivación y la mejora física.</p>
             </div>
           </div>
         </div>
@@ -697,7 +702,7 @@
       </div>
       <div class="project-grid">
         <article class="project-card"><h3>Proyecto final de Administración Deportiva</h3><p>Aplicación de criterios de planificación, gestión, dirección y organización de servicios deportivos.</p><a class="btn btn-primary" href="Proyecto_final_Adm_Deportiva.pdf" target="_blank" rel="noopener">Ver proyecto</a></article>
-        <article class="project-card"><h3>Trabajo final de Nutrición</h3><p>Propuesta aplicada sobre hábitos, educación alimentaria y acompañamiento nutricional orientado a la salud.</p><a class="btn btn-primary" href="Trabajo_Final_Nutricional.pdf" target="_blank" rel="noopener">Ver trabajo</a></article>
+        <article class="project-card"><h3>Trabajo final de Nutrición</h3><p>Propuesta aplicada sobre hábitos, educación alimentaria y acompañamiento nutricional orientado a la salud.</p><a class="btn btn-primary" href="Trabajo_Final_Nutriciónal.pdf" target="_blank" rel="noopener">Ver trabajo</a></article>
       </div>
     </section>
 
