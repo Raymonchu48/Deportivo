@@ -348,14 +348,54 @@
       box-shadow: 0 22px 54px rgba(18,23,61,.18);
       backdrop-filter: blur(12px);
     }
-    .hero-video-card video {
+    .hero-video-launch {
       width: 100%;
       aspect-ratio: 16 / 9;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
       border-radius: 18px;
-      object-fit: cover;
-      background: rgba(23,28,73,.34);
-      border: 1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(circle at 50% 38%, rgba(81,210,255,.34), transparent 38%),
+        linear-gradient(145deg, #2b97db 0%, #2d56b7 55%, #26327f 100%);
+      border: 1px solid rgba(255,255,255,.24);
+      color: var(--white);
+      box-shadow: inset 0 0 34px rgba(255,255,255,.08);
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    }
+    .hero-video-launch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(18,23,61,.24), inset 0 0 34px rgba(255,255,255,.1);
+      filter: brightness(1.04);
+    }
+    .hero-video-play {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,.94);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 14px 32px rgba(18,23,61,.24);
+    }
+    .hero-video-play::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      border-left: 20px solid var(--white);
+      margin-left: 5px;
+    }
+    .hero-video-cta {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 950;
+      letter-spacing: .01em;
+      text-transform: lowercase;
+      text-shadow: 0 4px 16px rgba(18,23,61,.3);
     }
     .hero-video-card h3 {
       margin-top: 14px;
@@ -592,10 +632,10 @@
               </div>
               <div class="hero-video-card" id="potencial">
                 <span class="hero-video-label">Potencial aplicado</span>
-                <video controls playsinline preload="metadata" poster="Mi_imagen.png">
-                  <source src="Potencial_al_Máximo__Cuerpo_y_Mente.mp4" type="video/mp4" />
-                  Tu navegador no puede reproducir este video.
-                </video>
+                <a class="hero-video-launch" href="Potencial_al_Máximo__Cuerpo_y_Mente.mp4" target="_blank" rel="noopener" aria-label="Abrir vídeo Potencial al máximo: cuerpo y mente">
+                  <span class="hero-video-play" aria-hidden="true"></span>
+                  <span class="hero-video-cta">clic here</span>
+                </a>
                 <h3>Potencial al máximo: cuerpo y mente</h3>
                 <p>Una muestra visual de conocimientos, capacidad de entrenamiento, motivación y enfoque integral del rendimiento.</p>
               </div>
