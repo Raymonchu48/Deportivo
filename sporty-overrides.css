@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800;1,900&family=Rajdhani:wght@600;700&display=swap');
+
+:root {
+  --sport-display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --sport-tech: "Rajdhani", "Arial Narrow", Arial, sans-serif;
+}
+
+/* Sistema tipográfico deportivo: títulos y subtítulos */
+.hero-title .big,
+.hero-title .small,
+.hero-name,
+.hero-name span,
+.section-title,
+.section-head h2,
+.section-heading,
+.card-title,
+.feature-card h3,
+.stat-card h3,
+.timeline-card h3,
+.contact-card h3,
+.left-gif-overlay h2,
+.left-banner-overlay h2,
+.video-card h3,
+.carousel-card h3,
+h1,
+h2,
+h3 {
+  font-family: var(--sport-display) !important;
+  font-weight: 900 !important;
+  font-style: italic;
+  letter-spacing: -0.025em;
+  line-height: .94;
+  text-transform: uppercase;
+  font-stretch: condensed;
+}
+
+/* Titular principal: acabado de marca deportiva */
+.hero-title .big {
+  letter-spacing: -0.055em !important;
+  transform: skewX(-4deg);
+  transform-origin: left center;
+  text-shadow: 0 4px 0 rgba(20, 27, 78, .08);
+}
+
+.hero-title .small {
+  font-weight: 800 !important;
+  letter-spacing: .01em !important;
+  text-transform: none;
+}
+
+/* Nombre: más compacto, dinámico y legible */
+.hero-name,
+.hero-name span,
+.name,
+.profile-name {
+  font-family: var(--sport-display) !important;
+  font-weight: 900 !important;
+  font-style: italic;
+  letter-spacing: -0.04em !important;
+  line-height: .88 !important;
+  text-transform: uppercase;
+}
+
+/* Eyebrows, etiquetas, botones y chips */
+.eyebrow,
+.kicker,
+.label,
+.badge,
+.pill,
+.tag,
+.chip,
+.btn,
+.menu,
+.left-gif-overlay span,
+.left-banner-overlay span,
+[class*="badge"],
+[class*="tag"],
+[class*="pill"] {
+  font-family: var(--sport-tech) !important;
+  font-weight: 700 !important;
+  letter-spacing: .055em;
+}
+
+/* Subtítulos y entradillas */
+.hero-title .subcopy,
+.section-subtitle,
+.section-lead,
+.card-subtitle,
+.left-gif-overlay p,
+.left-banner-overlay p {
+  font-family: var(--sport-tech) !important;
+  font-weight: 600 !important;
+  letter-spacing: .005em;
+}
+
+/* Consistencia deportiva en títulos internos sin sacrificar lectura */
+section h2,
+section h3,
+article h2,
+article h3 {
+  font-family: var(--sport-display) !important;
+}
+
+/* Mantener párrafos largos limpios y profesionales */
+p,
+li,
+input,
+textarea,
+select {
+  font-family: "Arial Nova", Arial, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@media (max-width: 760px) {
+  .hero-title .big {
+    letter-spacing: -0.045em !important;
+    line-height: .84 !important;
+  }
+
+  .hero-name,
+  .hero-name span,
+  .name,
+  .profile-name {
+    letter-spacing: -0.035em !important;
+    line-height: .9 !important;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}
