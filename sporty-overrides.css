@@ -34,7 +34,6 @@ h3 {
   font-stretch: condensed;
 }
 
-/* Titular principal: acabado de marca deportiva */
 .hero-title .big {
   letter-spacing: -0.055em !important;
   transform: skewX(-4deg);
@@ -48,7 +47,6 @@ h3 {
   text-transform: none;
 }
 
-/* Nombre: más compacto, dinámico y legible */
 .hero-name,
 .hero-name span,
 .name,
@@ -61,7 +59,6 @@ h3 {
   text-transform: uppercase;
 }
 
-/* Eyebrows, etiquetas, botones y chips */
 .eyebrow,
 .kicker,
 .label,
@@ -81,7 +78,6 @@ h3 {
   letter-spacing: .055em;
 }
 
-/* Subtítulos y entradillas */
 .hero-title .subcopy,
 .section-subtitle,
 .section-lead,
@@ -93,7 +89,6 @@ h3 {
   letter-spacing: .005em;
 }
 
-/* Consistencia deportiva en títulos internos sin sacrificar lectura */
 section h2,
 section h3,
 article h2,
@@ -101,13 +96,219 @@ article h3 {
   font-family: var(--sport-display) !important;
 }
 
-/* Mantener párrafos largos limpios y profesionales */
 p,
 li,
 input,
 textarea,
 select {
   font-family: "Arial Nova", Arial, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* =========================================================
+   ESCRITORIO / PORTÁTIL: composición panorámica completa
+   Evita que el hero conserve proporciones de tablet.
+   ========================================================= */
+@media (min-width: 1200px) {
+  :root {
+    --container: 1540px;
+  }
+
+  .container {
+    width: min(var(--container), calc(100% - 56px)) !important;
+  }
+
+  .topbar {
+    padding: 10px 0 !important;
+  }
+
+  .nav {
+    padding: 8px 16px !important;
+  }
+
+  .brand-mark {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .btn {
+    min-height: 42px !important;
+    padding-inline: 17px !important;
+  }
+
+  .hero-shell {
+    padding-top: 10px !important;
+  }
+
+  .hero-wrap {
+    padding: 22px !important;
+    border-radius: 26px !important;
+  }
+
+  .hero-card {
+    grid-template-columns: 1.16fr .84fr !important;
+    min-height: 0 !important;
+    height: clamp(650px, calc(100vh - 126px), 790px) !important;
+    max-height: 790px !important;
+    border-radius: 16px !important;
+  }
+
+  .hero-left,
+  .hero-right,
+  .hero-visual,
+  .left-gif-banner {
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+
+  .left-gif-banner img {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: none !important;
+  }
+
+  .left-gif-overlay {
+    left: 30px !important;
+    right: 30px !important;
+    bottom: 28px !important;
+  }
+
+  .left-gif-overlay h2 {
+    font-size: 1.6rem !important;
+    margin-bottom: 7px !important;
+  }
+
+  .left-gif-overlay p {
+    font-size: .88rem !important;
+  }
+
+  .hero-visual {
+    padding: 28px 38px 24px !important;
+    justify-content: flex-start !important;
+  }
+
+  .eyebrow {
+    font-size: .68rem !important;
+  }
+
+  .hero-title {
+    margin-top: 16px !important;
+  }
+
+  .hero-title .big {
+    font-size: clamp(4.5rem, 5.3vw, 6.3rem) !important;
+    line-height: .78 !important;
+  }
+
+  .hero-title .small {
+    margin-top: 8px !important;
+    font-size: 1.55rem !important;
+  }
+
+  .hero-title .subcopy {
+    margin-top: 12px !important;
+    font-size: .86rem !important;
+    line-height: 1.38 !important;
+  }
+
+  .hero-photo,
+  .hero-photo img {
+    width: 168px !important;
+    height: 168px !important;
+  }
+
+  .hero-photo {
+    margin-top: 14px !important;
+  }
+
+  .hero-copy {
+    margin-top: 12px !important;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.7rem, 3vw, 3.8rem) !important;
+    line-height: .82 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero-copy > p {
+    font-size: .78rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .pill-row {
+    gap: 6px !important;
+    margin-top: 8px !important;
+  }
+
+  .pill {
+    padding: 5px 9px !important;
+    font-size: .66rem !important;
+  }
+
+  .hero-video-card {
+    margin-top: 12px !important;
+    padding: 12px !important;
+    border-radius: 15px !important;
+  }
+
+  .hero-video-launch {
+    min-height: 92px !important;
+  }
+
+  .hero-video-play {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .hero-video-card h3 {
+    margin-top: 8px !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+  }
+
+  .hero-video-card p {
+    margin-top: 5px !important;
+    font-size: .7rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .hero-dots {
+    bottom: 12px !important;
+  }
+
+  /* El resto de secciones aprovecha mejor el ancho del monitor */
+  .section-heading {
+    gap: 48px !important;
+  }
+
+  .stats,
+  .feature-grid,
+  .method-grid,
+  .cert-grid,
+  .experience-grid,
+  .project-grid {
+    width: 100%;
+  }
+}
+
+/* Escritorios muy anchos / 2K / ultrawide */
+@media (min-width: 1800px) {
+  :root { --container: 1680px; }
+
+  .hero-card {
+    grid-template-columns: 1.2fr .8fr !important;
+    height: clamp(670px, calc(100vh - 132px), 820px) !important;
+    max-height: 820px !important;
+  }
+
+  .hero-visual {
+    padding-left: 44px !important;
+    padding-right: 44px !important;
+  }
 }
 
 @media (max-width: 760px) {
