@@ -12,10 +12,130 @@
 <body>
   <div class="loading">Cargando portfolio…</div>
   <script>
-    fetch('portfolio-base.html?v=3')
+    fetch('portfolio-base.html?v=4')
       .then(function(r){ if(!r.ok) throw new Error('No se pudo cargar el portfolio'); return r.text(); })
       .then(function(html){
-        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=3"></head>');
+        var interactionCss = `
+          [hidden]{display:none!important}
+          .section-view{animation:sectionIn .32s ease both}
+          @keyframes sectionIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+          .menu a.is-active{color:var(--pink)!important;opacity:1!important}
+          .section-back{
+            display:inline-flex;align-items:center;justify-content:center;gap:8px;
+            margin:20px 0 8px;padding:10px 16px;border:1px solid rgba(44,52,114,.14);
+            border-radius:999px;background:#fff;color:var(--navy);font-weight:850;cursor:pointer;
+            box-shadow:0 10px 24px rgba(18,23,61,.08)
+          }
+          @media (max-width:920px){
+            .nav{flex-wrap:wrap!important;gap:10px!important}
+            .menu{
+              display:flex!important;order:3;width:100%;gap:8px!important;flex-wrap:nowrap!important;
+              overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 2px 2px;scrollbar-width:none
+            }
+            .menu::-webkit-scrollbar{display:none}
+            .menu a{
+              flex:0 0 auto;padding:7px 11px;border-radius:999px;background:rgba(44,52,114,.06);
+              font-size:.78rem;white-space:nowrap
+            }
+          }
+          @media (max-width:640px){
+            .topbar{position:sticky;top:0}
+            .nav{padding:10px 12px!important}
+            .brand{width:auto}
+            .menu{margin-top:2px}
+            .section-back{margin-left:2px}
+          }
+        `;
+        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=4"><style>'+interactionCss+'</style></head>');
+
+        var interactionJs = `
+          (function(){
+            var main=document.querySelector('main#inicio');
+            if(!main) return;
+
+            var homeHero=main.querySelector('.hero-wrap');
+            var homeStats=main.querySelector('.stats');
+            var transition=main.querySelector('.transition-banner');
+            var footer=main.querySelector('footer');
+            var ids=['sobre-mi','metodo','formacion','proyectos','experiencia','contacto'];
+            var panels=ids.map(function(id){return document.getElementById(id)}).filter(Boolean);
+            var menuLinks=Array.from(document.querySelectorAll('.menu a[href^="#"]'));
+            var brand=document.querySelector('.brand[href="#inicio"]');
+
+            function setActive(id){
+              menuLinks.forEach(function(a){a.classList.toggle('is-active',a.getAttribute('href')==='#'+id)});
+            }
+
+            function hideEverything(){
+              if(homeHero) homeHero.hidden=true;
+              if(homeStats) homeStats.hidden=true;
+              panels.forEach(function(p){p.hidden=true;p.classList.remove('section-view')});
+              if(transition) transition.hidden=true;
+              if(footer) footer.hidden=true;
+            }
+
+            function ensureBackButton(section){
+              if(section.querySelector('.section-back')) return;
+              var b=document.createElement('button');
+              b.type='button';
+              b.className='section-back';
+              b.textContent='← Volver al inicio';
+              b.addEventListener('click',function(){history.pushState(null,'','#inicio');showHome(true)});
+              section.prepend(b);
+            }
+
+            function showHome(shouldScroll){
+              hideEverything();
+              if(homeHero) homeHero.hidden=false;
+              if(homeStats) homeStats.hidden=false;
+              setActive('');
+              if(shouldScroll!==false) window.scrollTo({top:0,behavior:'smooth'});
+            }
+
+            function showSection(id,shouldScroll){
+              var target=document.getElementById(id);
+              if(!target){showHome(shouldScroll);return}
+              hideEverything();
+              target.hidden=false;
+              target.classList.add('section-view');
+              ensureBackButton(target);
+              if(id==='formacion' && transition) transition.hidden=false;
+              setActive(id);
+              if(shouldScroll!==false){
+                var top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-92);
+                window.scrollTo({top:top,behavior:'smooth'});
+              }
+            }
+
+            menuLinks.forEach(function(a){
+              a.addEventListener('click',function(e){
+                var id=(a.getAttribute('href')||'').slice(1);
+                if(!ids.includes(id)) return;
+                e.preventDefault();
+                history.pushState(null,'','#'+id);
+                showSection(id,true);
+              });
+            });
+
+            if(brand){
+              brand.addEventListener('click',function(e){
+                e.preventDefault();
+                history.pushState(null,'','#inicio');
+                showHome(true);
+              });
+            }
+
+            window.addEventListener('popstate',function(){
+              var id=location.hash.replace('#','');
+              if(ids.includes(id)) showSection(id,true); else showHome(true);
+            });
+
+            var initial=location.hash.replace('#','');
+            if(ids.includes(initial)) showSection(initial,false); else showHome(false);
+          })();
+        `;
+        html = html.replace('</body>', '<script>'+interactionJs+'<\/script></body>');
+
         document.open();
         document.write(html);
         document.close();
