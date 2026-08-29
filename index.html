@@ -12,7 +12,7 @@
 <body>
   <div class="loading">Cargando portfolio…</div>
   <script>
-    fetch('portfolio-base.html?v=4')
+    fetch('portfolio-base.html?v=5')
       .then(function(r){ if(!r.ok) throw new Error('No se pudo cargar el portfolio'); return r.text(); })
       .then(function(html){
         var interactionCss = `
@@ -46,7 +46,7 @@
             .section-back{margin-left:2px}
           }
         `;
-        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=4"><style>'+interactionCss+'</style></head>');
+        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=5"><link rel="stylesheet" href="sport-cluster.css?v=1"><style>'+interactionCss+'</style></head>');
 
         var interactionJs = `
           (function(){
@@ -57,7 +57,7 @@
             var homeStats=main.querySelector('.stats');
             var transition=main.querySelector('.transition-banner');
             var footer=main.querySelector('footer');
-            var ids=['sobre-mi','metodo','formacion','proyectos','experiencia','contacto'];
+            var ids=['cluster','sobre-mi','metodo','formacion','proyectos','experiencia','contacto'];
             var panels=ids.map(function(id){return document.getElementById(id)}).filter(Boolean);
             var menuLinks=Array.from(document.querySelectorAll('.menu a[href^="#"]'));
             var brand=document.querySelector('.brand[href="#inicio"]');
@@ -134,7 +134,7 @@
             if(ids.includes(initial)) showSection(initial,false); else showHome(false);
           })();
         `;
-        html = html.replace('</body>', '<script>'+interactionJs+'<\/script></body>');
+        html = html.replace('</body>', '<script src="sport-cluster.js?v=1"><\/script><script>'+interactionJs+'<\/script></body>');
 
         document.open();
         document.write(html);
