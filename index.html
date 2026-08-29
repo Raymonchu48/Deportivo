@@ -12,7 +12,7 @@
 <body>
   <div class="loading">Cargando portfolio…</div>
   <script>
-    fetch('portfolio-base.html?v=6')
+    fetch('portfolio-base.html?v=7')
       .then(function(r){ if(!r.ok) throw new Error('No se pudo cargar el portfolio'); return r.text(); })
       .then(function(html){
         var interactionCss = `
@@ -46,7 +46,7 @@
             .section-back{margin-left:2px}
           }
         `;
-        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=6"><link rel="stylesheet" href="sport-cluster.css?v=2"><style>'+interactionCss+'</style></head>');
+        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=7"><link rel="stylesheet" href="sport-cluster.css?v=3"><style>'+interactionCss+'</style></head>');
 
         var interactionJs = `
           (function(){
@@ -87,8 +87,6 @@
 
             function showHome(shouldScroll){
               hideEverything();
-              if(homeHero) homeHero.hidden=false;
-              if(homeStats) homeStats.hidden=false;
               var cluster=document.getElementById('cluster');
               if(cluster){
                 cluster.hidden=false;
@@ -97,11 +95,12 @@
                 if(clusterBack) clusterBack.hidden=true;
               }
               if(footer) footer.hidden=false;
-              setActive('');
+              setActive('cluster');
               if(shouldScroll!==false) window.scrollTo({top:0,behavior:'smooth'});
             }
 
             function showSection(id,shouldScroll){
+              if(id==='cluster'){showHome(shouldScroll);return}
               var target=document.getElementById(id);
               if(!target){showHome(shouldScroll);return}
               hideEverything();
@@ -121,7 +120,7 @@
                 var id=(a.getAttribute('href')||'').slice(1);
                 if(!ids.includes(id)) return;
                 e.preventDefault();
-                history.pushState(null,'','#'+id);
+                if(id==='cluster') history.pushState(null,'','#inicio'); else history.pushState(null,'','#'+id);
                 showSection(id,true);
               });
             });
@@ -136,14 +135,14 @@
 
             window.addEventListener('popstate',function(){
               var id=location.hash.replace('#','');
-              if(ids.includes(id)) showSection(id,true); else showHome(true);
+              if(ids.includes(id) && id!=='cluster') showSection(id,true); else showHome(true);
             });
 
             var initial=location.hash.replace('#','');
-            if(ids.includes(initial)) showSection(initial,false); else showHome(false);
+            if(ids.includes(initial) && initial!=='cluster') showSection(initial,false); else showHome(false);
           })();
         `;
-        html = html.replace('</body>', '<script src="sport-cluster.js?v=2"><\/script><script>'+interactionJs+'<\/script></body>');
+        html = html.replace('</body>', '<script src="sport-cluster.js?v=3"><\/script><script>'+interactionJs+'<\/script></body>');
 
         document.open();
         document.write(html);
