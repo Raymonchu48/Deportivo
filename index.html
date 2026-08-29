@@ -12,7 +12,7 @@
 <body>
   <div class="loading">Cargando portfolio…</div>
   <script>
-    fetch('portfolio-base.html?v=5')
+    fetch('portfolio-base.html?v=6')
       .then(function(r){ if(!r.ok) throw new Error('No se pudo cargar el portfolio'); return r.text(); })
       .then(function(html){
         var interactionCss = `
@@ -46,7 +46,7 @@
             .section-back{margin-left:2px}
           }
         `;
-        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=5"><link rel="stylesheet" href="sport-cluster.css?v=1"><style>'+interactionCss+'</style></head>');
+        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=6"><link rel="stylesheet" href="sport-cluster.css?v=2"><style>'+interactionCss+'</style></head>');
 
         var interactionJs = `
           (function(){
@@ -75,7 +75,8 @@
             }
 
             function ensureBackButton(section){
-              if(section.querySelector('.section-back')) return;
+              var existing=section.querySelector('.section-back');
+              if(existing){existing.hidden=false;return}
               var b=document.createElement('button');
               b.type='button';
               b.className='section-back';
@@ -88,6 +89,14 @@
               hideEverything();
               if(homeHero) homeHero.hidden=false;
               if(homeStats) homeStats.hidden=false;
+              var cluster=document.getElementById('cluster');
+              if(cluster){
+                cluster.hidden=false;
+                cluster.classList.add('section-view');
+                var clusterBack=cluster.querySelector('.section-back');
+                if(clusterBack) clusterBack.hidden=true;
+              }
+              if(footer) footer.hidden=false;
               setActive('');
               if(shouldScroll!==false) window.scrollTo({top:0,behavior:'smooth'});
             }
@@ -134,7 +143,7 @@
             if(ids.includes(initial)) showSection(initial,false); else showHome(false);
           })();
         `;
-        html = html.replace('</body>', '<script src="sport-cluster.js?v=1"><\/script><script>'+interactionJs+'<\/script></body>');
+        html = html.replace('</body>', '<script src="sport-cluster.js?v=2"><\/script><script>'+interactionJs+'<\/script></body>');
 
         document.open();
         document.write(html);
