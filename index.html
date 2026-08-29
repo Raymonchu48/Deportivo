@@ -12,7 +12,7 @@
 <body>
   <div class="loading">Cargando portfolio…</div>
   <script>
-    fetch('portfolio-base.html?v=7')
+    fetch('portfolio-base.html?v=8')
       .then(function(r){ if(!r.ok) throw new Error('No se pudo cargar el portfolio'); return r.text(); })
       .then(function(html){
         var interactionCss = `
@@ -33,10 +33,8 @@
               overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 2px 2px;scrollbar-width:none
             }
             .menu::-webkit-scrollbar{display:none}
-            .menu a{
-              flex:0 0 auto;padding:7px 11px;border-radius:999px;background:rgba(44,52,114,.06);
-              font-size:.78rem;white-space:nowrap
-            }
+            .menu a{flex:0 0 auto;padding:7px 11px;border-radius:999px;background:rgba(44,52,114,.06);font-size:.78rem;white-space:nowrap}
+            body.sport-system-home .menu a{background:rgba(255,255,255,.045)}
           }
           @media (max-width:640px){
             .topbar{position:sticky;top:0}
@@ -46,7 +44,7 @@
             .section-back{margin-left:2px}
           }
         `;
-        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=7"><link rel="stylesheet" href="sport-cluster.css?v=3"><style>'+interactionCss+'</style></head>');
+        html = html.replace('</head>', '<link rel="stylesheet" href="sporty-overrides.css?v=8"><link rel="stylesheet" href="sport-cluster.css?v=4"><style>'+interactionCss+'</style></head>');
 
         var interactionJs = `
           (function(){
@@ -62,9 +60,7 @@
             var menuLinks=Array.from(document.querySelectorAll('.menu a[href^="#"]'));
             var brand=document.querySelector('.brand[href="#inicio"]');
 
-            function setActive(id){
-              menuLinks.forEach(function(a){a.classList.toggle('is-active',a.getAttribute('href')==='#'+id)});
-            }
+            function setActive(id){menuLinks.forEach(function(a){a.classList.toggle('is-active',a.getAttribute('href')==='#'+id)});}
 
             function hideEverything(){
               if(homeHero) homeHero.hidden=true;
@@ -78,77 +74,42 @@
               var existing=section.querySelector('.section-back');
               if(existing){existing.hidden=false;return}
               var b=document.createElement('button');
-              b.type='button';
-              b.className='section-back';
-              b.textContent='← Volver al inicio';
+              b.type='button';b.className='section-back';b.textContent='← Volver al núcleo';
               b.addEventListener('click',function(){history.pushState(null,'','#inicio');showHome(true)});
               section.prepend(b);
             }
 
             function showHome(shouldScroll){
               hideEverything();
+              document.body.classList.add('sport-system-home');
               var cluster=document.getElementById('cluster');
-              if(cluster){
-                cluster.hidden=false;
-                cluster.classList.add('section-view');
-                var clusterBack=cluster.querySelector('.section-back');
-                if(clusterBack) clusterBack.hidden=true;
-              }
-              if(footer) footer.hidden=false;
+              if(cluster){cluster.hidden=false;cluster.classList.add('section-view');var clusterBack=cluster.querySelector('.section-back');if(clusterBack)clusterBack.hidden=true;}
               setActive('cluster');
-              if(shouldScroll!==false) window.scrollTo({top:0,behavior:'smooth'});
+              if(shouldScroll!==false)window.scrollTo({top:0,behavior:'smooth'});
             }
 
             function showSection(id,shouldScroll){
               if(id==='cluster'){showHome(shouldScroll);return}
-              var target=document.getElementById(id);
-              if(!target){showHome(shouldScroll);return}
+              var target=document.getElementById(id);if(!target){showHome(shouldScroll);return}
               hideEverything();
-              target.hidden=false;
-              target.classList.add('section-view');
-              ensureBackButton(target);
-              if(id==='formacion' && transition) transition.hidden=false;
+              document.body.classList.remove('sport-system-home','sp-hud-off');
+              target.hidden=false;target.classList.add('section-view');ensureBackButton(target);
+              if(id==='formacion'&&transition)transition.hidden=false;
               setActive(id);
-              if(shouldScroll!==false){
-                var top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-92);
-                window.scrollTo({top:top,behavior:'smooth'});
-              }
+              if(shouldScroll!==false){var top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-92);window.scrollTo({top:top,behavior:'smooth'});}
             }
 
-            menuLinks.forEach(function(a){
-              a.addEventListener('click',function(e){
-                var id=(a.getAttribute('href')||'').slice(1);
-                if(!ids.includes(id)) return;
-                e.preventDefault();
-                if(id==='cluster') history.pushState(null,'','#inicio'); else history.pushState(null,'','#'+id);
-                showSection(id,true);
-              });
-            });
-
-            if(brand){
-              brand.addEventListener('click',function(e){
-                e.preventDefault();
-                history.pushState(null,'','#inicio');
-                showHome(true);
-              });
-            }
-
-            window.addEventListener('popstate',function(){
-              var id=location.hash.replace('#','');
-              if(ids.includes(id) && id!=='cluster') showSection(id,true); else showHome(true);
-            });
-
-            var initial=location.hash.replace('#','');
-            if(ids.includes(initial) && initial!=='cluster') showSection(initial,false); else showHome(false);
+            menuLinks.forEach(function(a){a.addEventListener('click',function(e){var id=(a.getAttribute('href')||'').slice(1);if(!ids.includes(id))return;e.preventDefault();if(id==='cluster')history.pushState(null,'','#inicio');else history.pushState(null,'','#'+id);showSection(id,true);});});
+            if(brand){brand.addEventListener('click',function(e){e.preventDefault();history.pushState(null,'','#inicio');showHome(true);});}
+            window.addEventListener('popstate',function(){var id=location.hash.replace('#','');if(ids.includes(id)&&id!=='cluster')showSection(id,true);else showHome(true);});
+            var initial=location.hash.replace('#','');if(ids.includes(initial)&&initial!=='cluster')showSection(initial,false);else showHome(false);
           })();
         `;
-        html = html.replace('</body>', '<script src="sport-cluster.js?v=3"><\/script><script>'+interactionJs+'<\/script></body>');
+        html = html.replace('</body>', '<script src="sport-cluster.js?v=4"><\/script><script>'+interactionJs+'<\/script></body>');
 
-        document.open();
-        document.write(html);
-        document.close();
+        document.open();document.write(html);document.close();
       })
-      .catch(function(){ document.body.innerHTML='<div class="loading">No se pudo cargar el portfolio. Recarga la página.</div>'; });
+      .catch(function(){document.body.innerHTML='<div class="loading">No se pudo cargar el portfolio. Recarga la página.</div>';});
   </script>
 </body>
 </html>
