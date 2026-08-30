@@ -39,6 +39,7 @@
         </aside>
 
         <div class="spf-stage" aria-label="Núcleo deportivo interactivo">
+          <video class="spf-stage-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="Potencial_al_Máximo__Cuerpo_y_Mente.mp4"></video>
           <div class="spf-runner">
             <img class="spf-runner-portrait" src="Mi_imagen.png" alt="Ramón Alberto Curbalán Vega, profesional del rendimiento deportivo">
             <img class="spf-runner-mark" src="presentacion.gif" alt="" aria-hidden="true">
@@ -60,7 +61,7 @@
         <aside class="spf-panel spf-media" data-spf-hud>
           <div class="spf-panel-head">Runtime + media</div>
           <dl class="spf-runtime"><div><dt>SESSION</dt><dd id="spfElapsed">00:00:00</dd></div><div><dt>FRAME RATE</dt><dd><span id="spfFps">60</span> FPS</dd></div><div><dt>VIEWPORT</dt><dd id="spfViewport">-- × --</dd></div><div><dt>MODE</dt><dd id="spfMode">EXPLORE</dd></div><div><dt>ACTIVE NODE</dt><dd id="spfActiveNode">TRAINING</dd></div></dl>
-          <div class="spf-video-card"><div class="spf-video-preview" data-spf-video><video muted playsinline preload="metadata" src="Potencial_al_Máximo__Cuerpo_y_Mente.mp4"></video><span class="spf-play" aria-hidden="true"></span></div><div class="spf-video-copy"><small>PRESENTATION // MEDIA</small><strong>Potencial al máximo: cuerpo y mente</strong><p>Vídeo integrado en el sistema, no como elemento independiente.</p></div></div>
+          <button type="button" class="spf-video-console" data-spf-video><span><i aria-hidden="true"></i>MEDIA STREAM // LIVE</span><strong>Potencial al máximo:<br>cuerpo y mente</strong><small>ABRIR CON SONIDO ↗</small></button>
           <div class="spf-keymap">1–6 FOCUS · ENTER OPEN · A AUTO · T CONSOLE · H HUD · ESC CLOSE</div>
         </aside>
       </div>
@@ -92,6 +93,11 @@
 
   var footer=main.querySelector('footer');if(footer)main.insertBefore(section,footer);else main.appendChild(section);
 
+  var stageVideo=section.querySelector('.spf-stage-video');
+  function playStageVideo(){if(!stageVideo||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;stageVideo.muted=true;stageVideo.defaultMuted=true;stageVideo.volume=0;stageVideo.play().catch(function(){});}
+  function markStageVideoReady(){section.classList.add('spf-stage-video-ready');playStageVideo();}
+  if(stageVideo){if(stageVideo.readyState>=2)markStageVideoReady();else stageVideo.addEventListener('loadeddata',markStageVideoReady,{once:true});stageVideo.addEventListener('error',function(){section.classList.add('spf-stage-video-error');},{once:true});document.addEventListener('visibilitychange',function(){if(document.hidden)stageVideo.pause();else playStageVideo();});playStageVideo();}
+
   var modules={
     training:{code:'01',label:'TRAINING',title:'Entrenamiento y rendimiento',copy:'Planificación, fuerza, técnica, progresión y control de carga dentro de una visión integral.',route:'metodo'},
     nutrition:{code:'02',label:'NUTRITION',title:'Nutrición deportiva',copy:'Educación nutricional, hábitos y estrategia aplicada a salud, composición corporal, recuperación y rendimiento.',route:'formacion'},
@@ -117,8 +123,8 @@
   section.querySelector('[data-spf-home]').addEventListener('click',function(){closeModule();setActive('training');});
 
   var videoOverlay=section.querySelector('.spf-video-overlay'),videoPlayer=videoOverlay.querySelector('video');
-  function openVideo(){videoOverlay.classList.add('open');videoOverlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(function(){videoPlayer.play().catch(function(){});},80);}
-  function closeVideo(){videoPlayer.pause();videoOverlay.classList.remove('open');videoOverlay.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  function openVideo(){if(stageVideo)stageVideo.pause();videoOverlay.classList.add('open');videoOverlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(function(){videoPlayer.play().catch(function(){});},80);}
+  function closeVideo(){videoPlayer.pause();videoOverlay.classList.remove('open');videoOverlay.setAttribute('aria-hidden','true');document.body.style.overflow='';playStageVideo();}
   section.querySelector('[data-spf-video]').addEventListener('click',openVideo);section.querySelector('[data-spf-video-close]').addEventListener('click',closeVideo);videoOverlay.addEventListener('click',function(e){if(e.target===videoOverlay)closeVideo();});
 
   var canvas=section.querySelector('.spf-network');if(canvas){var ctx=canvas.getContext('2d'),w=0,h=0,dpr=1,pts=[];function resizeCanvas(){var r=section.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);dpr=Math.min(devicePixelRatio||1,2);canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);var count=Math.max(24,Math.min(72,Math.round((w*h)/26000)));pts=Array.from({length:count},function(){return{x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,r:Math.random()*1.1+.4};});}function draw(){ctx.clearRect(0,0,w,h);for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,dist=Math.hypot(dx,dy);if(dist<125){ctx.strokeStyle='rgba(91,205,255,'+((1-dist/125)*.10)+')';ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}ctx.fillStyle='rgba(91,205,255,.38)';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}requestAnimationFrame(draw);}resizeCanvas();draw();addEventListener('resize',resizeCanvas);}
