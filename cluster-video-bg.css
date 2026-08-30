@@ -13,7 +13,7 @@
 .spf-panel{background:linear-gradient(180deg,rgba(10,16,43,.73),rgba(7,11,29,.68))!important;backdrop-filter:blur(16px) saturate(1.05)!important}
 .spf-focus{background:linear-gradient(90deg,rgba(6,10,26,.94),rgba(7,12,31,.8))!important;backdrop-filter:blur(14px)}
 .spf-integrated-nav,.spf-topline,.spf-metrics,.spf-controls{backdrop-filter:blur(14px)}
-.spf-core-stage,.spf-stage-copy,.spf-focus,.spf-panel,.spf-integrated-nav,.spf-topline,.spf-metrics,.spf-controls{position:relative;z-index:3}
+.spf-core-stage,.spf-stage-copy,.spf-focus,.spf-panel,.spf-integrated-nav,.spf-topline,.spf-metrics,.spf-controls{z-index:3}
 
 @media(max-width:760px){
   .spf-bg-video{width:100%;height:100%;object-fit:cover;object-position:center center;transform:none;filter:saturate(.92) contrast(1.08) brightness(.72)}
