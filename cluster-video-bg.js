@@ -2,38 +2,37 @@
   'use strict';
 
   var cluster=document.getElementById('cluster');
-  if(!cluster||cluster.querySelector('.spf-bg-video-wrap'))return;
+  var stage=cluster&&cluster.querySelector('.spf-stage');
+  if(!cluster||!stage||stage.querySelector('.spf-bg-video-wrap'))return;
 
   var parts=[
-    'cluster-video/p00.txt?v=1',
-    'cluster-video/p01.txt?v=1',
-    'cluster-video/p02a.txt?v=1',
-    'cluster-video/p02b.txt?v=1',
-    'cluster-video/p02c.txt?v=1',
-    'cluster-video/p02d.txt?v=1',
-    'cluster-video/p03.txt?v=1',
-    'cluster-video/p04.txt?v=1',
-    'cluster-video/p05.txt?v=1',
-    'cluster-video/p06.txt?v=1',
-    'cluster-video/p07.txt?v=1'
+    'cluster-video/p00.txt?v=2',
+    'cluster-video/p01.txt?v=2',
+    'cluster-video/p02a.txt?v=2',
+    'cluster-video/p02b.txt?v=2',
+    'cluster-video/p02c.txt?v=2',
+    'cluster-video/p02d.txt?v=2',
+    'cluster-video/p03.txt?v=2',
+    'cluster-video/p04.txt?v=2',
+    'cluster-video/p05.txt?v=2',
+    'cluster-video/p06.txt?v=2',
+    'cluster-video/p07.txt?v=2'
   ];
 
   var wrap=document.createElement('div');
   wrap.className='spf-bg-video-wrap';
   wrap.setAttribute('aria-hidden','true');
   wrap.innerHTML='<div class="spf-bg-video-fallback"></div><div class="spf-bg-video-shade"></div><div class="spf-bg-video-vignette"></div>';
-
-  var system=cluster.querySelector('.spf-system');
-  cluster.insertBefore(wrap,system||cluster.firstChild);
+  stage.insertBefore(wrap,stage.firstChild);
 
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    cluster.classList.add('spf-bg-reduced');
+    stage.classList.add('spf-bg-reduced');
     return;
   }
 
   Promise.all(parts.map(function(url){
-    return fetch(url).then(function(response){
-      if(!response.ok)throw new Error('No se pudo cargar el fragmento de vídeo');
+    return fetch(url,{cache:'force-cache'}).then(function(response){
+      if(!response.ok)throw new Error('No se pudo cargar '+url);
       return response.text();
     });
   })).then(function(chunks){
@@ -56,27 +55,33 @@
     video.setAttribute('playsinline','');
     video.setAttribute('aria-hidden','true');
     video.src=objectUrl;
-    wrap.prepend(video);
+    wrap.insertBefore(video,wrap.firstChild);
 
     var ready=false;
     function showVideo(){
       if(ready)return;
       ready=true;
+      stage.classList.add('spf-bg-ready');
       cluster.classList.add('spf-bg-ready');
       video.play().catch(function(){});
     }
+    video.addEventListener('loadedmetadata',function(){
+      if(!isFinite(video.duration)||video.duration<1){
+        stage.classList.add('spf-bg-error');
+        return;
+      }
+    },{once:true});
     video.addEventListener('canplay',showVideo,{once:true});
     video.addEventListener('loadeddata',showVideo,{once:true});
+    video.addEventListener('error',function(){stage.classList.add('spf-bg-error');},{once:true});
 
     document.addEventListener('visibilitychange',function(){
       if(document.hidden)video.pause();
       else video.play().catch(function(){});
     });
-
-    window.addEventListener('pagehide',function(){
-      URL.revokeObjectURL(objectUrl);
-    },{once:true});
-  }).catch(function(){
-    cluster.classList.add('spf-bg-error');
+    window.addEventListener('pagehide',function(){URL.revokeObjectURL(objectUrl);},{once:true});
+  }).catch(function(error){
+    stage.classList.add('spf-bg-error');
+    console.warn('[SPORT VIDEO]',error&&error.message?error.message:error);
   });
 })();
