@@ -39,8 +39,11 @@
         </aside>
 
         <div class="spf-stage" aria-label="Núcleo deportivo interactivo">
-          <div class="spf-runner"><img src="presentacion.gif" alt="Atleta en movimiento, imagen principal del portfolio deportivo"></div><div class="spf-stage-grid" aria-hidden="true"></div>
-          <div class="spf-stage-copy"><span class="spf-eyebrow">Human performance system</span><h1><span>Sport</span>Performance<br>Cluster</h1><p>Ciencia, método y experiencia conectados en una única arquitectura de rendimiento.</p></div>
+          <div class="spf-runner">
+            <img class="spf-runner-portrait" src="Mi_imagen.png" alt="Ramón Alberto Curbalán Vega, profesional del rendimiento deportivo">
+            <img class="spf-runner-mark" src="presentacion.gif" alt="" aria-hidden="true">
+          </div><div class="spf-stage-grid" aria-hidden="true"></div>
+          <div class="spf-stage-copy"><span class="spf-eyebrow">Human performance system</span><h1><span>Sport</span>Performance<br>Cluster</h1><p>Ciencia, método y experiencia conectados en una única arquitectura de rendimiento.</p><small>RAMÓN ALBERTO CURBALÁN VEGA</small></div>
           <div class="spf-core-stage">
             <div class="spf-orbit spf-orbit-a"></div><div class="spf-orbit spf-orbit-b"></div><div class="spf-orbit spf-orbit-c"></div><div class="spf-core-glow"></div>
             <div class="spf-core"><strong>360°</strong><small>PERFORMANCE</small></div>
@@ -60,6 +63,17 @@
           <div class="spf-video-card"><div class="spf-video-preview" data-spf-video><video muted playsinline preload="metadata" src="Potencial_al_Máximo__Cuerpo_y_Mente.mp4"></video><span class="spf-play" aria-hidden="true"></span></div><div class="spf-video-copy"><small>PRESENTATION // MEDIA</small><strong>Potencial al máximo: cuerpo y mente</strong><p>Vídeo integrado en el sistema, no como elemento independiente.</p></div></div>
           <div class="spf-keymap">1–6 FOCUS · ENTER OPEN · A AUTO · T CONSOLE · H HUD · ESC CLOSE</div>
         </aside>
+      </div>
+
+      <div class="spf-workflow" aria-label="Flujo profesional de trabajo">
+        <div class="spf-workflow-title"><small>PERFORMANCE LOOP</small><strong>Del análisis a la mejora continua</strong></div>
+        <ol>
+          <li><span>01</span><strong>Evaluar</strong><small>Punto de partida</small></li>
+          <li><span>02</span><strong>Planificar</strong><small>Estrategia individual</small></li>
+          <li><span>03</span><strong>Ejecutar</strong><small>Acción con método</small></li>
+          <li><span>04</span><strong>Medir</strong><small>Datos y evolución</small></li>
+          <li><span>05</span><strong>Ajustar</strong><small>Mejora continua</small></li>
+        </ol>
       </div>
 
       <div class="spf-metrics" aria-label="Métricas de formación y enfoque">
