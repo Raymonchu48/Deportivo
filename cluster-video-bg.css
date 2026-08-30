@@ -1,0 +1,25 @@
+.sport-cluster-shell{background:#050713!important}
+.spf-bg-video-wrap{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;background:#050713}
+.spf-bg-video-fallback{position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(51,142,245,.18),transparent 36%),radial-gradient(circle at 76% 60%,rgba(138,108,255,.12),transparent 30%),linear-gradient(180deg,#050713,#080d21 62%,#050713)}
+.spf-bg-video{position:absolute;left:50%;top:50%;height:112%;width:auto;min-width:0;transform:translate(-50%,-50%) scale(1.05);opacity:0;filter:saturate(.9) contrast(1.08) brightness(.68);transition:opacity .9s ease}
+.spf-bg-ready .spf-bg-video{opacity:.8}
+.spf-bg-video-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,19,.92) 0%,rgba(5,7,19,.52) 22%,rgba(5,7,19,.25) 49%,rgba(5,7,19,.54) 76%,rgba(5,7,19,.92) 100%),linear-gradient(180deg,rgba(5,7,19,.48),rgba(5,7,19,.08) 34%,rgba(5,7,19,.62) 78%,rgba(5,7,19,.88))}
+.spf-bg-video-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,transparent 15%,rgba(5,7,19,.08) 48%,rgba(5,7,19,.64) 100%),radial-gradient(circle at 64% 43%,rgba(91,205,255,.08),transparent 27%)}
+.spf-system{z-index:2!important}
+.spf-network{z-index:0!important}
+.spf-runner{opacity:0!important;pointer-events:none}
+.spf-stage{background:rgba(6,10,28,.18)!important;backdrop-filter:blur(.45px)}
+.spf-stage:before{background:linear-gradient(90deg,rgba(5,7,19,.42),rgba(5,7,19,.08) 46%,rgba(5,7,19,.38)),linear-gradient(180deg,rgba(5,7,19,.26),transparent 35%,rgba(5,7,19,.76))!important}
+.spf-panel{background:linear-gradient(180deg,rgba(10,16,43,.73),rgba(7,11,29,.68))!important;backdrop-filter:blur(16px) saturate(1.05)!important}
+.spf-focus{background:linear-gradient(90deg,rgba(6,10,26,.94),rgba(7,12,31,.8))!important;backdrop-filter:blur(14px)}
+.spf-integrated-nav,.spf-topline,.spf-metrics,.spf-controls{backdrop-filter:blur(14px)}
+.spf-core-stage,.spf-stage-copy,.spf-focus,.spf-panel,.spf-integrated-nav,.spf-topline,.spf-metrics,.spf-controls{position:relative;z-index:3}
+
+@media(max-width:760px){
+  .spf-bg-video{width:100%;height:100%;object-fit:cover;object-position:center center;transform:none;filter:saturate(.92) contrast(1.08) brightness(.72)}
+  .spf-bg-ready .spf-bg-video{opacity:.84}
+  .spf-bg-video-shade{background:linear-gradient(180deg,rgba(5,7,19,.58),rgba(5,7,19,.16) 27%,rgba(5,7,19,.34) 66%,rgba(5,7,19,.9)),linear-gradient(90deg,rgba(5,7,19,.62),rgba(5,7,19,.18),rgba(5,7,19,.62))}
+  .spf-bg-video-vignette{background:radial-gradient(ellipse at 50% 34%,transparent 12%,rgba(5,7,19,.1) 48%,rgba(5,7,19,.72) 100%),radial-gradient(circle at 50% 44%,rgba(91,205,255,.07),transparent 32%)}
+}
+
+@media(prefers-reduced-motion:reduce){.spf-bg-video{display:none!important}}
