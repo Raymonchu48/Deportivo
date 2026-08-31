@@ -17,6 +17,7 @@
 
   title.innerHTML='<span>Sport</span><br>Performance<br>Portfolio';
   title.setAttribute('aria-label','Sport Performance Portfolio');
+  title.classList.add('spf-video-title');
 
   section.querySelectorAll('[aria-label]').forEach(function(el){
     var label=el.getAttribute('aria-label');
@@ -25,25 +26,6 @@
     }
   });
 
-  var desktop=window.matchMedia('(min-width:1100px)');
-  var introCopy=intro.querySelector('p');
-
-  function syncTitlePosition(){
-    if(desktop.matches){
-      if(title.parentNode!==frame){
-        title.classList.add('spf-video-title');
-        frame.appendChild(title);
-      }
-    }else{
-      if(title.parentNode!==intro){
-        title.classList.remove('spf-video-title');
-        if(introCopy)intro.insertBefore(title,introCopy);
-        else intro.appendChild(title);
-      }
-    }
-  }
-
-  syncTitlePosition();
-  if(desktop.addEventListener)desktop.addEventListener('change',syncTitlePosition);
-  else if(desktop.addListener)desktop.addListener(syncTitlePosition);
+  /* El mismo título vive dentro del hero en escritorio, tablet y móvil. */
+  if(title.parentNode!==frame)frame.appendChild(title);
 })();
