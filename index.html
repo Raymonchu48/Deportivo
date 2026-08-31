@@ -5,17 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio Deportivo · Ramón Alberto Curbalán Vega</title>
   <style>
-    html,body{margin:0;min-height:100%;background:#eef3ff;font-family:Arial,sans-serif}
-    .loading{min-height:100vh;display:grid;place-items:center;color:#2c3472;font-weight:800;letter-spacing:.05em}
+    html,body{margin:0;min-height:100%;background:#020708;font-family:Arial,sans-serif}
+    .loading{min-height:100vh;display:grid;place-items:center;background:#020708;color:#52ffe0;font-weight:800;letter-spacing:.08em}
   </style>
 </head>
 <body>
-  <div class="loading">Cargando portfolio…</div>
+  <div class="loading">Cargando Performance Portfolio…</div>
   <script>
     fetch('portfolio-base.html?v=11')
       .then(function(r){if(!r.ok)throw new Error('No se pudo cargar el portfolio');return r.text();})
       .then(function(html){
+        html=html.replace('<html lang="es">','<html lang="es" class="sp-preboot">');
         var interactionCss=`
+          html.sp-preboot,html.sp-preboot body{background:#020708!important}
+          html.sp-preboot body{overflow:hidden!important}
+          html.sp-preboot body>*{visibility:hidden!important}
+          html.sp-preboot body:before{content:"";position:fixed;inset:0;z-index:2147483646;visibility:visible!important;background:radial-gradient(circle at 50% 42%,rgba(82,255,224,.055),transparent 34%),#020708}
+          html.sp-preboot body:after{content:"RACV // PERFORMANCE VISION";position:fixed;left:50%;top:50%;z-index:2147483647;visibility:visible!important;transform:translate(-50%,-50%);color:#52ffe0;font:800 .68rem "SFMono-Regular",Consolas,monospace;letter-spacing:.16em;white-space:nowrap;text-shadow:0 0 18px rgba(82,255,224,.28)}
+          .sport-cluster-shell:not(.spf-stage-video-ready) .spf-stage-video{opacity:0!important}
           [hidden]{display:none!important}
           .section-view{animation:sectionIn .32s ease both}
           @keyframes sectionIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -44,6 +51,7 @@
             if(brand)brand.addEventListener('click',function(e){e.preventDefault();history.pushState(null,'','#inicio');showHome(true);});
             window.addEventListener('popstate',function(){var id=location.hash.replace('#','');if(ids.includes(id)&&id!=='cluster'){if(window.SP_OPEN_MODULE)showIntegrated(id,true);else showLegacy(id,true);}else showHome(true);});
             var initial=location.hash.replace('#','');if(ids.includes(initial)&&initial!=='cluster'){if(window.SP_OPEN_MODULE)showIntegrated(initial,false);else showLegacy(initial,false);}else showHome(false);
+            requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('sp-preboot');document.documentElement.classList.add('sp-ready');});});
           })();
         `;
         html=html.replace('</body>','<script src="sport-fusion.js?v=6"><\/script><script src="sport-hero-v2.js?v=4"><\/script><script src="sport-title-fix.js?v=2"><\/script><script src="sport-video-profile.js?v=3"><\/script><script>'+interactionJs+'<\/script></body>');
