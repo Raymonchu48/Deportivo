@@ -40,10 +40,7 @@
 
         <div class="spf-stage" aria-label="Núcleo deportivo interactivo">
           <video class="spf-stage-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" src="Potencial_al_Máximo__Cuerpo_y_Mente.mp4"></video>
-          <div class="spf-runner">
-            <img class="spf-runner-portrait" src="Mi_imagen.png" alt="Ramón Alberto Curbalán Vega, profesional del rendimiento deportivo">
-            <img class="spf-runner-mark" src="presentacion.gif" alt="" aria-hidden="true">
-          </div><div class="spf-stage-grid" aria-hidden="true"></div>
+          <div class="spf-stage-grid" aria-hidden="true"></div>
           <div class="spf-stage-copy"><span class="spf-eyebrow">Human performance system</span><h1><span>Sport</span>Performance<br>Cluster</h1><p>Ciencia, método y experiencia conectados en una única arquitectura de rendimiento.</p><small>RAMÓN ALBERTO CURBALÁN VEGA</small></div>
           <div class="spf-core-stage">
             <div class="spf-orbit spf-orbit-a"></div><div class="spf-orbit spf-orbit-b"></div><div class="spf-orbit spf-orbit-c"></div><div class="spf-core-glow"></div>
@@ -94,7 +91,7 @@
   var footer=main.querySelector('footer');if(footer)main.insertBefore(section,footer);else main.appendChild(section);
 
   var stageVideo=section.querySelector('.spf-stage-video');
-  function playStageVideo(){if(!stageVideo||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;stageVideo.muted=true;stageVideo.defaultMuted=true;stageVideo.volume=0;stageVideo.play().catch(function(){});}
+  function playStageVideo(){if(!stageVideo)return;stageVideo.muted=true;stageVideo.defaultMuted=true;stageVideo.volume=0;if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){stageVideo.pause();return;}stageVideo.play().catch(function(){});}
   function markStageVideoReady(){section.classList.add('spf-stage-video-ready');playStageVideo();}
   if(stageVideo){if(stageVideo.readyState>=2)markStageVideoReady();else stageVideo.addEventListener('loadeddata',markStageVideoReady,{once:true});stageVideo.addEventListener('error',function(){section.classList.add('spf-stage-video-error');},{once:true});document.addEventListener('visibilitychange',function(){if(document.hidden)stageVideo.pause();else playStageVideo();});playStageVideo();}
 
