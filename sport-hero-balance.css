@@ -1,0 +1,180 @@
+@media (min-width:1100px){
+  /* Deja el MP4 como protagonista y reserva zonas limpias para la interfaz */
+  body.sport-system-home .spf-stage-video{
+    object-position:43% 45%!important;
+    opacity:.84!important;
+    filter:saturate(1.10) contrast(1.06) brightness(.74)!important;
+    transform:scale(1.006)!important;
+  }
+
+  body.sport-system-home .spf-video-frame:before{
+    background:
+      linear-gradient(90deg,rgba(1,7,8,.80) 0%,rgba(1,7,8,.42) 18%,rgba(1,7,8,.06) 39%,rgba(1,7,8,.08) 68%,rgba(1,7,8,.40) 84%,rgba(1,7,8,.72) 100%),
+      linear-gradient(180deg,rgba(1,7,8,.48) 0%,rgba(1,7,8,.03) 24%,rgba(1,7,8,.02) 68%,rgba(1,7,8,.56) 100%)!important;
+  }
+
+  body.sport-system-home .spf-video-frame:after{
+    background:
+      radial-gradient(circle at 49% 48%,transparent 0 38%,rgba(1,7,8,.04) 58%,rgba(1,7,8,.34) 100%),
+      linear-gradient(180deg,transparent 76%,rgba(1,7,8,.46) 100%)!important;
+  }
+
+  /* Título más compacto: identifica el portfolio sin tapar el contenido del vídeo */
+  body.sport-system-home .spf-video-frame .spf-video-title{
+    top:46px!important;
+    left:48px!important;
+    width:min(430px,31vw)!important;
+    font-size:clamp(2.25rem,2.9vw,3.45rem)!important;
+    line-height:.84!important;
+    letter-spacing:-.028em!important;
+    text-shadow:0 14px 36px rgba(0,0,0,.78)!important;
+  }
+
+  /* Perfil reducido y pegado al borde inferior izquierdo */
+  body.sport-system-home .spf-video-profile{
+    left:48px!important;
+    bottom:54px!important;
+    width:min(365px,27vw)!important;
+    padding:16px 17px 15px!important;
+    background:linear-gradient(135deg,rgba(3,16,17,.76),rgba(2,9,11,.58))!important;
+    backdrop-filter:blur(11px)!important;
+    -webkit-backdrop-filter:blur(11px)!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-eyebrow{
+    margin-bottom:7px!important;
+    font-size:.48rem!important;
+  }
+
+  body.sport-system-home .spf-video-profile>p{
+    font-size:.61rem!important;
+    line-height:1.48!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-identity{
+    grid-template-columns:36px minmax(0,1fr)!important;
+    gap:9px!important;
+    margin-top:10px!important;
+    padding-top:10px!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-identity>span{
+    width:34px!important;
+    height:34px!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-identity strong,
+  body.sport-system-home .spf-video-profile .spf-identity small{
+    font-size:.44rem!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-intro-actions{
+    margin-top:10px!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-intro-actions button{
+    min-height:32px!important;
+    padding:0 11px!important;
+    font-size:.42rem!important;
+  }
+
+  /* HUD derecho más estrecho y realmente pegado al borde: libera el centro del MP4 */
+  body.sport-system-home .spf-module-console{
+    top:50%!important;
+    right:26px!important;
+    width:min(330px,23vw)!important;
+    min-width:285px!important;
+    padding:12px!important;
+    background:linear-gradient(135deg,rgba(3,18,19,.60),rgba(2,10,12,.48))!important;
+    box-shadow:0 20px 54px rgba(0,0,0,.26),inset 0 0 26px rgba(82,255,224,.018)!important;
+    backdrop-filter:blur(10px)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+  }
+
+  body.sport-system-home .spf-console-label{
+    padding-bottom:8px!important;
+    font-size:.50rem!important;
+  }
+
+  body.sport-system-home .spf-node-grid{
+    gap:6px!important;
+    margin-top:8px!important;
+  }
+
+  body.sport-system-home .spf-node-grid button{
+    min-height:60px!important;
+    padding:9px 10px!important;
+    background:linear-gradient(135deg,rgba(7,27,27,.70),rgba(3,14,16,.56))!important;
+  }
+
+  body.sport-system-home .spf-node-grid button strong{
+    font-size:.66rem!important;
+  }
+
+  body.sport-system-home .spf-node-grid button small{
+    font-size:.43rem!important;
+  }
+
+  body.sport-system-home .spf-focus{
+    margin-top:8px!important;
+    padding:11px 12px!important;
+    background:linear-gradient(135deg,rgba(18,55,54,.58),rgba(7,20,23,.66))!important;
+  }
+
+  body.sport-system-home .spf-focus h3{
+    font-size:.82rem!important;
+  }
+
+  body.sport-system-home .spf-focus p{
+    font-size:.50rem!important;
+    line-height:1.42!important;
+  }
+
+  body.sport-system-home .spf-focus button{
+    min-height:31px!important;
+    font-size:.42rem!important;
+  }
+
+  /* Controles discretos, por debajo de la zona de acción del vídeo */
+  body.sport-system-home .spf-video-controls{
+    bottom:18px!important;
+    width:min(380px,27vw)!important;
+  }
+
+  body.sport-system-home .spf-video-controls button{
+    min-height:34px!important;
+    font-size:.43rem!important;
+  }
+}
+
+@media (min-width:1500px){
+  body.sport-system-home .spf-video-frame .spf-video-title{
+    top:52px!important;
+    left:58px!important;
+    width:455px!important;
+    font-size:3.55rem!important;
+  }
+
+  body.sport-system-home .spf-video-profile{
+    left:58px!important;
+    bottom:60px!important;
+    width:385px!important;
+  }
+
+  body.sport-system-home .spf-module-console{
+    right:34px!important;
+    width:345px!important;
+  }
+}
+
+@media (min-width:1750px){
+  body.sport-system-home .spf-video-frame .spf-video-title{
+    width:475px!important;
+    font-size:3.72rem!important;
+  }
+
+  body.sport-system-home .spf-module-console{
+    width:355px!important;
+    right:40px!important;
+  }
+}
