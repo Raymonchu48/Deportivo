@@ -1,1 +1,53 @@
-test
+@media (min-width:1100px){
+  .spf-integrated-nav .brand{display:none!important;}
+  .spf-integrated-nav{padding:8px 18px!important;}
+  .spf-integrated-nav .menu{width:100%!important;flex:1 1 100%!important;justify-content:center!important;}
+
+  .spf-command-deck{
+    grid-template-columns:minmax(220px,.58fr) minmax(390px,1.28fr) minmax(340px,.82fr)!important;
+    gap:clamp(18px,2vw,32px)!important;
+    min-height:748px!important;
+    padding:24px clamp(18px,2.2vw,34px)!important;
+  }
+
+  .spf-intro{max-width:310px;justify-self:start;}
+  .spf-intro>p{max-width:305px;}
+  .spf-identity{max-width:305px;}
+
+  .spf-video-core{
+    width:100%;
+    min-width:0;
+    align-self:center;
+    justify-self:center;
+  }
+  .spf-video-frame{
+    width:min(100%,420px)!important;
+    max-width:420px!important;
+  }
+  .spf-video-controls{
+    width:min(100%,420px)!important;
+    max-width:420px!important;
+  }
+  .spf-video-aura{width:150%!important;}
+
+  .spf-video-frame .spf-video-title{
+    top:54px!important;
+    left:28px!important;
+    right:28px!important;
+    font-size:clamp(2rem,2.25vw,2.65rem)!important;
+  }
+
+  .spf-module-console{align-self:center;}
+}
+
+@media (min-width:1450px){
+  .spf-command-deck{
+    grid-template-columns:minmax(240px,.56fr) minmax(430px,1.34fr) minmax(360px,.80fr)!important;
+    min-height:780px!important;
+  }
+  .spf-video-frame,
+  .spf-video-controls{
+    width:min(100%,440px)!important;
+    max-width:440px!important;
+  }
+}
