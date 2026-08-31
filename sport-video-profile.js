@@ -17,36 +17,11 @@
   var actions=intro.querySelector('.spf-intro-actions');
   if(!eyebrow||!copy||!identity||!actions)return;
 
-  var desktop=window.matchMedia('(min-width:1100px)');
   var profile=document.createElement('div');
   profile.className='spf-video-profile';
   profile.setAttribute('aria-label','Resumen profesional');
 
-  function moveIntoVideo(){
-    if(profile.parentNode!==frame)frame.appendChild(profile);
-    [eyebrow,copy,identity,actions].forEach(function(node){profile.appendChild(node);});
-  }
-
-  function restoreIntro(){
-    if(eyebrow.parentNode===intro)return;
-    var title=intro.querySelector('h1');
-    intro.insertBefore(eyebrow,intro.firstChild);
-    if(title&&title.parentNode===intro){
-      intro.insertBefore(copy,title.nextSibling);
-    }else{
-      intro.appendChild(copy);
-    }
-    intro.appendChild(identity);
-    intro.appendChild(actions);
-    if(profile.parentNode)profile.parentNode.removeChild(profile);
-  }
-
-  function sync(){
-    if(desktop.matches)moveIntoVideo();
-    else restoreIntro();
-  }
-
-  sync();
-  if(desktop.addEventListener)desktop.addEventListener('change',sync);
-  else if(desktop.addListener)desktop.addListener(sync);
+  /* El resumen profesional forma parte del hero en todos los breakpoints. */
+  if(profile.parentNode!==frame)frame.appendChild(profile);
+  [eyebrow,copy,identity,actions].forEach(function(node){profile.appendChild(node);});
 })();
