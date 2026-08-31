@@ -1,0 +1,42 @@
+/* Oculta la frase promocional incrustada en el MP4 sin afectar al resto del hero */
+body.sport-system-home .spf-video-corners::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+  left:38%;
+  right:8%;
+  top:70.5%;
+  height:7.5%;
+  transform:translateY(-50%);
+  background:
+    linear-gradient(180deg,rgba(2,11,13,.10) 0%,rgba(2,11,13,.96) 24%,rgba(2,11,13,.985) 50%,rgba(2,11,13,.96) 76%,rgba(2,11,13,.10) 100%),
+    linear-gradient(90deg,transparent 0%,rgba(2,14,16,.96) 10%,rgba(2,14,16,.98) 90%,transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%);
+  box-shadow:0 -10px 24px rgba(1,8,9,.24),0 10px 24px rgba(1,8,9,.24);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+}
+
+/* Tablet: el recorte vertical del vídeo desplaza la frase ligeramente hacia arriba */
+@media (min-width:768px) and (max-width:1099px){
+  body.sport-system-home .spf-video-corners::before{
+    left:30%;
+    right:7%;
+    top:62.5%;
+    height:7%;
+  }
+}
+
+/* Móvil: el vídeo conserva más altura y la frase queda cerca del centro */
+@media (max-width:767px){
+  body.sport-system-home .spf-video-corners::before{
+    left:11%;
+    right:5%;
+    top:55.5%;
+    height:6.8%;
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+  }
+}
