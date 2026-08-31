@@ -1,0 +1,93 @@
+@media (min-width:1100px){
+  /* Mueve el HUD de módulos a la franja superior derecha para liberar el centro del MP4 */
+  body.sport-system-home .spf-module-console{
+    top:46px!important;
+    right:34px!important;
+    width:min(470px,34vw)!important;
+    min-width:390px!important;
+    transform:none!important;
+    padding:12px!important;
+    background:linear-gradient(135deg,rgba(3,18,19,.58),rgba(2,10,12,.42))!important;
+    box-shadow:0 16px 44px rgba(0,0,0,.24),inset 0 0 24px rgba(82,255,224,.018)!important;
+    backdrop-filter:blur(9px)!important;
+    -webkit-backdrop-filter:blur(9px)!important;
+  }
+
+  body.sport-system-home .spf-console-label{
+    padding-bottom:7px!important;
+    font-size:.46rem!important;
+  }
+
+  body.sport-system-home .spf-node-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+    margin-top:7px!important;
+  }
+
+  body.sport-system-home .spf-node-grid button{
+    min-height:48px!important;
+    padding:7px 8px!important;
+  }
+
+  body.sport-system-home .spf-node-grid button strong{
+    font-size:.58rem!important;
+  }
+
+  body.sport-system-home .spf-node-grid button small{
+    font-size:.39rem!important;
+  }
+
+  body.sport-system-home .spf-node-grid button i{
+    width:25px!important;
+    height:25px!important;
+    font-size:.36rem!important;
+  }
+
+  body.sport-system-home .spf-focus{
+    display:grid!important;
+    grid-template-columns:50px minmax(0,1fr) auto!important;
+    align-items:center!important;
+    gap:10px!important;
+    margin-top:7px!important;
+    padding:9px 10px!important;
+  }
+
+  body.sport-system-home .spf-focus-number{
+    font-size:1.7rem!important;
+  }
+
+  body.sport-system-home .spf-focus h2{
+    margin:2px 0 3px!important;
+    font-size:.72rem!important;
+  }
+
+  body.sport-system-home .spf-focus p{
+    margin:0!important;
+    font-size:.43rem!important;
+    line-height:1.35!important;
+    max-width:220px!important;
+  }
+
+  body.sport-system-home .spf-focus button{
+    min-height:30px!important;
+    padding:0 9px!important;
+    font-size:.38rem!important;
+    white-space:nowrap!important;
+  }
+}
+
+@media (min-width:1500px){
+  body.sport-system-home .spf-module-console{
+    top:52px!important;
+    right:42px!important;
+    width:min(500px,33vw)!important;
+  }
+}
+
+@media (min-width:1750px){
+  body.sport-system-home .spf-module-console{
+    top:56px!important;
+    right:50px!important;
+    width:520px!important;
+  }
+}
