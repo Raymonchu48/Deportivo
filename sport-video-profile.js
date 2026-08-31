@@ -9,7 +9,10 @@
   if(!intro||!frame)return;
 
   var eyebrow=intro.querySelector('.spf-eyebrow');
-  var copy=intro.querySelector(':scope > p');
+  var copy=null;
+  for(var i=0;i<intro.children.length;i++){
+    if(intro.children[i].tagName==='P'){copy=intro.children[i];break;}
+  }
   var identity=intro.querySelector('.spf-identity');
   var actions=intro.querySelector('.spf-intro-actions');
   if(!eyebrow||!copy||!identity||!actions)return;
