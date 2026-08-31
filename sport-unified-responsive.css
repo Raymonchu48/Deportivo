@@ -1,0 +1,366 @@
+/* Responsive unificado: tablet y móvil usan el mismo lenguaje inmersivo del hero de escritorio */
+
+@media (max-width:1099px){
+  body.sport-system-home .spf-system{
+    width:100%!important;
+    min-height:100svh!important;
+    padding:12px 14px 24px 58px!important;
+    gap:10px!important;
+  }
+
+  body.sport-system-home .spf-rail{
+    left:10px!important;
+    top:50%!important;
+  }
+
+  body.sport-system-home .spf-rail button{
+    min-height:34px!important;
+  }
+
+  body.sport-system-home .spf-rail button span{
+    width:33px!important;
+    height:33px!important;
+  }
+
+  body.sport-system-home .spf-rail button b{display:none!important;}
+
+  body.sport-system-home .spf-topline{
+    grid-template-columns:1fr auto!important;
+    gap:8px!important;
+    padding:7px 0 10px!important;
+  }
+
+  body.sport-system-home .spf-brandline span{display:none!important;}
+  body.sport-system-home .spf-system-status{display:none!important;}
+  body.sport-system-home .spf-top-actions{gap:5px!important;}
+  body.sport-system-home .spf-top-actions a{
+    min-height:31px!important;
+    padding:0 9px!important;
+    font-size:.43rem!important;
+  }
+
+  body.sport-system-home .spf-command-deck{
+    position:relative!important;
+    display:block!important;
+    min-height:860px!important;
+    padding:0!important;
+    overflow:hidden!important;
+    border:1px solid rgba(82,255,224,.18)!important;
+    background:#010707!important;
+    box-shadow:inset 0 0 70px rgba(17,111,103,.05),0 24px 70px rgba(0,0,0,.28)!important;
+  }
+
+  body.sport-system-home .spf-command-deck:before{
+    inset:8px!important;
+    z-index:18!important;
+    border:1px solid rgba(82,255,224,.055)!important;
+    pointer-events:none!important;
+  }
+
+  body.sport-system-home .spf-command-deck:after{
+    left:0!important;
+    right:0!important;
+    top:50%!important;
+    z-index:6!important;
+    height:1px!important;
+    opacity:.35!important;
+  }
+
+  body.sport-system-home .spf-intro{display:none!important;}
+
+  body.sport-system-home .spf-video-core{
+    position:absolute!important;
+    inset:0!important;
+    z-index:1!important;
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+  }
+
+  body.sport-system-home .spf-video-aura{display:none!important;}
+
+  body.sport-system-home .spf-video-frame{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    max-width:none!important;
+    height:100%!important;
+    aspect-ratio:auto!important;
+    overflow:hidden!important;
+    border:0!important;
+    border-radius:0!important;
+    background:#010606!important;
+    box-shadow:none!important;
+  }
+
+  body.sport-system-home .spf-stage-video{
+    position:absolute!important;
+    inset:0!important;
+    z-index:1!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:46% 45%!important;
+    opacity:.84!important;
+    filter:saturate(1.08) contrast(1.05) brightness(.72)!important;
+    transform:scale(1.01)!important;
+  }
+
+  body.sport-system-home .spf-video-frame:before{
+    top:0!important;
+    bottom:0!important;
+    height:auto!important;
+    z-index:3!important;
+    background:
+      linear-gradient(90deg,rgba(1,7,8,.78) 0%,rgba(1,7,8,.34) 24%,rgba(1,7,8,.06) 52%,rgba(1,7,8,.30) 80%,rgba(1,7,8,.72) 100%),
+      linear-gradient(180deg,rgba(1,7,8,.58) 0%,rgba(1,7,8,.04) 26%,rgba(1,7,8,.05) 69%,rgba(1,7,8,.72) 100%)!important;
+  }
+
+  body.sport-system-home .spf-video-frame:after{
+    top:0!important;
+    bottom:0!important;
+    height:auto!important;
+    z-index:4!important;
+    background:radial-gradient(circle at 50% 46%,transparent 0 34%,rgba(1,7,8,.08) 60%,rgba(1,7,8,.44) 100%)!important;
+  }
+
+  body.sport-system-home .spf-video-scan{z-index:5!important;opacity:.60!important;}
+  body.sport-system-home .spf-video-corners{z-index:7!important;inset:10px!important;opacity:.42!important;}
+  body.sport-system-home .spf-live{z-index:12!important;left:14px!important;top:14px!important;}
+  body.sport-system-home .spf-core-id{z-index:12!important;right:14px!important;bottom:14px!important;}
+
+  body.sport-system-home .spf-video-frame .spf-video-title{
+    position:absolute!important;
+    z-index:11!important;
+    top:44px!important;
+    left:24px!important;
+    right:auto!important;
+    width:min(370px,48vw)!important;
+    margin:0!important;
+    color:#f2fffc!important;
+    font-size:clamp(2.15rem,5.1vw,3.25rem)!important;
+    line-height:.82!important;
+    letter-spacing:-.03em!important;
+    text-align:left!important;
+    text-shadow:0 14px 36px rgba(0,0,0,.78)!important;
+  }
+
+  body.sport-system-home .spf-video-frame .spf-video-title span{
+    color:transparent!important;
+    -webkit-text-stroke:1px var(--spf-cyan)!important;
+    text-shadow:0 0 24px rgba(82,255,224,.15)!important;
+  }
+
+  body.sport-system-home .spf-video-profile{
+    position:absolute!important;
+    z-index:12!important;
+    left:24px!important;
+    bottom:72px!important;
+    width:min(350px,44vw)!important;
+    padding:15px 16px 14px!important;
+    border:1px solid rgba(82,255,224,.17)!important;
+    border-left:2px solid rgba(82,255,224,.64)!important;
+    background:linear-gradient(135deg,rgba(3,16,17,.76),rgba(2,9,11,.58))!important;
+    box-shadow:0 16px 44px rgba(0,0,0,.30)!important;
+    backdrop-filter:blur(11px)!important;
+    -webkit-backdrop-filter:blur(11px)!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-eyebrow{
+    margin:0 0 7px!important;
+    font-size:.46rem!important;
+  }
+
+  body.sport-system-home .spf-video-profile>p{
+    margin:0!important;
+    color:#b6d8d4!important;
+    font-size:.58rem!important;
+    line-height:1.48!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-identity{
+    grid-template-columns:34px minmax(0,1fr)!important;
+    gap:9px!important;
+    margin:10px 0 0!important;
+    padding:10px 0 0!important;
+    border-top:1px solid rgba(82,255,224,.12)!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-identity>span{
+    width:32px!important;
+    height:32px!important;
+  }
+
+  body.sport-system-home .spf-video-profile .spf-identity strong,
+  body.sport-system-home .spf-video-profile .spf-identity small{font-size:.42rem!important;}
+  body.sport-system-home .spf-video-profile .spf-intro-actions{margin:9px 0 0!important;gap:6px!important;}
+  body.sport-system-home .spf-video-profile .spf-intro-actions button{
+    min-height:31px!important;
+    padding:0 10px!important;
+    font-size:.41rem!important;
+  }
+
+  body.sport-system-home .spf-module-console{
+    position:absolute!important;
+    z-index:12!important;
+    top:152px!important;
+    right:18px!important;
+    width:min(390px,46vw)!important;
+    min-width:300px!important;
+    transform:none!important;
+    padding:11px!important;
+    border:1px solid rgba(82,255,224,.16)!important;
+    background:linear-gradient(135deg,rgba(3,18,19,.62),rgba(2,10,12,.48))!important;
+    box-shadow:0 18px 48px rgba(0,0,0,.24)!important;
+    backdrop-filter:blur(10px)!important;
+    -webkit-backdrop-filter:blur(10px)!important;
+  }
+
+  body.sport-system-home .spf-console-label{padding-bottom:7px!important;font-size:.47rem!important;}
+  body.sport-system-home .spf-node-grid{grid-template-columns:1fr 1fr 1fr!important;gap:5px!important;margin-top:7px!important;}
+  body.sport-system-home .spf-node-grid button{
+    min-height:60px!important;
+    padding:8px 7px 7px 35px!important;
+    background:linear-gradient(135deg,rgba(7,27,27,.68),rgba(3,14,16,.54))!important;
+  }
+  body.sport-system-home .spf-node-grid button strong{font-size:.56rem!important;}
+  body.sport-system-home .spf-node-grid button small{font-size:.38rem!important;}
+  body.sport-system-home .spf-node-grid button i{width:23px!important;height:23px!important;font-size:.37rem!important;}
+
+  body.sport-system-home .spf-focus{
+    margin-top:7px!important;
+    padding:10px!important;
+    grid-template-columns:38px minmax(0,1fr) auto!important;
+    background:linear-gradient(135deg,rgba(18,55,54,.56),rgba(7,20,23,.64))!important;
+  }
+  body.sport-system-home .spf-focus-number{font-size:1.5rem!important;}
+  body.sport-system-home .spf-focus h2{font-size:.72rem!important;}
+  body.sport-system-home .spf-focus p{font-size:.44rem!important;line-height:1.38!important;}
+  body.sport-system-home .spf-focus button{min-height:29px!important;font-size:.39rem!important;}
+
+  body.sport-system-home .spf-video-controls{
+    position:absolute!important;
+    z-index:13!important;
+    left:50%!important;
+    bottom:16px!important;
+    width:min(360px,47vw)!important;
+    max-width:none!important;
+    margin:0!important;
+    transform:translateX(-50%)!important;
+  }
+  body.sport-system-home .spf-video-controls button{min-height:33px!important;font-size:.40rem!important;}
+}
+
+@media (max-width:767px){
+  body.sport-system-home .spf-system{
+    padding:9px 9px 22px!important;
+  }
+
+  body.sport-system-home .spf-rail{display:none!important;}
+
+  body.sport-system-home .spf-topline{
+    grid-template-columns:1fr!important;
+    gap:7px!important;
+    padding:5px 2px 9px!important;
+  }
+
+  body.sport-system-home .spf-brandline{font-size:.46rem!important;}
+  body.sport-system-home .spf-top-actions{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    width:100%!important;
+  }
+  body.sport-system-home .spf-top-actions a{
+    min-height:34px!important;
+    padding:0 7px!important;
+    font-size:.41rem!important;
+  }
+
+  body.sport-system-home .spf-command-deck{
+    min-height:1060px!important;
+  }
+
+  body.sport-system-home .spf-stage-video{
+    object-position:50% 43%!important;
+    opacity:.86!important;
+    filter:saturate(1.07) contrast(1.04) brightness(.74)!important;
+  }
+
+  body.sport-system-home .spf-video-frame:before{
+    background:
+      linear-gradient(90deg,rgba(1,7,8,.66),rgba(1,7,8,.10) 45%,rgba(1,7,8,.18) 72%,rgba(1,7,8,.58)),
+      linear-gradient(180deg,rgba(1,7,8,.58),rgba(1,7,8,.03) 25%,rgba(1,7,8,.04) 66%,rgba(1,7,8,.76))!important;
+  }
+
+  body.sport-system-home .spf-video-frame .spf-video-title{
+    top:48px!important;
+    left:18px!important;
+    width:calc(100% - 36px)!important;
+    max-width:330px!important;
+    font-size:clamp(2rem,10.8vw,3rem)!important;
+  }
+
+  body.sport-system-home .spf-module-console{
+    top:248px!important;
+    left:14px!important;
+    right:14px!important;
+    width:auto!important;
+    min-width:0!important;
+    padding:10px!important;
+  }
+
+  body.sport-system-home .spf-console-label small{display:none!important;}
+  body.sport-system-home .spf-node-grid{
+    grid-template-columns:1fr 1fr!important;
+    gap:5px!important;
+  }
+  body.sport-system-home .spf-node-grid button{
+    min-height:56px!important;
+    padding:7px 7px 6px 33px!important;
+  }
+  body.sport-system-home .spf-node-grid button strong{font-size:.54rem!important;}
+  body.sport-system-home .spf-node-grid button small{font-size:.37rem!important;}
+
+  body.sport-system-home .spf-focus{
+    grid-template-columns:34px minmax(0,1fr)!important;
+    gap:7px!important;
+  }
+  body.sport-system-home .spf-focus button{
+    grid-column:2!important;
+    justify-self:start!important;
+  }
+
+  body.sport-system-home .spf-video-profile{
+    left:14px!important;
+    right:14px!important;
+    bottom:72px!important;
+    width:auto!important;
+    padding:13px 14px 12px!important;
+  }
+  body.sport-system-home .spf-video-profile>p{font-size:.55rem!important;}
+  body.sport-system-home .spf-video-profile .spf-identity strong,
+  body.sport-system-home .spf-video-profile .spf-identity small{font-size:.40rem!important;}
+
+  body.sport-system-home .spf-video-controls{
+    bottom:17px!important;
+    width:calc(100% - 28px)!important;
+  }
+  body.sport-system-home .spf-video-controls button{font-size:.39rem!important;}
+
+  body.sport-system-home .spf-live{left:10px!important;top:10px!important;font-size:.37rem!important;}
+  body.sport-system-home .spf-core-id{right:10px!important;bottom:10px!important;font-size:.37rem!important;}
+}
+
+@media (max-width:420px){
+  body.sport-system-home .spf-command-deck{min-height:1100px!important;}
+  body.sport-system-home .spf-video-frame .spf-video-title{
+    top:46px!important;
+    left:14px!important;
+    width:calc(100% - 28px)!important;
+    font-size:clamp(1.85rem,10.5vw,2.65rem)!important;
+  }
+  body.sport-system-home .spf-module-console{top:236px!important;left:10px!important;right:10px!important;}
+  body.sport-system-home .spf-video-profile{left:10px!important;right:10px!important;bottom:70px!important;}
+  body.sport-system-home .spf-video-controls{width:calc(100% - 20px)!important;}
+}
