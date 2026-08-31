@@ -17,7 +17,7 @@
   var actions=intro.querySelector('.spf-intro-actions');
   if(!eyebrow||!copy||!identity||!actions)return;
 
-  var desktop=window.matchMedia('(min-width:1280px)');
+  var desktop=window.matchMedia('(min-width:1100px)');
   var profile=document.createElement('div');
   profile.className='spf-video-profile';
   profile.setAttribute('aria-label','Resumen profesional');
