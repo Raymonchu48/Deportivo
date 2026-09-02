@@ -33,3 +33,83 @@
 @media(max-width:720px){.sport-cluster-shell{min-height:100svh}.spf-system{padding:10px 9px 18px;gap:10px}.spf-rail{position:static;order:6;transform:none;display:flex;flex-direction:row;overflow-x:auto;padding:2px 0;scrollbar-width:none}.spf-rail::-webkit-scrollbar{display:none}.spf-rail:before{display:none}.spf-rail button{flex:0 0 auto;min-height:35px}.spf-rail button span{width:31px;height:31px}.spf-rail button b{opacity:1;transform:none;font-size:.43rem}.spf-topline{grid-template-columns:1fr;gap:8px;padding:8px 2px}.spf-brandline{display:block;line-height:1.7}.spf-brandline span{display:block}.spf-top-actions{display:grid;grid-template-columns:1fr 1fr}.spf-top-actions a{min-height:39px}.spf-command-deck{grid-template-columns:1fr;gap:26px;padding:20px 14px 24px}.spf-command-deck:after{display:none}.spf-intro{text-align:left}.spf-intro h1{font-size:clamp(3.25rem,15vw,5.25rem);line-height:.79}.spf-intro>p{max-width:330px;margin-top:18px}.spf-identity{max-width:410px}.spf-video-frame{width:min(82vw,350px)}.spf-video-aura{width:min(116vw,480px)}.spf-video-controls{width:min(82vw,350px)}.spf-module-console{display:block}.spf-node-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;scrollbar-width:none}.spf-node-grid::-webkit-scrollbar{display:none}.spf-node-grid button{flex:0 0 165px;scroll-snap-align:start}.spf-focus{margin-top:10px;grid-template-columns:42px minmax(0,1fr)}.spf-open-module{grid-column:1/-1}.spf-lower-deck{grid-template-columns:1fr}.spf-workflow{grid-template-columns:1fr}.spf-workflow-title{border-right:0;border-bottom:1px solid rgba(82,255,224,.12);padding:4px 5px 9px}.spf-workflow ol{display:flex;overflow-x:auto;padding:8px 0 0;scroll-snap-type:x mandatory}.spf-workflow li{flex:0 0 106px;scroll-snap-align:start}.spf-telemetry{grid-template-columns:1fr 1fr}.spf-telemetry>div:nth-child(2){border-right:0}.spf-telemetry>div:nth-child(-n+2){border-bottom:1px solid rgba(82,255,224,.08)}.spf-controls{flex-wrap:wrap}.spf-controls>span{width:100%;text-align:center;margin:0}.spf-module-overlay,.spf-console-overlay,.spf-video-overlay{padding:66px 9px 9px}.spf-module-content{padding:10px}.spf-video-shell{margin:0 auto}}
 @media(max-width:430px){.spf-command-deck{padding:18px 11px 22px}.spf-eyebrow{font-size:.48rem}.spf-intro h1{font-size:3.35rem}.spf-intro>p{font-size:.7rem}.spf-identity{grid-template-columns:40px 1fr}.spf-identity>span{width:39px;height:39px}.spf-intro-actions{display:grid;grid-template-columns:1fr 1fr}.spf-video-frame,.spf-video-controls{width:min(86vw,330px)}.spf-focus h2{font-size:1rem}.spf-controls button{padding:0 8px}.spf-module-head{grid-template-columns:1fr auto}.spf-module-code{display:none}}
 @media(prefers-reduced-motion:reduce){.spf-boot-line span,.spf-status-dot,.spf-video-aura,.spf-video-scan:after{animation:none!important}.spf-video-scan:after{display:none}.spf-stage-video{opacity:1}.spf-network{display:none}}
+
+/* Final MP4 architecture: one self-contained performance system. */
+body.sport-system-home{margin:0;background:#020708!important;color:var(--spf-ink)}
+body.sport-system-home .topbar{display:none!important}
+body.sport-system-home main#inicio.container.hero-shell{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+}
+body.sport-system-home .sport-cluster-shell{
+  margin:0!important;
+  min-height:100svh;
+}
+
+@media(min-width:981px){
+  body.sport-system-home .spf-system{
+    min-height:100svh;
+    padding-top:16px;
+    padding-bottom:18px;
+  }
+  body.sport-system-home .spf-command-deck{
+    min-height:clamp(610px,calc(100svh - 190px),730px);
+  }
+  body.sport-system-home .spf-video-frame,
+  body.sport-system-home .spf-video-controls{
+    width:min(100%,330px);
+  }
+  body.sport-system-home .spf-intro:after,
+  body.sport-system-home .spf-module-console:before{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:clamp(18px,2.4vw,42px);
+    height:1px;
+    background:linear-gradient(90deg,rgba(82,255,224,.75),rgba(82,255,224,.06));
+    box-shadow:0 0 12px rgba(82,255,224,.12);
+    pointer-events:none;
+  }
+  body.sport-system-home .spf-intro:after{right:-32px}
+  body.sport-system-home .spf-module-console:before{
+    left:-32px;
+    transform:rotate(180deg);
+  }
+}
+
+body.sport-system-home .spf-video-frame{
+  clip-path:polygon(0 22px,22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%);
+  border-radius:0;
+}
+body.sport-system-home .spf-node-grid button,
+body.sport-system-home .spf-focus,
+body.sport-system-home .spf-workflow,
+body.sport-system-home .spf-telemetry,
+body.sport-system-home .spf-top-actions a,
+body.sport-system-home .spf-video-controls button,
+body.sport-system-home .spf-intro-actions button,
+body.sport-system-home .spf-controls button{
+  border-radius:0!important;
+  clip-path:polygon(0 8px,8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);
+}
+body.sport-system-home .spf-stage-video{
+  object-position:center center;
+  filter:saturate(1.02) contrast(1.08) brightness(.88);
+}
+body.sport-system-home .spf-module-overlay,
+body.sport-system-home .spf-console-overlay,
+body.sport-system-home .spf-video-overlay{
+  padding:16px;
+}
+
+@media(max-width:720px){
+  body.sport-system-home .spf-system{padding-top:8px}
+  body.sport-system-home .spf-command-deck{border-left:0;border-right:0}
+  body.sport-system-home .spf-intro{padding:8px 4px 0}
+  body.sport-system-home .spf-video-core{padding-block:8px}
+  body.sport-system-home .spf-module-overlay,
+  body.sport-system-home .spf-console-overlay,
+  body.sport-system-home .spf-video-overlay{padding:8px}
+}
