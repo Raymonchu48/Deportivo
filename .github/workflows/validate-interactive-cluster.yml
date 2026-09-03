@@ -5,9 +5,6 @@ on:
     branches: [main]
     paths:
       - 'cluster-motion/**'
-      - 'sport-approved-hero.js'
-      - 'sport-approved-hero.css'
-      - 'index.html'
       - '.github/workflows/validate-interactive-cluster.yml'
 
 permissions:
@@ -20,19 +17,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-      - name: Test fragment repairs
+      - name: Locate final part-01 mismatch
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
-          p=Path('cluster-motion/part-01.txt'); s=p.read_text(); missing='gAACAAAAAABAAAUAAAAAAEAAAgAAAAAAQAAAAAAAAABAAAEAAAAAAEAABQAAAAAAQAACAAAAAABAAAAAAAAAAEAAAQAAAAAA'
-          if len(s)==13904: p.write_text(s[:1149]+missing+s[1149:])
-          p=Path('cluster-motion/part-02.txt'); s=p.read_text()
-          if len(s)==14000 and s[11038]=='t': p.write_text(s[:11038]+'T'+s[11039:])
-          p=Path('cluster-motion/part-08.txt'); s=p.read_text()
-          if len(s)==14000 and s[3925]=='g': p.write_text(s[:3925]+'G'+s[3926:])
+          import hashlib
+          p=Path('cluster-motion/part-01.txt'); s=p.read_text()
+          missing='gAACAAAAAABAAAUAAAAAAEAAAgAAAAAAQAAAAAAAAABAAAEAAAAAAEAABQAAAAAAQAACAAAAAABAAAAAAAAAAEAAAQAAAAAA'
+          if len(s)==13904: s=s[:1149]+missing+s[1149:]
+          print('LEN',len(s))
+          for i in range(0,len(s),500):
+              print(i,hashlib.sha256(s[i:i+500].encode()).hexdigest()[:16])
           PY
-          echo "01 $(wc -c < cluster-motion/part-01.txt) $(git hash-object cluster-motion/part-01.txt)"
-          echo "02 $(wc -c < cluster-motion/part-02.txt) $(git hash-object cluster-motion/part-02.txt)"
-          echo "08 $(wc -c < cluster-motion/part-08.txt) $(git hash-object cluster-motion/part-08.txt)"
           exit 1
