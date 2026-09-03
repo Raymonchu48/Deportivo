@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  var parts=Array.from({length:8},function(_,i){return 'approved-hero/part-'+String(i+1).padStart(2,'0')+'.txt?v=2';});
+  var parts=Array.from({length:8},function(_,i){return 'approved-hero/part-'+String(i+1).padStart(2,'0')+'.txt?v=3';});
 
   function decodeBase64ToBlob(base64,type){
     base64=base64.replace(/\s+/g,'');
@@ -17,7 +17,7 @@
 
   function buildApprovedLayer(cluster){
     var deck=cluster.querySelector('.spf-command-deck');
-    if(!deck)return;
+    if(!deck)return null;
 
     if(!deck.querySelector('.spf-approved-artboard')){
       var art=document.createElement('div');
@@ -33,18 +33,25 @@
       deck.appendChild(profile);
       profile.querySelectorAll('[data-approved-route]').forEach(function(btn){btn.addEventListener('click',function(){openRoute(btn.dataset.approvedRoute);});});
     }
+    return deck;
   }
 
+  var cluster=document.getElementById('cluster');
+  var deck=cluster?buildApprovedLayer(cluster):null;
+
   var ready=Promise.all(parts.map(function(url){
-    return fetch(url,{cache:'force-cache'}).then(function(r){if(!r.ok)throw new Error('Hero asset '+r.status);return r.text();});
+    return fetch(url,{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error('Hero asset '+r.status);return r.text();});
   })).then(function(chunks){
-    var blob=decodeBase64ToBlob(chunks.join(''),'image/webp');
+    var joined=chunks.join('').replace(/\s+/g,'');
+    if(joined.length%4!==0)throw new Error('Hero Base64 inválido: '+joined.length);
+    var blob=decodeBase64ToBlob(joined,'image/webp');
     var objectUrl=URL.createObjectURL(blob);
-    var cluster=document.getElementById('cluster');
-    if(cluster){
-      buildApprovedLayer(cluster);
-      cluster.style.setProperty('--spf-approved-hero','url("'+objectUrl+'")');
-      cluster.classList.add('spf-approved-hero-ready');
+    var current=document.getElementById('cluster');
+    if(current){
+      buildApprovedLayer(current);
+      current.style.setProperty('--spf-approved-hero','url("'+objectUrl+'")');
+      current.classList.remove('spf-approved-hero-error');
+      current.classList.add('spf-approved-hero-ready');
     }
 
     var navLink=document.querySelector('.menu a[href="#cluster"]');
@@ -56,7 +63,20 @@
     var video=document.querySelector('#cluster .spf-stage-video');
     if(video){video.pause();video.removeAttribute('autoplay');video.setAttribute('aria-hidden','true');}
     return objectUrl;
-  }).catch(function(err){console.warn('Approved hero fallback:',err);var cluster=document.getElementById('cluster');if(cluster){cluster.classList.add('spf-approved-hero-ready');}return null;});
+  }).catch(function(err){
+    console.warn('Approved hero fallback:',err);
+    var current=document.getElementById('cluster');
+    if(current){
+      var fallbackDeck=buildApprovedLayer(current);
+      current.classList.add('spf-approved-hero-error','spf-approved-hero-ready');
+      if(fallbackDeck){
+        fallbackDeck.style.setProperty('background-image','linear-gradient(90deg,rgba(2,7,8,.16),rgba(2,7,8,.08)),url("sport-performance-vision-poster.jpg")','important');
+        fallbackDeck.style.setProperty('background-size','cover','important');
+        fallbackDeck.style.setProperty('background-position','center','important');
+      }
+    }
+    return null;
+  });
 
   window.SP_APPROVED_HERO_READY=ready;
 })();
