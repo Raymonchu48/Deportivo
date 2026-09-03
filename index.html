@@ -54,7 +54,7 @@
             requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('sp-preboot');document.documentElement.classList.add('sp-ready');});});
           })();
         `;
-        html=html.replace('</body>','<script src="sport-fusion.js?v=7"><\/script><script src="sport-approved-hero.js?v=2"><\/script><script>'+interactionJs+'<\/script></body>');
+        html=html.replace('</body>','<script src="sport-fusion.js?v=7"><\/script><script src="sport-approved-hero.js?v=3"><\/script><script>'+interactionJs+'<\/script></body>');
         document.open();document.write(html);document.close();
       })
       .catch(function(){document.body.innerHTML='<div class="loading">No se pudo cargar el portfolio. Recarga la página.</div>';});
