@@ -1,0 +1,241 @@
+/* Approved Sport Performance Portfolio hero */
+body.sport-system-home #cluster .spf-command-deck{
+  position:relative!important;
+  display:block!important;
+  aspect-ratio:16/9!important;
+  min-height:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  background:#020708!important;
+  opacity:1!important;
+}
+body.sport-system-home #cluster:not(.spf-approved-hero-ready) .spf-command-deck{
+  opacity:0!important;
+}
+body.sport-system-home #cluster .spf-approved-artboard{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-image:var(--spf-approved-hero,none);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center center;
+  transform:scale(1.012);
+  transform-origin:center;
+  animation:spfApprovedDrift 14s ease-in-out infinite alternate;
+}
+body.sport-system-home #cluster .spf-approved-artboard:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(1,7,10,.03),transparent 48%,rgba(1,7,10,.12)),
+    radial-gradient(circle at 54% 46%,transparent 0 34%,rgba(1,7,10,.025) 67%,rgba(1,7,10,.14) 100%);
+}
+body.sport-system-home #cluster .spf-approved-artboard:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:-4%;height:1px;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(82,255,224,.48),transparent);
+  box-shadow:0 0 15px rgba(82,255,224,.28);
+  opacity:.32;
+  animation:spfApprovedScan 8s linear infinite;
+}
+@keyframes spfApprovedDrift{from{transform:scale(1.012)}to{transform:scale(1.035)}}
+@keyframes spfApprovedScan{from{top:-4%}to{top:104%}}
+
+/* The approved artwork already contains the visual title and featured athlete. */
+body.sport-system-home #cluster .spf-intro,
+body.sport-system-home #cluster .spf-video-core{
+  display:none!important;
+}
+body.sport-system-home #cluster .spf-command-deck:before,
+body.sport-system-home #cluster .spf-command-deck:after{
+  display:none!important;
+}
+
+/* Keep the real, clickable performance nodes aligned over the HUD area. */
+body.sport-system-home #cluster .spf-module-console{
+  position:absolute!important;
+  z-index:8!important;
+  top:5.5%!important;
+  right:2.1%!important;
+  width:clamp(240px,21vw,310px)!important;
+  min-width:0!important;
+  padding:10px!important;
+  border:1px solid rgba(82,255,224,.32)!important;
+  background:linear-gradient(180deg,rgba(2,16,22,.82),rgba(2,11,16,.72))!important;
+  box-shadow:0 16px 45px rgba(0,0,0,.28),inset 0 0 28px rgba(82,255,224,.025)!important;
+  backdrop-filter:blur(10px)!important;
+  -webkit-backdrop-filter:blur(10px)!important;
+}
+body.sport-system-home #cluster .spf-console-label{
+  padding-bottom:7px!important;
+}
+body.sport-system-home #cluster .spf-console-label span{font-size:.48rem!important}
+body.sport-system-home #cluster .spf-console-label small{font-size:.38rem!important}
+body.sport-system-home #cluster .spf-node-grid{
+  grid-template-columns:1fr 1fr!important;
+  gap:5px!important;
+  margin-top:7px!important;
+}
+body.sport-system-home #cluster .spf-node-grid button{
+  min-height:49px!important;
+  padding:7px 7px 6px 34px!important;
+  grid-template-columns:22px 1fr!important;
+  gap:1px 5px!important;
+  background:rgba(3,17,22,.72)!important;
+}
+body.sport-system-home #cluster .spf-node-grid button>span{left:7px!important;top:7px!important;font-size:.36rem!important}
+body.sport-system-home #cluster .spf-node-grid button i{width:20px!important;height:20px!important;font-size:.34rem!important}
+body.sport-system-home #cluster .spf-node-grid button strong{font-size:.47rem!important}
+body.sport-system-home #cluster .spf-node-grid button small{font-size:.36rem!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.sport-system-home #cluster .spf-focus{
+  margin-top:6px!important;
+  padding:9px!important;
+  grid-template-columns:36px 1fr!important;
+  gap:8px!important;
+  background:rgba(3,18,22,.78)!important;
+}
+body.sport-system-home #cluster .spf-focus-number{font-size:1.45rem!important}
+body.sport-system-home #cluster .spf-focus small{font-size:.35rem!important}
+body.sport-system-home #cluster .spf-focus h2{font-size:.68rem!important;margin:2px 0 3px!important}
+body.sport-system-home #cluster .spf-focus p{font-size:.43rem!important;line-height:1.4!important;margin:0!important}
+body.sport-system-home #cluster .spf-open-module{min-height:28px!important;padding:0 9px!important;font-size:.37rem!important;margin-top:6px!important}
+
+/* Real profile card covers the generated placeholder profile information. */
+body.sport-system-home #cluster .spf-approved-profile{
+  position:absolute;
+  z-index:9;
+  left:2.2%;
+  bottom:3.8%;
+  width:clamp(275px,24vw,350px);
+  display:grid;
+  grid-template-columns:74px minmax(0,1fr);
+  gap:12px;
+  align-items:center;
+  padding:12px;
+  border:1px solid rgba(82,255,224,.42);
+  background:linear-gradient(135deg,rgba(2,15,20,.96),rgba(3,12,18,.91));
+  box-shadow:0 16px 48px rgba(0,0,0,.34),inset 0 0 26px rgba(82,255,224,.025);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+body.sport-system-home #cluster .spf-approved-profile img{
+  width:72px;
+  height:92px;
+  object-fit:cover;
+  object-position:center 22%;
+  border:1px solid rgba(82,255,224,.44);
+  background:#061012;
+}
+body.sport-system-home #cluster .spf-approved-profile small{
+  display:block;
+  color:#52ffe0;
+  font:700 .37rem var(--spf-mono);
+  letter-spacing:.11em;
+}
+body.sport-system-home #cluster .spf-approved-profile h3{
+  margin:5px 0 5px;
+  color:#effffc;
+  font:900 clamp(.72rem,.9vw,.96rem)/.96 var(--spf-display);
+  letter-spacing:.025em;
+}
+body.sport-system-home #cluster .spf-approved-profile p{
+  margin:0;
+  color:#8eb7b3;
+  font-size:.5rem;
+  line-height:1.4;
+}
+body.sport-system-home #cluster .spf-approved-profile-actions{
+  display:flex;
+  gap:6px;
+  margin-top:8px;
+}
+body.sport-system-home #cluster .spf-approved-profile-actions button{
+  min-height:28px;
+  padding:0 9px;
+  border:1px solid rgba(82,255,224,.28);
+  background:rgba(82,255,224,.045);
+  color:#bffaf1;
+  cursor:pointer;
+  font:700 .36rem var(--spf-mono);
+  letter-spacing:.08em;
+}
+body.sport-system-home #cluster .spf-approved-profile-actions button:first-child{
+  color:#52ffe0;
+  border-color:rgba(82,255,224,.52);
+}
+
+@media(max-width:1100px){
+  body.sport-system-home #cluster .spf-module-console{
+    width:clamp(225px,25vw,280px)!important;
+    top:4%!important;
+    right:1.6%!important;
+  }
+  body.sport-system-home #cluster .spf-approved-profile{
+    width:290px;
+    transform:scale(.9);
+    transform-origin:left bottom;
+  }
+}
+
+@media(max-width:760px){
+  body.sport-system-home #cluster .spf-command-deck{
+    aspect-ratio:auto!important;
+    overflow:visible!important;
+    background:#020708!important;
+  }
+  body.sport-system-home #cluster .spf-approved-artboard{
+    position:relative;
+    inset:auto;
+    width:100%;
+    aspect-ratio:16/9;
+    transform:none!important;
+    animation:none!important;
+    background-size:contain;
+    background-color:#020708;
+  }
+  body.sport-system-home #cluster .spf-module-console{
+    position:relative!important;
+    top:auto!important;
+    right:auto!important;
+    width:calc(100% - 16px)!important;
+    margin:8px auto 0!important;
+  }
+  body.sport-system-home #cluster .spf-node-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  body.sport-system-home #cluster .spf-approved-profile{
+    position:relative;
+    left:auto;
+    bottom:auto;
+    width:calc(100% - 16px);
+    margin:8px auto 0;
+    transform:none;
+    grid-template-columns:64px minmax(0,1fr);
+  }
+  body.sport-system-home #cluster .spf-approved-profile img{
+    width:62px;
+    height:78px;
+  }
+}
+
+@media(max-width:480px){
+  body.sport-system-home #cluster .spf-node-grid button{
+    min-height:46px!important;
+  }
+  body.sport-system-home #cluster .spf-approved-profile h3{
+    font-size:.78rem;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.sport-system-home #cluster .spf-approved-artboard,
+  body.sport-system-home #cluster .spf-approved-artboard:after{
+    animation:none!important;
+  }
+}
