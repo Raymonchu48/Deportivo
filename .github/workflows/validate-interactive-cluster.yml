@@ -1,0 +1,39 @@
+name: Validate interactive cluster
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'cluster-motion/**'
+      - 'sport-approved-hero.js'
+      - 'sport-approved-hero.css'
+      - 'index.html'
+      - '.github/workflows/validate-interactive-cluster.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct cluster video
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat cluster-motion/part-*.txt | tr -d '\r\n\t ' | base64 --decode > /tmp/cluster-motion.mp4
+          test "$(stat -c%s /tmp/cluster-motion.mp4)" -gt 50000
+          file /tmp/cluster-motion.mp4
+      - name: Validate video stream
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffprobe >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq ffmpeg
+          fi
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,avg_frame_rate -show_entries format=duration -of default=noprint_wrappers=1 /tmp/cluster-motion.mp4
+          ffmpeg -v error -i /tmp/cluster-motion.mp4 -f null -
+      - name: Validate JavaScript
+        run: node --check sport-approved-hero.js
