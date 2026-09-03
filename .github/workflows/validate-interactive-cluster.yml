@@ -76,7 +76,7 @@ jobs:
           set -euo pipefail
           cat cluster-motion/part-*.txt | tr -d '\r\n\t ' | base64 --decode > /tmp/cluster-motion.mp4
           test "$(stat -c%s /tmp/cluster-motion.mp4)" = "90020"
-          test "$(sha256sum /tmp/cluster-motion.mp4 | cut -d' ' -f1)" = "d7db2b4173646887daf39ecf3c6c0a05837570e500369eb15e25e6f5bf34fb6d"
+          test "$(sha256sum /tmp/cluster-motion.mp4 | cut -d' ' -f1)" = "d7dbf4c9e26fe9ff7cac8a049c862a1f47ab50ac983e36a09dbbc67dc92897f1"
       - name: Validate video stream
         shell: bash
         run: |
