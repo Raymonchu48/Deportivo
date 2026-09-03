@@ -18,33 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Diagnostic fragment hashes
+      - name: Diagnose altered windows
         shell: bash
         run: |
           python - <<'PY'
-          import hashlib, pathlib
-          for part in ('01','02','08'):
+          import pathlib
+          windows={'01':(900,1300),'02':(10900,11600),'08':(3400,4100)}
+          for part,(a,b) in windows.items():
               s=pathlib.Path(f'cluster-motion/part-{part}.txt').read_text()
-              print(f'PART {part} LEN {len(s)}')
-              for i in range(0,len(s),500):
-                  print(i, hashlib.sha256(s[i:i+500].encode()).hexdigest()[:16])
+              print(f'===PART {part} LEN {len(s)} RANGE {a}:{b}===')
+              print(s[a:b])
+              print(f'===END {part}===')
           PY
-      - name: Reconstruct cluster video
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat cluster-motion/part-*.txt | tr -d '\r\n\t ' | base64 --decode > /tmp/cluster-motion.mp4
-          test "$(stat -c%s /tmp/cluster-motion.mp4)" -gt 50000
-          file /tmp/cluster-motion.mp4
-      - name: Validate video stream
-        shell: bash
-        run: |
-          set -euo pipefail
-          if ! command -v ffprobe >/dev/null 2>&1; then
-            sudo apt-get update -qq
-            sudo apt-get install -y -qq ffmpeg
-          fi
-          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,avg_frame_rate -show_entries format=duration -of default=noprint_wrappers=1 /tmp/cluster-motion.mp4
-          ffmpeg -v error -i /tmp/cluster-motion.mp4 -f null -
-      - name: Validate JavaScript
-        run: node --check sport-approved-hero.js
+      - name: Stop after diagnosis
+        run: exit 1
