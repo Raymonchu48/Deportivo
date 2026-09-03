@@ -18,6 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Diagnostic fragment hashes
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib
+          for part in ('01','02','08'):
+              s=pathlib.Path(f'cluster-motion/part-{part}.txt').read_text()
+              print(f'PART {part} LEN {len(s)}')
+              for i in range(0,len(s),500):
+                  print(i, hashlib.sha256(s[i:i+500].encode()).hexdigest()[:16])
+          PY
       - name: Reconstruct cluster video
         shell: bash
         run: |
