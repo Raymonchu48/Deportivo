@@ -4,19 +4,19 @@
   var ART_PARTS=Array.from({length:8},function(_,i){
     return 'approved-hero/part-'+String(i+1).padStart(2,'0')+'.txt?v=3';
   });
-  var MOTION_PARTS=Array.from({length:9},function(_,i){
-    return 'cluster-motion/part-'+String(i+1).padStart(2,'0')+'.txt?v=1';
+  var MOTION_PARTS=Array.from({length:61},function(_,i){
+    return 'video-1080/part-'+String(i+1).padStart(3,'0')+'.txt?v=1';
   });
   var reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var FALLBACK_VIDEO='sport-performance-vision.mp4';
 
   var moments={
-    training:{time:.35,x:'27%',y:'61%',label:'ENTRENAMIENTO // MOVIMIENTO'},
-    nutrition:{time:1.65,x:'44%',y:'33%',label:'NUTRICIÓN // ENERGÍA'},
-    mind:{time:3.05,x:'59%',y:'27%',label:'PSICOLOGÍA // FOCO'},
-    recovery:{time:4.55,x:'69%',y:'58%',label:'RECUPERACIÓN // CONTINUIDAD'},
-    adapted:{time:6.25,x:'78%',y:'62%',label:'ADAPTADA // AUTONOMÍA'},
-    management:{time:8.05,x:'50%',y:'76%',label:'GESTIÓN // SISTEMA'}
+    training:{time:2.0,x:'27%',y:'61%',label:'ENTRENAMIENTO // MOVIMIENTO'},
+    nutrition:{time:6.0,x:'44%',y:'33%',label:'NUTRICIÓN // ENERGÍA'},
+    mind:{time:10.0,x:'59%',y:'27%',label:'PSICOLOGÍA // FOCO'},
+    recovery:{time:14.0,x:'69%',y:'58%',label:'RECUPERACIÓN // CONTINUIDAD'},
+    adapted:{time:18.0,x:'78%',y:'62%',label:'ADAPTADA // AUTONOMÍA'},
+    management:{time:22.0,x:'50%',y:'76%',label:'GESTIÓN // SISTEMA'}
   };
 
   function fetchText(url){
@@ -32,6 +32,16 @@
     var binary=atob(base64),bytes=new Uint8Array(binary.length);
     for(var i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
     return new Blob([bytes],{type:type});
+  }
+
+  function decodeBase64ChunksToBlob(chunks,type){
+    var parts=chunks.map(function(chunk){
+      var binary=atob(chunk.replace(/\s+/g,''));
+      var bytes=new Uint8Array(binary.length);
+      for(var i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+      return bytes;
+    });
+    return new Blob(parts,{type:type});
   }
 
   function openRoute(route){
@@ -173,8 +183,7 @@
     cluster.classList.add('spf-motion-loading');
 
     return Promise.all(MOTION_PARTS.map(fetchText)).then(function(chunks){
-      var joined=chunks.join('').replace(/\s+/g,'');
-      var blob=decodeBase64ToBlob(joined,'video/mp4');
+      var blob=decodeBase64ChunksToBlob(chunks,'video/mp4');
       var objectUrl=URL.createObjectURL(blob);
 
       configureVideo(stage,objectUrl,false);
@@ -183,7 +192,7 @@
       var ready=function(){
         cluster.classList.remove('spf-motion-loading','spf-motion-fallback');
         cluster.classList.add('spf-motion-ready','spf-stage-video-ready');
-        if(status)status.textContent='VIDEO CLUSTER ONLINE';
+        if(status)status.textContent='VIDEO CLUSTER 1080P ONLINE';
         if(stage&&!reducedMotion){var p=stage.play();if(p&&p.catch)p.catch(function(){});}
       };
       if(stage && stage.readyState>=2)ready();
