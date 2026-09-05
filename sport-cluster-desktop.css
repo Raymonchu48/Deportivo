@@ -1,0 +1,181 @@
+/* Desktop-only composition: the MP4 is the complete cluster canvas.
+   Tablet (901–1180px) and mobile remain controlled by sport-cluster-v3.css. */
+@media (min-width:1181px){
+  body.sport-system-home #cluster .spf-command-deck{
+    position:relative!important;
+    display:block!important;
+    width:100%!important;
+    aspect-ratio:16/9!important;
+    min-height:0!important;
+    max-height:none!important;
+    padding:0!important;
+    overflow:hidden!important;
+    isolation:isolate!important;
+    border:1px solid rgba(82,255,224,.20)!important;
+    background:#010708!important;
+    box-shadow:inset 0 0 72px rgba(0,0,0,.22),0 28px 76px rgba(0,0,0,.22)!important;
+  }
+
+  body.sport-system-home #cluster .spf-command-deck:before{
+    inset:10px!important;
+    z-index:20!important;
+    border:1px solid rgba(82,255,224,.055)!important;
+    background:none!important;
+    pointer-events:none!important;
+  }
+
+  /* The video is the complete architecture, not a centre card. */
+  body.sport-system-home #cluster .spf-video-core{
+    position:absolute!important;
+    inset:0!important;
+    z-index:1!important;
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+  }
+  body.sport-system-home #cluster .spf-video-frame{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    aspect-ratio:auto!important;
+    overflow:hidden!important;
+    border:0!important;
+    background:#010708!important;
+    box-shadow:none!important;
+  }
+  body.sport-system-home #cluster .spf-stage-video{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    transform:none!important;
+    filter:saturate(1.04) contrast(1.035) brightness(.92)!important;
+  }
+  body.sport-system-home #cluster.spf-motion-reacting .spf-stage-video{
+    filter:saturate(1.10) contrast(1.045) brightness(.94)!important;
+  }
+  body.sport-system-home #cluster .spf-video-frame:before{
+    background:
+      linear-gradient(90deg,rgba(1,7,8,.64) 0%,rgba(1,7,8,.28) 20%,rgba(1,7,8,.04) 42%,transparent 58%,rgba(1,7,8,.10) 76%,rgba(1,7,8,.48) 100%),
+      linear-gradient(180deg,rgba(1,7,8,.32) 0%,transparent 20%,transparent 76%,rgba(1,7,8,.43) 100%)!important;
+  }
+  body.sport-system-home #cluster .spf-video-frame:after{
+    background:radial-gradient(ellipse at 52% 48%,transparent 0 62%,rgba(1,7,8,.12) 82%,rgba(1,7,8,.30) 100%)!important;
+  }
+
+  /* Title is HUD text inside the video, compact enough to preserve the athletes. */
+  body.sport-system-home #cluster .spf-intro{
+    position:absolute!important;
+    z-index:11!important;
+    left:3.2%!important;
+    top:5.2%!important;
+    width:34%!important;
+    max-width:520px!important;
+    height:auto!important;
+    padding:0!important;
+    margin:0!important;
+    display:block!important;
+    background:none!important;
+    border:0!important;
+    box-shadow:none!important;
+    pointer-events:none!important;
+  }
+  body.sport-system-home #cluster .spf-intro .spf-eyebrow{
+    margin:0 0 10px!important;
+    font-size:.40rem!important;
+    letter-spacing:.14em!important;
+    text-shadow:0 4px 14px rgba(0,0,0,.72)!important;
+  }
+  body.sport-system-home #cluster .spf-intro h1{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    font-size:clamp(2.55rem,3.55vw,4.35rem)!important;
+    line-height:.81!important;
+    letter-spacing:-.042em!important;
+    text-align:left!important;
+    text-shadow:0 16px 38px rgba(0,0,0,.68)!important;
+  }
+
+  /* Professional identity remains inside the cluster but outside the main action. */
+  body.sport-system-home #cluster .spf-approved-profile{
+    position:absolute!important;
+    z-index:12!important;
+    left:3.2%!important;
+    bottom:5.0%!important;
+    width:clamp(260px,20vw,330px)!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:9px!important;
+    display:grid!important;
+    grid-template-columns:58px minmax(0,1fr)!important;
+    gap:9px!important;
+    transform:none!important;
+    border:1px solid rgba(82,255,224,.28)!important;
+    background:linear-gradient(135deg,rgba(2,15,20,.76),rgba(3,12,18,.59))!important;
+    box-shadow:0 16px 38px rgba(0,0,0,.24),inset 0 0 22px rgba(82,255,224,.018)!important;
+    backdrop-filter:blur(8px)!important;
+    -webkit-backdrop-filter:blur(8px)!important;
+  }
+  body.sport-system-home #cluster .spf-approved-profile img{
+    width:56px!important;
+    height:70px!important;
+  }
+  body.sport-system-home #cluster .spf-approved-profile h3{font-size:clamp(.66rem,.78vw,.84rem)!important}
+  body.sport-system-home #cluster .spf-approved-profile p{font-size:.40rem!important}
+
+  /* Performance nodes are a compact translucent HUD in the free upper-right zone. */
+  body.sport-system-home #cluster .spf-module-console{
+    position:absolute!important;
+    z-index:12!important;
+    top:4.3%!important;
+    right:2.5%!important;
+    width:clamp(292px,22vw,360px)!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:10px!important;
+    transform:none!important;
+    border:1px solid rgba(82,255,224,.25)!important;
+    background:linear-gradient(180deg,rgba(2,16,22,.72),rgba(2,11,16,.56))!important;
+    box-shadow:0 16px 38px rgba(0,0,0,.22),inset 0 0 24px rgba(82,255,224,.018)!important;
+    backdrop-filter:blur(8px)!important;
+    -webkit-backdrop-filter:blur(8px)!important;
+  }
+  body.sport-system-home #cluster .spf-node-grid button{min-height:50px!important}
+  body.sport-system-home #cluster .spf-focus{background:rgba(3,18,22,.64)!important}
+
+  /* Video UI stays inside the canvas, away from the title/profile/modules. */
+  body.sport-system-home #cluster .spf-video-controls{
+    left:50%!important;
+    bottom:2.1%!important;
+    width:auto!important;
+    transform:translateX(-50%)!important;
+  }
+  body.sport-system-home #cluster .spf-v3-hotspots{
+    left:50%!important;
+    bottom:7.2%!important;
+    transform:translateX(-50%)!important;
+  }
+  body.sport-system-home #cluster .spf-motion-label{
+    left:38%!important;
+    bottom:3.0%!important;
+    max-width:34%!important;
+  }
+  body.sport-system-home #cluster .spf-live{left:1.7%!important;top:2.0%!important}
+  body.sport-system-home #cluster .spf-core-id{right:1.7%!important;bottom:2.0%!important}
+  body.sport-system-home #cluster .spf-motion-index{right:1.7%!important;top:2.0%!important}
+}
+
+@media (min-width:1540px){
+  body.sport-system-home #cluster .spf-intro{left:3.6%!important;top:5.8%!important;width:32%!important}
+  body.sport-system-home #cluster .spf-approved-profile{left:3.6%!important;bottom:5.6%!important}
+  body.sport-system-home #cluster .spf-module-console{right:2.8%!important;top:5.0%!important;width:350px!important}
+}
