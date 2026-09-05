@@ -1,0 +1,7 @@
+source=video-grupo ejercicios(1).mp4
+resolution=1280x720
+fps=24
+duration=10.005
+transport=AV1-720p-browser-blob
+sha256=f29c9e4a528172f263636bda56ae816deb80713b5be44aaaa8b72bffe9c0e872
+parts=32
