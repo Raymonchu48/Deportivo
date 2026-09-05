@@ -22,7 +22,7 @@
           html.sp-preboot body>*{visibility:hidden!important}
           html.sp-preboot body:before{content:"";position:fixed;inset:0;z-index:2147483646;visibility:visible!important;background:radial-gradient(circle at 50% 42%,rgba(82,255,224,.055),transparent 34%),#020708}
           html.sp-preboot body:after{content:"RACV // PERFORMANCE VISION";position:fixed;left:50%;top:50%;z-index:2147483647;visibility:visible!important;transform:translate(-50%,-50%);color:#52ffe0;font:800 .68rem "SFMono-Regular",Consolas,monospace;letter-spacing:.16em;white-space:nowrap;text-shadow:0 0 18px rgba(82,255,224,.28)}
-          .sport-cluster-shell:not(.spf-stage-video-ready) .spf-stage-video{opacity:0!important}
+          .sport-cluster-shell:not(.spf-motion-ready) .spf-stage-video{opacity:0!important}
           [hidden]{display:none!important}
           .section-view{animation:sectionIn .32s ease both}
           @keyframes sectionIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -31,7 +31,7 @@
           @media(max-width:920px){.nav{flex-wrap:wrap!important;gap:10px!important}.menu{display:flex!important;order:3;width:100%;gap:8px!important;flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 2px 2px;scrollbar-width:none}.menu::-webkit-scrollbar{display:none}.menu a{flex:0 0 auto;padding:7px 11px;border-radius:999px;background:rgba(44,52,114,.06);font-size:.78rem;white-space:nowrap}body.sport-system-home .menu a{background:rgba(255,255,255,.045)}}
           @media(max-width:640px){.topbar{position:sticky;top:0}.nav{padding:10px 12px!important}.brand{width:auto}.menu{margin-top:2px}.section-back{margin-left:2px}}
         `;
-        html=html.replace('</head>','<link rel="stylesheet" href="sporty-overrides.css?v=12"><link rel="stylesheet" href="sport-fusion.css?v=7"><link rel="stylesheet" href="sport-module-theme.css?v=2"><link rel="stylesheet" href="sport-approved-hero.css?v=5"><style>'+interactionCss+'</style></head>');
+        html=html.replace('</head>','<link rel="stylesheet" href="sporty-overrides.css?v=12"><link rel="stylesheet" href="sport-fusion.css?v=7"><link rel="stylesheet" href="sport-module-theme.css?v=2"><link rel="stylesheet" href="sport-cluster-v3.css?v=1"><style>'+interactionCss+'</style></head>');
 
         var interactionJs=`
           (function(){
@@ -51,10 +51,22 @@
             if(brand)brand.addEventListener('click',function(e){e.preventDefault();history.pushState(null,'','#inicio');showHome(true);});
             window.addEventListener('popstate',function(){var id=location.hash.replace('#','');if(ids.includes(id)&&id!=='cluster'){if(window.SP_OPEN_MODULE)showIntegrated(id,true);else showLegacy(id,true);}else showHome(true);});
             var initial=location.hash.replace('#','');if(ids.includes(initial)&&initial!=='cluster'){if(window.SP_OPEN_MODULE)showIntegrated(initial,false);else showLegacy(initial,false);}else showHome(false);
-            requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('sp-preboot');document.documentElement.classList.add('sp-ready');});});
+
+            var revealed=false;
+            function revealBoot(){
+              if(revealed)return;revealed=true;
+              requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove('sp-preboot');document.documentElement.classList.add('sp-ready');});});
+            }
+            var ready=window.SP_CLUSTER_V3_READY;
+            if(ready&&typeof ready.then==='function'){
+              Promise.race([
+                ready.catch(function(){return null;}),
+                new Promise(function(resolve){setTimeout(resolve,4500);})
+              ]).then(revealBoot);
+            }else revealBoot();
           })();
         `;
-        html=html.replace('</body>','<script src="sport-fusion.js?v=7"><\/script><script src="sport-approved-hero.js?v=5"><\/script><script>'+interactionJs+'<\/script></body>');
+        html=html.replace('</body>','<script src="sport-fusion.js?v=7"><\/script><script src="sport-cluster-v3.js?v=1"><\/script><script>'+interactionJs+'<\/script></body>');
         document.open();document.write(html);document.close();
       })
       .catch(function(){document.body.innerHTML='<div class="loading">No se pudo cargar el portfolio. Recarga la página.</div>';});
