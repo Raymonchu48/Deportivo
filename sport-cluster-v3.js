@@ -5,6 +5,8 @@
   if(!cluster)return;
 
   var reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var desktopHQ=window.matchMedia('(min-width:1181px)').matches;
+  var DESKTOP_HQ='cluster-desktop-hd.mp4?v=1';
   var MOTION_PARTS=Array.from({length:9},function(_,i){
     return 'cluster-motion/part-'+String(i+1).padStart(2,'0')+'.txt?v=3';
   });
@@ -169,46 +171,68 @@
     video.load();
   }
 
+  function markReady(stage,status,label,src){
+    return new Promise(function(resolve,reject){
+      if(!stage){resolve(src);return;}
+      var settled=false;
+      var cleanup=function(){
+        stage.removeEventListener('loadeddata',done);
+        stage.removeEventListener('error',fail);
+      };
+      var done=function(){
+        if(settled)return;settled=true;cleanup();
+        cluster.classList.remove('spf-motion-loading','spf-motion-error');
+        cluster.classList.add('spf-motion-ready','spf-stage-video-ready');
+        if(status)status.textContent=label;
+        if(!reducedMotion){
+          var p=stage.play();
+          if(p&&p.catch)p.catch(function(){});
+        }
+        resolve(src);
+      };
+      var fail=function(){
+        if(settled)return;settled=true;cleanup();
+        reject(new Error('No se pudo decodificar '+src));
+      };
+      if(stage.readyState>=2)done();
+      else{
+        stage.addEventListener('loadeddata',done);
+        stage.addEventListener('error',fail);
+      }
+    });
+  }
+
+  function loadMotionParts(stage,modal,status){
+    return Promise.all(MOTION_PARTS.map(fetchText)).then(function(chunks){
+      var blob=chunksToBlob(chunks,'video/mp4');
+      objectUrl=URL.createObjectURL(blob);
+      configureVideo(stage,objectUrl,false);
+      configureVideo(modal,objectUrl,true);
+      return markReady(stage,status,'VIDEO CLUSTER MULTISPORT ONLINE',objectUrl);
+    });
+  }
+
   function loadMotion(){
     var stage=cluster.querySelector('.spf-stage-video');
     var modal=cluster.querySelector('.spf-video-overlay video');
     var status=cluster.querySelector('#spfVideoStatus');
     if(stage)stage.removeAttribute('poster');
     if(modal)modal.removeAttribute('poster');
-    if(status)status.textContent='VIDEO CLUSTER LOADING';
+    if(status)status.textContent=desktopHQ?'VIDEO CLUSTER HD LOADING':'VIDEO CLUSTER LOADING';
     cluster.classList.add('spf-motion-loading');
 
-    return Promise.all(MOTION_PARTS.map(fetchText)).then(function(chunks){
-      var blob=chunksToBlob(chunks,'video/mp4');
-      objectUrl=URL.createObjectURL(blob);
-      configureVideo(stage,objectUrl,false);
-      configureVideo(modal,objectUrl,true);
-
-      return new Promise(function(resolve,reject){
-        if(!stage){resolve(objectUrl);return;}
-        var done=function(){
-          cluster.classList.remove('spf-motion-loading','spf-motion-error');
-          cluster.classList.add('spf-motion-ready','spf-stage-video-ready');
-          if(status)status.textContent='VIDEO CLUSTER MULTISPORT ONLINE';
-          if(!reducedMotion){
-            var p=stage.play();
-            if(p&&p.catch)p.catch(function(){});
-          }
-          resolve(objectUrl);
-        };
-        var fail=function(){
-          cluster.classList.remove('spf-motion-loading');
-          cluster.classList.add('spf-motion-error');
-          if(status)status.textContent='VIDEO CLUSTER ERROR';
-          reject(new Error('No se pudo decodificar el vídeo multi-deporte'));
-        };
-        if(stage.readyState>=2)done();
-        else{
-          stage.addEventListener('loadeddata',done,{once:true});
-          stage.addEventListener('error',fail,{once:true});
-        }
+    if(desktopHQ){
+      configureVideo(stage,DESKTOP_HQ,false);
+      configureVideo(modal,DESKTOP_HQ,true);
+      return markReady(stage,status,'VIDEO CLUSTER HD ONLINE',DESKTOP_HQ).catch(function(err){
+        console.warn('Desktop HD fallback:',err);
+        cluster.classList.remove('spf-motion-ready','spf-stage-video-ready');
+        cluster.classList.add('spf-motion-loading');
+        return loadMotionParts(stage,modal,status);
       });
-    }).catch(function(err){
+    }
+
+    return loadMotionParts(stage,modal,status).catch(function(err){
       console.warn('Sport Cluster v3:',err);
       cluster.classList.remove('spf-motion-loading');
       cluster.classList.add('spf-motion-error');
