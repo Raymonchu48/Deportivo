@@ -1,0 +1,27 @@
+name: Probe video assets
+on:
+  push:
+    branches: [fix/desktop-full-video-hq]
+    paths: ['.github/workflows/probe-video-assets.yml']
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe candidates
+        shell: bash
+        run: |
+          set -e
+          for f in \
+            'El_plan_maestro_para_un_entrenamiento_más_inteligente.mp4' \
+            'Potencial_al_Máximo__Cuerpo_y_Mente.mp4' \
+            'fitness-vision-cluster.mp4' \
+            'sport-performance-vision.mp4'; do
+            echo "===FILE:$f==="
+            ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -show_entries format=duration,size -of compact=p=0:nk=1 "$f" || true
+            ffmpeg -loglevel error -y -ss 1 -i "$f" -frames:v 1 -vf 'scale=320:-2' -q:v 5 "/tmp/$(basename "$f").jpg" || true
+            echo "THUMB_BEGIN"
+            base64 -w0 "/tmp/$(basename "$f").jpg" || true
+            echo
+            echo "THUMB_END"
+          done
