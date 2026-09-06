@@ -34,7 +34,7 @@ content.appendChild(cards);
 }else{var root=source(key);if(root)content.appendChild(root.cloneNode(true));}
 screen.hidden=false;cluster.classList.add('ic-screen-open');resetButtons(key);content.scrollTop=0;
 title.focus({preventScroll:true});
-if(scroll&&window.matchMedia('(max-width:760px)').matches)screen.scrollIntoView({behavior:motion.matches?'auto':'smooth',block:'nearest'});
+if(scroll&&window.matchMedia('(max-width:900px)').matches)screen.scrollIntoView({behavior:motion.matches?'auto':'smooth',block:'nearest'});
 return true;
 }
 function close(restore){

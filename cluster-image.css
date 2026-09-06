@@ -9,7 +9,7 @@
 [hidden]{display:none!important}
 .ic-skip{position:fixed;top:-80px;left:20px;z-index:99;padding:12px;background:#061726}
 .ic-skip:focus{top:12px}
-.ic-cluster{position:relative;isolation:isolate;width:100%;max-width:1920px;margin:auto;aspect-ratio:4/3;min-height:900px;background:#020915;overflow:hidden;border:1px solid #194356}
+.ic-cluster{position:relative;isolation:isolate;width:100%;max-width:1920px;margin:auto;aspect-ratio:4/3;min-height:0;background:#020915;overflow:hidden;border:1px solid #194356}
 .ic-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:-2}
 .ic-glow{position:absolute;inset:25% 27% 18%;z-index:-1;pointer-events:none;box-shadow:inset 0 0 75px #26bfe21a;border-radius:48%;animation:ic-breathe 6s ease-in-out infinite}
 .ic-nav{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 28px;background:#030a15f5;border-bottom:1px solid #24546b;min-height:80px}
@@ -73,10 +73,10 @@
 @media(min-width:1600px){.ic-modules button{min-height:76px}.ic-modules strong{font-size:16px}.ic-modules small{font-size:13px}}
 @media(max-width:1100px){
 .ic-nav{padding:14px 18px;gap:12px}.ic-nav nav{gap:14px}.ic-brand>span{font-size:11px}.ic-nav nav a{font-size:13px}
-.ic-cluster{min-height:920px}.ic-intro{top:10%;width:60%}.ic-modules{top:10%;width:26%;right:1%}
+.ic-cluster{min-height:0}.ic-intro{top:10%;width:60%}.ic-modules{top:10%;width:26%;right:1%}
 .ic-modules button{min-height:66px}.ic-credentials{width:28%;padding:16px}.ic-screen{left:5%;right:29%;top:34%;bottom:9%}
 }
-@media(max-width:760px){
+@media(max-width:900px){
 .ic-cluster{display:flex;flex-direction:column;aspect-ratio:auto;min-height:0;overflow:hidden}
 .ic-art{position:relative;order:2;aspect-ratio:4/3;height:auto;object-fit:contain;width:100%;z-index:0}
 .ic-glow{display:none}.ic-nav{order:0;flex-wrap:wrap;gap:12px;padding:12px 16px;min-height:0}
@@ -100,7 +100,7 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 /* Keep the approved artwork title visible; expose its text to assistive technology. */
-@media(min-width:761px){
+@media(min-width:901px){
 .ic-intro h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .ic-intro{top:18%;width:25%;padding:12px;background:#030b16f5}
 .ic-intro .ic-eyebrow{font-size:11px;letter-spacing:.07em}
