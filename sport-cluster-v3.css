@@ -11,10 +11,10 @@ body.sport-system-home #cluster .spf-command-deck{
   position:relative!important;
   display:grid!important;
   grid-template-columns:clamp(220px,18vw,290px) minmax(0,1fr) clamp(292px,22vw,360px)!important;
-  grid-template-rows:minmax(610px,72vh)!important;
+  grid-template-rows:minmax(680px,auto)!important;
   gap:14px!important;
   min-height:640px!important;
-  max-height:900px!important;
+  max-height:none!important;
   padding:14px!important;
   overflow:hidden!important;
   isolation:isolate!important;
@@ -61,7 +61,7 @@ body.sport-system-home #cluster .spf-intro .spf-eyebrow{
   display:block!important;
   margin:0 0 14px!important;
   color:var(--v3-cyan)!important;
-  font-size:.43rem!important;
+  font-size:.875rem!important;
   letter-spacing:.14em!important;
 }
 body.sport-system-home #cluster .spf-intro h1{
@@ -70,7 +70,7 @@ body.sport-system-home #cluster .spf-intro h1{
   margin:0!important;
   color:#f4fffd!important;
   font-size:clamp(2.15rem,3.15vw,3.65rem)!important;
-  line-height:.82!important;
+  line-height:1.02!important;
   letter-spacing:-.04em!important;
   text-align:left!important;
   text-shadow:0 14px 38px rgba(0,0,0,.55)!important;
@@ -112,11 +112,11 @@ body.sport-system-home #cluster .spf-approved-profile img{
   border:1px solid rgba(82,255,224,.42)!important;
   background:#061012!important;
 }
-body.sport-system-home #cluster .spf-approved-profile small{display:block!important;color:var(--v3-cyan)!important;font:700 .34rem var(--spf-mono)!important;letter-spacing:.1em!important}
+body.sport-system-home #cluster .spf-approved-profile small{display:block!important;color:var(--v3-cyan)!important;font:700 .75rem var(--spf-mono)!important;letter-spacing:.1em!important}
 body.sport-system-home #cluster .spf-approved-profile h3{margin:4px 0!important;color:#effffc!important;font:900 clamp(.70rem,.86vw,.92rem)/.98 var(--spf-display)!important;letter-spacing:.015em!important}
-body.sport-system-home #cluster .spf-approved-profile p{margin:0!important;color:#8eb7b3!important;font-size:.43rem!important;line-height:1.4!important}
+body.sport-system-home #cluster .spf-approved-profile p{margin:0!important;color:#8eb7b3!important;font-size:.875rem!important;line-height:1.4!important}
 body.sport-system-home #cluster .spf-approved-profile-actions{display:flex!important;gap:6px!important;margin-top:7px!important}
-body.sport-system-home #cluster .spf-approved-profile-actions button{min-height:26px!important;padding:0 8px!important;border:1px solid rgba(82,255,224,.28)!important;background:rgba(82,255,224,.035)!important;color:#bffaf1!important;cursor:pointer!important;font:700 .32rem var(--spf-mono)!important;letter-spacing:.07em!important}
+body.sport-system-home #cluster .spf-approved-profile-actions button{min-height:26px!important;padding:0 8px!important;border:1px solid rgba(82,255,224,.28)!important;background:rgba(82,255,224,.035)!important;color:#bffaf1!important;cursor:pointer!important;font:700 .75rem var(--spf-mono)!important;letter-spacing:.07em!important}
 body.sport-system-home #cluster .spf-approved-profile-actions button:first-child{color:var(--v3-cyan)!important;border-color:rgba(82,255,224,.50)!important}
 
 /* CENTER: the MP4 is the cluster */
@@ -184,23 +184,23 @@ body.sport-system-home #cluster.spf-motion-ready .spf-stage-video{opacity:1!impo
 body.sport-system-home #cluster.spf-motion-reacting .spf-stage-video{filter:saturate(1.18) contrast(1.07) brightness(.98)!important}
 body.sport-system-home #cluster .spf-video-scan{z-index:4!important;opacity:.25!important;pointer-events:none!important}
 body.sport-system-home #cluster .spf-video-corners{z-index:5!important;inset:14px!important;opacity:.52!important;pointer-events:none!important}
-body.sport-system-home #cluster .spf-live{z-index:8!important;left:16px!important;top:14px!important;font-size:.38rem!important}
-body.sport-system-home #cluster .spf-core-id{z-index:8!important;right:16px!important;bottom:14px!important;font-size:.35rem!important}
+body.sport-system-home #cluster .spf-live{z-index:8!important;left:16px!important;top:14px!important;font-size:.875rem!important}
+body.sport-system-home #cluster .spf-core-id{z-index:8!important;right:16px!important;bottom:14px!important;font-size:.875rem!important}
 
 body.sport-system-home #cluster .spf-motion-hud{position:absolute;inset:0;z-index:7;pointer-events:none}
 body.sport-system-home #cluster .spf-motion-pulse{position:absolute;left:20%;top:70%;width:40px;height:40px;transform:translate(-50%,-50%);border:1px solid rgba(82,255,224,.72);border-radius:50%;box-shadow:0 0 0 7px rgba(82,255,224,.045),0 0 22px rgba(82,255,224,.24);transition:left .36s ease,top .36s ease}
 body.sport-system-home #cluster .spf-motion-pulse:before{content:"";position:absolute;inset:7px;border:1px solid rgba(82,255,224,.38);border-radius:50%}
 body.sport-system-home #cluster.spf-motion-reacting .spf-motion-pulse{animation:spfV3Pulse .58s ease-out}
 @keyframes spfV3Pulse{0%{box-shadow:0 0 0 0 rgba(82,255,224,.4),0 0 12px rgba(82,255,224,.2)}100%{box-shadow:0 0 0 24px rgba(82,255,224,0),0 0 28px rgba(82,255,224,.28)}}
-body.sport-system-home #cluster .spf-motion-label{position:absolute;left:16px;bottom:56px;max-width:58%;padding:7px 9px;border-left:2px solid var(--v3-cyan);background:rgba(2,13,16,.58);color:#c8fff6;font:700 .38rem var(--spf-mono);letter-spacing:.09em;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-body.sport-system-home #cluster .spf-motion-index{position:absolute;right:16px;top:14px;color:var(--v3-cyan);font:700 .34rem var(--spf-mono);letter-spacing:.11em}
+body.sport-system-home #cluster .spf-motion-label{position:absolute;left:16px;bottom:56px;max-width:58%;padding:7px 9px;border-left:2px solid var(--v3-cyan);background:rgba(2,13,16,.58);color:#c8fff6;font:700 .75rem var(--spf-mono);letter-spacing:.09em;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+body.sport-system-home #cluster .spf-motion-index{position:absolute;right:16px;top:14px;color:var(--v3-cyan);font:700 .75rem var(--spf-mono);letter-spacing:.11em}
 
 body.sport-system-home #cluster .spf-v3-hotspots{position:absolute;left:50%;bottom:17px;z-index:10;display:flex;gap:7px;transform:translateX(-50%);pointer-events:auto}
-body.sport-system-home #cluster .spf-v3-hotspots button{width:29px;height:29px;border:1px solid rgba(82,255,224,.26);border-radius:50%;background:rgba(2,13,16,.70);color:#8cc9c1;font:700 .30rem var(--spf-mono);cursor:pointer;backdrop-filter:blur(6px)}
+body.sport-system-home #cluster .spf-v3-hotspots button{width:29px;height:29px;border:1px solid rgba(82,255,224,.26);border-radius:50%;background:rgba(2,13,16,.70);color:#8cc9c1;font:700 .75rem var(--spf-mono);cursor:pointer;backdrop-filter:blur(6px)}
 body.sport-system-home #cluster .spf-v3-hotspots button.active{border-color:var(--v3-cyan);color:var(--v3-cyan);box-shadow:0 0 18px rgba(82,255,224,.16)}
 
 body.sport-system-home #cluster .spf-video-controls{position:absolute!important;z-index:10!important;left:16px!important;bottom:16px!important;width:auto!important;max-width:none!important;margin:0!important;transform:none!important;gap:6px!important}
-body.sport-system-home #cluster .spf-video-controls button{min-height:30px!important;padding:0 9px!important;background:rgba(2,13,16,.72)!important;border-color:rgba(82,255,224,.22)!important;font-size:.34rem!important;backdrop-filter:blur(7px)!important}
+body.sport-system-home #cluster .spf-video-controls button{min-height:30px!important;padding:0 9px!important;background:rgba(2,13,16,.72)!important;border-color:rgba(82,255,224,.22)!important;font-size:.875rem!important;backdrop-filter:blur(7px)!important}
 body.sport-system-home #cluster .spf-video-controls button[data-spf-video-open]{display:none!important}
 
 /* RIGHT: modules are outside the visual canvas */
@@ -225,24 +225,24 @@ body.sport-system-home #cluster .spf-module-console{
   -webkit-backdrop-filter:blur(9px)!important;
 }
 body.sport-system-home #cluster .spf-console-label{padding-bottom:8px!important}
-body.sport-system-home #cluster .spf-console-label span{font-size:.48rem!important}
-body.sport-system-home #cluster .spf-console-label small{font-size:.35rem!important}
-body.sport-system-home #cluster .spf-node-grid{grid-template-columns:1fr 1fr!important;gap:6px!important;margin-top:8px!important}
+body.sport-system-home #cluster .spf-console-label span{font-size:.875rem!important}
+body.sport-system-home #cluster .spf-console-label small{font-size:.875rem!important}
+body.sport-system-home #cluster .spf-node-grid{grid-template-columns:1fr!important;gap:6px!important;margin-top:8px!important}
 body.sport-system-home #cluster .spf-node-grid button{min-height:55px!important;padding:8px 7px 7px 36px!important;grid-template-columns:23px 1fr!important;gap:1px 5px!important;background:rgba(3,17,22,.76)!important}
 body.sport-system-home #cluster .spf-node-grid button.active{background:linear-gradient(135deg,rgba(11,49,49,.94),rgba(4,24,27,.88))!important;box-shadow:inset 2px 0 var(--v3-cyan),0 0 18px rgba(82,255,224,.05)!important}
-body.sport-system-home #cluster .spf-node-grid button>span{left:7px!important;top:7px!important;font-size:.34rem!important}
-body.sport-system-home #cluster .spf-node-grid button i{width:21px!important;height:21px!important;font-size:.31rem!important}
-body.sport-system-home #cluster .spf-node-grid button strong{font-size:.45rem!important}
-body.sport-system-home #cluster .spf-node-grid button small{font-size:.34rem!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+body.sport-system-home #cluster .spf-node-grid button>span{left:7px!important;top:7px!important;font-size:.875rem!important}
+body.sport-system-home #cluster .spf-node-grid button i{width:21px!important;height:21px!important;font-size:.875rem!important}
+body.sport-system-home #cluster .spf-node-grid button strong{font-size:.875rem!important}
+body.sport-system-home #cluster .spf-node-grid button small{font-size:.875rem!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
 body.sport-system-home #cluster .spf-focus{margin-top:8px!important;padding:10px!important;grid-template-columns:38px 1fr!important;gap:8px!important;background:rgba(3,18,22,.80)!important}
 body.sport-system-home #cluster .spf-focus-number{font-size:1.4rem!important}
-body.sport-system-home #cluster .spf-focus small{font-size:.32rem!important}
-body.sport-system-home #cluster .spf-focus h2{font-size:.66rem!important;margin:2px 0 3px!important}
-body.sport-system-home #cluster .spf-focus p{font-size:.40rem!important;line-height:1.42!important;margin:0!important}
-body.sport-system-home #cluster .spf-open-module{min-height:28px!important;padding:0 8px!important;font-size:.34rem!important;margin-top:6px!important}
+body.sport-system-home #cluster .spf-focus small{font-size:.875rem!important}
+body.sport-system-home #cluster .spf-focus h2{font-size:1rem!important;margin:2px 0 3px!important}
+body.sport-system-home #cluster .spf-focus p{font-size:.875rem!important;line-height:1.42!important;margin:0!important}
+body.sport-system-home #cluster .spf-open-module{min-height:28px!important;padding:0 8px!important;font-size:.875rem!important;margin-top:6px!important}
 
 @media(max-width:1180px) and (min-width:901px){
-  body.sport-system-home #cluster .spf-command-deck{grid-template-columns:190px minmax(0,1fr) 270px!important;grid-template-rows:minmax(520px,66vh)!important;min-height:548px!important;gap:10px!important;padding:10px!important}
+  body.sport-system-home #cluster .spf-command-deck{grid-template-columns:190px minmax(0,1fr) 270px!important;grid-template-rows:minmax(680px,auto)!important;min-height:548px!important;gap:10px!important;padding:10px!important}
   body.sport-system-home #cluster .spf-intro{padding:18px 7px 0!important}
   body.sport-system-home #cluster .spf-intro h1{font-size:clamp(1.8rem,3vw,2.65rem)!important}
   body.sport-system-home #cluster .spf-approved-profile{grid-template-columns:52px minmax(0,1fr)!important;padding:8px!important}
@@ -265,7 +265,7 @@ body.sport-system-home #cluster .spf-open-module{min-height:28px!important;paddi
 
 @media(max-width:560px){
   body.sport-system-home #cluster .spf-intro h1{font-size:clamp(1.75rem,11vw,2.65rem)!important}
-  body.sport-system-home #cluster .spf-node-grid{grid-template-columns:1fr 1fr!important}
+  body.sport-system-home #cluster .spf-node-grid{grid-template-columns:1fr!important}
   body.sport-system-home #cluster .spf-stage-video{object-fit:cover!important;object-position:center!important}
   body.sport-system-home #cluster .spf-motion-label{display:none!important}
   body.sport-system-home #cluster .spf-core-id{display:none!important}
