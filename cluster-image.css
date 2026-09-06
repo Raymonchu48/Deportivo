@@ -106,3 +106,54 @@
 .ic-intro .ic-eyebrow{font-size:11px;letter-spacing:.07em}
 .ic-intro>p:not(.ic-eyebrow){font-size:clamp(14px,1.2vw,19px)}
 }
+
+/* Transparent HUD panels integrated with the approved artwork. */
+.ic-intro{
+  background:rgba(3,15,27,.12);
+  border:1px solid rgba(112,218,250,.34);
+  border-left-color:rgba(143,234,255,.8);
+  box-shadow:inset 0 0 20px rgba(59,196,243,.04),0 0 12px rgba(68,194,237,.08);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  text-shadow:0 1px 4px #000,0 0 10px #020915;
+}
+.ic-modules{
+  background:transparent;
+  border-color:transparent;
+  box-shadow:none;
+}
+.ic-modules .ic-eyebrow{
+  color:#b0f1ff;
+  text-shadow:0 1px 4px #000,0 0 9px #04111d;
+}
+.ic-modules button,.ic-action{
+  background:linear-gradient(115deg,rgba(17,69,91,.18),rgba(3,18,31,.08));
+  border:1px solid rgba(116,221,255,.65);
+  border-left:2px solid #83e7ff;
+  box-shadow:inset 0 0 14px rgba(58,195,242,.06),0 0 9px rgba(71,202,249,.17);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  text-shadow:0 1px 4px #000,0 0 8px #020915;
+  transition:background .2s,border-color .2s,box-shadow .2s,transform .2s;
+}
+.ic-modules strong{color:#f0fcff}
+.ic-modules small{color:#d0e8f3}
+.ic-modules button>span:last-child,.ic-action>span{
+  color:#9eecff;
+  font-size:22px;
+  line-height:1;
+  text-shadow:0 0 9px #63dfff;
+  transition:transform .2s,text-shadow .2s;
+}
+.ic-modules button:hover,.ic-modules button:focus-visible,
+.ic-modules button[aria-expanded="true"],.ic-action:hover,.ic-action:focus-visible{
+  background:linear-gradient(115deg,rgba(32,128,161,.3),rgba(6,35,52,.18));
+  border-color:#c0f5ff;
+  box-shadow:inset 0 0 20px rgba(64,201,245,.13),0 0 18px rgba(76,212,255,.4);
+}
+.ic-modules button:hover>span:last-child,.ic-modules button:focus-visible>span:last-child,
+.ic-modules button[aria-expanded="true"]>span:last-child,.ic-action:hover>span,.ic-action:focus-visible>span{
+  transform:translateX(3px);
+  text-shadow:0 0 12px #a0f0ff;
+}
+.ic-modules button:active,.ic-action:active{transform:scale(.98)}
