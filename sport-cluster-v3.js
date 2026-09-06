@@ -5,17 +5,17 @@
   if(!cluster)return;
 
   var reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MOTION_PARTS=Array.from({length:9},function(_,i){
-    return 'cluster-motion/part-'+String(i+1).padStart(2,'0')+'.txt?v=3';
+  var MOTION_PARTS=Array.from({length:61},function(_,i){
+    return 'video-1080/part-'+String(i+1).padStart(3,'0')+'.txt?v=1';
   });
 
   var moments={
-    training:{time:.7,x:'18%',y:'67%',label:'ENTRENAMIENTO // MOVIMIENTO'},
-    nutrition:{time:2.2,x:'38%',y:'30%',label:'NUTRICIÓN // ENERGÍA'},
-    mind:{time:3.8,x:'52%',y:'25%',label:'PSICOLOGÍA // FOCO'},
-    recovery:{time:5.4,x:'66%',y:'61%',label:'RECUPERACIÓN // CONTINUIDAD'},
-    adapted:{time:7.0,x:'78%',y:'63%',label:'ADAPTADA // AUTONOMÍA'},
-    management:{time:8.6,x:'50%',y:'75%',label:'GESTIÓN // SISTEMA'}
+    training:{time:1.5,x:'18%',y:'67%',label:'ENTRENAMIENTO // MOVIMIENTO'},
+    nutrition:{time:5.5,x:'38%',y:'30%',label:'NUTRICIÓN // ENERGÍA'},
+    mind:{time:9.5,x:'52%',y:'25%',label:'PSICOLOGÍA // FOCO'},
+    recovery:{time:13.5,x:'66%',y:'61%',label:'RECUPERACIÓN // CONTINUIDAD'},
+    adapted:{time:18,x:'78%',y:'63%',label:'ADAPTADA // AUTONOMÍA'},
+    management:{time:22.5,x:'50%',y:'75%',label:'GESTIÓN // SISTEMA'}
   };
   var order=['training','nutrition','mind','recovery','adapted','management'];
   var objectUrl=null;
@@ -175,7 +175,7 @@
     var status=cluster.querySelector('#spfVideoStatus');
     if(stage)stage.removeAttribute('poster');
     if(modal)modal.removeAttribute('poster');
-    if(status)status.textContent='VIDEO CLUSTER LOADING';
+    if(status)status.textContent='CARGANDO VÍDEO';
     cluster.classList.add('spf-motion-loading');
 
     return Promise.all(MOTION_PARTS.map(fetchText)).then(function(chunks){
@@ -189,7 +189,7 @@
         var done=function(){
           cluster.classList.remove('spf-motion-loading','spf-motion-error');
           cluster.classList.add('spf-motion-ready','spf-stage-video-ready');
-          if(status)status.textContent='VIDEO CLUSTER MULTISPORT ONLINE';
+          if(status)status.textContent='VÍDEO LISTO';
           if(!reducedMotion){
             var p=stage.play();
             if(p&&p.catch)p.catch(function(){});
@@ -199,7 +199,7 @@
         var fail=function(){
           cluster.classList.remove('spf-motion-loading');
           cluster.classList.add('spf-motion-error');
-          if(status)status.textContent='VIDEO CLUSTER ERROR';
+          if(status)status.textContent='VÍDEO NO DISPONIBLE';
           reject(new Error('No se pudo decodificar el vídeo multi-deporte'));
         };
         if(stage.readyState>=2)done();
@@ -212,7 +212,7 @@
       console.warn('Sport Cluster v3:',err);
       cluster.classList.remove('spf-motion-loading');
       cluster.classList.add('spf-motion-error');
-      if(status)status.textContent='VIDEO CLUSTER ERROR';
+      if(status)status.textContent='VÍDEO NO DISPONIBLE';
       throw err;
     });
   }
