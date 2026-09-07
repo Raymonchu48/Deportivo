@@ -57,3 +57,63 @@ motionButton.addEventListener('click',function(){setMotion(motionButton.getAttri
 motion.addEventListener('change',function(e){setMotion(!e.matches);});
 route();
 })();
+
+(function(){
+'use strict';
+var cluster=document.querySelector('.ic-cluster');
+var art=document.querySelector('.ic-art');
+var intro=document.querySelector('.ic-intro');
+if(!cluster||!art)return;
+
+/* Reconstruct the approved final artwork from lightweight text assets. */
+var parts=[];
+for(var i=1;i<=8;i++)parts.push('cluster-final-0'+i+'.txt?v=3');
+Promise.all(parts.map(function(url){return fetch(url,{cache:'force-cache'}).then(function(r){if(!r.ok)throw new Error('asset '+url);return r.text();});}))
+.then(function(chunks){
+  art.src='data:image/webp;base64,'+chunks.join('').replace(/\s+/g,'');
+  art.width=768;
+  art.height=432;
+  art.dataset.finalCluster='true';
+})
+.catch(function(){/* cluster-base.webp remains as fallback */});
+
+/* Use the real uploaded portrait in the lower-left profile card. */
+if(intro&&!intro.querySelector('.ic-profile-photo')){
+  var portrait=document.createElement('img');
+  portrait.className='ic-profile-photo';
+  portrait.src='Mi_imagen.png';
+  portrait.alt='';
+  portrait.loading='eager';
+  portrait.decoding='async';
+  intro.appendChild(portrait);
+}
+
+var style=document.createElement('style');
+style.id='ic-final-layout';
+style.textContent='\
+@media (min-width:901px){\
+.ic-cluster{aspect-ratio:16/9!important;}\
+.ic-art{object-fit:fill!important;}\
+.ic-credentials,.ic-bottom{display:none!important;}\
+.ic-intro{left:4.55%!important;top:auto!important;bottom:6.7%!important;width:22.2%!important;height:28.7%!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;text-shadow:none!important;z-index:3!important;}\
+.ic-intro .ic-eyebrow,.ic-intro h1,.ic-intro>p:not(.ic-eyebrow){position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important;}\
+.ic-profile-photo{position:absolute!important;left:5.2%!important;top:7.5%!important;width:25.5%!important;height:39%!important;object-fit:cover!important;object-position:center 19%!important;display:block!important;z-index:2!important;border:1px solid rgba(120,231,255,.9)!important;clip-path:polygon(10% 0,90% 0,100% 10%,100% 90%,90% 100%,10% 100%,0 90%,0 10%)!important;filter:saturate(.92) contrast(1.03)!important;box-shadow:0 0 12px rgba(73,210,250,.35)!important;}\
+.ic-action{position:absolute!important;left:5.3%!important;bottom:5.8%!important;width:54%!important;height:16%!important;min-height:38px!important;padding:0!important;color:transparent!important;background:transparent!important;border-color:transparent!important;box-shadow:none!important;text-shadow:none!important;z-index:4!important;}\
+.ic-action span{color:transparent!important;text-shadow:none!important;}\
+.ic-action:hover,.ic-action:focus-visible{border-color:#8be6fb!important;box-shadow:0 0 15px rgba(103,221,243,.48)!important;background:rgba(25,132,166,.08)!important;}\
+.ic-modules{top:10.1%!important;right:1.7%!important;width:18.3%!important;max-width:none!important;padding:0!important;}\
+.ic-modules .ic-eyebrow{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;}\
+.ic-modules button{min-height:0!important;height:6.8vh!important;max-height:64px!important;margin:0 0 .45vh!important;padding:4px 8px!important;background:rgba(2,14,25,.12)!important;backdrop-filter:blur(1px)!important;-webkit-backdrop-filter:blur(1px)!important;}\
+.ic-modules strong{font-size:clamp(11px,.9vw,15px)!important;}\
+.ic-modules small{font-size:clamp(9px,.69vw,12px)!important;margin-top:1px!important;}\
+.ic-num{font-size:10px!important;}\
+.ic-nav{min-height:6.4%!important;padding:8px 24px!important;background:rgba(2,9,18,.88)!important;}\
+.ic-screen{top:24%!important;left:29%!important;right:22%!important;bottom:5%!important;}\
+}\
+@media (max-width:900px){\
+.ic-art{aspect-ratio:16/9!important;height:auto!important;object-fit:contain!important;}\
+.ic-profile-photo{display:none!important;}\
+}\
+';
+document.head.appendChild(style);
+})();
