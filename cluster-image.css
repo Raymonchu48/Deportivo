@@ -177,3 +177,24 @@
 @media(max-width:380px){
   .vc-profile{grid-template-columns:80px minmax(0,1fr)}
 }
+
+
+/* Left control rail: modules above the professional profile; duplicated hero heading removed. */
+@media(min-width:901px){
+  .ic-cluster{grid-template-columns:clamp(300px,24vw,390px) minmax(0,1fr)}
+  .vc-canvas{left:clamp(300px,24vw,390px)}
+  .ic-intro{grid-column:1;grid-row:2;position:relative;inset:auto;align-self:end;width:100%;max-width:none;margin:0;padding:12px;z-index:3;background:linear-gradient(90deg,#020b13f5,#020b13d9);pointer-events:auto}
+  .ic-modules{grid-column:1;grid-row:2;position:relative;inset:auto;align-self:start;width:100%;max-width:none;margin:0;padding:14px 12px 0;background:linear-gradient(90deg,#020b13f5,#020b13d9);z-index:3}
+  .ic-modules button{min-height:46px;margin:4px 0 0;padding:6px 10px}
+  .ic-modules .ic-eyebrow{margin-bottom:8px}
+  .vc-profile{width:100%}
+  .ic-screen{left:calc(clamp(300px,24vw,390px) + 18px);right:22px}
+  #vc-stages{grid-template-columns:clamp(300px,24vw,390px) repeat(5,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .ic-modules{order:1}
+  .ic-intro{order:2;pointer-events:auto}
+  .vc-canvas{order:3}
+  .vc-console{order:4}
+  .ic-screen{order:5}
+}
