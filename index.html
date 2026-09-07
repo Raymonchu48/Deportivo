@@ -535,7 +535,7 @@
       .hero-wrap { padding: 14px; border-radius: 22px; }
       .hero-card { border-radius: 12px; }
       .left-gif-banner { min-height: 420px; }
-      .left-gif-banner img { min-height: 500px;height: calc(100% + 80px; transform: translateY(-45px) scale(1.02); object-fit: cover;object-position: center top;}
+      .left-gif-banner img { min-height: 500px;height: calc(100% + 80px); transform: translateY(-45px) scale(1.02); object-fit: cover;object-position: center top;}
       .left-gif-overlay { left: 22px; right: 22px; bottom: 26px; }
       .left-gif-overlay h2 { font-size: 1.25rem; }
       .left-gif-overlay p { font-size: .86rem; }
@@ -572,16 +572,15 @@
     }
   </style>
 
-<link rel="preload" as="image" href="cluster-base.webp">
-<link rel="stylesheet" href="cluster-image.css?v=2">
-<script src="cluster-image.js?v=1" defer></script>
+<link rel="preload" as="image" href="cluster-poster.webp">
+<link rel="stylesheet" href="cluster-image.css?v=video-1">
+<script src="cluster-image.js?v=video-1" defer></script>
 </head>
 <body class="image-portfolio">
 <a class="ic-skip" href="#ic-modules">Ir a los módulos</a>
 <main id="inicio">
 <section class="ic-cluster" aria-label="Portfolio deportivo interactivo">
-<img class="ic-art" src="cluster-base.webp" width="1824" height="1368" fetchpriority="high" alt="Escenario deportivo con entrenador central, atletas, actividad adaptada y paneles luminosos">
-<div class="ic-glow" aria-hidden="true"></div>
+<div class="vc-canvas"><video id="vc-video" playsinline muted loop preload="metadata" poster="cluster-poster.webp" aria-label="Clúster deportivo: valoración, equipo, adaptación y seguimiento"><source src="cluster-main.mp4" type="video/mp4"></video><button id="vc-hotspot" type="button" data-open="training">Explorar entrenamiento ↗</button></div>
 <header class="ic-nav">
 <a href="#inicio" class="ic-brand" aria-label="Volver al inicio"><b>RC</b><span>SPORT PERFORMANCE<br><small>RAMÓN A. CURBALÁN VEGA</small></span></a>
 <nav aria-label="Navegación principal">
@@ -592,12 +591,7 @@
 </nav>
 <a class="ic-contact" href="#contacto" data-open="contacto">Hablemos <span aria-hidden="true">↗</span></a>
 </header>
-<div class="ic-intro">
-<p class="ic-eyebrow">SALUD · RENDIMIENTO · GESTIÓN</p>
-<h1>PORTFOLIO PROFESIONAL<br><em>DE DEPORTE</em></h1>
-<p>Entrenamiento, nutrición y mentalidad.<br>Un enfoque integral, con método.</p>
-<a href="#sobre-mi" class="ic-action" data-open="sobre-mi">Conoce mi perfil <span aria-hidden="true">→</span></a>
-</div>
+<div class="ic-intro"><p class="ic-eyebrow">RAMÓN A. CURBALÁN VEGA</p><h1>SPORT PERFORMANCE</h1><p id="vc-stage-label">01 · Visión integral</p></div>
 <nav id="ic-modules" class="ic-modules" aria-label="Áreas profesionales">
 <p class="ic-eyebrow">EXPLORA LOS MÓDULOS</p>
 <button type="button" data-open="sobre-mi" aria-controls="ic-screen" aria-expanded="false"><span class="ic-num">00</span><span><strong>Sobre mí</strong><small>Perfil profesional</small></span><span aria-hidden="true">›</span></button>
@@ -608,22 +602,14 @@
 <button type="button" data-open="adapted" aria-controls="ic-screen" aria-expanded="false"><span class="ic-num">05</span><span><strong>Deporte adaptado</strong><small>Capacidad y autonomía</small></span><span aria-hidden="true">›</span></button>
 <button type="button" data-open="management" aria-controls="ic-screen" aria-expanded="false"><span class="ic-num">06</span><span><strong>Gestión deportiva</strong><small>Equipos y servicios</small></span><span aria-hidden="true">›</span></button>
 </nav>
-<div class="ic-credentials">
-<p class="ic-eyebrow">FORMACIÓN ACREDITADA</p>
-<strong>Preparación técnica.<br>Visión integral.</strong>
-<div><span><b>1.000 h</b>Alimentación y nutrición</span><span><b>Nivel 3</b>Sala polivalente</span></div>
-<a href="#formacion" data-open="formacion">Ver formación <span aria-hidden="true">↗</span></a>
-</div>
-<div class="ic-bottom">
-<span>RAMÓN ALBERTO CURBALÁN VEGA</span>
-<div><a href="CV_Deporte.pdf" target="_blank" rel="noopener">Descargar CV ↗</a><button type="button" id="ic-motion" aria-pressed="true">Animación activada</button></div>
-</div>
+<div class="vc-console"><nav id="vc-stages" aria-label="Etapas del vídeo"></nav><div class="vc-controls"><button type="button" id="ic-motion" aria-pressed="false">Reproducir vídeo</button><button type="button" id="vc-prev" aria-label="Etapa anterior">←</button><label class="vc-scrub">Vídeo <input id="vc-progress" type="range" min="0" max="10" step="0.05" value="0" aria-label="Posición del vídeo"></label><span id="vc-time">0:00 / 0:10</span><button type="button" id="vc-next" aria-label="Etapa siguiente">→</button><button type="button" id="vc-full">Ampliar</button></div><p id="vc-status" role="status">Cargando vídeo…</p></div>
 <section id="ic-screen" class="ic-screen" aria-labelledby="ic-screen-title" hidden>
 <header><div><p class="ic-eyebrow">PERFIL / ÁREAS PROFESIONALES</p><h2 id="ic-screen-title" tabindex="-1"></h2></div><button type="button" id="ic-close" aria-label="Cerrar pantalla y volver al cluster">Cerrar ×</button></header>
 <div id="ic-content"></div>
 </section>
+<footer class="ic-footer"><a href="CV_Deporte.pdf" target="_blank" rel="noopener">Descargar CV ↗</a><a href="Cartas_Recomendacion.pdf" target="_blank" rel="noopener">Cartas de recomendación ↗</a><a href="#contacto" data-open="contacto">Contacto</a></footer>
 </section>
-<footer class="ic-footer"><span>© 2026 Ramón Alberto Curbalán Vega</span><a href="Cartas_Recomendacion.pdf" target="_blank" rel="noopener">Cartas de recomendación ↗</a><a href="#contacto" data-open="contacto">Contacto</a></footer>
+
 <noscript><p>Activa JavaScript para abrir los módulos. Puedes consultar el <a href="CV_Deporte.pdf">currículum en PDF</a>.</p></noscript>
 <template id="source-sobre-mi"><section id="sobre-mi" class="section">
       <div class="section-heading">
