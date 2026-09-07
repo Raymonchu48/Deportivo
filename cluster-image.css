@@ -147,3 +147,33 @@
 .vc-profile>div>p:last-child{font-size:14px;line-height:1.5;color:#c4e3ef;margin:0}
 @media(max-width:900px){.ic-intro{width:100%;margin:0;padding:16px;gap:16px;background:#04121b}.vc-heading{padding:0;background:none}.vc-profile{width:100%;max-width:460px}.vc-profile h2{font-size:20px}}
 @media(max-width:380px){.vc-profile{gap:12px;padding:12px}.vc-profile img{width:80px;height:104px;flex-basis:80px}.vc-profile h2{font-size:18px}}
+
+
+/* Profile actions integrated into the identity card; stages 02–06 align with the video field. */
+.vc-profile{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:14px 16px;padding:14px}
+.vc-profile-copy{min-width:0}
+.vc-profile-actions{grid-column:1/-1;display:grid;grid-template-columns:1fr;gap:7px;padding-top:12px;border-top:1px solid #28556a}
+.vc-profile-actions a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:40px;padding:8px 11px;color:#dff9ff;text-decoration:none;border:1px solid #3d849c;background:#06202dc9;font-size:12px;font-weight:700;line-height:1.25;transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}
+.vc-profile-actions a:hover,.vc-profile-actions a:focus-visible{color:#fff;background:#12536b;border-color:#9defff;box-shadow:0 0 18px #4de4ff4d;transform:translateX(2px)}
+.vc-profile-actions span{color:var(--ic-cyan);font-size:14px}
+.ic-footer{display:none}
+@media(min-width:901px){
+  .vc-canvas{left:clamp(300px,24vw,390px)}
+  .ic-intro{width:clamp(300px,24vw,390px)}
+  #vc-stages{display:grid;grid-template-columns:clamp(300px,24vw,390px) repeat(5,minmax(0,1fr));gap:8px}
+  #vc-stages button{min-width:0}
+}
+@media(max-width:900px){
+  .vc-profile{max-width:520px}
+  .vc-profile-actions{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .vc-profile-actions a{justify-content:center;text-align:center}
+  .vc-profile-actions a span{display:none}
+}
+@media(max-width:600px){
+  .vc-profile-actions{grid-template-columns:1fr}
+  .vc-profile-actions a{justify-content:space-between;text-align:left}
+  .vc-profile-actions a span{display:inline}
+}
+@media(max-width:380px){
+  .vc-profile{grid-template-columns:80px minmax(0,1fr)}
+}
