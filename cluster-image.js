@@ -76,7 +76,7 @@ function sync(){
  var t=video.currentTime||0,i=0;stages.forEach(function(s,n){if(t>=s.start)i=n;});
  progress.value=t;document.getElementById('vc-time').textContent='0:'+String(Math.floor(t)).padStart(2,'0')+' / 0:10';
  if(i===current)return;current=i;var s=stages[i];
- document.getElementById('vc-stage-label').textContent=String(i+1).padStart(2,'0')+' · '+s.label;
+ const stageLabel=document.getElementById('vc-stage-label');if(stageLabel)stageLabel.textContent=String(i+1).padStart(2,'0')+' · '+s.label;
  nav.querySelectorAll('button').forEach(function(b,n){b.setAttribute('aria-current',n===i?'step':'false');});
  hotspot.dataset.open=s.route;hotspot.textContent=s.action+' ↗';hotspot.style.left=s.x+'%';hotspot.style.top=s.y+'%';
  document.querySelectorAll('.ic-modules [data-open]').forEach(function(b){b.classList.toggle('is-cued',b.dataset.open===s.route);});
