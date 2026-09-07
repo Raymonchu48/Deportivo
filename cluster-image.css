@@ -68,15 +68,16 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
 @keyframes screen-in{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
 
 @media(orientation:landscape){
+  .ic-stage{left:50%;transform:translateX(-50%)}
   .ic-top-actions{top:11.6%;left:23.2%;right:23.2%;height:17.1%}
   .ic-modules{left:29%;right:29%;bottom:6.4%;height:5.2%}
   .ic-screen{top:30.5%;left:25%;right:25%;bottom:19%}
 }
 
 @media(max-width:900px) and (orientation:portrait){
-  .ic-cluster{height:auto;min-height:0;aspect-ratio:1}
-  .ic-cluster:before{display:none}
-  .ic-stage{width:100%;height:auto;aspect-ratio:1}
+  .ic-cluster{height:100svh;min-height:0;aspect-ratio:auto}
+  .ic-cluster:before{display:block;background-image:url("cluster-console-clean.webp")}
+  .ic-stage{position:absolute;top:50%;left:50%;width:100%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%)}
 }
 @media(max-width:700px){
   .ic-cluster{width:100%;border:0}
@@ -85,8 +86,8 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
   .ic-top-actions span{display:none}
   .ic-top-actions strong{font-size:clamp(7px,2.15vw,11px);text-align:center;width:100%}
   .ic-profile-thumb{width:32%;height:48%}
-  .ic-console-label{top:-55%;padding:0;font-size:6px}
-  .ic-modules{left:15.2%;right:13.4%;bottom:4.7%;height:5.5%;gap:0;padding:0}
+  .ic-console-label{top:-32%;padding:0;font-size:6px}
+  .ic-modules{left:13.8%;right:12.7%;bottom:2.8%;height:10%;gap:0;padding:0}
   .ic-modules button{padding:3px 1px;gap:1px;flex-direction:column}
   .ic-num{font-size:7px}
   .ic-modules strong{font-size:clamp(6px,1.8vw,9px)}
