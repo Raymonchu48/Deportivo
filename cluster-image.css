@@ -16,7 +16,7 @@ body.image-portfolio{margin:0;min-height:100vh;background:radial-gradient(circle
 .ic-stage{position:relative;isolation:isolate;height:100%;aspect-ratio:1672/941;margin:0 auto;overflow:hidden;background:#020914;box-shadow:0 0 80px #000d}
 .ic-art{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;display:block}
 .ic-stage:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#01081230 0,transparent 30%,transparent 77%,#01081226 100%);box-shadow:inset 0 0 55px #03101a80}
-.ic-main-title{position:absolute;z-index:3;top:3.2%;left:23.5%;right:23.5%;height:6.4%;margin:0;display:flex;align-items:center;justify-content:center;gap:.55em;overflow:hidden;background:linear-gradient(90deg,transparent,#071925f2 8%,#071925f2 92%,transparent);color:#eaffff;text-align:center;text-shadow:0 0 12px #52deef8c;font:700 clamp(15px,1.48vw,25px)/1 "Arial Narrow",Arial,sans-serif;letter-spacing:.075em;white-space:nowrap}
+.ic-main-title{position:absolute;z-index:3;top:3.2%;left:22.8%;right:22.8%;height:6.4%;margin:0;display:flex;align-items:center;justify-content:center;gap:.55em;overflow:hidden;background:#071925fa;box-shadow:0 0 18px 10px #071925e8;backdrop-filter:blur(12px);color:#eaffff;text-align:center;text-shadow:0 0 12px #52deef8c;font:700 clamp(15px,1.48vw,25px)/1 "Arial Narrow",Arial,sans-serif;letter-spacing:.075em;white-space:nowrap}
 .ic-main-title span{color:#7ceeff}.ic-main-title b{color:#efffff;font:inherit}
 
 .ic-top-actions{position:absolute;z-index:3;top:12.7%;left:4.3%;right:4.2%;height:16.9%;display:grid;grid-template-columns:1.15fr 1.35fr .76fr .76fr 1.05fr;gap:0;perspective:900px}
@@ -81,7 +81,7 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
   .ic-cluster{height:100svh;min-height:0;aspect-ratio:auto}
   .ic-cluster:before{display:block;background-image:url("cluster-console-modules-square.webp")}
   .ic-stage{position:absolute;top:50%;left:50%;width:100%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%)}
-  .ic-main-title{top:3.2%;left:4%;right:4%;height:6.2%;gap:.45em;font-size:clamp(10px,2.75vw,20px);letter-spacing:.045em}
+  .ic-main-title{top:3.2%;left:2.5%;right:2.5%;height:6.2%;gap:.45em;font-size:clamp(10px,2.75vw,20px);letter-spacing:.045em;box-shadow:0 0 15px 8px #071925ed}
 }
 @media(max-width:700px){
   .ic-cluster{width:100%;border:0}
