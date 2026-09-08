@@ -16,8 +16,8 @@ body.image-portfolio{margin:0;min-height:100vh;background:radial-gradient(circle
 .ic-stage{position:relative;isolation:isolate;height:100%;aspect-ratio:1672/941;margin:0 auto;overflow:hidden;background:#020914;box-shadow:0 0 80px #000d}
 .ic-art{position:absolute;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;display:block}
 .ic-stage:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#01081230 0,transparent 30%,transparent 77%,#01081226 100%);box-shadow:inset 0 0 55px #03101a80}
-.ic-motion-video{position:absolute;z-index:-2;top:5%;left:14%;width:72%;height:88%;object-fit:fill;pointer-events:none;opacity:0;mix-blend-mode:screen;filter:saturate(1.55) contrast(1.08) brightness(.92) hue-rotate(-3deg);clip-path:inset(10% 0 8% 0 round 5%);mask-image:radial-gradient(ellipse 71% 61% at 53% 55%,#000 26%,#000c 57%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 71% 61% at 53% 55%,#000 26%,#000c 57%,transparent 100%);transition:opacity 1.2s ease}
-.ic-motion-video.is-ready{opacity:.2}
+.ic-motion-video{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0;transition:opacity .65s ease}
+.ic-motion-video.is-ready{opacity:1}
 .ic-motion-fx{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .ic-motion-fx:before{content:"";position:absolute;left:22%;right:21%;top:18%;height:12%;background:linear-gradient(180deg,transparent,#7df5ff0a 38%,#9cf8ff6b 50%,#6defff0b 62%,transparent);mix-blend-mode:screen;filter:blur(.4px);animation:ic-scan 6.5s linear infinite}
 .ic-motion-fx:after{content:"";position:absolute;inset:12% 17% 16%;background:radial-gradient(circle at 23% 52%,#94fbff 0 1px,transparent 2px),radial-gradient(circle at 48% 67%,#6ef5ff 0 1px,transparent 2px),radial-gradient(circle at 68% 39%,#b0ffff 0 1px,transparent 2px),radial-gradient(circle at 81% 61%,#6feaff 0 1px,transparent 2px);background-size:53px 61px,71px 83px,89px 77px,97px 91px;opacity:.2;mix-blend-mode:screen;animation:ic-particles 8s ease-in-out infinite alternate}
@@ -95,7 +95,7 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
   .ic-cluster{height:100svh;min-height:0;aspect-ratio:auto}
   .ic-cluster:before{display:block;background-image:url("cluster-performance-lab-square.webp")}
   .ic-stage{position:absolute;top:50%;left:50%;width:100%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%)}
-  .ic-motion-video{top:16%;left:16%;width:84%;height:68%;clip-path:inset(8% 0 7% 0);mask-image:radial-gradient(ellipse 68% 62% at 55% 54%,#000 22%,#000b 58%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 68% 62% at 55% 54%,#000 22%,#000b 58%,transparent 100%)}
+  .ic-motion-video{object-fit:cover}
   .ic-ring-pulse{left:39.2%;top:75.6%;width:24%;height:9%}
   .ic-data-stream{left:8%;right:8%;bottom:9.8%}
   .ic-main-title{top:3.2%;left:2.5%;right:2.5%;height:6.2%;gap:.45em;font-size:clamp(10px,2.75vw,20px);letter-spacing:.045em;box-shadow:0 0 15px 8px #071925ed}
