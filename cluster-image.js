@@ -7,6 +7,7 @@ var title=document.getElementById('ic-screen-title');
 var closeButton=document.getElementById('ic-close');
 var trigger=null;
 var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+var motionVideo=document.querySelector('.ic-motion-video');
 var titles={'sobre-mi':'Sobre mí',metodo:'Mi método de trabajo',formacion:'Formación acreditada',proyectos:'Proyectos',experiencia:'Experiencia',contacto:'Contacto'};
 var modules={
 training:{title:'Entrenamiento',copy:'Planificación, fuerza, técnica, progresión y control de carga dentro de una visión integral.',sources:[['metodo','.method-grid'],['formacion','.cert:nth-child(1),.cert:nth-child(2)']]},
@@ -51,5 +52,15 @@ function route(){var key=location.hash.slice(1);if(!open(key,false))close(false)
 window.addEventListener('popstate',route);
 window.addEventListener('hashchange',route);
 window.icOpen=open;
+if(motionVideo){
+var syncMotion=function(){
+if(motion.matches||document.hidden){motionVideo.pause();return;}
+var play=motionVideo.play();if(play&&typeof play.catch==='function')play.catch(function(){});
+};
+motionVideo.addEventListener('canplay',function(){motionVideo.classList.add('is-ready');syncMotion();},{once:true});
+document.addEventListener('visibilitychange',syncMotion);
+if(typeof motion.addEventListener==='function')motion.addEventListener('change',syncMotion);
+if(motionVideo.readyState>=3){motionVideo.classList.add('is-ready');syncMotion();}
+}
 route();
 })();
