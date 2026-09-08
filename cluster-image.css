@@ -11,7 +11,7 @@ body.image-portfolio{margin:0;min-height:100vh;background:radial-gradient(circle
 .ic-skip:focus{top:12px}
 
 .ic-cluster{position:relative;isolation:isolate;width:100%;height:100svh;margin:0;overflow:hidden;background:#020914}
-.ic-cluster:before{content:"";position:absolute;inset:-32px;z-index:-2;background:url("cluster-console-wide.webp") center/cover no-repeat;filter:blur(24px) brightness(.3) saturate(.72);transform:scale(1.06)}
+.ic-cluster:before{content:"";position:absolute;inset:-32px;z-index:-2;background:url("cluster-console-modules-wide.webp") center/cover no-repeat;filter:blur(24px) brightness(.3) saturate(.72);transform:scale(1.06)}
 .ic-cluster:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#010711bd 0,transparent 26%,transparent 74%,#010711bd 100%),linear-gradient(180deg,#01081250,transparent 25%,transparent 78%,#01081280)}
 .ic-stage{position:relative;isolation:isolate;height:100%;aspect-ratio:1672/941;margin:0 auto;overflow:hidden;background:#020914;box-shadow:0 0 80px #000d}
 .ic-art{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;display:block}
@@ -29,16 +29,17 @@ body.image-portfolio{margin:0;min-height:100vh;background:radial-gradient(circle
 .ic-top-actions strong{position:relative;font-size:clamp(10px,1.15vw,16px);line-height:1.08;overflow-wrap:anywhere;text-shadow:0 1px 5px #001018,0 0 8px #45d9ef40}
 .ic-profile-thumb{position:absolute;top:8%;right:8%;width:29%;height:53%;object-fit:cover;object-position:center top;border:0;opacity:.72;filter:grayscale(1) sepia(.35) hue-rotate(135deg) saturate(1.8) contrast(1.08);mix-blend-mode:screen;mask-image:linear-gradient(#000 55%,transparent);-webkit-mask-image:linear-gradient(#000 55%,transparent)}
 
-.ic-modules{position:absolute;z-index:4;left:15.8%;right:13.9%;bottom:4.9%;height:5.2%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;padding:0;perspective:900px;transform:perspective(700px) rotateX(5deg)}
-.ic-modules:before{content:"";position:absolute;inset:-8% 0 -10%;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#03111a08,#03111a70);border-block:1px solid #6ee7f136;box-shadow:inset 0 0 12px #78efff0d}
-.ic-console-label{position:absolute;left:50%;top:-48%;transform:translateX(-50%);padding:0;color:#a9f7ff;background:transparent;border:0;text-shadow:0 0 9px #63eaff;font:700 clamp(7px,.72vw,10px)/1.2 "SFMono-Regular",Consolas,monospace;letter-spacing:.18em;white-space:nowrap}
-.ic-modules button{position:relative;min-width:0;padding:5px 3px 4px;color:#dffaff;background:transparent;border:0;border-left:1px solid #71dce62e;box-shadow:none;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:5px;transition:background .2s,color .2s,text-shadow .2s,transform .2s}
-.ic-modules button:last-child{border-right:1px solid #71dce62e}
-.ic-modules button:after{content:"";position:absolute;left:50%;bottom:2px;width:32%;height:2px;transform:translateX(-50%);background:#62dfea8c;box-shadow:0 0 6px #67edff;transition:width .2s,background .2s}
-.ic-modules button:hover,.ic-modules button.is-active,.ic-modules button[aria-expanded=true]{background:radial-gradient(ellipse at 50% 100%,#43e9ff42,transparent 72%);color:#fff;text-shadow:0 0 10px #69efff;transform:translateY(-2px)}
-.ic-modules button:hover:after,.ic-modules button.is-active:after,.ic-modules button[aria-expanded=true]:after{width:64%;background:#d8fdff}
-.ic-num{font:700 clamp(7px,.68vw,9px)/1 "SFMono-Regular",Consolas,monospace;color:#7defff}
-.ic-modules strong{font-size:clamp(7px,.8vw,11px);line-height:1.05;text-align:center;overflow-wrap:anywhere}
+.ic-modules{position:absolute;z-index:4;left:16.4%;right:16.8%;bottom:5.9%;height:8.45%;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1.15%;padding:0;perspective:900px;transform:perspective(700px) rotateX(2deg)}
+.ic-modules:before{display:none}
+.ic-console-label{position:absolute;left:50%;top:-24%;transform:translateX(-50%);padding:0;color:#a9f7ff;background:transparent;border:0;text-shadow:0 0 9px #63eaff;font:700 clamp(7px,.72vw,10px)/1.2 "SFMono-Regular",Consolas,monospace;letter-spacing:.18em;white-space:nowrap}
+.ic-modules button{position:relative;min-width:0;padding:11% 3px 7%;color:#dffaff;background:transparent;border:0;box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7%;clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);transition:background .2s,color .2s,text-shadow .2s,filter .2s}
+.ic-modules button:before{content:"";position:absolute;left:25%;right:25%;top:18%;height:1px;background:#71eaf780;box-shadow:0 0 7px #67edff;transition:left .2s,right .2s,background .2s}
+.ic-modules button:after{content:"";position:absolute;left:50%;bottom:9%;width:31%;height:2px;transform:translateX(-50%);background:#62dfea9c;box-shadow:0 0 6px #67edff;transition:width .2s,background .2s}
+.ic-modules button:hover,.ic-modules button.is-active,.ic-modules button[aria-expanded=true]{background:radial-gradient(ellipse at 50% 55%,#43e9ff35,transparent 74%);color:#fff;text-shadow:0 0 10px #69efff;filter:brightness(1.28)}
+.ic-modules button:hover:before,.ic-modules button.is-active:before,.ic-modules button[aria-expanded=true]:before{left:14%;right:14%;background:#d8fdff}
+.ic-modules button:hover:after,.ic-modules button.is-active:after,.ic-modules button[aria-expanded=true]:after{width:58%;background:#d8fdff}
+.ic-num{font:700 clamp(7px,.68vw,10px)/1 "SFMono-Regular",Consolas,monospace;color:#7defff;text-shadow:0 0 7px #49dced}
+.ic-modules strong{font-size:clamp(7px,.76vw,11px);line-height:1.05;text-align:center;overflow-wrap:anywhere}
 
 .ic-screen{position:absolute;z-index:10;top:31.5%;left:10.5%;right:10.5%;bottom:17.2%;display:flex;flex-direction:column;overflow:hidden;background:#03121af2;border:1px solid #79dced;box-shadow:0 0 0 5px #03101db5,0 24px 80px #000d;backdrop-filter:blur(16px);animation:screen-in .24s ease-out}
 .ic-screen>header{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;padding:16px 18px;border-bottom:1px solid #326c7d;background:linear-gradient(90deg,#08293a,#061925)}
@@ -70,13 +71,13 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
 @media(orientation:landscape){
   .ic-stage{left:50%;transform:translateX(-50%)}
   .ic-top-actions{top:11.6%;left:23.2%;right:23.2%;height:17.1%}
-  .ic-modules{left:29%;right:29%;bottom:6.4%;height:5.2%}
+  .ic-modules{left:29.45%;right:29.35%;bottom:7.7%;height:8.7%;gap:1.15%}
   .ic-screen{top:30.5%;left:25%;right:25%;bottom:19%}
 }
 
 @media(max-width:900px) and (orientation:portrait){
   .ic-cluster{height:100svh;min-height:0;aspect-ratio:auto}
-  .ic-cluster:before{display:block;background-image:url("cluster-console-clean.webp")}
+  .ic-cluster:before{display:block;background-image:url("cluster-console-modules-square.webp")}
   .ic-stage{position:absolute;top:50%;left:50%;width:100%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%)}
 }
 @media(max-width:700px){
@@ -86,9 +87,9 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
   .ic-top-actions span{display:none}
   .ic-top-actions strong{font-size:clamp(7px,2.15vw,11px);text-align:center;width:100%}
   .ic-profile-thumb{width:32%;height:48%}
-  .ic-console-label{top:-32%;padding:0;font-size:6px}
-  .ic-modules{left:13.8%;right:12.7%;bottom:2.8%;height:10%;gap:0;padding:0}
-  .ic-modules button{padding:3px 1px;gap:1px;flex-direction:column}
+  .ic-console-label{top:-23%;padding:0;font-size:6px}
+  .ic-modules{left:16.4%;right:16.8%;bottom:5.9%;height:8.45%;gap:1.15%;padding:0}
+  .ic-modules button{padding:10% 1px 7%;gap:5%;flex-direction:column}
   .ic-num{font-size:7px}
   .ic-modules strong{font-size:clamp(6px,1.8vw,9px)}
   .ic-screen{position:fixed;inset:10px;max-height:calc(100svh - 20px);z-index:1000}
@@ -97,5 +98,5 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
   #ic-content{padding:16px}
   #ic-content .executive,#ic-content .feature-grid,#ic-content .method-grid,#ic-content .cert-grid,#ic-content .project-grid,#ic-content .experience-grid{grid-template-columns:1fr}
 }
-@media(max-width:380px){.ic-top-actions strong{font-size:7px}.ic-modules strong{font-size:6px}.ic-console-label{top:-40%}}
+@media(max-width:380px){.ic-top-actions strong{font-size:7px}.ic-modules strong{font-size:6px}.ic-console-label{top:-25%}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
