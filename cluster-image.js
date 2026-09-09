@@ -8,6 +8,14 @@ var closeButton=document.getElementById('ic-close');
 var trigger=null;
 var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
 var motionVideo=document.querySelector('.ic-motion-video');
+var videoResumeAfterScreen=false;
+var cueTimes={training:.2,recovery:2.15,management:3.2,adapted:5.2,mind:7.2,nutrition:9.0};
+function reflectVideoCue(){
+if(!motionVideo||!screen.hidden)return;
+var t=motionVideo.currentTime;var key=t>=9?'nutrition':t>=7?'mind':t>=5?'adapted':t>=3?'management':t>=2?'recovery':'training';
+document.querySelectorAll('.ic-modules button[data-open]').forEach(function(b){var active=b.dataset.open===key;b.classList.toggle('is-active',active);if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+}
+
 var titles={'sobre-mi':'Sobre mí',metodo:'Mi método de trabajo',formacion:'Formación acreditada',proyectos:'Proyectos',experiencia:'Experiencia',contacto:'Contacto'};
 var modules={
 training:{title:'Entrenamiento',copy:'Planificación, fuerza, técnica, progresión y control de carga dentro de una visión integral.',sources:[['metodo','.method-grid'],['formacion','.cert:nth-child(1),.cert:nth-child(2)']]},
@@ -19,7 +27,7 @@ management:{title:'Gestión deportiva',copy:'Organización de recursos, servicio
 };
 function source(id){var t=document.getElementById('source-'+id);return t?t.content:null;}
 function resetButtons(key){
-document.querySelectorAll('[data-open]').forEach(function(b){var active=b.dataset.open===key;b.classList.toggle('is-active',active);if(b.tagName==='BUTTON')b.setAttribute('aria-expanded',String(active));});
+document.querySelectorAll('[data-open]').forEach(function(b){var active=b.dataset.open===key;b.classList.toggle('is-active',active);if(b.tagName==='BUTTON')b.setAttribute('aria-expanded',String(active));if(b.closest('.ic-modules')){if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');}});
 }
 function open(key,scroll){
 if(!modules[key]&&!titles[key])return false;
@@ -32,6 +40,7 @@ var cards=document.createElement('div');cards.className='cert-grid';
 item.sources.forEach(function(spec){var root=source(spec[0]);if(root)root.querySelectorAll(spec[1]).forEach(function(node){cards.appendChild(node.cloneNode(true));});});
 content.appendChild(cards);
 }else{var root=source(key);if(root)content.appendChild(root.cloneNode(true));}
+if(motionVideo){videoResumeAfterScreen=!motion.matches&&!document.hidden;if(cueTimes[key]!==undefined){try{motionVideo.currentTime=cueTimes[key];}catch(e){}}motionVideo.pause();}
 screen.hidden=false;cluster.classList.add('ic-screen-open');resetButtons(key);content.scrollTop=0;
 title.focus({preventScroll:true});
 if(scroll&&window.matchMedia('(max-width:900px)').matches)screen.scrollIntoView({behavior:motion.matches?'auto':'smooth',block:'nearest'});
@@ -39,6 +48,7 @@ return true;
 }
 function close(restore){
 screen.hidden=true;content.replaceChildren();cluster.classList.remove('ic-screen-open');resetButtons('');
+if(motionVideo&&videoResumeAfterScreen&&!motion.matches&&!document.hidden){var resume=motionVideo.play();if(resume&&typeof resume.catch==='function')resume.catch(function(){});}videoResumeAfterScreen=false;reflectVideoCue();
 if(restore&&trigger&&document.contains(trigger))trigger.focus({preventScroll:true});
 }
 document.addEventListener('click',function(e){
@@ -57,7 +67,9 @@ var syncMotion=function(){
 if(motion.matches||document.hidden){motionVideo.pause();return;}
 var play=motionVideo.play();if(play&&typeof play.catch==='function')play.catch(function(){});
 };
-motionVideo.addEventListener('canplay',function(){motionVideo.classList.add('is-ready');syncMotion();},{once:true});
+motionVideo.addEventListener('canplay',function(){motionVideo.classList.add('is-ready');syncMotion();reflectVideoCue();},{once:true});
+motionVideo.addEventListener('timeupdate',reflectVideoCue);
+motionVideo.addEventListener('seeked',reflectVideoCue);
 document.addEventListener('visibilitychange',syncMotion);
 if(typeof motion.addEventListener==='function')motion.addEventListener('change',syncMotion);
 if(motionVideo.readyState>=3){motionVideo.classList.add('is-ready');syncMotion();}
