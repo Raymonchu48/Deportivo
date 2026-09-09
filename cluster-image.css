@@ -13,7 +13,7 @@ body.image-portfolio{margin:0;min-height:100vh;background:radial-gradient(circle
 .ic-cluster{position:relative;isolation:isolate;width:100%;height:100svh;margin:0;overflow:hidden;background:#020914}
 .ic-cluster:before{content:"";position:absolute;inset:-32px;z-index:-2;background:url("cluster-performance-holographic-wide.webp") center/cover no-repeat;filter:blur(24px) brightness(.3) saturate(.72);transform:scale(1.06)}
 .ic-cluster:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#010711bd 0,transparent 26%,transparent 74%,#010711bd 100%),linear-gradient(180deg,#01081250,transparent 25%,transparent 78%,#01081280)}
-.ic-stage{position:relative;isolation:isolate;height:100%;aspect-ratio:1672/941;margin:0 auto;overflow:hidden;background:#020914;box-shadow:0 0 80px #000d}
+.ic-stage{position:relative;isolation:isolate;width:100%;height:100%;margin:0;overflow:hidden;background:#020914;box-shadow:0 0 80px #000d}
 .ic-art{position:absolute;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;display:block}
 .ic-stage:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#01081230 0,transparent 30%,transparent 77%,#01081226 100%);box-shadow:inset 0 0 55px #03101a80}
 .ic-motion-video{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0;transition:opacity .65s ease}
@@ -85,7 +85,7 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
 .ic-modules button:nth-of-type(2){animation-delay:.35s}.ic-modules button:nth-of-type(3){animation-delay:.7s}.ic-modules button:nth-of-type(4){animation-delay:1.05s}.ic-modules button:nth-of-type(5){animation-delay:1.4s}.ic-modules button:nth-of-type(6){animation-delay:1.75s}
 
 @media(orientation:landscape){
-  .ic-stage{left:50%;transform:translateX(-50%)}
+  .ic-stage{left:auto;transform:none}
   .ic-top-actions{top:11.6%;left:23.2%;right:23.2%;height:17.1%}
   .ic-modules{left:29.45%;right:29.35%;bottom:7.7%;height:8.7%;gap:1.15%}
   .ic-screen{top:30.5%;left:25%;right:25%;bottom:19%}
