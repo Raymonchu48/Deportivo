@@ -138,3 +138,17 @@ noscript{display:block;max-width:900px;margin:20px auto;padding:18px;background:
   .ic-profile-thumb{top:8%;right:7%;width:31%;height:50%}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.ic-motion-video,.ic-motion-fx{display:none!important}}
+/* OPTION-B-VISUAL-START */
+/* Acabado deportivo potente: más luz, microcontraste y presencia sin alterar la composición */
+.ic-motion-video{filter:brightness(1.14) contrast(1.16) saturate(1.12)}
+.ic-cluster:before{filter:blur(22px) brightness(.46) contrast(1.12) saturate(.92);opacity:.96}
+.ic-stage:after{background:linear-gradient(180deg,#01081220 0,transparent 28%,transparent 79%,#01081218 100%);box-shadow:inset 0 0 48px #03101a60}
+.ic-cluster:after{background:linear-gradient(90deg,#01071194 0,transparent 24%,transparent 76%,#01071194 100%),linear-gradient(180deg,#01081238,transparent 24%,transparent 80%,#01081258)}
+.ic-motion-fx{filter:brightness(1.12) contrast(1.05)}
+.ic-top-actions a,.ic-top-actions button{text-shadow:0 0 10px #5ce9ff22}
+.ic-top-actions a:hover,.ic-top-actions button:hover,.ic-top-actions .is-active{box-shadow:inset 0 0 18px #61ebff14,0 0 18px #55e5ff10}
+.ic-modules button{filter:brightness(1.08)}
+.ic-modules button:hover,.ic-modules button.is-active,.ic-modules button[aria-expanded=true]{filter:brightness(1.38) contrast(1.06);text-shadow:0 0 12px #69efff}
+.ic-screen{box-shadow:0 0 0 5px #03101da8,0 0 28px #58e9ff18,0 24px 80px #000c}
+@media (orientation:portrait){.ic-motion-video{filter:brightness(1.16) contrast(1.15) saturate(1.10)}.ic-cluster:before{filter:blur(20px) brightness(.52) contrast(1.10) saturate(.94)}}
+/* OPTION-B-VISUAL-END */
