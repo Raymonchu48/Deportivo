@@ -19,6 +19,7 @@ document.querySelectorAll('.ic-modules button[data-open]').forEach(function(b){v
 }
 
 var titles={'sobre-mi':'Sobre mí',metodo:'Mi método de trabajo',formacion:'Formación acreditada',proyectos:'Proyectos',experiencia:'Experiencia',contacto:'Contacto'};
+var documents={cv:{title:'Currículum deportivo',file:'CV_Deporte.pdf',action:'Abrir / descargar CV'},recommendation:{title:'Cartas de recomendación',file:'Cartas_Recomendacion.pdf',action:'Abrir / descargar cartas'}};
 var modules={
 training:{title:'Entrenamiento',copy:'Planificación, fuerza, técnica, progresión y control de carga dentro de una visión integral.',sources:[['metodo','.method-grid'],['formacion','.cert:nth-child(1),.cert:nth-child(2)']]},
 nutrition:{title:'Nutrición deportiva',copy:'Educación nutricional, hábitos y estrategia aplicada a salud, composición corporal, recuperación y rendimiento.',sources:[['formacion','.cert:nth-child(3),.cert:nth-child(4)'],['proyectos','.project-card:nth-child(2)']]},
@@ -32,15 +33,23 @@ function resetButtons(key){
 document.querySelectorAll('[data-open]').forEach(function(b){var active=b.dataset.open===key;b.classList.toggle('is-active',active);if(b.tagName==='BUTTON')b.setAttribute('aria-expanded',String(active));if(b.closest('.ic-modules')){if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');}});
 }
 function open(key,scroll){
-if(!modules[key]&&!titles[key])return false;
+if(!modules[key]&&!titles[key]&&!documents[key])return false;
 content.replaceChildren();
 var item=modules[key];
-title.textContent=item?item.title:titles[key];
+var doc=documents[key];
+title.textContent=item?item.title:(doc?doc.title:titles[key]);
 if(item){
 var summary=document.createElement('p');summary.className='ic-summary';summary.textContent=item.copy;content.appendChild(summary);
 var cards=document.createElement('div');cards.className='cert-grid';
 item.sources.forEach(function(spec){var root=source(spec[0]);if(root)root.querySelectorAll(spec[1]).forEach(function(node){cards.appendChild(node.cloneNode(true));});});
 content.appendChild(cards);
+}else if(doc){
+var layout=document.createElement('div');layout.className='ic-doc-layout';
+var viewer=document.createElement('iframe');viewer.className='ic-doc-viewer';viewer.src=doc.file+'#toolbar=1&navpanes=0&view=FitH';viewer.title=doc.title;layout.appendChild(viewer);
+var actions=document.createElement('div');actions.className='ic-doc-actions';
+var back=document.createElement('button');back.type='button';back.className='ic-back-to-cluster';back.setAttribute('data-close-cluster','');back.textContent='← Volver al clúster';actions.appendChild(back);
+var openPdf=document.createElement('a');openPdf.className='ic-doc-download';openPdf.href=doc.file;openPdf.target='_blank';openPdf.rel='noopener';openPdf.textContent=doc.action;actions.appendChild(openPdf);
+layout.appendChild(actions);content.appendChild(layout);
 }else{var root=source(key);if(root)content.appendChild(root.cloneNode(true));}
 if(motionVideo){videoResumeAfterScreen=allowClusterVideo();if(cueTimes[key]!==undefined){try{motionVideo.currentTime=cueTimes[key];}catch(e){}}motionVideo.pause();}
 screen.hidden=false;cluster.classList.add('ic-screen-open');resetButtons(key);content.scrollTop=0;
@@ -54,6 +63,8 @@ if(motionVideo&&videoResumeAfterScreen&&allowClusterVideo()){var resume=motionVi
 if(restore&&trigger&&document.contains(trigger))trigger.focus({preventScroll:true});
 }
 document.addEventListener('click',function(e){
+var backToCluster=e.target.closest('[data-close-cluster]');
+if(backToCluster){e.preventDefault();close(true);history.pushState(null,'','#inicio');return;}
 var button=e.target.closest('[data-open]');
 if(button){e.preventDefault();trigger=button;var key=button.dataset.open;if(open(key,true))history.pushState(null,'','#'+key);return;}
 if(e.target.closest('.ic-brand')){e.preventDefault();close(false);history.pushState(null,'','#inicio');window.scrollTo({top:0,behavior:motion.matches?'auto':'smooth'});}
