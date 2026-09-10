@@ -1,0 +1,102 @@
+name: Ampliar panel de contenido responsive
+on:
+  push:
+    paths:
+      - '.github/workflows/enlarge-content-panel.yml'
+permissions:
+  contents: write
+jobs:
+  adjust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ampliar panel y contenido
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          css_path = Path('cluster-image.css')
+          css = css_path.read_text()
+          start = '/* LARGE-CONTENT-PANEL-START */'
+          end = '/* LARGE-CONTENT-PANEL-END */'
+          if start in css and end in css:
+              a = css.index(start)
+              b = css.index(end, a) + len(end)
+              css = css[:a] + css[b:]
+          block = r'''
+/* LARGE-CONTENT-PANEL-START */
+/* Panel profesional ampliado: más superficie útil en desktop, tablet y móvil */
+.ic-screen{
+  top:18%;left:8%;right:8%;bottom:10%;
+  border-color:#79dced;
+  box-shadow:0 0 0 5px #03101da8,0 0 32px #58e9ff1f,0 26px 90px #000d;
+}
+.ic-screen>header{padding:18px 22px}
+.ic-screen h2{font-size:clamp(26px,2.55vw,38px)}
+.ic-eyebrow{font-size:12px}
+#ic-close{min-height:46px;padding:9px 15px;font-size:15px}
+#ic-content{padding:24px 26px}
+#ic-content .section-heading{margin-bottom:22px}
+#ic-content .section-heading h2{font-size:clamp(24px,2vw,30px)}
+#ic-content p,#ic-content li,#ic-content .lead{font-size:17px;line-height:1.66}
+#ic-content h3{font-size:20px}
+#ic-content .executive,#ic-content .feature-grid,#ic-content .method-grid,#ic-content .cert-grid,#ic-content .project-grid,#ic-content .experience-grid{gap:16px}
+#ic-content article,#ic-content .feature{padding:20px}
+
+@media(min-width:901px) and (orientation:landscape){
+  .ic-screen{top:15%;left:12%;right:12%;bottom:10%}
+  #ic-content .executive,#ic-content .feature-grid,#ic-content .method-grid,#ic-content .cert-grid,#ic-content .project-grid,#ic-content .experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(min-width:701px) and (max-width:1100px){
+  .ic-screen{
+    position:fixed;z-index:1000;
+    top:5svh;left:4vw;right:4vw;bottom:5svh;
+    max-height:none;
+  }
+  .ic-screen>header{padding:17px 20px}
+  .ic-screen h2{font-size:clamp(26px,4vw,34px)}
+  #ic-content{padding:22px}
+  #ic-content p,#ic-content li,#ic-content .lead{font-size:16.5px}
+  #ic-content article,#ic-content .feature{padding:18px}
+}
+
+@media(max-width:700px){
+  .ic-screen{
+    position:fixed;z-index:1000;
+    inset:6px;
+    width:auto;height:auto;max-height:none;
+  }
+  .ic-screen>header{padding:13px 14px;position:sticky;top:0;z-index:2}
+  .ic-screen h2{font-size:24px}
+  .ic-eyebrow{font-size:10px}
+  #ic-close{min-height:44px;padding:8px 11px;font-size:14px}
+  #ic-content{padding:16px 14px 22px}
+  #ic-content .section-heading h2{font-size:22px}
+  #ic-content p,#ic-content li,#ic-content .lead{font-size:16px;line-height:1.62}
+  #ic-content h3{font-size:18px}
+  #ic-content article,#ic-content .feature{padding:16px}
+  #ic-content .executive,#ic-content .feature-grid,#ic-content .method-grid,#ic-content .cert-grid,#ic-content .project-grid,#ic-content .experience-grid{grid-template-columns:1fr;gap:12px}
+}
+/* LARGE-CONTENT-PANEL-END */
+'''
+          css_path.write_text(css.rstrip() + '\n' + block.strip() + '\n')
+
+          idx = Path('index.html')
+          html = idx.read_text()
+          html = html.replace('cluster-image.css?v=video-project-3-1-17','cluster-image.css?v=video-project-3-1-18')
+          idx.write_text(html)
+          PY
+      - name: Validar cambios
+        run: |
+          grep -q 'LARGE-CONTENT-PANEL-START' cluster-image.css
+          grep -q 'left:12%;right:12%' cluster-image.css
+          grep -q 'cluster-image.css?v=video-project-3-1-18' index.html
+      - name: Publicar y retirar workflow temporal
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/enlarge-content-panel.yml
+          git add cluster-image.css index.html .github/workflows/enlarge-content-panel.yml
+          git commit -m 'Amplía panel de contenido en desktop tablet y móvil'
+          git push
