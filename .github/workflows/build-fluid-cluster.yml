@@ -1,0 +1,75 @@
+name: Construir vídeo fluido del clúster
+on:
+  push:
+    paths:
+      - '.github/workflows/build-fluid-cluster.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Construir master sin saltos secos
+        run: |
+          ffmpeg -y -i cluster-video-project-3-1.mp4 \
+            -filter_complex "[0:v]trim=start=0:end=3.90,setpts=PTS-STARTPTS[v0];[0:v]trim=start=6.30:end=13.90,setpts=PTS-STARTPTS[v1];[0:v]trim=start=16.40,setpts=PTS-STARTPTS[v2];[v0][v1]xfade=transition=fade:duration=0.35:offset=3.55[v01];[v01][v2]xfade=transition=fade:duration=0.35:offset=10.80,format=yuv420p[vout]" \
+            -map "[vout]" -an -c:v libx264 -preset medium -crf 18 -movflags +faststart \
+            cluster-video-project-3-1-fluid.mp4
+      - name: Construir adaptación vertical fluida
+        run: |
+          ffmpeg -y -i cluster-video-project-3-1-fluid.mp4 \
+            -filter_complex "[0:v]split=2[bg][fg];[bg]scale=900:1600:force_original_aspect_ratio=increase,crop=900:1600,gblur=sigma=28,eq=brightness=-0.05:saturation=0.92[bg2];[fg]scale=900:-2[fg2];[bg2][fg2]overlay=(W-w)/2:(H-h)/2,format=yuv420p[vout]" \
+            -map "[vout]" -an -c:v libx264 -preset medium -crf 20 -movflags +faststart \
+            cluster-video-project-3-1-fluid-mobile.mp4
+      - name: Actualizar fuentes y sincronización
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          p=Path('index.html')
+          s=p.read_text()
+          s=s.replace('cluster-video-project-3-1-mobile.mp4?v=video-project-3-1-15','cluster-video-project-3-1-fluid-mobile.mp4?v=fluid-26')
+          s=s.replace('cluster-video-project-3-1.mp4?v=video-project-3-1-15','cluster-video-project-3-1-fluid.mp4?v=fluid-26')
+          s=re.sub(r'cluster-image\.js\?v=video-project-3-1-\d+', 'cluster-image.js?v=video-project-3-1-26', s)
+          p.write_text(s)
+
+          p=Path('cluster-image.js')
+          s=p.read_text()
+          s=re.sub(r'var cueTimes=\{[^\n]+\};', 'var cueTimes={training:.30,adapted:2.80,management:3.85,recovery:7.45,mind:9.95,nutrition:11.00};', s, count=1)
+          start=s.find('var omittedVideoRanges=')
+          end=s.find('function reflectVideoCue()')
+          if start!=-1 and end!=-1 and end>start:
+              s=s[:start]+"function allowClusterVideo(){return !document.hidden&&(mobileViewport.matches||!motion.matches);}\n"+s[end:]
+          s=s.replace("var t=motionVideo.currentTime;var key=t>=16.40?'nutrition':t>=12.70?'mind':t>=10.00?'recovery':t>=6.30?'management':t>=3.90?'adapted':'training';",
+                      "var t=motionVideo.currentTime;var key=t>=10.80?'nutrition':t>=9.95?'mind':t>=7.25?'recovery':t>=3.55?'management':t>=2.80?'adapted':'training';")
+          s=s.replace('motionVideo.currentTime=sanitizeVideoTime(cueTimes[key]);','motionVideo.currentTime=cueTimes[key];')
+          s=s.replace('skipOmittedVideoRange();','')
+          s=s.replace('startSkipWatch();','')
+          s=s.replace("var syncCueAndSkip=function(){if(!skipOmittedVideoRange())reflectVideoCue();};\n",'')
+          s=s.replace("motionVideo.addEventListener('timeupdate',syncCueAndSkip);","motionVideo.addEventListener('timeupdate',reflectVideoCue);")
+          s=s.replace("motionVideo.addEventListener('seeked',syncCueAndSkip);","motionVideo.addEventListener('seeked',reflectVideoCue);")
+          if any(x in s for x in ['omittedVideoRanges','sanitizeVideoTime','skipOmittedVideoRange','startSkipWatch','syncCueAndSkip']):
+              raise SystemExit('Quedaron referencias al salto antiguo')
+          p.write_text(s)
+          PY
+      - name: Validar resultado
+        run: |
+          test -s cluster-video-project-3-1-fluid.mp4
+          test -s cluster-video-project-3-1-fluid-mobile.mp4
+          ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 cluster-video-project-3-1-fluid.mp4
+          grep -q 'cluster-video-project-3-1-fluid.mp4?v=fluid-26' index.html
+          grep -q 'cluster-video-project-3-1-fluid-mobile.mp4?v=fluid-26' index.html
+          grep -q 'cluster-image.js?v=video-project-3-1-26' index.html
+          ! grep -q 'omittedVideoRanges' cluster-image.js
+      - name: Publicar y retirar workflow temporal
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm .github/workflows/build-fluid-cluster.yml
+          git add cluster-video-project-3-1-fluid.mp4 cluster-video-project-3-1-fluid-mobile.mp4 index.html cluster-image.js .github/workflows/build-fluid-cluster.yml
+          git commit -m 'Suaviza las transiciones del vídeo del clúster'
+          git push
