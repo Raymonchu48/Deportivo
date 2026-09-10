@@ -1,0 +1,37 @@
+name: Cargar override responsive del panel
+on:
+  push:
+    paths:
+      - '.github/workflows/link-panel-overrides.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enlazar override y actualizar caché
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('cluster-image.css')
+          s=p.read_text()
+          lines=[line for line in s.splitlines() if 'panel-size-overrides.css' not in line]
+          p.write_text('@import url("panel-size-overrides.css?v=19");\n'+'\n'.join(lines)+'\n')
+          i=Path('index.html')
+          h=i.read_text().replace('cluster-image.css?v=video-project-3-1-18','cluster-image.css?v=video-project-3-1-19')
+          i.write_text(h)
+          PY
+      - name: Validar
+        run: |
+          head -n 1 cluster-image.css | grep -q 'panel-size-overrides.css?v=19'
+          grep -q 'cluster-image.css?v=video-project-3-1-19' index.html
+      - name: Publicar y retirar workflow temporal
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/link-panel-overrides.yml
+          git add cluster-image.css index.html .github/workflows/link-panel-overrides.yml
+          git commit -m 'Aplica panel ampliado al viewport real en tablet y móvil'
+          git push
