@@ -1,0 +1,141 @@
+name: Aplicar módulos inferiores naranja flúor
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-orange-modules.yml'
+permissions:
+  contents: write
+jobs:
+  enhance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aplicar navegación naranja flúor
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          css_path = Path('cluster-image.css')
+          css = css_path.read_text()
+          start = '/* ORANGE-MODULES-START */'
+          end = '/* ORANGE-MODULES-END */'
+          if start in css and end in css:
+              a = css.index(start)
+              b = css.index(end, a) + len(end)
+              css = css[:a] + css[b:]
+          block = r'''
+/* ORANGE-MODULES-START */
+/* Módulos inferiores: navegación HUD naranja flúor, compacta y claramente separada del vídeo */
+.ic-console-label{
+  color:#ffb347;
+  text-shadow:0 0 7px #ff7a00,0 0 16px #ff7a0080;
+  letter-spacing:.20em;
+}
+.ic-modules button{
+  color:#fff;
+  background:linear-gradient(180deg,rgba(3,10,16,.56),rgba(5,13,20,.82));
+  border:1px solid rgba(255,122,0,.42);
+  box-shadow:inset 0 0 14px rgba(255,122,0,.06),0 0 8px rgba(255,122,0,.08),0 7px 18px rgba(0,0,0,.34);
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+  clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);
+  filter:none;
+  animation:none;
+  transform:translateY(0) scale(1);
+  transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease,color .22s ease;
+}
+.ic-modules button:before{
+  left:13%;right:13%;top:8%;height:2px;
+  background:linear-gradient(90deg,transparent,#ff7a00 16%,#ffd08a 50%,#ff7a00 84%,transparent);
+  box-shadow:0 0 7px #ff7a00,0 0 14px #ff7a0080;
+}
+.ic-modules button:after{
+  left:50%;bottom:7%;width:42%;height:2px;
+  background:#ff7a00;
+  box-shadow:0 0 6px #ff7a00,0 0 12px #ff7a0075;
+  opacity:.72;
+}
+.ic-num{
+  color:#ff9a24;
+  text-shadow:0 0 7px #ff7a00,0 0 14px #ff7a0070;
+}
+.ic-modules strong{
+  color:#fff;
+  font-weight:750;
+  text-shadow:0 1px 4px #000,0 0 6px rgba(255,122,0,.18);
+}
+.ic-modules button:hover,
+.ic-modules button:focus-visible,
+.ic-modules button.is-active,
+.ic-modules button[aria-expanded=true]{
+  color:#fff;
+  background:linear-gradient(180deg,rgba(37,18,3,.78),rgba(15,10,7,.94));
+  border-color:#ff9a24;
+  box-shadow:inset 0 0 22px rgba(255,122,0,.20),0 0 12px rgba(255,122,0,.55),0 0 28px rgba(255,122,0,.28),0 10px 24px rgba(0,0,0,.44);
+  filter:brightness(1.10) contrast(1.04);
+  transform:translateY(-4px) scale(1.045);
+  text-shadow:0 0 9px #ff8a16;
+}
+.ic-modules button:hover:before,
+.ic-modules button:focus-visible:before,
+.ic-modules button.is-active:before,
+.ic-modules button[aria-expanded=true]:before{
+  left:7%;right:7%;
+  background:linear-gradient(90deg,transparent,#ff7a00 10%,#fff0d2 50%,#ff7a00 90%,transparent);
+  box-shadow:0 0 10px #ff7a00,0 0 22px #ff7a00aa;
+}
+.ic-modules button:hover:after,
+.ic-modules button:focus-visible:after,
+.ic-modules button.is-active:after,
+.ic-modules button[aria-expanded=true]:after{
+  width:68%;
+  background:#ff9a24;
+  box-shadow:0 0 9px #ff7a00,0 0 20px #ff7a00b0;
+  opacity:1;
+}
+.ic-modules button.is-active .ic-num,
+.ic-modules button[aria-expanded=true] .ic-num{
+  color:#ffd29a;
+  text-shadow:0 0 8px #ff7a00,0 0 20px #ff7a00;
+}
+@media (max-width:700px){
+  .ic-modules{gap:1.25%}
+  .ic-modules button{
+    background:linear-gradient(180deg,rgba(3,10,16,.66),rgba(6,14,21,.88));
+    border-color:rgba(255,122,0,.50);
+    box-shadow:inset 0 0 10px rgba(255,122,0,.07),0 0 6px rgba(255,122,0,.12);
+    backdrop-filter:blur(3px);
+    -webkit-backdrop-filter:blur(3px);
+  }
+  .ic-modules button:before{top:6%;left:10%;right:10%;height:1px}
+  .ic-modules button:after{bottom:5%;height:1px;width:48%}
+  .ic-num{font-size:7px;color:#ff9a24}
+  .ic-modules strong{font-size:clamp(6px,1.8vw,9px);text-shadow:0 1px 3px #000}
+  .ic-console-label{color:#ffb347;text-shadow:0 0 6px #ff7a00}
+  .ic-modules button:active,.ic-modules button.is-active,.ic-modules button[aria-expanded=true]{transform:translateY(-2px) scale(1.025)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ic-modules button{animation:none!important;transition:none!important}
+}
+/* ORANGE-MODULES-END */
+'''
+          css_path.write_text(css.rstrip() + '\n' + block.strip() + '\n')
+
+          idx = Path('index.html')
+          html = idx.read_text()
+          html = html.replace('cluster-image.css?v=video-project-3-1-15','cluster-image.css?v=video-project-3-1-16')
+          idx.write_text(html)
+          PY
+      - name: Validar cambios
+        run: |
+          grep -q 'ORANGE-MODULES-START' cluster-image.css
+          grep -q '#ff7a00' cluster-image.css
+          grep -q 'cluster-image.css?v=video-project-3-1-16' index.html
+      - name: Publicar y retirar workflow temporal
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/apply-orange-modules.yml
+          git add cluster-image.css index.html .github/workflows/apply-orange-modules.yml
+          git commit -m 'Destaca módulos inferiores con HUD naranja flúor'
+          git push
