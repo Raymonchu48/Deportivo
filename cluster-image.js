@@ -11,7 +11,7 @@ var mobileViewport=window.matchMedia('(max-width:900px), (pointer:coarse)');
 var motionVideo=document.querySelector('.ic-motion-video');
 var videoResumeAfterScreen=false;
 var cueTimes={training:.30,adapted:4.20,management:6.60,recovery:10.20,mind:12.70,nutrition:16.60};
-var omittedVideoRanges=[[13.90,16.40]];
+var omittedVideoRanges=[[3.90,6.30],[13.90,16.40]];
 var skipWatchStarted=false;
 function allowClusterVideo(){return !document.hidden&&(mobileViewport.matches||!motion.matches);}
 function sanitizeVideoTime(t){
