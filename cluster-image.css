@@ -1,3 +1,4 @@
+@import url("panel-size-overrides.css?v=19");
 :root{color-scheme:dark;--cyan:#79efff;--cyan-soft:#55bed2;--ink:#020813;--panel:#031522e8;--line:#4eb8ce}
 *{box-sizing:border-box}
 html{background:var(--ink)}
