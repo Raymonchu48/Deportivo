@@ -1,0 +1,139 @@
+name: Añadir retorno a documentos
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-document-return.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Integrar documentos en el clúster
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          old_cv = '<a href="CV_Deporte.pdf" target="_blank" rel="noopener"><span>04 / DOCUMENTO</span><strong>Descargar CV</strong></a>'
+          new_cv = '<button type="button" data-open="cv" aria-controls="ic-screen" aria-expanded="false"><span>04 / DOCUMENTO</span><strong>Descargar CV</strong></button>'
+          old_rec = '<a href="Cartas_Recomendacion.pdf" target="_blank" rel="noopener"><span>05 / REFERENCIAS</span><strong>Carta de recomendación</strong></a>'
+          new_rec = '<button type="button" data-open="recommendation" aria-controls="ic-screen" aria-expanded="false"><span>05 / REFERENCIAS</span><strong>Carta de recomendación</strong></button>'
+          if old_cv not in html or old_rec not in html:
+              raise SystemExit('No se localizaron los enlaces de documentos esperados')
+          html = html.replace(old_cv, new_cv).replace(old_rec, new_rec)
+          html = html.replace('panel-size-overrides.css?v=23', 'panel-size-overrides.css?v=24')
+          html = html.replace('cluster-image.js?v=video-project-3-1-26', 'cluster-image.js?v=video-project-3-1-27')
+          index.write_text(html, encoding='utf-8')
+
+          js_path = Path('cluster-image.js')
+          js = js_path.read_text(encoding='utf-8')
+          js = js.replace(
+              "var titles={'sobre-mi':'Sobre mí',metodo:'Mi método de trabajo',formacion:'Formación acreditada',proyectos:'Proyectos',experiencia:'Experiencia',contacto:'Contacto'};",
+              "var titles={'sobre-mi':'Sobre mí',metodo:'Mi método de trabajo',formacion:'Formación acreditada',proyectos:'Proyectos',experiencia:'Experiencia',contacto:'Contacto'};\nvar documents={cv:{title:'Currículum deportivo',file:'CV_Deporte.pdf',action:'Abrir / descargar CV'},recommendation:{title:'Cartas de recomendación',file:'Cartas_Recomendacion.pdf',action:'Abrir / descargar cartas'}};"
+          )
+          js = js.replace(
+              "if(!modules[key]&&!titles[key])return false;\ncontent.replaceChildren();\nvar item=modules[key];\ntitle.textContent=item?item.title:titles[key];",
+              "if(!modules[key]&&!titles[key]&&!documents[key])return false;\ncontent.replaceChildren();\nvar item=modules[key];\nvar doc=documents[key];\ntitle.textContent=item?item.title:(doc?doc.title:titles[key]);"
+          )
+          js = js.replace(
+              "content.appendChild(cards);\n}else{var root=source(key);if(root)content.appendChild(root.cloneNode(true));}",
+              "content.appendChild(cards);\n}else if(doc){\nvar layout=document.createElement('div');layout.className='ic-doc-layout';\nvar viewer=document.createElement('iframe');viewer.className='ic-doc-viewer';viewer.src=doc.file+'#toolbar=1&navpanes=0&view=FitH';viewer.title=doc.title;layout.appendChild(viewer);\nvar actions=document.createElement('div');actions.className='ic-doc-actions';\nvar back=document.createElement('button');back.type='button';back.className='ic-back-to-cluster';back.setAttribute('data-close-cluster','');back.textContent='← Volver al clúster';actions.appendChild(back);\nvar openPdf=document.createElement('a');openPdf.className='ic-doc-download';openPdf.href=doc.file;openPdf.target='_blank';openPdf.rel='noopener';openPdf.textContent=doc.action;actions.appendChild(openPdf);\nlayout.appendChild(actions);content.appendChild(layout);\n}else{var root=source(key);if(root)content.appendChild(root.cloneNode(true));}"
+          )
+          js = js.replace(
+              "document.addEventListener('click',function(e){\nvar button=e.target.closest('[data-open]');",
+              "document.addEventListener('click',function(e){\nvar backToCluster=e.target.closest('[data-close-cluster]');\nif(backToCluster){e.preventDefault();close(true);history.pushState(null,'','#inicio');return;}\nvar button=e.target.closest('[data-open]');"
+          )
+          for token in ["var documents={cv:", "data-close-cluster", "ic-doc-viewer"]:
+              if token not in js:
+                  raise SystemExit('Falta integración JS: '+token)
+          js_path.write_text(js, encoding='utf-8')
+
+          css_path = Path('panel-size-overrides.css')
+          css = css_path.read_text(encoding='utf-8')
+          marker = '/* DOCUMENT-VIEWER-RETURN-START */'
+          if marker not in css:
+              css += r'''
+
+/* DOCUMENT-VIEWER-RETURN-START */
+.ic-doc-layout{
+  width:100%;
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.ic-doc-viewer{
+  width:100%;
+  min-height:clamp(430px,58vh,720px);
+  flex:1 1 auto;
+  border:1px solid rgba(255,122,0,.48);
+  background:#07131b;
+  box-shadow:inset 0 0 28px rgba(255,122,0,.06),0 0 18px rgba(255,122,0,.10);
+}
+.ic-doc-actions{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  padding:4px 0 2px;
+}
+.ic-back-to-cluster,.ic-doc-download{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 18px;
+  border:1px solid rgba(255,122,0,.72);
+  background:linear-gradient(90deg,rgba(7,22,30,.72),rgba(18,36,45,.88));
+  color:#fff;
+  font:800 .88rem/1.1 inherit;
+  letter-spacing:.02em;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:inset 3px 0 0 #ff7a00,0 0 14px rgba(255,122,0,.12);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.ic-back-to-cluster:hover,.ic-back-to-cluster:focus-visible,.ic-doc-download:hover,.ic-doc-download:focus-visible{
+  transform:translateY(-2px);
+  background:linear-gradient(90deg,rgba(14,39,50,.86),rgba(24,46,56,.94));
+  box-shadow:inset 3px 0 0 #ff9a24,0 0 22px rgba(255,122,0,.24);
+}
+@media (max-width:900px){
+  .ic-doc-viewer{min-height:64vh;}
+  .ic-doc-actions{justify-content:stretch;}
+  .ic-back-to-cluster,.ic-doc-download{flex:1 1 100%;width:100%;}
+}
+@media (max-width:520px){
+  .ic-doc-layout{gap:10px;}
+  .ic-doc-viewer{min-height:68vh;}
+  .ic-back-to-cluster,.ic-doc-download{min-height:48px;font-size:.92rem;}
+}
+/* DOCUMENT-VIEWER-RETURN-END */
+'''
+          css_path.write_text(css, encoding='utf-8')
+          PY
+      - name: Validar integración
+        shell: bash
+        run: |
+          grep -q 'data-open="cv"' index.html
+          grep -q 'data-open="recommendation"' index.html
+          grep -q 'cluster-image.js?v=video-project-3-1-27' index.html
+          grep -q 'panel-size-overrides.css?v=24' index.html
+          grep -q 'data-close-cluster' cluster-image.js
+          grep -q 'ic-doc-viewer' panel-size-overrides.css
+      - name: Publicar y retirar workflow temporal
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html cluster-image.js panel-size-overrides.css
+          git commit -m 'Integra CV y recomendaciones con vuelta al clúster'
+          git rm .github/workflows/add-document-return.yml
+          git commit --amend --no-edit
+          git push origin HEAD:main
