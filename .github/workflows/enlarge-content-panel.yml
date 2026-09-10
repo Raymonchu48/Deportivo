@@ -15,78 +15,16 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          css_path = Path('cluster-image.css')
-          css = css_path.read_text()
-          start = '/* LARGE-CONTENT-PANEL-START */'
-          end = '/* LARGE-CONTENT-PANEL-END */'
-          if start in css and end in css:
-              a = css.index(start)
-              b = css.index(end, a) + len(end)
-              css = css[:a] + css[b:]
-          block = r'''
-/* LARGE-CONTENT-PANEL-START */
-/* Panel profesional ampliado: más superficie útil en desktop, tablet y móvil */
-.ic-screen{
-  top:18%;left:8%;right:8%;bottom:10%;
-  border-color:#79dced;
-  box-shadow:0 0 0 5px #03101da8,0 0 32px #58e9ff1f,0 26px 90px #000d;
-}
-.ic-screen>header{padding:18px 22px}
-.ic-screen h2{font-size:clamp(26px,2.55vw,38px)}
-.ic-eyebrow{font-size:12px}
-#ic-close{min-height:46px;padding:9px 15px;font-size:15px}
-#ic-content{padding:24px 26px}
-#ic-content .section-heading{margin-bottom:22px}
-#ic-content .section-heading h2{font-size:clamp(24px,2vw,30px)}
-#ic-content p,#ic-content li,#ic-content .lead{font-size:17px;line-height:1.66}
-#ic-content h3{font-size:20px}
-#ic-content .executive,#ic-content .feature-grid,#ic-content .method-grid,#ic-content .cert-grid,#ic-content .project-grid,#ic-content .experience-grid{gap:16px}
-#ic-content article,#ic-content .feature{padding:20px}
-
-@media(min-width:901px) and (orientation:landscape){
-  .ic-screen{top:15%;left:12%;right:12%;bottom:10%}
-  #ic-content .executive,#ic-content .feature-grid,#ic-content .method-grid,#ic-content .cert-grid,#ic-content .project-grid,#ic-content .experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-
-@media(min-width:701px) and (max-width:1100px){
-  .ic-screen{
-    position:fixed;z-index:1000;
-    top:5svh;left:4vw;right:4vw;bottom:5svh;
-    max-height:none;
-  }
-  .ic-screen>header{padding:17px 20px}
-  .ic-screen h2{font-size:clamp(26px,4vw,34px)}
-  #ic-content{padding:22px}
-  #ic-content p,#ic-content li,#ic-content .lead{font-size:16.5px}
-  #ic-content article,#ic-content .feature{padding:18px}
-}
-
-@media(max-width:700px){
-  .ic-screen{
-    position:fixed;z-index:1000;
-    inset:6px;
-    width:auto;height:auto;max-height:none;
-  }
-  .ic-screen>header{padding:13px 14px;position:sticky;top:0;z-index:2}
-  .ic-screen h2{font-size:24px}
-  .ic-eyebrow{font-size:10px}
-  #ic-close{min-height:44px;padding:8px 11px;font-size:14px}
-  #ic-content{padding:16px 14px 22px}
-  #ic-content .section-heading h2{font-size:22px}
-  #ic-content p,#ic-content li,#ic-content .lead{font-size:16px;line-height:1.62}
-  #ic-content h3{font-size:18px}
-  #ic-content article,#ic-content .feature{padding:16px}
-  #ic-content .executive,#ic-content .feature-grid,#ic-content .method-grid,#ic-content .cert-grid,#ic-content .project-grid,#ic-content .experience-grid{grid-template-columns:1fr;gap:12px}
-}
-/* LARGE-CONTENT-PANEL-END */
-'''
-          css_path.write_text(css.rstrip() + '\n' + block.strip() + '\n')
-
-          idx = Path('index.html')
-          html = idx.read_text()
-          html = html.replace('cluster-image.css?v=video-project-3-1-17','cluster-image.css?v=video-project-3-1-18')
-          idx.write_text(html)
+          p=Path('cluster-image.css')
+          s=p.read_text()
+          a='/* LARGE-CONTENT-PANEL-START */'
+          b='/* LARGE-CONTENT-PANEL-END */'
+          if a in s and b in s:
+              i=s.index(a); j=s.index(b,i)+len(b); s=s[:i]+s[j:]
+          p.write_text(s.rstrip()+'\n')
           PY
+          echo 'LyogTEFSR0UtQ09OVEVOVC1QQU5FTC1TVEFSVCAqLwovKiBQYW5lbCBwcm9mZXNpb25hbCBhbXBsaWFkbzogbcOhcyBzdXBlcmZpY2llIMO6dGlsIGVuIGRlc2t0b3AsIHRhYmxldCB5IG3Ds3ZpbCAqLwouaWMtc2NyZWVuewogIHRvcDoxOCU7bGVmdDo4JTtyaWdodDo4JTtib3R0b206MTAlOwogIGJvcmRlci1jb2xvcjojNzlkY2VkOwogIGJveC1zaGFkb3c6MCAwIDAgNXB4ICMwMzEwMWRhOCwwIDAgMzJweCAjNThlOWZmMWYsMCAyNnB4IDkwcHggIzAwMGR0Owp9Ci5pYy1zY3JlZW4+aGVhZGVye3BhZGRpbmc6MThweCAyMnB4fQouaWMtc2NyZWVuIGgye2ZvbnQtc2l6ZTpjbGFtcCgyNnB4LDIuNTV2dywzOHB4KX0KLmljLWV5ZWJyb3d7Zm9udC1zaXplOjEycHh9CiNpYy1jbG9zZXttaW4taGVpZ2h0OjQ2cHg7cGFkZGluZzo5cHggMTVweDtmb250LXNpemU6MTVweH0KI2ljLWNvbnRlbnR7cGFkZGluZzoyNHB4IDI2cHh9CiNpYy1jb250ZW50IC5zZWN0aW9uLWhlYWRpbmd7bWFyZ2luLWJvdHRvbToyMnB4fQojaWMtY29udGVudCAuc2VjdGlvbi1oZWFkaW5nIGgye2ZvbnQtc2l6ZTpjbGFtcCgyNHB4LDJ2dywzMHB4KX0KI2ljLWNvbnRlbnQgcCwjaWMtY29udGVudCBsaSwjaWMtY29udGVudCAubGVhZHtmb250LXNpemU6MTdweDtsaW5lLWhlaWdodDoxLjY2fQojaWMtY29udGVudCBoM3tmb250LXNpemU6MjBweH0KI2ljLWNvbnRlbnQgLmV4ZWN1dGl2ZSwjaWMtY29udGVudCAuZmVhdHVyZS1ncmlkLCNpYy1jb250ZW50IC5tZXRob2QtZ3JpZCwjaWMtY29udGVudCAuY2VydC1ncmlkLCNpYy1jb250ZW50IC5wcm9qZWN0LWdyaWQsI2ljLWNvbnRlbnQgLmV4cGVyaWVuY2UtZ3JpZHtnYXA6MTZweH0KI2ljLWNvbnRlbnQgYXJ0aWNsZSwjaWMtY29udGVudCAuZmVhdHVyZXtwYWRkaW5nOjIwcHh9CgpAbWVkaWEobWluLXdpZHRoOjkwMXB4KSBhbmQgKG9yaWVudGF0aW9uOmxhbmRzY2FwZSl7CiAgLmljLXNjcmVlbnt0b3A6MTUlO2xlZnQ6MTIlO3JpZ2h0OjEyJTtib3R0b206MTAlfQogICNpYy1jb250ZW50IC5leGVjdXRpdmUsI2ljLWNvbnRlbnQgLmZlYXR1cmUtZ3JpZCwjaWMtY29udGVudCAubWV0aG9kLWdyaWQsI2ljLWNvbnRlbnQgLmNlcnQtZ3JpZCwjaWMtY29udGVudCAucHJvamVjdC1ncmlkLCNpYy1jb250ZW50IC5leHBlcmllbmNlLWdyaWR7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOnJlcGVhdCgyLG1pbm1heCgwLDFmcikpfQp9CgpAbWVkaWEobWluLXdpZHRoOjcwMXB4KSBhbmQgKG1heC13aWR0aDoxMTAwcHgpewogIC5pYy1zY3JlZW57CiAgICBwb3NpdGlvbjpmaXhlZDt6LWluZGV4OjEwMDA7CiAgICB0b3A6NXN2aDtsZWZ0OjR2dztyaWdodDo0dnc7Ym90dG9tOjVzdmg7CiAgICBtYXgtaGVpZ2h0Om5vbmU7CiAgfQogIC5pYy1zY3JlZW4+aGVhZGVye3BhZGRpbmc6MTdweCAyMHB4fQogIC5pYy1zY3JlZW4gaDJ7Zm9udC1zaXplOmNsYW1wKDI2cHg sNHZ3LDM0cHgpfQogICNpYy1jb250ZW50e3BhZGRpbmc6MjJweH0KICAjaWMtY29udGVudCBwLCNpYy1jb250ZW50IGxpLCNpYy1jb250ZW50IC5sZWFke2ZvbnQtc2l6ZToxNi41cHh9CiAgI2ljLWNvbnRlbnQgYXJ0aWNsZSwjaWMtY29udGVudCAuZmVhdHVyZXtwYWRkaW5nOjE4cHh9Cn0KCkBtZWRpYShtYXgtd2lkdGg6NzAwcHgpewogIC5pYy1zY3JlZW57CiAgICBwb3NpdGlvbjpmaXhlZDt6LWluZGV4OjEwMDA7CiAgICBpbnNldDo2cHg7CiAgICB3aWR0aDphdXRvO2hlaWdodDphdXRvO21heC1oZWlnaHQ6bm9uZTsKICB9CiAgLmljLXNjcmVlbj5oZWFkZXJ7cGFkZGluZzoxM3B4IDE0cHg7cG9zaXRpb246c3RpY2t5O3RvcDowO3otaW5kZXg6Mn0KICAuaWMtc2NyZWVuIGgye2ZvbnQtc2l6ZToyNHB4fQogIC5pYy1leWVicm93e2ZvbnQtc2l6ZToxMHB4fQogICNpYy1jbG9zZXttaW4taGVpZ2h0OjQ0cHg7cGFkZGluZzo4cHggMTFweDtmb250LXNpemU6MTRweH0KICAjaWMtY29udGVudHtwYWRkaW5nOjE2cHggMTRweCAyMnB4fQogICNpYy1jb250ZW50IC5zZWN0aW9uLWhlYWRpbmcgaDJ7Zm9udC1zaXplOjIycHh9CiAgI2ljLWNvbnRlbnQgcCwjaWMtY29udGVudCBsaSwjaWMtY29udGVudCAubGVhZHtmb250LXNpemU6MTZweDtsaW5lLWhlaWdodDoxLjYyfQogICNpYy1jb250ZW50IGgze2ZvbnQtc2l6ZToxOHB4fQogICNpYy1jb250ZW50IGFydGljbGUsI2ljLWNvbnRlbnQgLmZlYXR1cmV7cGFkZGluZzoxNnB4fQogICNpYy1jb250ZW50IC5leGVjdXRpdmUsI2ljLWNvbnRlbnQgLmZlYXR1cmUtZ3JpZCwjaWMtY29udGVudCAubWV0aG9kLWdyaWQsI2ljLWNvbnRlbnQgLmNlcnQtZ3JpZCwjaWMtY29udGVudCAucHJvamVjdC1ncmlkLCNpYy1jb250ZW50IC5leHBlcmllbmNlLWdyaWR7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOjFmcjtnYXA6MTJweH0KfQovKiBMQVJHRS1DT05URU5ULVBBTkVMLUVORCAqLwo=' | tr -d ' ' | base64 -d >> cluster-image.css
+          sed -i 's/cluster-image.css?v=video-project-3-1-17/cluster-image.css?v=video-project-3-1-18/g' index.html
       - name: Validar cambios
         run: |
           grep -q 'LARGE-CONTENT-PANEL-START' cluster-image.css
