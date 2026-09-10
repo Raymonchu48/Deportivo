@@ -1,0 +1,88 @@
+name: Aplicar Opción B visual al clúster
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-option-b-visual.yml'
+permissions:
+  contents: write
+jobs:
+  enhance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aplicar acabado deportivo potente
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('cluster-image.css')
+          s=p.read_text()
+          start='/* OPTION-B-VISUAL-START */'
+          end='/* OPTION-B-VISUAL-END */'
+          if start in s and end in s:
+              a=s.index(start); b=s.index(end,a)+len(end)
+              s=s[:a]+s[b:]
+          block=r'''
+/* OPTION-B-VISUAL-START */
+/* Acabado deportivo potente: más luz, microcontraste y presencia sin alterar la composición */
+.ic-motion-video{
+  filter:brightness(1.14) contrast(1.16) saturate(1.12);
+}
+.ic-cluster:before{
+  filter:blur(22px) brightness(.46) contrast(1.12) saturate(.92);
+  opacity:.96;
+}
+.ic-stage:after{
+  background:linear-gradient(180deg,#01081220 0,transparent 28%,transparent 79%,#01081218 100%);
+  box-shadow:inset 0 0 48px #03101a60;
+}
+.ic-cluster:after{
+  background:linear-gradient(90deg,#01071194 0,transparent 24%,transparent 76%,#01071194 100%),linear-gradient(180deg,#01081238,transparent 24%,transparent 80%,#01081258);
+}
+.ic-motion-fx{filter:brightness(1.12) contrast(1.05)}
+.ic-top-actions a,.ic-top-actions button{
+  text-shadow:0 0 10px #5ce9ff22;
+}
+.ic-top-actions a:hover,.ic-top-actions button:hover,.ic-top-actions .is-active{
+  box-shadow:inset 0 0 18px #61ebff14,0 0 18px #55e5ff10;
+}
+.ic-modules button{
+  filter:brightness(1.08);
+}
+.ic-modules button:hover,.ic-modules button.is-active,.ic-modules button[aria-expanded=true]{
+  filter:brightness(1.38) contrast(1.06);
+  text-shadow:0 0 12px #69efff;
+}
+.ic-screen{
+  box-shadow:0 0 0 5px #03101da8,0 0 28px #58e9ff18,0 24px 80px #000c;
+}
+@media (orientation:portrait){
+  .ic-motion-video{
+    filter:brightness(1.16) contrast(1.15) saturate(1.10);
+  }
+  .ic-cluster:before{
+    filter:blur(20px) brightness(.52) contrast(1.10) saturate(.94);
+  }
+}
+/* OPTION-B-VISUAL-END */
+'''
+          p.write_text(s.rstrip()+"\n"+block.strip()+"\n")
+
+          idx=Path('index.html')
+          html=idx.read_text()
+          html=html.replace('video-project-3-1-13','video-project-3-1-14')
+          idx.write_text(html)
+          PY
+      - name: Validar cambios
+        run: |
+          grep -q 'OPTION-B-VISUAL-START' cluster-image.css
+          grep -q 'brightness(1.14) contrast(1.16) saturate(1.12)' cluster-image.css
+          grep -q 'video-project-3-1-14' index.html
+      - name: Publicar mejora y retirar workflow temporal
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/apply-option-b-visual.yml
+          git add cluster-image.css index.html .github/workflows/apply-option-b-visual.yml
+          git commit -m 'Potencia luminosidad, contraste y definición del clúster'
+          git push
