@@ -1,0 +1,82 @@
+name: Build coach enhanced cluster
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-coach-enhanced.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+      - name: Build enhanced master and mobile version
+        shell: bash
+        run: |
+          set -euo pipefail
+          FONT='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+          test -f "$FONT"
+
+          ffmpeg -y -i cluster-video-project-3-1-fluid.mp4 \
+            -vf "eq=brightness=0.018:contrast=1.035:saturation=1.035:gamma=1.025,unsharp=5:5:0.55:3:3:0.18,drawtext=fontfile=${FONT}:text='COACH':x=80:y=176:fontsize=24:fontcolor=0xff7a00@0.28:borderw=5:bordercolor=0xff7a00@0.14,drawtext=fontfile=${FONT}:text='COACH':x=80:y=176:fontsize=24:fontcolor=0xffb347@0.98:borderw=1:bordercolor=0xff7a00@0.92" \
+            -an -c:v libx264 -preset slow -crf 16 -pix_fmt yuv420p -movflags +faststart \
+            cluster-video-project-3-1-fluid-coach.mp4
+
+          ffmpeg -y -i cluster-video-project-3-1-fluid-coach.mp4 \
+            -filter_complex "[0:v]split=2[bg][fg];[bg]scale=900:1600:force_original_aspect_ratio=increase,crop=900:1600,gblur=sigma=28,eq=brightness=-0.04:contrast=1.04:saturation=0.96[bg2];[fg]scale=900:-2[fg2];[bg2][fg2]overlay=(W-w)/2:(H-h)/2:format=auto" \
+            -an -c:v libx264 -preset slow -crf 17 -pix_fmt yuv420p -movflags +faststart \
+            cluster-video-project-3-1-fluid-coach-mobile.mp4
+
+          ffmpeg -y -ss 0.8 -i cluster-video-project-3-1-fluid-coach.mp4 -frames:v 1 -vf "scale=1365:-2" -c:v libwebp -quality 88 cluster-video-project-3-1-fluid-coach-poster-wide.webp
+          ffmpeg -y -ss 0.8 -i cluster-video-project-3-1-fluid-coach-mobile.mp4 -frames:v 1 -c:v libwebp -quality 88 cluster-video-project-3-1-fluid-coach-poster-mobile.webp
+
+      - name: Update site references
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('cluster-video-project-3-1-fluid-mobile.mp4?v=fluid-26','cluster-video-project-3-1-fluid-coach-mobile.mp4?v=coach-enhanced-28')
+          s = s.replace('cluster-video-project-3-1-fluid.mp4?v=fluid-26','cluster-video-project-3-1-fluid-coach.mp4?v=coach-enhanced-28')
+          s = s.replace('cluster-video-project-3-1-poster-wide.webp','cluster-video-project-3-1-fluid-coach-poster-wide.webp')
+          s = s.replace('cluster-video-project-3-1-poster-mobile.webp','cluster-video-project-3-1-fluid-coach-poster-mobile.webp')
+          s = s.replace('cluster-image.css?v=video-project-3-1-20','cluster-image.css?v=video-project-3-1-28')
+          p.write_text(s, encoding='utf-8')
+
+          p = Path('cluster-image.css')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('cluster-video-project-3-1-poster-wide.webp','cluster-video-project-3-1-fluid-coach-poster-wide.webp')
+          s = s.replace('cluster-video-project-3-1-poster-mobile.webp','cluster-video-project-3-1-fluid-coach-poster-mobile.webp')
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Validate output
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s cluster-video-project-3-1-fluid-coach.mp4
+          test -s cluster-video-project-3-1-fluid-coach-mobile.mp4
+          test -s cluster-video-project-3-1-fluid-coach-poster-wide.webp
+          test -s cluster-video-project-3-1-fluid-coach-poster-mobile.webp
+          ffprobe -v error -show_entries stream=width,height,r_frame_rate -show_entries format=duration -of default=nw=1 cluster-video-project-3-1-fluid-coach.mp4
+          ffprobe -v error -show_entries stream=width,height,r_frame_rate -show_entries format=duration -of default=nw=1 cluster-video-project-3-1-fluid-coach-mobile.mp4
+          grep -q 'cluster-video-project-3-1-fluid-coach.mp4?v=coach-enhanced-28' index.html
+          grep -q 'cluster-video-project-3-1-fluid-coach-mobile.mp4?v=coach-enhanced-28' index.html
+
+      - name: Publish and remove temporary workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html cluster-image.css cluster-video-project-3-1-fluid-coach.mp4 cluster-video-project-3-1-fluid-coach-mobile.mp4 cluster-video-project-3-1-fluid-coach-poster-wide.webp cluster-video-project-3-1-fluid-coach-poster-mobile.webp
+          git commit -m 'Identifica al coach y mejora la calidad del clúster'
+          git rm .github/workflows/build-coach-enhanced.yml
+          git commit --amend --no-edit
+          git push origin HEAD:main
