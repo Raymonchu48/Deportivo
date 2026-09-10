@@ -4,7 +4,7 @@
     position:absolute;
     left:4vw;
     right:4vw;
-    top:calc((100svh - 100vw)/-2 + 5svh);
+    top:calc(50vw - 45svh);
     bottom:auto;
     width:auto;
     height:90svh;
@@ -16,7 +16,7 @@
   .ic-screen{
     left:6px;
     right:6px;
-    top:calc((100svh - 100vw)/-2 + 6px);
+    top:calc(50vw - 50svh + 6px);
     bottom:auto;
     width:auto;
     height:calc(100svh - 12px);
