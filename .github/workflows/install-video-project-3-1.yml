@@ -1,0 +1,84 @@
+name: Instalar Video Project 3_1 exacto
+
+on:
+  push:
+    paths:
+      - '.github/workflows/install-video-project-3-1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      - name: Descargar y verificar el MP4 maestro exacto
+        run: |
+          curl -L --fail --retry 3 --retry-delay 2 'https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/61a4bdf4-840c-4139-ab0e-ba1f887d2578.mp4' -o cluster-video-project-3-1.mp4
+          echo 'c8cee919de9b931d240ebe5e24b27d02ee252cddd73260da0b7d71ae66abc283  cluster-video-project-3-1.mp4' | sha256sum -c -
+
+      - name: Crear adaptación vertical y posters
+        run: |
+          ffmpeg -hide_banner -loglevel error -y -i cluster-video-project-3-1.mp4 \
+            -filter_complex "[0:v]scale=900:1600:force_original_aspect_ratio=increase,crop=900:1600,gblur=sigma=35,eq=brightness=-0.12:saturation=0.72[bg];[0:v]scale=900:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2:shortest=1,format=yuv420p[out]" \
+            -map '[out]' -an -c:v libx264 -preset medium -crf 23 -movflags +faststart cluster-video-project-3-1-mobile.mp4
+          ffmpeg -hide_banner -loglevel error -y -ss 0.30 -i cluster-video-project-3-1.mp4 -frames:v 1 -vf "scale=1280:-2" -c:v libwebp -quality 82 cluster-video-project-3-1-poster-wide.webp
+          ffmpeg -hide_banner -loglevel error -y -ss 0.30 -i cluster-video-project-3-1-mobile.mp4 -frames:v 1 -c:v libwebp -quality 82 cluster-video-project-3-1-poster-mobile.webp
+
+      - name: Actualizar el clúster
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('cluster-narrative-poster-wide.webp','cluster-video-project-3-1-poster-wide.webp')
+          s = s.replace('cluster-narrative-poster-square.webp','cluster-video-project-3-1-poster-mobile.webp')
+          s = s.replace('cluster-narrative-motion-square.mp4?v=narrative-cluster-11','cluster-video-project-3-1-mobile.mp4?v=video-project-3-1-12')
+          s = s.replace('cluster-narrative-motion-wide.mp4?v=narrative-cluster-11','cluster-video-project-3-1.mp4?v=video-project-3-1-12')
+          s = s.replace('narrative-cluster-11','video-project-3-1-12')
+          s = s.replace('src="cluster-video-project-3-1-poster-mobile.webp" alt="Coach holográfico analizando los datos de cinco deportistas en un centro de control del rendimiento" width="900" height="900"','src="cluster-video-project-3-1-poster-mobile.webp" alt="Clúster deportivo multidisciplinar con análisis holográfico y deportistas en movimiento" width="900" height="1600"')
+          p.write_text(s,encoding='utf-8')
+
+          p = Path('cluster-image.css')
+          s = p.read_text(encoding='utf-8').replace('cluster-narrative-poster-wide.webp','cluster-video-project-3-1-poster-wide.webp').replace('cluster-narrative-poster-square.webp','cluster-video-project-3-1-poster-mobile.webp')
+          p.write_text(s,encoding='utf-8')
+
+          p = Path('cluster-image.js')
+          s = p.read_text(encoding='utf-8')
+          old = "var cueTimes={training:.2,recovery:2.15,management:3.2,adapted:5.2,mind:7.2,nutrition:9.0};"
+          new = "var cueTimes={training:.30,adapted:4.20,management:6.60,recovery:10.20,mind:14.20,nutrition:16.60};"
+          if old not in s: raise SystemExit('cueTimes esperado no encontrado')
+          s = s.replace(old,new)
+          old = "var t=motionVideo.currentTime;var key=t>=9?'nutrition':t>=7?'mind':t>=5?'adapted':t>=3?'management':t>=2?'recovery':'training';"
+          new = "var t=motionVideo.currentTime;var key=t>=16.37?'nutrition':t>=13.97?'mind':t>=10.00?'recovery':t>=6.30?'management':t>=3.90?'adapted':'training';"
+          if old not in s: raise SystemExit('reflectVideoCue esperado no encontrado')
+          p.write_text(s.replace(old,new),encoding='utf-8')
+          PY
+
+      - name: Limpiar recursos equivocados y validar
+        run: |
+          rm -f cluster-narrative-motion-wide.mp4 cluster-narrative-motion-square.mp4 cluster-narrative-poster-wide.webp cluster-narrative-poster-square.webp
+          grep -q 'cluster-video-project-3-1.mp4?v=video-project-3-1-12' index.html
+          grep -q 'cluster-video-project-3-1-mobile.mp4?v=video-project-3-1-12' index.html
+          test -s cluster-video-project-3-1.mp4
+          test -s cluster-video-project-3-1-mobile.mp4
+
+      - name: Publicar y retirar workflow temporal
+        run: |
+          rm -f .github/workflows/install-video-project-3-1.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Integra Video Project 3_1 exacto en el clúster deportivo'
+          git push
