@@ -1,0 +1,44 @@
+name: Publicar segunda escena omitida
+on:
+  push:
+    paths:
+      - '.github/workflows/add-second-scene-skip.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Omitir segundo tramo y actualizar cache
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          js=Path('cluster-image.js')
+          s=js.read_text(encoding='utf-8')
+          old='var omittedVideoRanges=[[13.90,16.40]];'
+          new='var omittedVideoRanges=[[3.90,6.30],[13.90,16.40]];'
+          if old not in s:
+              raise SystemExit('No se encontro el rango anterior esperado')
+          js.write_text(s.replace(old,new,1),encoding='utf-8')
+          idx=Path('index.html')
+          h=idx.read_text(encoding='utf-8')
+          oldv='cluster-image.js?v=video-project-3-1-24'
+          newv='cluster-image.js?v=video-project-3-1-25'
+          if oldv not in h:
+              raise SystemExit('No se encontro la version JS 24 esperada')
+          idx.write_text(h.replace(oldv,newv,1),encoding='utf-8')
+          PY
+      - name: Validar
+        run: |
+          grep -F 'var omittedVideoRanges=[[3.90,6.30],[13.90,16.40]];' cluster-image.js
+          grep -F 'cluster-image.js?v=video-project-3-1-25' index.html
+      - name: Publicar y retirar workflow temporal
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add cluster-image.js index.html
+          git rm .github/workflows/add-second-scene-skip.yml
+          git commit -m 'Omite también la segunda escena incoherente del clúster'
+          git push
