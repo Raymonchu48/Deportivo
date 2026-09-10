@@ -1,0 +1,160 @@
+name: Fix mobile fullscreen cluster
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-mobile-fullscreen.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+      - name: Build phone specific video and poster
+        shell: bash
+        run: |
+          set -euo pipefail
+          ffmpeg -y -i cluster-video-project-3-1-fluid-coach.mp4 \
+            -filter_complex "[0:v]split=2[bg][fg];[bg]scale=900:1948:force_original_aspect_ratio=increase,crop=900:1948,gblur=sigma=32,eq=brightness=-0.035:contrast=1.05:saturation=0.97[bg2];[fg]scale=900:-2[fg2];[bg2][fg2]overlay=(W-w)/2:(H-h)/2:format=auto" \
+            -an -c:v libx264 -preset slow -crf 17 -pix_fmt yuv420p -movflags +faststart \
+            cluster-video-project-3-1-fluid-coach-phone.mp4
+          ffmpeg -y -ss 0.8 -i cluster-video-project-3-1-fluid-coach-phone.mp4 -frames:v 1 \
+            -c:v libwebp -quality 88 cluster-video-project-3-1-fluid-coach-poster-phone.webp
+      - name: Add mobile fullscreen CSS and update HTML
+        shell: bash
+        run: |
+          cat > mobile-cluster-fix.css <<'CSS'
+          /* MOBILE-CLUSTER-FULLSCREEN-START */
+          @media (max-width:900px) and (orientation:portrait){
+            .ic-cluster{height:100svh!important;min-height:100svh!important;overflow:hidden!important}
+            .ic-stage{
+              position:absolute!important;
+              inset:0!important;
+              top:0!important;
+              left:0!important;
+              width:100%!important;
+              height:100%!important;
+              aspect-ratio:auto!important;
+              margin:0!important;
+              transform:none!important;
+            }
+            .ic-art,.ic-motion-video{
+              inset:0!important;
+              width:100%!important;
+              height:100%!important;
+              object-fit:cover!important;
+              object-position:center center!important;
+            }
+            .ic-main-title{
+              top:2.4%!important;
+              left:3%!important;
+              right:3%!important;
+              height:5.8%!important;
+              font-size:clamp(11px,3vw,17px)!important;
+              letter-spacing:.04em!important;
+            }
+            .ic-top-actions{
+              top:10.5%!important;
+              left:4%!important;
+              right:4%!important;
+              height:10.5%!important;
+              display:grid!important;
+              grid-template-columns:repeat(4,minmax(0,1fr))!important;
+              gap:5px!important;
+            }
+            .ic-top-actions a,.ic-top-actions button{
+              min-width:0!important;
+              min-height:0!important;
+              height:100%!important;
+              padding:8px 5px!important;
+              justify-content:flex-end!important;
+            }
+            .ic-top-actions span{display:none!important}
+            .ic-top-actions strong{
+              width:100%!important;
+              font-size:clamp(9px,2.65vw,12px)!important;
+              line-height:1.12!important;
+              text-align:center!important;
+              white-space:normal!important;
+              overflow-wrap:anywhere!important;
+            }
+            .ic-profile-thumb{
+              top:7px!important;
+              right:7px!important;
+              width:31px!important;
+              height:36px!important;
+            }
+            .ic-modules{
+              left:4%!important;
+              right:4%!important;
+              bottom:3.2%!important;
+              height:15%!important;
+              grid-template-columns:repeat(3,minmax(0,1fr))!important;
+              grid-template-rows:repeat(2,minmax(42px,1fr))!important;
+              gap:6px!important;
+            }
+            .ic-console-label{top:-15%!important}
+            .ic-modules button{min-height:42px!important;padding:0 9px!important}
+            .ic-modules strong{font-size:clamp(8px,2.35vw,11px)!important}
+            .ic-screen{
+              position:fixed!important;
+              inset:6px!important;
+              top:6px!important;
+              right:6px!important;
+              bottom:6px!important;
+              left:6px!important;
+              width:auto!important;
+              height:auto!important;
+              max-height:none!important;
+              transform:none!important;
+            }
+          }
+          @media (max-width:420px) and (orientation:portrait){
+            .ic-main-title{font-size:clamp(10px,2.85vw,13px)!important}
+            .ic-top-actions{top:10%!important;height:10%!important}
+            .ic-top-actions strong{font-size:clamp(8px,2.55vw,10px)!important}
+            .ic-modules{left:3.5%!important;right:3.5%!important;bottom:2.8%!important;height:15.5%!important;gap:5px!important}
+            .ic-modules button{min-height:40px!important;padding:0 7px!important}
+            .ic-modules strong{font-size:clamp(8px,2.25vw,10px)!important}
+          }
+          /* MOBILE-CLUSTER-FULLSCREEN-END */
+          CSS
+
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('<source media="(orientation: landscape)" srcset="cluster-video-project-3-1-fluid-coach-poster-wide.webp">', '<source media="(max-width:700px) and (orientation: portrait)" srcset="cluster-video-project-3-1-fluid-coach-poster-phone.webp">\n<source media="(orientation: landscape)" srcset="cluster-video-project-3-1-fluid-coach-poster-wide.webp">')
+          s=s.replace('<source media="(orientation: portrait)" src="cluster-video-project-3-1-fluid-coach-mobile.mp4?v=coach-enhanced-28" type="video/mp4">', '<source media="(max-width:700px) and (orientation: portrait)" src="cluster-video-project-3-1-fluid-coach-phone.mp4?v=mobile-fullscreen-29" type="video/mp4">\n<source media="(orientation: portrait)" src="cluster-video-project-3-1-fluid-coach-mobile.mp4?v=coach-enhanced-28" type="video/mp4">')
+          old='<link rel="stylesheet" href="panel-size-overrides.css?v=24">'
+          new=old+'\n<link rel="stylesheet" href="mobile-cluster-fix.css?v=29">'
+          if old not in s:
+              raise SystemExit('No se encontró la hoja de overrides esperada')
+          s=s.replace(old,new,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Validate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s cluster-video-project-3-1-fluid-coach-phone.mp4
+          test -s cluster-video-project-3-1-fluid-coach-poster-phone.webp
+          ffprobe -v error -show_entries stream=width,height,r_frame_rate -show_entries format=duration -of default=nw=1 cluster-video-project-3-1-fluid-coach-phone.mp4
+          grep -q 'mobile-cluster-fix.css?v=29' index.html
+          grep -q 'cluster-video-project-3-1-fluid-coach-phone.mp4?v=mobile-fullscreen-29' index.html
+          grep -q 'MOBILE-CLUSTER-FULLSCREEN-START' mobile-cluster-fix.css
+      - name: Publish
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html mobile-cluster-fix.css cluster-video-project-3-1-fluid-coach-phone.mp4 cluster-video-project-3-1-fluid-coach-poster-phone.webp
+          git commit -m 'Corrige composición fullscreen del clúster en móvil'
+          git rm .github/workflows/fix-mobile-fullscreen.yml
+          git commit --amend --no-edit
+          git push origin HEAD:main
