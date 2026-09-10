@@ -204,3 +204,35 @@
   .ic-modules button{transition:none!important}
 }
 /* LOWER-MODULES-SIDE-RAILS-END */
+
+/* RIGHT-ACTIONS-ORANGE-ACCENT-START */
+/* Unifica el acento de las pestañas laterales con los módulos inferiores: naranja flúor */
+@media (min-width:901px) and (orientation:landscape){
+  .ic-top-actions a,
+  .ic-top-actions button{
+    border-right-color:#ff7a00!important;
+    box-shadow:-10px 0 22px rgba(255,122,0,.08)!important;
+  }
+  .ic-top-actions>a:after,
+  .ic-top-actions>button:after{
+    background:linear-gradient(90deg,transparent 0,#ff7a00 14%,#ffd29a 48%,#ff9a24 82%,transparent 100%)!important;
+    box-shadow:0 0 9px #ff7a00!important;
+  }
+  .ic-top-actions span{
+    color:#ffb347!important;
+    text-shadow:0 0 8px #ff7a00!important;
+  }
+  .ic-top-actions a:hover,
+  .ic-top-actions button:hover,
+  .ic-top-actions a:focus-visible,
+  .ic-top-actions button:focus-visible,
+  .ic-top-actions .is-active{
+    border-right-color:#ffd29a!important;
+    box-shadow:-24px 0 44px rgba(255,122,0,.20),inset 0 0 24px rgba(255,122,0,.12),0 0 15px rgba(255,122,0,.18)!important;
+    text-shadow:0 0 12px #ff9a24!important;
+  }
+  .ic-profile-thumb{
+    border-color:rgba(255,154,36,.62)!important;
+  }
+}
+/* RIGHT-ACTIONS-ORANGE-ACCENT-END */
