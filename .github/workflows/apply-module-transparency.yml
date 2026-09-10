@@ -1,0 +1,53 @@
+name: Igualar transparencia de módulos inferiores
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-module-transparency.yml'
+permissions:
+  contents: write
+jobs:
+  adjust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Igualar transparencia al lateral
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          css_path = Path('cluster-image.css')
+          css = css_path.read_text()
+          replacements = {
+            'background:linear-gradient(180deg,rgba(3,10,16,.56),rgba(5,13,20,.82));':
+            'background:linear-gradient(180deg,rgba(4,19,27,.03),rgba(6,25,35,.14) 42%,rgba(6,25,35,.40) 100%);',
+            'background:linear-gradient(180deg,rgba(37,18,3,.78),rgba(15,10,7,.94));':
+            'background:linear-gradient(180deg,rgba(8,40,54,.18),rgba(10,49,69,.54) 52%,rgba(6,28,41,.87));',
+            'background:linear-gradient(180deg,rgba(3,10,16,.66),rgba(6,14,21,.88));':
+            'background:linear-gradient(180deg,rgba(4,19,27,.08),rgba(6,25,35,.18) 48%,rgba(6,25,35,.42));'
+          }
+          for old, new in replacements.items():
+              if old not in css:
+                  raise SystemExit(f'No se encontró patrón esperado: {old}')
+              css = css.replace(old, new)
+          css_path.write_text(css)
+
+          idx = Path('index.html')
+          html = idx.read_text()
+          html = html.replace('cluster-image.css?v=video-project-3-1-16','cluster-image.css?v=video-project-3-1-17')
+          idx.write_text(html)
+          PY
+      - name: Validar cambios
+        shell: bash
+        run: |
+          grep -q 'rgba(4,19,27,.03)' cluster-image.css
+          grep -q 'rgba(10,49,69,.54)' cluster-image.css
+          grep -q 'cluster-image.css?v=video-project-3-1-17' index.html
+      - name: Publicar y retirar workflow temporal
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/apply-module-transparency.yml
+          git add cluster-image.css index.html .github/workflows/apply-module-transparency.yml
+          git commit -m 'Iguala transparencia de módulos inferiores con pestañas laterales'
+          git push
