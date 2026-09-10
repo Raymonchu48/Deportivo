@@ -9,10 +9,10 @@ var trigger=null;
 var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
 var motionVideo=document.querySelector('.ic-motion-video');
 var videoResumeAfterScreen=false;
-var cueTimes={training:.2,recovery:2.15,management:3.2,adapted:5.2,mind:7.2,nutrition:9.0};
+var cueTimes={training:.30,adapted:4.20,management:6.60,recovery:10.20,mind:14.20,nutrition:16.60};
 function reflectVideoCue(){
 if(!motionVideo||!screen.hidden)return;
-var t=motionVideo.currentTime;var key=t>=9?'nutrition':t>=7?'mind':t>=5?'adapted':t>=3?'management':t>=2?'recovery':'training';
+var t=motionVideo.currentTime;var key=t>=16.37?'nutrition':t>=13.97?'mind':t>=10.00?'recovery':t>=6.30?'management':t>=3.90?'adapted':'training';
 document.querySelectorAll('.ic-modules button[data-open]').forEach(function(b){var active=b.dataset.open===key;b.classList.toggle('is-active',active);if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
 }
 
