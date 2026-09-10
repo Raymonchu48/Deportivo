@@ -7,9 +7,11 @@ var title=document.getElementById('ic-screen-title');
 var closeButton=document.getElementById('ic-close');
 var trigger=null;
 var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+var mobileViewport=window.matchMedia('(max-width:900px), (pointer:coarse)');
 var motionVideo=document.querySelector('.ic-motion-video');
 var videoResumeAfterScreen=false;
 var cueTimes={training:.30,adapted:4.20,management:6.60,recovery:10.20,mind:14.20,nutrition:16.60};
+function allowClusterVideo(){return !document.hidden&&(mobileViewport.matches||!motion.matches);}
 function reflectVideoCue(){
 if(!motionVideo||!screen.hidden)return;
 var t=motionVideo.currentTime;var key=t>=16.37?'nutrition':t>=13.97?'mind':t>=10.00?'recovery':t>=6.30?'management':t>=3.90?'adapted':'training';
@@ -40,7 +42,7 @@ var cards=document.createElement('div');cards.className='cert-grid';
 item.sources.forEach(function(spec){var root=source(spec[0]);if(root)root.querySelectorAll(spec[1]).forEach(function(node){cards.appendChild(node.cloneNode(true));});});
 content.appendChild(cards);
 }else{var root=source(key);if(root)content.appendChild(root.cloneNode(true));}
-if(motionVideo){videoResumeAfterScreen=!motion.matches&&!document.hidden;if(cueTimes[key]!==undefined){try{motionVideo.currentTime=cueTimes[key];}catch(e){}}motionVideo.pause();}
+if(motionVideo){videoResumeAfterScreen=allowClusterVideo();if(cueTimes[key]!==undefined){try{motionVideo.currentTime=cueTimes[key];}catch(e){}}motionVideo.pause();}
 screen.hidden=false;cluster.classList.add('ic-screen-open');resetButtons(key);content.scrollTop=0;
 title.focus({preventScroll:true});
 if(scroll&&window.matchMedia('(max-width:900px)').matches)screen.scrollIntoView({behavior:motion.matches?'auto':'smooth',block:'nearest'});
@@ -48,7 +50,7 @@ return true;
 }
 function close(restore){
 screen.hidden=true;content.replaceChildren();cluster.classList.remove('ic-screen-open');resetButtons('');
-if(motionVideo&&videoResumeAfterScreen&&!motion.matches&&!document.hidden){var resume=motionVideo.play();if(resume&&typeof resume.catch==='function')resume.catch(function(){});}videoResumeAfterScreen=false;reflectVideoCue();
+if(motionVideo&&videoResumeAfterScreen&&allowClusterVideo()){var resume=motionVideo.play();if(resume&&typeof resume.catch==='function')resume.catch(function(){});}videoResumeAfterScreen=false;reflectVideoCue();
 if(restore&&trigger&&document.contains(trigger))trigger.focus({preventScroll:true});
 }
 document.addEventListener('click',function(e){
@@ -63,16 +65,36 @@ window.addEventListener('popstate',route);
 window.addEventListener('hashchange',route);
 window.icOpen=open;
 if(motionVideo){
+motionVideo.muted=true;
+motionVideo.defaultMuted=true;
+motionVideo.playsInline=true;
+motionVideo.setAttribute('muted','');
+motionVideo.setAttribute('playsinline','');
 var syncMotion=function(){
-if(motion.matches||document.hidden){motionVideo.pause();return;}
-var play=motionVideo.play();if(play&&typeof play.catch==='function')play.catch(function(){});
+if(!allowClusterVideo()||!screen.hidden){if(document.hidden||(!mobileViewport.matches&&motion.matches))motionVideo.pause();return;}
+motionVideo.muted=true;motionVideo.defaultMuted=true;
+var play=motionVideo.play();
+if(play&&typeof play.then==='function')play.then(function(){motionVideo.classList.add('is-ready');}).catch(function(){motionVideo.classList.add('needs-user-play');});
 };
-motionVideo.addEventListener('canplay',function(){motionVideo.classList.add('is-ready');syncMotion();reflectVideoCue();},{once:true});
+var kickMobilePlayback=function(){
+if(!mobileViewport.matches||!screen.hidden||document.hidden)return;
+motionVideo.muted=true;motionVideo.defaultMuted=true;
+var p=motionVideo.play();if(p&&typeof p.catch==='function')p.catch(function(){});
+};
+motionVideo.addEventListener('loadedmetadata',syncMotion);
+motionVideo.addEventListener('loadeddata',syncMotion);
+motionVideo.addEventListener('canplay',function(){motionVideo.classList.add('is-ready');syncMotion();reflectVideoCue();});
+motionVideo.addEventListener('playing',function(){motionVideo.classList.add('is-ready');motionVideo.classList.remove('needs-user-play');});
 motionVideo.addEventListener('timeupdate',reflectVideoCue);
 motionVideo.addEventListener('seeked',reflectVideoCue);
 document.addEventListener('visibilitychange',syncMotion);
+window.addEventListener('pageshow',function(){setTimeout(syncMotion,60);});
+window.addEventListener('orientationchange',function(){setTimeout(syncMotion,300);});
+document.addEventListener('touchstart',kickMobilePlayback,{passive:true,capture:true});
+document.addEventListener('pointerdown',kickMobilePlayback,{passive:true,capture:true});
 if(typeof motion.addEventListener==='function')motion.addEventListener('change',syncMotion);
-if(motionVideo.readyState>=3){motionVideo.classList.add('is-ready');syncMotion();}
+if(typeof mobileViewport.addEventListener==='function')mobileViewport.addEventListener('change',syncMotion);
+if(motionVideo.readyState>=2){motionVideo.classList.add('is-ready');syncMotion();}
 }
 route();
 })();
