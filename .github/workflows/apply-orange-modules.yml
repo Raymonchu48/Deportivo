@@ -12,8 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Aplicar navegación naranja flúor
         shell: bash
+        env:
+          ORANGE_BLOCK_B64: 'LyogT1JBTkdFLU1PRFVMRVMtU1RBUlQgKi8KLyogTcOzZHVsb3MgaW5mZXJpb3JlczogbmF2ZWdhY2nDs24gSFVEIG5hcmFuamEgZmzDum9yLCBjb21wYWN0YSB5IGNsYXJhbWVudGUgc2VwYXJhZGEgZGVsIHbDrWRlbyAqLwouaWMtY29uc29sZS1sYWJlbHsKICBjb2xvcjojZmZiMzQ3OwogIHRleHQtc2hhZG93OjAgMCA3cHggI2ZmN2EwMCwwIDAgMTZweCAjZmY3YTAwODA7CiAgbGV0dGVyLXNwYWNpbmc6LjIwZW07Cn0KLmljLW1vZHVsZXMgYnV0dG9uewogIGNvbG9yOiNmZmY7CiAgYmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQoMTgwZGVnLHJnYmEoMywxMCwxNiwuNTYpLHJnYmEoNSwxMywyMCwuODIpKTsKICBib3JkZXI6MXB4IHNvbGlkIHJnYmEoMjU1LDEyMiwwLC40Mik7CiAgYm94LXNoYWRvdzppbnNldCAwIDAgMTRweCByZ2JhKDI1NSwxMjIsMCwuMDYpLDAgMCA4cHggcmdiYSgyNTUsMTIyLDAsLjA4KSwwIDdweCAxOHB4IHJnYmEoMCwwLDAsLjM0KTsKICBiYWNrZHJvcC1maWx0ZXI6Ymx1cig1cHgpOwogIC13ZWJraXQtYmFja2Ryb3AtZmlsdGVyOmJsdXIoNXB4KTsKICBjbGlwLXBhdGg6cG9seWdvbig3JSAwLDkzJSAwLDEwMCUgMTAwJSwwIDEwMCUpOwogIGZpbHRlcjpub25lOwogIGFuaW1hdGlvbjpub25lOwogIHRyYW5zZm9ybTp0cmFuc2xhdGVZKDApIHNjYWxlKDEpOwogIHRyYW5zaXRpb246dHJhbnNmb3JtIC4yMnMgZWFzZSxiYWNrZ3JvdW5kIC4yMnMgZWFzZSxib3JkZXItY29sb3IgLjIycyBlYXNlLGJveC1zaGFkb3cgLjIycyBlYXNlLGZpbHRlciAuMjJzIGVhc2UsY29sb3IgLjIycyBlYXNlOwp9Ci5pYy1tb2R1bGVzIGJ1dHRvbjpiZWZvcmV7CiAgbGVmdDoxMyU7cmlnaHQ6MTMlO3RvcDo4JTtoZWlnaHQ6MnB4OwogIGJhY2tncm91bmQ6bGluZWFyLWdyYWRpZW50KDkwZGVnLHRyYW5zcGFyZW50LCNmZjdhMDAgMTYlLCNmZmQwOGEgNTAlLCNmZjdhMDAgODQlLHRyYW5zcGFyZW50KTsKICBib3gtc2hhZG93OjAgMCA3cHggI2ZmN2EwMCwwIDAgMTRweCAjZmY3YTAwODA7Cn0KLmljLW1vZHVsZXMgYnV0dG9uOmFmdGVyewogIGxlZnQ6NTAlO2JvdHRvbTo3JTt3aWR0aDo0MiU7aGVpZ2h0OjJweDsKICBiYWNrZ3JvdW5kOiNmZjdhMDA7CiAgYm94LXNoYWRvdzowIDAgNnB4ICNmZjdhMDAsMCAwIDEycHggI2ZmN2EwMDc1OwogIG9wYWNpdHk6LjcyOwp9Ci5pYy1udW17CiAgY29sb3I6I2ZmOWEyNDsKICB0ZXh0LXNoYWRvdzowIDAgN3B4ICNmZjdhMDAsMCAwIDE0cHggI2ZmN2EwMDcwOwp9Ci5pYy1tb2R1bGVzIHN0cm9uZ3sKICBjb2xvcjojZmZmOwogIGZvbnQtd2VpZ2h0Ojc1MDsKICB0ZXh0LXNoYWRvdzowIDFweCA0cHggIzAwMCwwIDAgNnB4IHJnYmEoMjU1LDEyMiwwLC4xOCk7Cn0KLmljLW1vZHVsZXMgYnV0dG9uOmhvdmVyLAouaWMtbW9kdWxlcyBidXR0b246Zm9jdXMtdmlzaWJsZSwKLmljLW1vZHVsZXMgYnV0dG9uLmlzLWFjdGl2ZSwKLmljLW1vZHVsZXMgYnV0dG9uW2FyaWEtZXhwYW5kZWQ9dHJ1ZV17CiAgY29sb3I6I2ZmZjsKICBiYWNrZ3JvdW5kOmxpbmVhci1ncmFkaWVudCgxODBkZWcscmdiYSgzNywxOCwzLC43OCkscmdiYSgxNSwxMCw3LC45NCkpOwogIGJvcmRlci1jb2xvcjojZmY5YTI0OwogIGJveC1zaGFkb3c6aW5zZXQgMCAwIDIycHggcmdiYSgyNTUsMTIyLDAsLjIwKSwwIDAgMTJweCByZ2JhKDI1NSwxMjIsMCwuNTUpLDAgMCAyOHB4IHJnYmEoMjU1LDEyMiwwLC4yOCksMCAxMHB4IDI0cHggcmdiYSgwLDAsMCwuNDQpOwogIGZpbHRlcjpicmlnaHRuZXNzKDEuMTApIGNvbnRyYXN0KDEuMDQpOwogIHRyYW5zZm9ybTp0cmFuc2xhdGVZKC00cHgpIHNjYWxlKDEuMDQ1KTsKICB0ZXh0LXNoYWRvdzowIDAgOXB4ICNmZjhhMTY7Cn0KLmljLW1vZHVsZXMgYnV0dG9uOmhvdmVyOmJlZm9yZSwKLmljLW1vZHVsZXMgYnV0dG9uOmZvY3VzLXZpc2libGU6YmVmb3JlLAouaWMtbW9kdWxlcyBidXR0b24uaXMtYWN0aXZlOmJlZm9yZSwKLmljLW1vZHVsZXMgYnV0dG9uW2FyaWEtZXhwYW5kZWQ9dHJ1ZV06YmVmb3JlewogIGxlZnQ6NyU7cmlnaHQ6NyU7CiAgYmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQoOTBkZWcsdHJhbnNwYXJlbnQsI2ZmN2EwMCAxMCUsI2ZmZjBkMiA1MCUsI2ZmN2EwMCA5MCUsdHJhbnNwYXJlbnQpOwogIGJveC1zaGFkb3c6MCAwIDEwcHggI2ZmN2EwMCwwIDAgMjJweCAjZmY3YTAwYWE7Cn0KLmljLW1vZHVsZXMgYnV0dG9uOmhvdmVyOmFmdGVyLAouaWMtbW9kdWxlcyBidXR0b246Zm9jdXMtdmlzaWJsZTphZnRlciwKLmljLW1vZHVsZXMgYnV0dG9uLmlzLWFjdGl2ZTphZnRlciwKLmljLW1vZHVsZXMgYnV0dG9uW2FyaWEtZXhwYW5kZWQ9dHJ1ZV06YWZ0ZXJ7CiAgd2lkdGg6NjglOwogIGJhY2tncm91bmQ6I2ZmOWEyNDsKICBib3gtc2hhZG93OjAgMCA5cHggI2ZmN2EwMCwwIDAgMjBweCAjZmY3YTAwYjA7CiAgb3BhY2l0eToxOwp9Ci5pYy1tb2R1bGVzIGJ1dHRvbi5pcy1hY3RpdmUgLmljLW51bSwKLmljLW1vZHVsZXMgYnV0dG9uW2FyaWEtZXhwYW5kZWQ9dHJ1ZV0gLmljLW51bXsKICBjb2xvcjojZmZkMjlhOwogIHRleHQtc2hhZG93OjAgMCA4cHggI2ZmN2EwMCwwIDAgMjBweCAjZmY3YTAwOwp9CkBtZWRpYSAobWF4LXdpZHRoOjcwMHB4KXsKICAuaWMtbW9kdWxlc3tnYXA6MS4yNSV9CiAgLmljLW1vZHVsZXMgYnV0dG9uewogICAgYmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQoMTgwZGVnLHJnYmEoMywxMCwxNiwuNjYpLHJnYmEoNiwxNCwyMSwuODgpKTsKICAgIGJvcmRlci1jb2xvcjpyZ2JhKDI1NSwxMjIsMCwuNTApOwogICAgYm94LXNoYWRvdzppbnNldCAwIDAgMTBweCByZ2JhKDI1NSwxMjIsMCwuMDcpLDAgMCA2cHggcmdiYSgyNTUsMTIyLDAsLjEyKTsKICAgIGJhY2tkcm9wLWZpbHRlcjpibHVyKDNweCk7CiAgICAtd2Via2l0LWJhY2tkcm9wLWZpbHRlcjpibHVyKDNweCk7CiAgfQogIC5pYy1tb2R1bGVzIGJ1dHRvbjpiZWZvcmV7dG9wOjYlO2xlZnQ6MTAlO3JpZ2h0OjEwJTtoZWlnaHQ6MXB4fQogIC5pYy1tb2R1bGVzIGJ1dHRvbjphZnRlcntib3R0b206NSU7aGVpZ2h0OjFweDt3aWR0aDo0OCV9CiAgLmljLW51bXtmb250LXNpemU6N3B4O2NvbG9yOiNmZjlhMjR9CiAgLmljLW1vZHVsZXMgc3Ryb25ne2ZvbnQtc2l6ZTpjbGFtcCg2cHgsMS44dncsOXB4KTt0ZXh0LXNoYWRvdzowIDFweCAzcHggIzAwMH0KICAuaWMtY29uc29sZS1sYWJlbHtjb2xvcjojZmZiMzQ3O3RleHQtc2hhZG93OjAgMCA2cHggI2ZmN2EwMH0KICAuaWMtbW9kdWxlcyBidXR0b246YWN0aXZlLC5pYy1tb2R1bGVzIGJ1dHRvbi5pcy1hY3RpdmUsLmljLW1vZHVsZXMgYnV0dG9uW2FyaWEtZXhwYW5kZWQ9dHJ1ZV17dHJhbnNmb3JtOnRyYW5zbGF0ZVkoLTJweCkgc2NhbGUoMS4wMjUpfQp9CkBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjpyZWR1Y2UpewogIC5pYy1tb2R1bGVzIGJ1dHRvbnthbmltYXRpb246bm9uZSFpbXBvcnRhbnQ7dHJhbnNpdGlvbjpub25lIWltcG9ydGFudH0KfQovKiBPUkFOR0UtTU9EVUxFUy1FTkQgKi8='
         run: |
           python3 - <<'PY'
+          import os, base64
           from pathlib import Path
           css_path = Path('cluster-image.css')
           css = css_path.read_text()
@@ -23,104 +26,8 @@ jobs:
               a = css.index(start)
               b = css.index(end, a) + len(end)
               css = css[:a] + css[b:]
-          block = r'''
-/* ORANGE-MODULES-START */
-/* Módulos inferiores: navegación HUD naranja flúor, compacta y claramente separada del vídeo */
-.ic-console-label{
-  color:#ffb347;
-  text-shadow:0 0 7px #ff7a00,0 0 16px #ff7a0080;
-  letter-spacing:.20em;
-}
-.ic-modules button{
-  color:#fff;
-  background:linear-gradient(180deg,rgba(3,10,16,.56),rgba(5,13,20,.82));
-  border:1px solid rgba(255,122,0,.42);
-  box-shadow:inset 0 0 14px rgba(255,122,0,.06),0 0 8px rgba(255,122,0,.08),0 7px 18px rgba(0,0,0,.34);
-  backdrop-filter:blur(5px);
-  -webkit-backdrop-filter:blur(5px);
-  clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);
-  filter:none;
-  animation:none;
-  transform:translateY(0) scale(1);
-  transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease,color .22s ease;
-}
-.ic-modules button:before{
-  left:13%;right:13%;top:8%;height:2px;
-  background:linear-gradient(90deg,transparent,#ff7a00 16%,#ffd08a 50%,#ff7a00 84%,transparent);
-  box-shadow:0 0 7px #ff7a00,0 0 14px #ff7a0080;
-}
-.ic-modules button:after{
-  left:50%;bottom:7%;width:42%;height:2px;
-  background:#ff7a00;
-  box-shadow:0 0 6px #ff7a00,0 0 12px #ff7a0075;
-  opacity:.72;
-}
-.ic-num{
-  color:#ff9a24;
-  text-shadow:0 0 7px #ff7a00,0 0 14px #ff7a0070;
-}
-.ic-modules strong{
-  color:#fff;
-  font-weight:750;
-  text-shadow:0 1px 4px #000,0 0 6px rgba(255,122,0,.18);
-}
-.ic-modules button:hover,
-.ic-modules button:focus-visible,
-.ic-modules button.is-active,
-.ic-modules button[aria-expanded=true]{
-  color:#fff;
-  background:linear-gradient(180deg,rgba(37,18,3,.78),rgba(15,10,7,.94));
-  border-color:#ff9a24;
-  box-shadow:inset 0 0 22px rgba(255,122,0,.20),0 0 12px rgba(255,122,0,.55),0 0 28px rgba(255,122,0,.28),0 10px 24px rgba(0,0,0,.44);
-  filter:brightness(1.10) contrast(1.04);
-  transform:translateY(-4px) scale(1.045);
-  text-shadow:0 0 9px #ff8a16;
-}
-.ic-modules button:hover:before,
-.ic-modules button:focus-visible:before,
-.ic-modules button.is-active:before,
-.ic-modules button[aria-expanded=true]:before{
-  left:7%;right:7%;
-  background:linear-gradient(90deg,transparent,#ff7a00 10%,#fff0d2 50%,#ff7a00 90%,transparent);
-  box-shadow:0 0 10px #ff7a00,0 0 22px #ff7a00aa;
-}
-.ic-modules button:hover:after,
-.ic-modules button:focus-visible:after,
-.ic-modules button.is-active:after,
-.ic-modules button[aria-expanded=true]:after{
-  width:68%;
-  background:#ff9a24;
-  box-shadow:0 0 9px #ff7a00,0 0 20px #ff7a00b0;
-  opacity:1;
-}
-.ic-modules button.is-active .ic-num,
-.ic-modules button[aria-expanded=true] .ic-num{
-  color:#ffd29a;
-  text-shadow:0 0 8px #ff7a00,0 0 20px #ff7a00;
-}
-@media (max-width:700px){
-  .ic-modules{gap:1.25%}
-  .ic-modules button{
-    background:linear-gradient(180deg,rgba(3,10,16,.66),rgba(6,14,21,.88));
-    border-color:rgba(255,122,0,.50);
-    box-shadow:inset 0 0 10px rgba(255,122,0,.07),0 0 6px rgba(255,122,0,.12);
-    backdrop-filter:blur(3px);
-    -webkit-backdrop-filter:blur(3px);
-  }
-  .ic-modules button:before{top:6%;left:10%;right:10%;height:1px}
-  .ic-modules button:after{bottom:5%;height:1px;width:48%}
-  .ic-num{font-size:7px;color:#ff9a24}
-  .ic-modules strong{font-size:clamp(6px,1.8vw,9px);text-shadow:0 1px 3px #000}
-  .ic-console-label{color:#ffb347;text-shadow:0 0 6px #ff7a00}
-  .ic-modules button:active,.ic-modules button.is-active,.ic-modules button[aria-expanded=true]{transform:translateY(-2px) scale(1.025)}
-}
-@media (prefers-reduced-motion:reduce){
-  .ic-modules button{animation:none!important;transition:none!important}
-}
-/* ORANGE-MODULES-END */
-'''
-          css_path.write_text(css.rstrip() + '\n' + block.strip() + '\n')
-
+          block = base64.b64decode(os.environ['ORANGE_BLOCK_B64']).decode('utf-8')
+          css_path.write_text(css.rstrip() + '\n' + block + '\n')
           idx = Path('index.html')
           html = idx.read_text()
           html = html.replace('cluster-image.css?v=video-project-3-1-15','cluster-image.css?v=video-project-3-1-16')
