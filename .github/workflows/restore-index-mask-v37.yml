@@ -1,0 +1,46 @@
+name: Restore index and apply top text mask v37
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restore-index-mask-v37.yml'
+permissions:
+  contents: write
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restaurar index y cargar máscara
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout 5293027ca2adec9fd2cbace25c506b0efb4db346 -- index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          marker='<link rel="stylesheet" href="module-cards-v36.css?v=36">'
+          link='<link rel="stylesheet" href="top-text-mask-v37.css?v=37">'
+          if marker not in s:
+              raise SystemExit('No se encontró module-cards-v36')
+          if link not in s:
+              s=s.replace(marker, marker+'\n'+link, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+          grep -q 'top-text-mask-v37.css?v=37' index.html
+          grep -q 'module-cards-v36.css?v=36' index.html
+      - name: Publicar corrección
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html top-text-mask-v37.css
+          git rm .github/workflows/restore-index-mask-v37.yml
+          git commit -m 'Oculta el texto incrustado bajo las tarjetas superiores'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
