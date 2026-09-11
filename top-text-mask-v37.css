@@ -1,0 +1,34 @@
+/* TOP-TEXT-MASK-V37
+   Oculta el texto incrustado del vídeo que queda visible justo debajo
+   de las acciones superiores, con una caída gradual para no crear una barra. */
+@media (min-width:901px) and (orientation:landscape){
+  .ic-top-actions:before{
+    left:-1.5%!important;
+    right:-1.5%!important;
+    top:-9%!important;
+    bottom:-48%!important;
+    background:
+      linear-gradient(180deg,
+        rgba(3,13,20,.72) 0%,
+        rgba(4,17,25,.66) 58%,
+        rgba(4,18,26,.58) 74%,
+        rgba(4,17,25,.44) 84%,
+        rgba(4,17,25,.22) 93%,
+        rgba(4,17,25,0) 100%),
+      linear-gradient(90deg,
+        rgba(3,13,20,.28) 0%,
+        rgba(4,17,25,.48) 12%,
+        rgba(4,18,26,.54) 50%,
+        rgba(4,17,25,.48) 88%,
+        rgba(3,13,20,.28) 100%)!important;
+    box-shadow:0 0 10px rgba(0,0,0,.26)!important;
+    backdrop-filter:blur(7px)!important;
+    -webkit-backdrop-filter:blur(7px)!important;
+  }
+}
+
+@media (min-width:901px) and (max-width:1180px) and (orientation:landscape){
+  .ic-top-actions:before{
+    bottom:-54%!important;
+  }
+}
