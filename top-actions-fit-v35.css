@@ -1,0 +1,63 @@
+/* TOP-ACTIONS-FIT-V35
+   Ajuste fino para que la fila superior quede completamente dentro del clúster.
+   Se comprime ligeramente el conjunto y se reserva algo más de ancho para
+   "Carta de recomendación", conservando transparencia, HUD y comportamiento. */
+@media (min-width:901px) and (orientation:landscape){
+  .ic-top-actions{
+    left:23.5%!important;
+    right:21.5%!important;
+    grid-template-columns:.90fr .90fr 1fr 1.15fr!important;
+    gap:.80%!important;
+  }
+
+  .ic-top-actions a,
+  .ic-top-actions button{
+    padding-left:11px!important;
+    padding-right:11px!important;
+  }
+
+  .ic-top-actions strong{
+    font-size:clamp(9.5px,.72vw,12px)!important;
+    gap:8px!important;
+  }
+
+  .ic-top-actions > :nth-child(4){
+    padding-left:10px!important;
+    padding-right:8px!important;
+    transform-origin:right center!important;
+  }
+
+  .ic-top-actions > :nth-child(4) strong{
+    font-size:clamp(9.2px,.68vw,11.5px)!important;
+  }
+
+  .ic-top-actions > :nth-child(4):hover,
+  .ic-top-actions > :nth-child(4):focus-visible,
+  .ic-top-actions > :nth-child(4).is-active{
+    transform:translateY(-3px) scale(1.012)!important;
+  }
+}
+
+@media (min-width:901px) and (max-width:1180px) and (orientation:landscape){
+  .ic-top-actions{
+    left:19.5%!important;
+    right:18.5%!important;
+    grid-template-columns:.88fr .90fr 1fr 1.18fr!important;
+    gap:.60%!important;
+  }
+
+  .ic-top-actions a,
+  .ic-top-actions button{
+    padding-left:8px!important;
+    padding-right:8px!important;
+  }
+
+  .ic-top-actions strong{
+    font-size:clamp(8.5px,.88vw,10.5px)!important;
+    gap:6px!important;
+  }
+
+  .ic-top-actions > :nth-child(4) strong{
+    font-size:clamp(8.2px,.82vw,10px)!important;
+  }
+}
