@@ -1,0 +1,89 @@
+name: Refine mobile cluster structure
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/refine-mobile-structure.yml'
+permissions:
+  contents: write
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rewrite mobile composition
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > mobile-cluster-fix.css <<'CSS'
+          /* MOBILE-CLUSTER-STRUCTURE-V30 */
+          @media (max-width:900px) and (orientation:portrait){
+            .ic-cluster{height:100svh!important;min-height:100svh!important;overflow:hidden!important}
+            .ic-stage{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;aspect-ratio:auto!important;margin:0!important;transform:none!important}
+            .ic-art,.ic-motion-video{inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important}
+
+            /* Cabecera compacta y próxima a la escena principal */
+            .ic-main-title{
+              top:5.6%!important;left:3%!important;right:3%!important;height:5.2%!important;
+              font-size:clamp(10px,2.85vw,15px)!important;letter-spacing:.035em!important;
+              box-shadow:0 0 14px 7px rgba(7,25,37,.82)!important
+            }
+            .ic-top-actions{
+              top:12.2%!important;left:4%!important;right:4%!important;height:8.2%!important;
+              display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:4px!important
+            }
+            .ic-top-actions a,.ic-top-actions button{
+              min-width:0!important;min-height:0!important;height:100%!important;padding:6px 4px!important;
+              justify-content:flex-end!important;background:linear-gradient(180deg,rgba(5,22,31,.08),rgba(6,25,35,.34) 58%,rgba(6,25,35,.62))!important;
+              backdrop-filter:blur(3px)!important;-webkit-backdrop-filter:blur(3px)!important
+            }
+            .ic-top-actions span{display:none!important}
+            .ic-top-actions strong{width:100%!important;font-size:clamp(8px,2.35vw,11px)!important;line-height:1.08!important;text-align:center!important;white-space:normal!important;overflow-wrap:anywhere!important}
+            .ic-profile-thumb{top:5px!important;right:50%!important;transform:translateX(50%)!important;width:28px!important;height:31px!important;opacity:.75!important}
+
+            /* Módulos: más cerca del vídeo y menos altos */
+            .ic-modules{
+              left:3.5%!important;right:3.5%!important;bottom:7.2%!important;height:13.2%!important;
+              grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(38px,1fr))!important;
+              gap:5px 6px!important
+            }
+            .ic-console-label{top:-18%!important;font-size:6px!important;letter-spacing:.18em!important}
+            .ic-modules button{min-height:38px!important;padding:0 8px!important;background:linear-gradient(90deg,rgba(4,19,27,.03),rgba(6,25,35,.13) 42%,rgba(6,25,35,.36) 100%)!important;backdrop-filter:blur(2px)!important;-webkit-backdrop-filter:blur(2px)!important}
+            .ic-num{font-size:7px!important}
+            .ic-modules strong{font-size:clamp(8px,2.15vw,10px)!important}
+
+            .ic-screen{position:fixed!important;inset:6px!important;width:auto!important;height:auto!important;max-height:none!important;transform:none!important}
+          }
+
+          @media (max-width:430px) and (orientation:portrait){
+            .ic-main-title{top:5.2%!important;height:5%!important;font-size:clamp(10px,2.75vw,13px)!important}
+            .ic-top-actions{top:11.7%!important;height:8%!important;left:3.5%!important;right:3.5%!important}
+            .ic-top-actions strong{font-size:clamp(8px,2.25vw,10px)!important}
+            .ic-profile-thumb{width:26px!important;height:29px!important}
+            .ic-modules{left:3%!important;right:3%!important;bottom:6.5%!important;height:13%!important;gap:4px 5px!important}
+            .ic-modules button{min-height:36px!important;padding:0 7px!important}
+            .ic-modules strong{font-size:clamp(8px,2.05vw,9px)!important}
+          }
+          CSS
+
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('mobile-cluster-fix.css?v=29','mobile-cluster-fix.css?v=30')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Validate
+        run: |
+          grep -q 'MOBILE-CLUSTER-STRUCTURE-V30' mobile-cluster-fix.css
+          grep -q 'mobile-cluster-fix.css?v=30' index.html
+      - name: Publish
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html mobile-cluster-fix.css
+          git commit -m 'Reestructura el clúster móvil y compacta la interfaz'
+          git rm .github/workflows/refine-mobile-structure.yml
+          git commit --amend --no-edit
+          git push origin HEAD:main
