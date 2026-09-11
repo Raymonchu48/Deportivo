@@ -10,18 +10,18 @@ var motion=window.matchMedia('(prefers-reduced-motion: reduce)');
 var mobileViewport=window.matchMedia('(max-width:900px), (pointer:coarse)');
 var motionVideo=document.querySelector('.ic-motion-video');
 var videoResumeAfterScreen=false;
-var cueTimes={training:.30,adapted:2.80,management:3.85,recovery:7.45,mind:9.95,nutrition:11.00};
+var cueTimes={training:.30,management:3.85,recovery:7.45,mind:9.95,nutrition:11.00};
 function allowClusterVideo(){return !document.hidden&&(mobileViewport.matches||!motion.matches);}
 function reflectVideoCue(){
 if(!motionVideo||!screen.hidden)return;
-var t=motionVideo.currentTime;var key=t>=10.80?'nutrition':t>=9.95?'mind':t>=7.25?'recovery':t>=3.55?'management':t>=2.80?'adapted':'training';
+var t=motionVideo.currentTime;var key=t>=10.80?'nutrition':t>=9.95?'mind':t>=7.25?'recovery':t>=3.55?'management':'training';
 document.querySelectorAll('.ic-modules button[data-open]').forEach(function(b){var active=b.dataset.open===key;b.classList.toggle('is-active',active);if(active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
 }
 
 var titles={'sobre-mi':'Sobre mí',metodo:'Mi método de trabajo',formacion:'Formación acreditada',proyectos:'Proyectos',experiencia:'Experiencia',contacto:'Contacto'};
 var documents={cv:{title:'Currículum deportivo',file:'CV_Deporte.pdf',action:'Abrir / descargar CV'},recommendation:{title:'Cartas de recomendación',file:'Cartas_Recomendacion.pdf',action:'Abrir / descargar cartas'}};
 var modules={
-training:{title:'Entrenamiento',copy:'Planificación, fuerza, técnica, progresión y control de carga dentro de una visión integral.',sources:[['metodo','.method-grid'],['formacion','.cert:nth-child(1),.cert:nth-child(2)']]},
+training:{title:'Entrenamiento',copy:'Planificación, fuerza, técnica, progresión, control de carga y adaptación del ejercicio a capacidades y necesidades individuales.',sources:[['metodo','.method-grid'],['formacion','.cert:nth-child(1),.cert:nth-child(2)'],['experiencia','.exp:nth-child(3)'],['formacion','.cert:nth-child(9)']]},
 nutrition:{title:'Nutrición deportiva',copy:'Educación nutricional, hábitos y estrategia aplicada a salud, composición corporal, recuperación y rendimiento.',sources:[['formacion','.cert:nth-child(3),.cert:nth-child(4)'],['proyectos','.project-card:nth-child(2)']]},
 mind:{title:'Psicología y mentalidad',copy:'Motivación, comunicación, adherencia y autoconocimiento para sostener el proceso deportivo.',sources:[['formacion','.cert:nth-child(5)'],['sobre-mi','.feature:nth-child(3)']]},
 recovery:{title:'Recuperación',copy:'Movilidad, descanso y dosificación para proteger la continuidad y la capacidad funcional. La valoración, el seguimiento y los hábitos sostenibles forman parte del método de trabajo.',sources:[['metodo','.method-step:nth-child(1),.method-step:nth-child(4),.method-step:nth-child(5)'],['experiencia','.exp:nth-child(5)']]},
@@ -43,6 +43,7 @@ var summary=document.createElement('p');summary.className='ic-summary';summary.t
 var cards=document.createElement('div');cards.className='cert-grid';
 item.sources.forEach(function(spec){var root=source(spec[0]);if(root)root.querySelectorAll(spec[1]).forEach(function(node){cards.appendChild(node.cloneNode(true));});});
 content.appendChild(cards);
+if(key==='training'){var adaptedBlock=document.createElement('article');adaptedBlock.className='ic-adapted-in-training';adaptedBlock.innerHTML='<h3>Entrenamiento adaptado</h3><p>Progresión ajustada a capacidades, autonomía, movilidad, contexto y necesidades individuales, incluyendo experiencia con tercera edad y colectivos especiales.</p>';content.appendChild(adaptedBlock);}
 }else if(doc){
 var layout=document.createElement('div');layout.className='ic-doc-layout';
 var viewer=document.createElement('iframe');viewer.className='ic-doc-viewer';viewer.src=doc.file+'#toolbar=1&navpanes=0&view=FitH';viewer.title=doc.title;layout.appendChild(viewer);
