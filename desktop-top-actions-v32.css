@@ -1,0 +1,146 @@
+/* DESKTOP-TOP-ACTIONS-HORIZONTAL-V32
+   Sustituye visualmente el subtítulo incrustado del vídeo por una banda HUD
+   y traslada las cuatro acciones del lateral a una fila superior. */
+@media (min-width:901px) and (orientation:landscape){
+  .ic-top-actions{
+    top:10.25%!important;
+    left:20.5%!important;
+    right:20.5%!important;
+    height:6.6%!important;
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:.7%!important;
+    perspective:none!important;
+    z-index:6!important;
+    pointer-events:none!important;
+  }
+
+  /* Banda que tapa por completo el texto MULTI-USER... incrustado en el vídeo */
+  .ic-top-actions:before{
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    inset:-10px -14px -9px!important;
+    z-index:-2!important;
+    height:auto!important;
+    background:linear-gradient(90deg,
+      rgba(3,13,20,.96) 0%,
+      rgba(5,21,31,.985) 10%,
+      rgba(5,22,32,.995) 50%,
+      rgba(5,21,31,.985) 90%,
+      rgba(3,13,20,.96) 100%)!important;
+    border-top:1px solid rgba(255,122,0,.22)!important;
+    border-bottom:1px solid rgba(255,122,0,.34)!important;
+    box-shadow:0 0 22px rgba(0,0,0,.82),0 0 18px rgba(255,122,0,.07)!important;
+    backdrop-filter:blur(11px)!important;
+    -webkit-backdrop-filter:blur(11px)!important;
+    pointer-events:none!important;
+    transform:none!important;
+  }
+  .ic-top-actions:after{
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    left:3%!important;
+    right:3%!important;
+    top:auto!important;
+    bottom:-7px!important;
+    height:1px!important;
+    z-index:-1!important;
+    background:linear-gradient(90deg,transparent,#ff7a00 18%,#ffd29a 50%,#ff7a00 82%,transparent)!important;
+    box-shadow:0 0 8px rgba(255,122,0,.72)!important;
+    pointer-events:none!important;
+  }
+
+  .ic-top-actions a,
+  .ic-top-actions button{
+    position:relative!important;
+    top:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    left:auto!important;
+    width:auto!important;
+    height:100%!important;
+    min-height:0!important;
+    padding:8px 12px!important;
+    border:1px solid rgba(255,122,0,.48)!important;
+    border-right:2px solid #ff7a00!important;
+    background:linear-gradient(180deg,rgba(8,28,39,.78),rgba(4,17,25,.88))!important;
+    color:#efffff!important;
+    box-shadow:inset 0 0 18px rgba(255,122,0,.045),0 7px 20px rgba(0,0,0,.34)!important;
+    backdrop-filter:blur(7px)!important;
+    -webkit-backdrop-filter:blur(7px)!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    justify-content:center!important;
+    gap:3px!important;
+    clip-path:none!important;
+    overflow:hidden!important;
+    white-space:normal!important;
+    transform:none!important;
+    transform-origin:center!important;
+    pointer-events:auto!important;
+    transition:transform .24s ease,background .24s ease,border-color .24s ease,box-shadow .24s ease,filter .24s ease!important;
+  }
+
+  .ic-top-actions a:hover,
+  .ic-top-actions button:hover,
+  .ic-top-actions a:focus-visible,
+  .ic-top-actions button:focus-visible,
+  .ic-top-actions .is-active{
+    width:auto!important;
+    transform:translateY(-3px)!important;
+    border-color:rgba(255,184,98,.76)!important;
+    border-right-color:#ffd29a!important;
+    background:linear-gradient(180deg,rgba(45,29,12,.78),rgba(13,24,30,.92))!important;
+    box-shadow:inset 0 0 22px rgba(255,122,0,.10),0 0 18px rgba(255,122,0,.18),0 9px 24px rgba(0,0,0,.38)!important;
+    filter:brightness(1.08)!important;
+    text-shadow:0 0 10px rgba(255,154,36,.55)!important;
+  }
+
+  .ic-top-actions span{
+    display:block!important;
+    position:relative!important;
+    flex:none!important;
+    max-width:none!important;
+    margin:0!important;
+    overflow:hidden!important;
+    color:#ffae4b!important;
+    font:700 clamp(6px,.48vw,9px)/1 "SFMono-Regular",Consolas,monospace!important;
+    letter-spacing:.08em!important;
+    text-shadow:0 0 7px rgba(255,122,0,.72)!important;
+    white-space:nowrap!important;
+    text-overflow:ellipsis!important;
+  }
+
+  .ic-top-actions strong{
+    position:relative!important;
+    width:100%!important;
+    min-width:0!important;
+    color:#fff!important;
+    font-size:clamp(10px,.82vw,14px)!important;
+    font-weight:750!important;
+    line-height:1.08!important;
+    text-align:left!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    text-shadow:0 1px 5px #001018,0 0 8px rgba(255,122,0,.16)!important;
+  }
+
+  .ic-profile-thumb{display:none!important}
+
+  .ic-top-actions>:nth-child(1),
+  .ic-top-actions>:nth-child(2),
+  .ic-top-actions>:nth-child(3),
+  .ic-top-actions>:nth-child(4),
+  .ic-top-actions>:nth-child(5){top:auto!important;right:auto!important;left:auto!important}
+}
+
+@media (min-width:901px) and (max-width:1180px) and (orientation:landscape){
+  .ic-top-actions{left:17%!important;right:17%!important;height:7.2%!important}
+  .ic-top-actions a,.ic-top-actions button{padding:7px 9px!important}
+  .ic-top-actions span{font-size:6px!important}
+  .ic-top-actions strong{font-size:clamp(9px,1vw,12px)!important}
+}
