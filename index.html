@@ -8,7 +8,7 @@
   <meta property="og:title" content="Ramón Alberto Curbalán Vega · Perfil Profesional Deportivo">
   <meta property="og:description" content="Entrenamiento, nutrición, rendimiento y hábitos con un método profesional e integral.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="cluster-profesional-interactivo.webp">
+  <meta property="og:image" content="cluster-profesional-panoramico.webp">
   <title>Ramón Alberto Curbalán Vega · Portfolio deportivo</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307130e'/%3E%3Cpath d='M15 48 27 16h11c11 0 15 6 12 15-2 6-7 9-13 10l9 7H34L24 36l-4 12zm15-23-3 8h8c3 0 5-1 6-4 1-3-1-4-4-4z' fill='%2376b852'/%3E%3C/svg%3E">
   <style>
@@ -20,10 +20,10 @@
     .app{min-height:100dvh;background:#020604}
     .stage{position:relative;width:100vw;height:100dvh;display:grid;place-items:center;overflow:hidden}
     .cluster{position:relative;width:100vw;height:100dvh;display:grid;place-items:center;overflow:hidden;background:#07110c;isolation:isolate}
-    .cluster::before{content:"";position:absolute;inset:-42px;background:url("cluster-profesional-interactivo.webp") center/cover no-repeat;filter:blur(30px) saturate(.78);transform:scale(1.08);opacity:.5;z-index:-2}
+    .cluster::before{content:"";position:absolute;inset:-42px;background:url("cluster-profesional-panoramico.webp") center/cover no-repeat;filter:blur(24px) saturate(.82);transform:scale(1.08);opacity:.52;z-index:-2}
     .cluster::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,8,4,.62),rgba(5,17,10,.2) 33%,rgba(5,17,10,.2) 67%,rgba(1,8,4,.62));pointer-events:none;z-index:-1}
-    .artboard{position:relative;width:min(100vw,70.6dvh);aspect-ratio:1054/1493;max-height:100dvh;overflow:hidden;background:#e9eeeb;box-shadow:0 0 70px rgba(0,0,0,.68),0 0 0 1px rgba(177,220,160,.34);z-index:1}
-    .artboard>img{width:100%;height:100%;object-fit:contain;display:block}
+    .artboard{position:relative;width:100vw;height:100dvh;overflow:hidden;background:#e9eeeb;box-shadow:0 0 70px rgba(0,0,0,.68),0 0 0 1px rgba(177,220,160,.34);z-index:1}
+    .artboard picture,.artboard picture>img{width:100%;height:100%;display:block}.artboard picture>img{object-fit:fill}
     .artboard::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -90px 100px rgba(0,15,8,.16)}
     .hotspot{position:absolute;border:1px solid transparent;background:transparent;border-radius:12px;cursor:pointer;z-index:3;color:white;transition:.22s ease;outline:none}
     .hotspot::before{content:"";position:absolute;inset:-2px;border-radius:inherit;border:1px solid rgba(148,220,114,0);background:linear-gradient(130deg,rgba(145,220,109,.06),transparent 60%);transition:.22s ease}
@@ -36,18 +36,16 @@
     .drawer.open{transform:none;opacity:1;pointer-events:auto}.close{position:absolute;right:14px;top:14px;width:36px;height:36px;border:1px solid rgba(179,224,159,.42);border-radius:50%;background:rgba(255,255,255,.06);color:white;cursor:pointer;font-size:1.25rem}.eyebrow{color:#a9db8d;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:800;margin:20px 0 10px}.drawer h2{font-size:clamp(1.45rem,2.5vw,2.2rem);line-height:1.05;margin:0 46px 10px 0}.drawer p{color:#d4ded7;line-height:1.55;margin:0 0 18px}.detail-list{display:grid;gap:9px;margin-top:18px}.detail{padding:13px 14px;border-radius:12px;border:1px solid rgba(179,224,159,.18);background:rgba(255,255,255,.055);display:flex;gap:11px;align-items:flex-start}.detail i{font-style:normal;color:#9ddc7b;font-weight:900}.detail span{font-size:.88rem;line-height:1.35}.drawer-actions{display:grid;gap:9px;margin-top:20px}.drawer-action{width:100%;padding:13px 15px;border:1px solid #9cda78;border-radius:11px;background:linear-gradient(135deg,#477c37,#6da951);color:#fff;font-weight:800;text-align:center;cursor:pointer}.drawer-action.secondary{background:rgba(255,255,255,.055);border-color:rgba(179,224,159,.36)}.drawer-action:hover{filter:brightness(1.12)}
     .veil{position:absolute;inset:0;z-index:10;background:rgba(0,9,4,.38);opacity:0;pointer-events:none;transition:.25s}.veil.on{opacity:1;pointer-events:auto}
     .mobile-dock{display:none}
-    .desktop-layout{position:relative;z-index:1;width:100%;height:100%;display:grid;grid-template-columns:minmax(300px,1fr) minmax(430px,.9fr) minmax(300px,1fr);gap:clamp(14px,1.35vw,26px);padding:clamp(18px,2vw,36px)}
-    .desktop-rail{display:grid;align-content:center;gap:clamp(10px,1.1vh,16px);min-width:0}
-    .desktop-card{position:relative;width:100%;min-height:clamp(116px,19vh,176px);padding:clamp(17px,1.5vw,26px);border:1px solid rgba(198,229,185,.62);border-radius:18px;background:linear-gradient(135deg,rgba(246,250,247,.94),rgba(226,237,230,.86));color:#0b2116;text-align:left;box-shadow:0 18px 48px rgba(0,0,0,.22);backdrop-filter:blur(14px);cursor:pointer;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
-    .desktop-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:linear-gradient(#2a5d40,#77ad58)}
-    .desktop-card:hover,.desktop-card:focus-visible,.desktop-card.active{transform:translateY(-3px);border-color:#a8dc8d;box-shadow:0 22px 58px rgba(0,0,0,.32),0 0 0 2px rgba(139,208,105,.48);outline:none}
-    .desktop-card span{display:block;color:#47735a;font-size:clamp(.68rem,.72vw,.82rem);font-weight:900;letter-spacing:.13em;text-transform:uppercase;margin-bottom:8px}.desktop-card strong{display:block;font-size:clamp(1.05rem,1.35vw,1.48rem);line-height:1.05;text-transform:uppercase}.desktop-card small{display:block;margin-top:8px;color:#40584a;font-size:clamp(.76rem,.84vw,.92rem);font-weight:650;line-height:1.35}
-    .desktop-coach{position:relative;min-width:0;background:url("cluster-profesional-interactivo.webp") center/auto 108% no-repeat;filter:drop-shadow(0 26px 42px rgba(0,0,0,.34));-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%)}
-    .desktop-coach::after{content:"";position:absolute;inset:8% 18%;border-radius:45%;box-shadow:0 0 80px rgba(185,224,168,.2);pointer-events:none}
-    @media(max-width:1100px){.desktop-layout{display:none}}
-    @media(min-width:1101px){.artboard{display:none}.drawer{position:fixed;top:2.5dvh;bottom:2.5dvh;right:2vw;width:min(420px,38vw)}.veil{position:fixed}}
+    @media(max-width:1100px){
+      .artboard{width:min(100vw,70.6dvh);height:auto;aspect-ratio:1054/1493;max-height:100dvh}.artboard picture>img{object-fit:contain}.cluster::before{background-image:url("cluster-profesional-interactivo.webp")}
+    }
+    @media(min-width:1101px){
+      .identity{left:2.1%;top:13.1%;width:20.8%;height:14.9%}.experience{left:2.1%;top:28.4%;width:20.8%;height:20.2%}.specialties{left:2.1%;top:49.1%;width:20.8%;height:23.5%}
+      .method{left:78.1%;top:13.1%;width:19.8%;height:14.9%}.skills{left:78.1%;top:28.4%;width:19.8%;height:20%}.value{left:78.1%;top:49.2%;width:19.8%;height:16.2%}.impact{left:78.1%;top:66.4%;width:19.8%;height:19.5%}.profile{left:32.7%;top:95.9%;width:34.3%;height:3.5%}
+      .drawer{position:fixed;top:2.5dvh;bottom:2.5dvh;right:2vw;width:min(420px,38vw)}.veil{position:fixed}
+    }
     @media(max-width:780px){
-      body{overflow:hidden}.app,.stage,.cluster{height:100dvh;min-height:100dvh}.artboard{width:min(100vw,70.6dvh);max-height:100dvh}.cluster::before{inset:-24px;filter:blur(22px) saturate(.8);opacity:.62}.cluster::after{background:linear-gradient(180deg,rgba(1,8,4,.38),rgba(3,11,7,.05) 28%,rgba(3,11,7,.05) 72%,rgba(1,8,4,.55))}.hotspot::after{display:none}
+      body{overflow:hidden}.app,.stage,.cluster{height:100dvh;min-height:100dvh}.artboard{width:min(100vw,70.6dvh);height:auto;aspect-ratio:1054/1493;max-height:100dvh}.artboard picture>img{object-fit:contain}.cluster::before{inset:-24px;background-image:url("cluster-profesional-interactivo.webp");filter:blur(22px) saturate(.8);opacity:.62}.cluster::after{background:linear-gradient(180deg,rgba(1,8,4,.38),rgba(3,11,7,.05) 28%,rgba(3,11,7,.05) 72%,rgba(1,8,4,.55))}.hotspot::after{display:none}
       .hotspot{display:none}.profile{display:block;left:22.5%;top:92.7%;width:51.4%;height:3.45%;border-radius:6px}
       .drawer{position:fixed;left:10px;right:10px;top:auto;bottom:78px;width:auto;max-height:68dvh;transform:translateY(calc(100% + 90px));border-radius:18px}.drawer.open{transform:none}.veil{position:fixed}
       .mobile-dock{position:fixed;z-index:16;left:8px;right:8px;bottom:8px;height:60px;display:flex;gap:7px;padding:7px;overflow-x:auto;border:1px solid rgba(165,219,140,.35);border-radius:16px;background:rgba(3,14,8,.94);backdrop-filter:blur(18px);scrollbar-width:none}.mobile-dock::-webkit-scrollbar{display:none}.mobile-dock button{flex:0 0 auto;border:1px solid rgba(165,219,140,.26);border-radius:10px;background:rgba(255,255,255,.06);color:#edf5ee;padding:0 14px;font-size:.78rem;font-weight:750;cursor:pointer}.mobile-dock button.active{background:#4f873c;border-color:#9fdc7b}
@@ -59,23 +57,11 @@
   <main class="app">
     <section class="stage" aria-label="Clúster deportivo interactivo">
       <div class="cluster" id="cluster">
-        <div class="desktop-layout" aria-label="Vista panorámica del perfil profesional">
-          <div class="desktop-rail">
-            <button class="desktop-card" data-panel="identity"><span>Identidad profesional</span><strong>Más que entrenamiento</strong><small>Entrenamiento personal, nutrición, rendimiento y salas polivalentes.</small></button>
-            <button class="desktop-card" data-panel="experience"><span>Experiencia</span><strong>+23 años activando resultados</strong><small>Trabajo individual, grupal, tercera edad y perfiles diversos.</small></button>
-            <button class="desktop-card" data-panel="specialties"><span>Especialidades</span><strong>Movimiento con criterio</strong><small>Fuerza, funcional, pilates, cycling, natación y nutrición deportiva.</small></button>
-            <button class="desktop-card" data-panel="profile"><span>Perfil profesional</span><strong>Trayectoria y documentos</strong><small>CV, cartas de recomendación y contacto profesional.</small></button>
-          </div>
-          <div class="desktop-coach" role="img" aria-label="Ramón Alberto Curbalán Vega, entrenador y coach deportivo"></div>
-          <div class="desktop-rail">
-            <button class="desktop-card" data-panel="method"><span>Metodología</span><strong>Medir. Planificar. Evolucionar.</strong><small>Valoración, plan personalizado, seguimiento y ajustes.</small></button>
-            <button class="desktop-card" data-panel="skills"><span>Competencias clave</span><strong>Liderazgo que mueve personas</strong><small>Motivación, empatía, disciplina y comunicación.</small></button>
-            <button class="desktop-card" data-panel="value"><span>Propuesta de valor</span><strong>Visión profesional 360º</strong><small>Entrenamiento, nutrición y hábitos unidos en un solo método.</small></button>
-            <button class="desktop-card" data-panel="impact"><span>Áreas de impacto</span><strong>Resultados sostenibles</strong><small>Composición corporal, postura, bienestar y longevidad activa.</small></button>
-          </div>
-        </div>
         <div class="artboard">
-        <img src="cluster-profesional-interactivo.webp" alt="Infografía del perfil profesional deportivo de Ramón Alberto Curbalán Vega" width="1054" height="1493">
+        <picture>
+          <source media="(min-width:1101px)" srcset="cluster-profesional-panoramico.webp">
+          <img src="cluster-profesional-interactivo.webp" alt="Infografía del perfil profesional deportivo de Ramón Alberto Curbalán Vega" width="1054" height="1493">
+        </picture>
         <button class="hotspot identity" data-panel="identity" data-label="Abrir identidad" aria-label="Abrir identidad profesional"></button>
         <button class="hotspot method" data-panel="method" data-label="Abrir metodología" aria-label="Abrir metodología"></button>
         <button class="hotspot experience" data-panel="experience" data-label="Abrir experiencia" aria-label="Abrir experiencia"></button>
