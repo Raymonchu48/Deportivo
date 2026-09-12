@@ -1,0 +1,95 @@
+name: Compact module cards v45
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/compact-module-cards-v45.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+      - name: Crear overlays compactos
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .tmp-v45
+          ffmpeg -y -i .tmp-v42/wide.png -vf "format=rgba,crop=910:108:0:404,scale=910:70,pad=910:512:0:435:color=black@0" -frames:v 1 .tmp-v45/wide.png
+          ffmpeg -y -i .tmp-v42/mobile.png -vf "format=rgba,crop=900:400:0:1200,scale=900:240,pad=900:1600:0:1340:color=black@0" -frames:v 1 .tmp-v45/mobile.png
+          ffmpeg -y -i .tmp-v42/phone.png -vf "format=rgba,crop=900:487:0:1461,scale=900:300,pad=900:1948:0:1600:color=black@0" -frames:v 1 .tmp-v45/phone.png
+      - name: Renderizar vídeos compactos
+        shell: bash
+        run: |
+          set -euo pipefail
+          ffmpeg -y -i cluster-video-project-3-1-fluid-coach.mp4 -loop 1 -framerate 30 -i .tmp-v45/wide.png -filter_complex "[0:v][1:v]overlay=0:0:shortest=1[v]" -map "[v]" -an -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -movflags +faststart -shortest cluster-video-project-3-1-fluid-coach-cards-v45.mp4
+          ffmpeg -y -i cluster-video-project-3-1-fluid-coach-mobile.mp4 -loop 1 -framerate 30 -i .tmp-v45/mobile.png -filter_complex "[0:v][1:v]overlay=0:0:shortest=1[v]" -map "[v]" -an -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -movflags +faststart -shortest cluster-video-project-3-1-fluid-coach-mobile-cards-v45.mp4
+          ffmpeg -y -i cluster-video-project-3-1-fluid-coach-phone-v31.mp4 -loop 1 -framerate 30 -i .tmp-v45/phone.png -filter_complex "[0:v][1:v]overlay=0:0:shortest=1[v]" -map "[v]" -an -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -movflags +faststart -shortest cluster-video-project-3-1-fluid-coach-phone-cards-v45.mp4
+          ffmpeg -y -ss 0.8 -i cluster-video-project-3-1-fluid-coach-cards-v45.mp4 -frames:v 1 -c:v libwebp -quality 88 cluster-video-project-3-1-fluid-coach-cards-v45-poster-wide.webp
+          ffmpeg -y -ss 0.8 -i cluster-video-project-3-1-fluid-coach-mobile-cards-v45.mp4 -frames:v 1 -c:v libwebp -quality 88 cluster-video-project-3-1-fluid-coach-mobile-cards-v45-poster.webp
+          ffmpeg -y -ss 0.8 -i cluster-video-project-3-1-fluid-coach-phone-cards-v45.mp4 -frames:v 1 -c:v libwebp -quality 88 cluster-video-project-3-1-fluid-coach-phone-cards-v45-poster.webp
+      - name: Ajustar hotspots y activar v45
+        shell: bash
+        run: |
+          cat > module-cards-compact-v45.css <<'CSS'
+          /* MODULE-CARDS-COMPACT-V45 — tarjetas dentro del marco, menos invasivas */
+          @media (min-width:901px) and (orientation:landscape){
+            .ic-modules{left:3.4%!important;right:3.4%!important;bottom:3.5%!important;height:9.3%!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:1.32%!important;padding:0!important}
+            .ic-modules button{height:100%!important;min-height:0!important;border-radius:4px!important}
+            .ic-modules button:hover,.ic-modules button:focus-visible,.ic-modules button.ic-menu-active{transform:translateY(-1px)!important}
+          }
+          @media (min-width:701px) and (max-width:900px) and (orientation:portrait){
+            .ic-modules{left:6.7%!important;right:6.7%!important;top:auto!important;bottom:2.8%!important;height:11%!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;gap:1.5% 1.7%!important}
+            .ic-modules button{grid-column:span 2!important;min-height:0!important;border-radius:6px!important}
+            .ic-modules button[data-open="recovery"]{grid-column:2 / span 2!important}
+            .ic-modules button[data-open="management"]{grid-column:4 / span 2!important}
+          }
+          @media (max-width:700px) and (orientation:portrait){
+            .ic-modules{left:6.7%!important;right:6.7%!important;top:auto!important;bottom:3.4%!important;height:9.9%!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;gap:1.4% 1.7%!important}
+            .ic-modules button{grid-column:span 2!important;min-height:0!important;border-radius:6px!important}
+            .ic-modules button[data-open="recovery"]{grid-column:2 / span 2!important}
+            .ic-modules button[data-open="management"]{grid-column:4 / span 2!important}
+          }
+          CSS
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('cluster-video-project-3-1-fluid-coach-cards-v42-poster-wide.webp','cluster-video-project-3-1-fluid-coach-cards-v45-poster-wide.webp')
+          s=s.replace('cluster-video-project-3-1-fluid-coach-mobile-cards-v42-poster.webp','cluster-video-project-3-1-fluid-coach-mobile-cards-v45-poster.webp')
+          s=s.replace('cluster-video-project-3-1-fluid-coach-phone-cards-v42-poster.webp','cluster-video-project-3-1-fluid-coach-phone-cards-v45-poster.webp')
+          s=s.replace('cluster-video-project-3-1-fluid-coach-cards-v42.mp4?v=slim-transparent-42','cluster-video-project-3-1-fluid-coach-cards-v45.mp4?v=compact-safe-45')
+          s=s.replace('cluster-video-project-3-1-fluid-coach-mobile-cards-v42.mp4?v=slim-transparent-42','cluster-video-project-3-1-fluid-coach-mobile-cards-v45.mp4?v=compact-safe-45')
+          s=s.replace('cluster-video-project-3-1-fluid-coach-phone-cards-v42.mp4?v=slim-transparent-42','cluster-video-project-3-1-fluid-coach-phone-cards-v45.mp4?v=compact-safe-45')
+          marker='<link rel="stylesheet" href="module-actions-dropdown-v44.css?v=44">'
+          if 'module-cards-compact-v45.css?v=45' not in s:
+              s=s.replace(marker, marker+'\n<link rel="stylesheet" href="module-cards-compact-v45.css?v=45">')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Validar
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s cluster-video-project-3-1-fluid-coach-cards-v45.mp4
+          test -s cluster-video-project-3-1-fluid-coach-mobile-cards-v45.mp4
+          test -s cluster-video-project-3-1-fluid-coach-phone-cards-v45.mp4
+          grep -q 'module-cards-compact-v45.css?v=45' index.html
+          grep -q 'cluster-video-project-3-1-fluid-coach-cards-v45.mp4?v=compact-safe-45' index.html
+          ffprobe -v error -show_entries stream=width,height -show_entries format=duration -of default=nw=1 cluster-video-project-3-1-fluid-coach-cards-v45.mp4
+          ffprobe -v error -show_entries stream=width,height -show_entries format=duration -of default=nw=1 cluster-video-project-3-1-fluid-coach-mobile-cards-v45.mp4
+          ffprobe -v error -show_entries stream=width,height -show_entries format=duration -of default=nw=1 cluster-video-project-3-1-fluid-coach-phone-cards-v45.mp4
+      - name: Publicar y retirar workflow temporal
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html module-cards-compact-v45.css .tmp-v45 cluster-video-project-3-1-fluid-coach-cards-v45.mp4 cluster-video-project-3-1-fluid-coach-mobile-cards-v45.mp4 cluster-video-project-3-1-fluid-coach-phone-cards-v45.mp4 cluster-video-project-3-1-fluid-coach-cards-v45-poster-wide.webp cluster-video-project-3-1-fluid-coach-mobile-cards-v45-poster.webp cluster-video-project-3-1-fluid-coach-phone-cards-v45-poster.webp
+          git rm .github/workflows/compact-module-cards-v45.yml
+          git commit -m 'Compacta las tarjetas inferiores dentro del marco'
+          git push origin HEAD:main
