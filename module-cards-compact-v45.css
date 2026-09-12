@@ -1,0 +1,18 @@
+/* MODULE-CARDS-COMPACT-V45 — tarjetas dentro del marco, menos invasivas */
+@media (min-width:901px) and (orientation:landscape){
+  .ic-modules{left:3.4%!important;right:3.4%!important;bottom:3.5%!important;height:9.3%!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:1.32%!important;padding:0!important}
+  .ic-modules button{height:100%!important;min-height:0!important;border-radius:4px!important}
+  .ic-modules button:hover,.ic-modules button:focus-visible,.ic-modules button.ic-menu-active{transform:translateY(-1px)!important}
+}
+@media (min-width:701px) and (max-width:900px) and (orientation:portrait){
+  .ic-modules{left:6.7%!important;right:6.7%!important;top:auto!important;bottom:2.8%!important;height:11%!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;gap:1.5% 1.7%!important}
+  .ic-modules button{grid-column:span 2!important;min-height:0!important;border-radius:6px!important}
+  .ic-modules button[data-open="recovery"]{grid-column:2 / span 2!important}
+  .ic-modules button[data-open="management"]{grid-column:4 / span 2!important}
+}
+@media (max-width:700px) and (orientation:portrait){
+  .ic-modules{left:6.7%!important;right:6.7%!important;top:auto!important;bottom:3.4%!important;height:9.9%!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;grid-template-rows:repeat(2,minmax(0,1fr))!important;gap:1.4% 1.7%!important}
+  .ic-modules button{grid-column:span 2!important;min-height:0!important;border-radius:6px!important}
+  .ic-modules button[data-open="recovery"]{grid-column:2 / span 2!important}
+  .ic-modules button[data-open="management"]{grid-column:4 / span 2!important}
+}
