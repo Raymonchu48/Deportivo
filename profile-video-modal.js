@@ -34,7 +34,40 @@
     .profile-video-tagline{margin:0 0 clamp(18px,3.2vw,36px);color:#f6f6f4;font-size:clamp(17px,2.55vw,35px);font-weight:500;line-height:1.18;text-shadow:0 2px 5px rgba(0,0,0,.75)}
     .profile-video-valuation{display:inline-flex;align-items:center;justify-content:center;min-width:min(360px,74vw);padding:clamp(11px,1.4vw,18px) clamp(20px,3vw,42px);border:2px solid #d8ad63;border-radius:14px;background:rgba(16,16,15,.7);color:#fff;text-decoration:none;font-size:clamp(17px,2.2vw,30px);font-weight:650;line-height:1;box-shadow:inset 0 0 0 1px rgba(255,225,165,.12),0 4px 14px rgba(0,0,0,.32);transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
     .profile-video-valuation:hover,.profile-video-valuation:focus-visible{transform:translateY(-2px);background:rgba(86,62,23,.76);outline:none;box-shadow:0 0 0 3px rgba(216,173,99,.2),0 8px 24px rgba(0,0,0,.38)}
-    @media(max-width:780px){.profile-video-modal{padding:8px}.profile-video-shell{width:100%;border-radius:12px}.profile-video-close{right:8px;top:8px;width:38px;height:38px}.profile-video-endcard-inner{width:88%}.profile-video-role{letter-spacing:.18em}.profile-video-valuation{border-radius:10px}}
+
+    @media(max-width:780px){
+      .profile-video-modal{padding:8px}
+      .profile-video-shell{width:100%;border-radius:12px}
+      .profile-video-close{right:8px;top:8px;width:38px;height:38px}
+      .profile-video-endcard-inner{width:88%}
+      .profile-video-role{letter-spacing:.18em}
+      .profile-video-valuation{border-radius:10px}
+
+      .stage,.cluster{
+        height:100dvh!important;
+        min-height:100dvh!important;
+        padding-bottom:calc(76px + env(safe-area-inset-bottom))!important;
+      }
+      .artboard{
+        width:min(100vw,calc((100dvh - 84px - env(safe-area-inset-bottom)) * 1054 / 1493))!important;
+        height:min(calc(100dvh - 84px - env(safe-area-inset-bottom)),calc(100vw * 1493 / 1054))!important;
+        max-height:calc(100dvh - 84px - env(safe-area-inset-bottom))!important;
+        aspect-ratio:1054/1493!important;
+        align-self:center!important;
+        justify-self:center!important;
+        overflow:hidden!important;
+      }
+      .artboard picture,.artboard picture>img{
+        width:100%!important;
+        height:100%!important;
+      }
+      .artboard picture>img{
+        object-fit:contain!important;
+      }
+      .mobile-dock{
+        bottom:max(8px,env(safe-area-inset-bottom))!important;
+      }
+    }
     @media(prefers-reduced-motion:reduce){.profile-video-modal,.profile-video-endcard,.profile-video-valuation{transition:none}}
   `;
   document.head.appendChild(style);
