@@ -53,7 +53,7 @@
   modal.innerHTML = `
     <div class="profile-video-shell" role="dialog" aria-modal="true" aria-label="Vídeo de perfil profesional">
       <video class="profile-video-player" id="profileVideoPlayer" controls playsinline preload="metadata">
-        <source src="sport-performance-vision.mp4" type="video/mp4">
+        <source src="video-perfil-deportivo-corregido.mp4?v=20260913-iphone" type="video/mp4">
       </video>
       <div class="profile-video-endcard" id="profileVideoEndcard" aria-hidden="true">
         <div class="profile-video-endcard-inner">
