@@ -1,0 +1,66 @@
+name: Fix profile video on iPhone
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-profile-video-iphone.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Recover corrected MP4 from current source
+        shell: bash
+        run: |
+          set -euo pipefail
+          VIDEO_URL=$(python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s=Path('profile-video-source.js').read_text(encoding='utf-8')
+          m=re.search(r"CORRECTED_VIDEO_URL\s*=\s*'([^']+)'", s)
+          if not m:
+              raise SystemExit('Corrected video URL not found')
+          print(m.group(1))
+          PY
+          )
+          curl -L --fail --retry 3 --retry-delay 2 "$VIDEO_URL" -o video-perfil-deportivo-corregido.mp4
+          test "$(stat -c%s video-perfil-deportivo-corregido.mp4)" = "371090"
+          echo "0c09d042ffc0e44a746039a30f36a88ac5c52b59fb725a78e4f0566a6947737b  video-perfil-deportivo-corregido.mp4" | sha256sum -c -
+          ffprobe -v error -show_entries format=duration -of default=nw=1 video-perfil-deportivo-corregido.mp4
+
+      - name: Use same-origin video source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          modal=Path('profile-video-modal.js')
+          s=modal.read_text(encoding='utf-8')
+          s=s.replace('sport-performance-vision.mp4', 'video-perfil-deportivo-corregido.mp4?v=20260913-iphone')
+          modal.write_text(s, encoding='utf-8')
+
+          index=Path('index.html')
+          h=index.read_text(encoding='utf-8')
+          h=h.replace('  <script src="profile-video-source.js?v=1"></script>\n','')
+          index.write_text(h, encoding='utf-8')
+          PY
+          grep -q 'video-perfil-deportivo-corregido.mp4?v=20260913-iphone' profile-video-modal.js
+          ! grep -q 'profile-video-source.js' index.html
+
+      - name: Commit fixed source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add video-perfil-deportivo-corregido.mp4 profile-video-modal.js index.html
+          git rm -f profile-video-source.js
+          git rm -f .github/workflows/fix-profile-video-iphone.yml
+          git commit -m 'Corrige reproducción del vídeo de perfil en iPhone'
+          git push origin HEAD:main
