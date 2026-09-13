@@ -1,0 +1,30 @@
+name: Inspect profile video
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/inspect-profile-video.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect existing profile video
+        shell: bash
+        run: |
+          set -euo pipefail
+          ffprobe -v error -show_entries stream=codec_name,width,height,r_frame_rate -show_entries format=duration,size -of default=nw=1 sport-performance-vision.mp4
+          python3 - <<'PY'
+          import subprocess
+          def ahash(t):
+              p=subprocess.run(['ffmpeg','-v','error','-ss',str(t),'-i','sport-performance-vision.mp4','-frames:v','1','-vf','scale=8:8,format=gray','-f','rawvideo','pipe:1'],capture_output=True,check=True)
+              a=list(p.stdout)
+              m=sum(a)/len(a)
+              v=0
+              for x in a:
+                  v=(v<<1)|(1 if x>=m else 0)
+              return f'{v:016x}'
+          for t in (1,4,7): print(f'AHASH_{t}={ahash(t)}')
+          PY
