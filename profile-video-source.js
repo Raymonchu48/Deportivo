@@ -1,5 +1,5 @@
 (() => {
-  const CORRECTED_VIDEO_URL = 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/2816a63a-388d-48e3-adfe-ea90dc6e90d0.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMzE1ODdiMzMxNGQ1OGY3ZiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTQyNzg5MX0.OtshN_uEOX54gPkgUpi2C-vS8nGL6zEDzU3MH7oGvXs';
+  const CORRECTED_VIDEO_URL = 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/0b0e58ed-a93a-4382-b786-c7f4359759d2.mp4?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMWQ5OThhMGVkMjY4ZThiOCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc4OTQ5MTIxNH0.qNI3kbyNggNtQngh5Z99I9d5JR2hGHIedbZYG6TPCfg';
   const apply = () => {
     const video = document.getElementById('profileVideoPlayer');
     if (!video) return false;
