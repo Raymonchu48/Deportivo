@@ -25,6 +25,8 @@
     .artboard{position:relative;width:100vw;height:100dvh;overflow:hidden;background:#e9eeeb;box-shadow:0 0 70px rgba(0,0,0,.68),0 0 0 1px rgba(177,220,160,.34);z-index:1}
     .artboard picture,.artboard picture>img{width:100%;height:100%;display:block}.artboard picture>img{object-fit:fill}
     .artboard::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -90px 100px rgba(0,15,8,.16)}
+    .discipline-orbit{position:absolute;left:41.8%;top:75.75%;width:16.15%;aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:2}
+    .discipline-orbit::after{content:"";position:absolute;inset:0;border-radius:inherit;background:conic-gradient(transparent 0 252deg,rgba(115,211,77,.08) 270deg,rgba(139,232,99,.52) 294deg,#eaffdf 316deg,#fff 323deg,#99ef68 332deg,rgba(92,189,57,.18) 348deg,transparent 360deg);-webkit-mask:radial-gradient(closest-side,transparent 84%,#000 88%);mask:radial-gradient(closest-side,transparent 84%,#000 88%);filter:drop-shadow(0 0 3px rgba(206,255,184,.95)) drop-shadow(0 0 8px rgba(105,220,64,.8));mix-blend-mode:screen;animation:discipline-scan 4.8s linear infinite;will-change:transform}
     .hotspot{position:absolute;border:1px solid transparent;background:transparent;border-radius:12px;cursor:pointer;z-index:3;color:white;transition:.22s ease;outline:none}
     .hotspot::before{content:"";position:absolute;inset:-2px;border-radius:inherit;border:1px solid rgba(148,220,114,0);background:linear-gradient(130deg,rgba(145,220,109,.06),transparent 60%);transition:.22s ease}
     .hotspot::after{content:attr(data-label);position:absolute;left:10px;top:9px;padding:7px 10px;border-radius:999px;background:rgba(4,20,11,.88);border:1px solid rgba(159,224,128,.7);box-shadow:0 5px 22px rgba(0,0,0,.35);font-size:clamp(10px,1.25vh,13px);font-weight:800;letter-spacing:.045em;text-transform:uppercase;opacity:0;transform:translateY(4px);transition:.2s ease;white-space:nowrap}
@@ -40,6 +42,7 @@
       .artboard{width:min(100vw,70.6dvh);height:auto;aspect-ratio:1054/1493;max-height:100dvh}.artboard picture>img{object-fit:contain}.cluster::before{background-image:url("cluster-profesional-interactivo.webp")}
     }
     @media(min-width:1101px){
+      .discipline-orbit{left:30.4%;top:78.05%;width:7.55%}
       .identity{left:2.1%;top:13.1%;width:20.8%;height:14.9%}.experience{left:2.1%;top:28.4%;width:20.8%;height:20.2%}.specialties{left:2.1%;top:49.1%;width:20.8%;height:23.5%}
       .method{left:78.1%;top:13.1%;width:19.8%;height:14.9%}.skills{left:78.1%;top:28.4%;width:19.8%;height:20%}.value{left:78.1%;top:49.2%;width:19.8%;height:16.2%}.impact{left:78.1%;top:66.4%;width:19.8%;height:19.5%}.profile{left:32.7%;top:95.9%;width:34.3%;height:3.5%}
       .drawer{position:fixed;top:2.5dvh;bottom:2.5dvh;right:2vw;width:min(420px,38vw)}.veil{position:fixed}
@@ -50,6 +53,7 @@
       .drawer{position:fixed;left:10px;right:10px;top:auto;bottom:78px;width:auto;max-height:68dvh;transform:translateY(calc(100% + 90px));border-radius:18px}.drawer.open{transform:none}.veil{position:fixed}
       .mobile-dock{position:fixed;z-index:16;left:8px;right:8px;bottom:8px;height:60px;display:flex;gap:7px;padding:7px;overflow-x:auto;border:1px solid rgba(165,219,140,.35);border-radius:16px;background:rgba(3,14,8,.94);backdrop-filter:blur(18px);scrollbar-width:none}.mobile-dock::-webkit-scrollbar{display:none}.mobile-dock button{flex:0 0 auto;border:1px solid rgba(165,219,140,.26);border-radius:10px;background:rgba(255,255,255,.06);color:#edf5ee;padding:0 14px;font-size:.78rem;font-weight:750;cursor:pointer}.mobile-dock button.active{background:#4f873c;border-color:#9fdc7b}
     }
+    @keyframes discipline-scan{to{transform:rotate(1turn)}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
   </style>
 </head>
@@ -62,6 +66,7 @@
           <source media="(min-width:1101px)" srcset="cluster-profesional-panoramico.webp">
           <img src="cluster-profesional-interactivo.webp" alt="Infografía del perfil profesional deportivo de Ramón Alberto Curbalán Vega" width="1054" height="1493">
         </picture>
+        <span class="discipline-orbit" aria-hidden="true"></span>
         <button class="hotspot identity" data-panel="identity" data-label="Abrir identidad" aria-label="Abrir identidad profesional"></button>
         <button class="hotspot method" data-panel="method" data-label="Abrir metodología" aria-label="Abrir metodología"></button>
         <button class="hotspot experience" data-panel="experience" data-label="Abrir experiencia" aria-label="Abrir experiencia"></button>
