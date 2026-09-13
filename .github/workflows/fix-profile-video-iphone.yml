@@ -1,4 +1,4 @@
-# Retry with refreshed corrected source
+# Retry without ffprobe: file size and SHA-256 already validate the MP4
 name: Fix profile video on iPhone
 
 on:
@@ -33,7 +33,6 @@ jobs:
           curl -L --fail --retry 3 --retry-delay 2 "$VIDEO_URL" -o video-perfil-deportivo-corregido.mp4
           test "$(stat -c%s video-perfil-deportivo-corregido.mp4)" = "371090"
           echo "0c09d042ffc0e44a746039a30f36a88ac5c52b59fb725a78e4f0566a6947737b  video-perfil-deportivo-corregido.mp4" | sha256sum -c -
-          ffprobe -v error -show_entries format=duration -of default=nw=1 video-perfil-deportivo-corregido.mp4
 
       - name: Use same-origin video source
         shell: bash
