@@ -111,5 +111,6 @@
     function closePanel(){drawer.classList.remove('open');veil.classList.remove('on');drawer.setAttribute('aria-hidden','true');allButtons.forEach(b=>b.classList.remove('active'))}
     allButtons.forEach(b=>b.addEventListener('click',()=>openPanel(b.dataset.panel)));close.addEventListener('click',closePanel);veil.addEventListener('click',closePanel);document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel()});
   </script>
+  <script src="profile-video-modal.js?v=2"></script>
 </body>
 </html>
