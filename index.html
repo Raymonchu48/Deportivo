@@ -26,7 +26,7 @@
     .artboard picture,.artboard picture>img{width:100%;height:100%;display:block}.artboard picture>img{object-fit:fill}
     .artboard::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -90px 100px rgba(0,15,8,.16)}
     .swimmer-video{display:none;position:absolute;pointer-events:none;z-index:2;object-fit:fill;-webkit-mask-image:radial-gradient(ellipse at center,#000 80%,transparent 100%);mask-image:radial-gradient(ellipse at center,#000 80%,transparent 100%)}
-    .discipline-orbit{position:absolute;left:41.8%;top:75.75%;width:16.15%;aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:2}
+    .discipline-orbit{position:absolute;left:41.8%;top:75.75%;width:16.15%;aspect-ratio:1;border:0;padding:0;border-radius:50%;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;pointer-events:auto;z-index:8}
     .discipline-orbit::after{content:"";position:absolute;inset:0;border-radius:inherit;background:conic-gradient(transparent 0 252deg,rgba(115,211,77,.08) 270deg,rgba(139,232,99,.52) 294deg,#eaffdf 316deg,#fff 323deg,#99ef68 332deg,rgba(92,189,57,.18) 348deg,transparent 360deg);-webkit-mask:radial-gradient(closest-side,transparent 84%,#000 88%);mask:radial-gradient(closest-side,transparent 84%,#000 88%);filter:drop-shadow(0 0 3px rgba(206,255,184,.95)) drop-shadow(0 0 8px rgba(105,220,64,.8));mix-blend-mode:screen;animation:discipline-scan 4.8s linear infinite;will-change:transform}
     .hotspot{position:absolute;border:1px solid transparent;background:transparent;border-radius:12px;cursor:pointer;z-index:3;color:white;transition:.22s ease;outline:none}
     .hotspot::before{content:"";position:absolute;inset:-2px;border-radius:inherit;border:1px solid rgba(148,220,114,0);background:linear-gradient(130deg,rgba(145,220,109,.06),transparent 60%);transition:.22s ease}
@@ -50,10 +50,11 @@
       .drawer{position:fixed;top:2.5dvh;bottom:2.5dvh;right:2vw;width:min(420px,38vw)}.veil{position:fixed}
     }
     @media(max-width:780px){
-      body{overflow:hidden}.app,.stage,.cluster{height:100dvh;min-height:100dvh}.artboard{width:min(100vw,70.6dvh);height:auto;aspect-ratio:1054/1493;max-height:100dvh}.artboard picture>img{object-fit:contain}.cluster::before{inset:-24px;background-image:url("cluster-profesional-interactivo.webp");filter:blur(22px) saturate(.8);opacity:.62}.cluster::after{background:linear-gradient(180deg,rgba(1,8,4,.38),rgba(3,11,7,.05) 28%,rgba(3,11,7,.05) 72%,rgba(1,8,4,.55))}.hotspot::after{display:none}
+      body{overflow-x:hidden;overflow-y:auto}.app{min-height:100dvh}.stage,.cluster{height:auto;min-height:0}.cluster{display:block;padding:0 0 1px}.artboard{width:100vw;height:auto;aspect-ratio:1054/1493;max-height:none}.artboard picture>img{object-fit:contain}.cluster::before{inset:-24px;background-image:url("cluster-profesional-interactivo.webp");filter:blur(22px) saturate(.8);opacity:.62}.cluster::after{background:linear-gradient(180deg,rgba(1,8,4,.16),rgba(3,11,7,.02) 72%,rgba(1,8,4,.36))}.hotspot::after{display:none}
+      .discipline-orbit{z-index:9;touch-action:manipulation}
       .hotspot{display:none}.profile{display:block;left:22.5%;top:92.7%;width:51.4%;height:3.45%;border-radius:6px}
       .drawer{position:fixed;left:10px;right:10px;top:auto;bottom:78px;width:auto;max-height:68dvh;transform:translateY(calc(100% + 90px));border-radius:18px}.drawer.open{transform:none}.veil{position:fixed}
-      .mobile-dock{position:fixed;z-index:16;left:8px;right:8px;bottom:8px;height:60px;display:flex;gap:7px;padding:7px;overflow-x:auto;border:1px solid rgba(165,219,140,.35);border-radius:16px;background:rgba(3,14,8,.94);backdrop-filter:blur(18px);scrollbar-width:none}.mobile-dock::-webkit-scrollbar{display:none}.mobile-dock button{flex:0 0 auto;border:1px solid rgba(165,219,140,.26);border-radius:10px;background:rgba(255,255,255,.06);color:#edf5ee;padding:0 14px;font-size:.78rem;font-weight:750;cursor:pointer}.mobile-dock button.active{background:#4f873c;border-color:#9fdc7b}
+      .mobile-dock{position:sticky;z-index:16;left:auto;right:auto;bottom:max(8px,env(safe-area-inset-bottom));width:calc(100% - 16px);margin:8px;height:60px;display:flex;gap:7px;padding:7px;overflow-x:auto;border:1px solid rgba(165,219,140,.35);border-radius:16px;background:rgba(3,14,8,.94);backdrop-filter:blur(18px);scrollbar-width:none}.mobile-dock::-webkit-scrollbar{display:none}.mobile-dock button{flex:0 0 auto;border:1px solid rgba(165,219,140,.26);border-radius:10px;background:rgba(255,255,255,.06);color:#edf5ee;padding:0 14px;font-size:.78rem;font-weight:750;cursor:pointer}.mobile-dock button.active{background:#4f873c;border-color:#9fdc7b}
     }
     @keyframes discipline-scan{to{transform:rotate(1turn)}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
@@ -69,7 +70,7 @@
           <img src="cluster-profesional-interactivo.webp" alt="Infografía del perfil profesional deportivo de Ramón Alberto Curbalán Vega" width="1054" height="1493">
         </picture>
         <video class="swimmer-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="nadador-loop.mp4" type="video/mp4"></video>
-        <span class="discipline-orbit" aria-hidden="true"></span>
+        <button class="discipline-orbit" id="profileVideoTrigger" type="button" aria-label="Reproducir vídeo de perfil profesional"></button>
         <button class="hotspot identity" data-panel="identity" data-label="Abrir identidad" aria-label="Abrir identidad profesional"></button>
         <button class="hotspot method" data-panel="method" data-label="Abrir metodología" aria-label="Abrir metodología"></button>
         <button class="hotspot experience" data-panel="experience" data-label="Abrir experiencia" aria-label="Abrir experiencia"></button>
@@ -111,6 +112,6 @@
     function closePanel(){drawer.classList.remove('open');veil.classList.remove('on');drawer.setAttribute('aria-hidden','true');allButtons.forEach(b=>b.classList.remove('active'))}
     allButtons.forEach(b=>b.addEventListener('click',()=>openPanel(b.dataset.panel)));close.addEventListener('click',closePanel);veil.addEventListener('click',closePanel);document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel()});
   </script>
-  <script src="profile-video-modal.js?v=2"></script>
+  <script src="profile-video-modal.js?v=20260914-mobile-fix"></script>
 </body>
 </html>
