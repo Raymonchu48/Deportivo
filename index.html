@@ -51,6 +51,12 @@
       .discipline-orbit{left:30.4%;top:78.05%;width:7.55%}
       .identity{left:2.1%;top:13.1%;width:20.8%;height:14.9%}.experience{left:2.1%;top:28.4%;width:20.8%;height:20.2%}.specialties{left:2.1%;top:49.1%;width:20.8%;height:23.5%}
       .method{left:78.1%;top:13.1%;width:19.8%;height:14.9%}.skills{left:78.1%;top:28.4%;width:19.8%;height:20%}.value{left:78.1%;top:49.2%;width:19.8%;height:16.2%}.impact{left:78.1%;top:66.4%;width:19.8%;height:19.5%}.profile{left:32.7%;top:95.9%;width:34.3%;height:3.5%}
+      .identity::after,.method::after{top:1.7vh}
+      .experience::after,.skills::after{top:3vh}
+      .specialties::after,.value::after{top:4.2vh}
+      .impact::after{top:5.1vh}
+      .profile::after{left:50%;right:auto;top:50%;transform:translate(-50%,-50%)}
+      .profile:hover::after,.profile:focus-visible::after{transform:translate(calc(-50% + 2px),-50%)}
       .drawer{position:fixed;top:2.5dvh;bottom:2.5dvh;right:2vw;width:min(420px,38vw)}.veil{position:fixed}
     }
     @media(max-width:780px){
