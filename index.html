@@ -31,7 +31,7 @@
     .mountain-mist{left:23%;top:22%;width:54%;height:33%;z-index:1;overflow:hidden;opacity:.42;mix-blend-mode:screen;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16% 84%,transparent);mask-image:linear-gradient(90deg,transparent,#000 16% 84%,transparent)}
     .mountain-mist::before,.mountain-mist::after{content:"";position:absolute;inset:18% -30%;background:radial-gradient(ellipse at 26% 60%,rgba(238,249,252,.45),transparent 33%),radial-gradient(ellipse at 69% 41%,rgba(224,239,247,.38),transparent 26%);filter:blur(13px);animation:mist-drift 12s ease-in-out infinite alternate}
     .mountain-mist::after{opacity:.55;transform:translateX(-9%);animation-duration:16s;animation-direction:alternate-reverse}
-    .swimmer-video{-webkit-mask-image:radial-gradient(ellipse at center,#000 80%,transparent 100%);mask-image:radial-gradient(ellipse at center,#000 80%,transparent 100%)}
+    .swimmer-video{-webkit-mask-image:radial-gradient(ellipse at center,#000 53%,transparent 76%);mask-image:radial-gradient(ellipse at center,#000 53%,transparent 76%)}
     .battle-rope-video{filter:saturate(.78) contrast(1.02) brightness(.9);opacity:.94;mix-blend-mode:multiply}
     .discipline-orbit{position:absolute;left:41.8%;top:75.75%;width:16.15%;aspect-ratio:1;border:0;padding:0;border-radius:50%;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;pointer-events:auto;z-index:8}
     .discipline-orbit::after{content:"";position:absolute;inset:0;border-radius:inherit;background:conic-gradient(transparent 0 252deg,rgba(115,211,77,.08) 270deg,rgba(139,232,99,.52) 294deg,#eaffdf 316deg,#fff 323deg,#99ef68 332deg,rgba(92,189,57,.18) 348deg,transparent 360deg);-webkit-mask:radial-gradient(closest-side,transparent 84%,#000 88%);mask:radial-gradient(closest-side,transparent 84%,#000 88%);filter:drop-shadow(0 0 3px rgba(206,255,184,.95)) drop-shadow(0 0 8px rgba(105,220,64,.8));mix-blend-mode:screen;animation:discipline-scan 4.8s linear infinite;will-change:transform}
@@ -53,7 +53,7 @@
     }
     @media(min-width:1101px){
       .artboard{width:min(calc(100vw - 12px),calc((100dvh - 12px)*1.77683));height:min(calc(100dvh - 12px),calc((100vw - 12px)/1.77683));aspect-ratio:1672/941}
-      .coach-motion,.coach-still,.mountain-mist,.coach-shadow{display:block}
+      .coach-motion,.mountain-mist,.coach-shadow{display:block}
       .swimmer-video{display:block;left:57.72%;top:69.08%;width:20.04%;height:20%}
       .battle-rope-video{display:block;left:20.83%;top:36.8%;width:15.63%;height:21.2%}
       .discipline-orbit{left:30.2%;top:83.3%;width:8.18%}
@@ -78,7 +78,7 @@
     @keyframes mist-drift{to{transform:translateX(8%) translateY(-3%);opacity:.65}}
     @keyframes card-scan{0%,12%{background-position:190% 0}45%,100%{background-position:-90% 0}}
     @keyframes hotspot-cue{0%,100%{filter:brightness(1);translate:0 0}50%{filter:brightness(1.16);translate:2px 0}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.battle-rope-video,.coach-motion,.mountain-mist,.coach-shadow{display:none!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.battle-rope-video,.coach-motion,.mountain-mist,.coach-shadow{display:none!important}.coach-still{display:block!important}}
   </style>
 </head>
 <body>
