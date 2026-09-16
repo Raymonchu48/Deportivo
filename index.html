@@ -25,20 +25,16 @@
     .artboard{position:relative;width:100vw;height:100dvh;overflow:hidden;background:#e9eeeb;box-shadow:0 0 70px rgba(0,0,0,.68),0 0 0 1px rgba(177,220,160,.34);z-index:1}
     .artboard picture,.artboard picture>img{width:100%;height:100%;display:block}.artboard picture>img{object-fit:fill}
     .artboard::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -90px 100px rgba(0,15,8,.16)}
-    .swimmer-video,.battle-rope-video,.coach-motion,.coach-still,.mountain-mist,.coach-shadow{display:none;position:absolute;pointer-events:none;z-index:2;object-fit:fill}
-    .coach-motion,.coach-still{left:41.209%;top:16.016%;width:24.505%;height:77.344%;object-fit:fill}
-    .coach-shadow{left:42%;top:91.3%;width:15%;height:2%;border-radius:50%;background:rgba(12,23,19,.25);filter:blur(9px);z-index:1}
+    .mountain-mist{display:none;position:absolute;pointer-events:none;z-index:1}
     .mountain-mist{left:23%;top:22%;width:54%;height:33%;z-index:1;overflow:hidden;opacity:.42;mix-blend-mode:screen;-webkit-mask-image:linear-gradient(90deg,transparent,#000 16% 84%,transparent);mask-image:linear-gradient(90deg,transparent,#000 16% 84%,transparent)}
     .mountain-mist::before,.mountain-mist::after{content:"";position:absolute;inset:18% -30%;background:radial-gradient(ellipse at 26% 60%,rgba(238,249,252,.45),transparent 33%),radial-gradient(ellipse at 69% 41%,rgba(224,239,247,.38),transparent 26%);filter:blur(13px);animation:mist-drift 12s ease-in-out infinite alternate}
     .mountain-mist::after{opacity:.55;transform:translateX(-9%);animation-duration:16s;animation-direction:alternate-reverse}
-    .swimmer-video{-webkit-mask-image:radial-gradient(ellipse 62% 82% at 35% 52%,#000 30%,transparent 57%);mask-image:radial-gradient(ellipse 62% 82% at 35% 52%,#000 30%,transparent 57%)}
-    .battle-rope-video{filter:saturate(.78) contrast(1.02) brightness(.9);opacity:.94;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse 60% 76% at 30% 50%,#000 33%,transparent 69%);mask-image:radial-gradient(ellipse 60% 76% at 30% 50%,#000 33%,transparent 69%)}
     .discipline-orbit{position:absolute;left:41.8%;top:75.75%;width:16.15%;aspect-ratio:1;border:0;padding:0;border-radius:50%;appearance:none;-webkit-appearance:none;background:transparent;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;pointer-events:auto;z-index:8}
     .discipline-orbit::after{content:"";position:absolute;inset:0;border-radius:inherit;background:conic-gradient(transparent 0 252deg,rgba(115,211,77,.08) 270deg,rgba(139,232,99,.52) 294deg,#eaffdf 316deg,#fff 323deg,#99ef68 332deg,rgba(92,189,57,.18) 348deg,transparent 360deg);-webkit-mask:radial-gradient(closest-side,transparent 84%,#000 88%);mask:radial-gradient(closest-side,transparent 84%,#000 88%);filter:drop-shadow(0 0 3px rgba(206,255,184,.95)) drop-shadow(0 0 8px rgba(105,220,64,.8));mix-blend-mode:screen;animation:discipline-scan 4.8s linear infinite;will-change:transform}
     .hotspot{position:absolute;border:1px solid rgba(130,207,94,.38);background:linear-gradient(180deg,rgba(107,190,70,.075),transparent 34%);border-radius:12px;cursor:pointer;z-index:3;color:white;box-shadow:inset 0 0 0 1px rgba(223,255,208,.08),0 0 12px rgba(78,154,48,.10);transition:.22s ease;outline:none}
     .hotspot::before{content:"";position:absolute;inset:-2px;border-radius:inherit;border:1px solid rgba(148,220,114,.14);background:linear-gradient(100deg,transparent 25%,rgba(183,241,169,.18) 50%,transparent 75%);background-size:280% 100%;transition:.22s ease;pointer-events:none;animation:card-scan 10s ease-in-out infinite}
     .hotspot:nth-of-type(2n)::before{animation-delay:-2s}.hotspot:nth-of-type(3n)::before{animation-delay:-5s}
-    .hotspot::after{content:"PULSA  ›";position:absolute;right:8px;top:7px;padding:5px 9px 5px 10px;border-radius:999px;background:linear-gradient(135deg,#416f31,#6da951);border:1px solid rgba(222,255,205,.88);box-shadow:0 3px 13px rgba(5,25,10,.38),0 0 12px rgba(139,220,96,.34);color:#fff;font-size:clamp(8px,1vh,11px);font-weight:900;letter-spacing:.055em;text-transform:uppercase;opacity:.94;transition:.2s ease;white-space:nowrap;pointer-events:none;animation:hotspot-cue 2.1s ease-in-out infinite}
+    .hotspot::after{content:"PULSA ›";position:absolute;right:7px;top:3px;padding:3px 7px;border-radius:5px;background:rgba(53,106,57,.94);border:1px solid rgba(213,244,198,.6);color:#fff;font-size:clamp(8px,.72vw,11px);font-weight:800;letter-spacing:.03em;text-transform:uppercase;transition:.2s ease;white-space:nowrap;pointer-events:none}
     .hotspot:hover,.hotspot:focus-visible{background:rgba(83,155,58,.13);border-color:#a6e683;box-shadow:0 0 0 2px rgba(154,226,119,.72),0 0 26px rgba(99,187,65,.42)}
     .hotspot:hover::before,.hotspot:focus-visible::before{border-color:rgba(190,243,164,.72)}.hotspot:hover::after,.hotspot:focus-visible::after{opacity:1;background:linear-gradient(135deg,#548f3d,#82c85d);box-shadow:0 4px 16px rgba(5,25,10,.42),0 0 18px rgba(165,239,124,.62);transform:translateX(2px)}
     .hotspot.active{background:rgba(73,148,48,.13);box-shadow:0 0 0 2px #9bdb77,0 0 30px rgba(111,206,75,.5)}
@@ -48,21 +44,14 @@
     .veil{position:absolute;inset:0;z-index:10;background:rgba(0,9,4,.38);opacity:0;pointer-events:none;transition:.25s}.veil.on{opacity:1;pointer-events:auto}
     .mobile-dock{display:none}
     @media(max-width:1100px){
-      .battle-rope-video{display:block;left:4.46%;top:36.3%;width:18.98%;height:10.72%}
       .artboard{width:min(100vw,70.6dvh);height:auto;aspect-ratio:1054/1493;max-height:100dvh}.artboard picture>img{object-fit:contain}.cluster::before{background-image:url("cluster-profesional-interactivo.webp")}
     }
     @media(min-width:1101px){
       .artboard{width:min(calc(100vw - 12px),calc((100dvh - 12px)*1.77683));height:min(calc(100dvh - 12px),calc((100vw - 12px)/1.77683));aspect-ratio:1672/941}
-      .coach-motion,.mountain-mist,.coach-shadow{display:block}
-      .swimmer-video{display:block;left:57.72%;top:69.08%;width:20.04%;height:20%}
-      .battle-rope-video{display:block;left:20.83%;top:36.8%;width:15.63%;height:21.2%}
+      .mountain-mist{display:block}
       .discipline-orbit{left:30.2%;top:83.3%;width:8.18%}
       .identity{left:1.9%;top:14.65%;width:21.05%;height:15.75%}.experience{left:1.9%;top:31.03%;width:21.05%;height:21.05%}.specialties{left:1.9%;top:53.03%;width:21.05%;height:24.55%}
       .method{left:78.53%;top:14.65%;width:19.85%;height:15.75%}.skills{left:78.53%;top:31.03%;width:19.85%;height:21.05%}.value{left:78.53%;top:52.92%;width:19.85%;height:17.25%}.impact{left:78.53%;top:70.88%;width:19.85%;height:20.72%}.profile{left:32.7%;top:95.9%;width:34.3%;height:3.5%}
-      .identity::after,.method::after{top:1.7vh}
-      .experience::after,.skills::after{top:3vh}
-      .specialties::after,.value::after{top:4.2vh}
-      .impact::after{top:5.1vh}
       .profile::after{left:50%;right:auto;top:50%;transform:translate(-50%,-50%)}
       .profile:hover::after,.profile:focus-visible::after{transform:translate(calc(-50% + 2px),-50%)}
       .drawer{position:fixed;top:2.5dvh;bottom:2.5dvh;right:2vw;width:min(420px,38vw)}.veil{position:fixed}
@@ -78,7 +67,7 @@
     @keyframes mist-drift{to{transform:translateX(8%) translateY(-3%);opacity:.65}}
     @keyframes card-scan{0%,12%{background-position:190% 0}45%,100%{background-position:-90% 0}}
     @keyframes hotspot-cue{0%,100%{filter:brightness(1);translate:0 0}50%{filter:brightness(1.16);translate:2px 0}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.battle-rope-video,.coach-motion,.mountain-mist,.coach-shadow{display:none!important}.coach-still{display:block!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.mountain-mist{display:none!important}}
   </style>
 </head>
 <body>
@@ -87,15 +76,10 @@
       <div class="cluster" id="cluster">
         <div class="artboard">
         <picture>
-          <source media="(min-width:1101px)" srcset="cluster-coach-free.webp">
+          <source media="(min-width:1101px)" srcset="cluster-profesional-motion-base.webp">
           <img src="cluster-profesional-interactivo-motion.webp" alt="Infografía del perfil profesional deportivo de Ramón Alberto Curbalán Vega" width="1054" height="1493">
         </picture>
         <div class="mountain-mist" aria-hidden="true"></div>
-        <div class="coach-shadow" aria-hidden="true"></div>
-        <img class="coach-still" src="coach-motion-poster.png" alt="" aria-hidden="true">
-        <video class="coach-motion" autoplay muted loop playsinline preload="auto" poster="coach-motion-poster.png" aria-hidden="true"><source src="coach-motion.webm" type="video/webm"></video>
-        <video class="battle-rope-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="battle-rope-isolated-v5.webm" type="video/webm"></video>
-        <video class="swimmer-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="nadador-loop.mp4" type="video/mp4"></video>
         <button class="discipline-orbit" id="profileVideoTrigger" type="button" aria-label="Reproducir vídeo de perfil profesional"></button>
         <button class="hotspot identity" data-panel="identity" data-label="Abrir identidad" aria-label="Abrir identidad profesional"></button>
         <button class="hotspot method" data-panel="method" data-label="Abrir metodología" aria-label="Abrir metodología"></button>
