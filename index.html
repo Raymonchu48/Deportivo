@@ -69,6 +69,22 @@
     @keyframes card-scan{0%,12%{background-position:190% 0}45%,100%{background-position:-90% 0}}
     @keyframes hotspot-cue{0%,100%{filter:brightness(1);translate:0 0}50%{filter:brightness(1.16);translate:2px 0}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.mountain-mist{display:none!important}}
+    /* Video zones use the same artboard coordinates as the underlying artwork. */
+    .scene-video{position:absolute;z-index:2;pointer-events:none;overflow:hidden;
+      -webkit-mask-image:linear-gradient(to right,transparent,#000 5% 95%,transparent),linear-gradient(to bottom,transparent,#000 7% 93%,transparent);
+      -webkit-mask-composite:source-in;
+      mask-image:linear-gradient(to right,transparent,#000 5% 95%,transparent),linear-gradient(to bottom,transparent,#000 7% 93%,transparent);mask-composite:intersect}
+    .scene-video video{display:block;width:100%;height:100%;object-fit:cover}
+    .scene-gym{left:0%;top:63.8%;width:26%;height:11.5%}
+    .scene-gym video{object-position:36% center;filter:saturate(.78) brightness(.9)}
+    .scene-swimmer{left:69.2%;top:74.3%;width:30.8%;height:12.23%}
+    .scene-swimmer video{object-position:center}
+    .gym-foreground{display:none;pointer-events:none}
+    @media(min-width:1101px){
+      .scene-gym{left:23.8%;top:59.2%;width:19.2%;height:23%}
+      .scene-swimmer{left:57.8%;top:75.3%;width:20.6%;height:20.8%}
+      .gym-foreground{display:block;position:absolute;inset:0;z-index:2;background:url('cluster-profesional-motion-base.webp') center/100% 100% no-repeat;clip-path:polygon(25.5% 71.4%,27.6% 71.4%,28.2% 73%,28.2% 75.6%,29.1% 77%,29.1% 94.8%,24.4% 94.8%,24.4% 77%,25.3% 75.6%)}
+    }
   </style>
 </head>
 <body>
@@ -81,6 +97,9 @@
           <img src="cluster-profesional-interactivo-motion.webp" alt="Infografía del perfil profesional deportivo de Ramón Alberto Curbalán Vega" width="1054" height="1493">
         </picture>
         <div class="mountain-mist" aria-hidden="true"></div>
+        <div class="scene-video scene-gym" aria-hidden="true"><video autoplay muted loop playsinline preload="auto" disablepictureinpicture tabindex="-1" src="gym-zone-20260916.mp4"></video></div>
+        <div class="scene-video scene-swimmer" aria-hidden="true"><video autoplay muted loop playsinline preload="auto" disablepictureinpicture tabindex="-1" src="swimmer-zone-20260916.mp4"></video></div>
+        <div class="gym-foreground" aria-hidden="true"></div>
         <button class="discipline-orbit" id="profileVideoTrigger" type="button" aria-label="Reproducir vídeo de perfil profesional"></button>
         <button class="hotspot identity" data-panel="profile" data-label="Abrir perfil" aria-label="Abrir perfil profesional"></button>
         <button class="hotspot method" data-panel="method" data-label="Abrir metodología" aria-label="Abrir metodología"></button>
@@ -123,5 +142,25 @@
     allButtons.forEach(b=>b.addEventListener('click',()=>openPanel(b.dataset.panel)));close.addEventListener('click',closePanel);veil.addEventListener('click',closePanel);document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel()});
   </script>
   <script src="profile-video-modal.js?v=20260914-mobile-fix"></script>
+  <script>
+    (()=>{
+      const videos=[...document.querySelectorAll('.scene-video video')];
+      const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+      let visible=true;
+      function sync(){
+        const paused=document.hidden||!visible||reduced.matches||drawer.classList.contains('open')||Boolean(document.querySelector('.profile-video-modal.open'));
+        videos.forEach(video=>{video.muted=true;if(paused)video.pause();else video.play().catch(()=>{});});
+      }
+      videos.forEach(video=>video.addEventListener('loadeddata',sync));
+      document.addEventListener('visibilitychange',sync);
+      document.addEventListener('pointerdown',sync,{passive:true});
+      reduced.addEventListener('change',sync);
+      new MutationObserver(sync).observe(drawer,{attributes:true,attributeFilter:['class']});
+      const profileModal=document.querySelector('.profile-video-modal');
+      if(profileModal)new MutationObserver(sync).observe(profileModal,{attributes:true,attributeFilter:['class']});
+      new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();}).observe(document.querySelector('.artboard'));
+      sync();
+    })();
+  </script>
 </body>
 </html>
