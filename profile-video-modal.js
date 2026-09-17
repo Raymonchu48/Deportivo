@@ -16,9 +16,36 @@
     document.head.appendChild(style);
   };
 
+  const loadMasterCluster = () => {
+    const loadScript = () => {
+      if (document.querySelector('script[data-cluster-master]')) return;
+      const script = document.createElement('script');
+      script.src = 'cluster-master-v2.js?v=20260917-master3';
+      script.async = false;
+      script.dataset.clusterMaster = 'true';
+      document.head.appendChild(script);
+    };
+
+    let css = document.querySelector('link[data-cluster-master]');
+    if (css) {
+      loadScript();
+      return;
+    }
+    css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'cluster-master-v2.css?v=20260917-master3';
+    css.dataset.clusterMaster = 'true';
+    css.onload = loadScript;
+    css.onerror = () => console.error('[cluster-master] No se pudo cargar la hoja de estilos');
+    document.head.appendChild(css);
+  };
+
   const core = document.createElement('script');
   core.src = 'profile-video-modal-core.js?v=20260916-handfix1';
   core.async = false;
-  core.onload = applyHandFix;
+  core.onload = () => {
+    applyHandFix();
+    loadMasterCluster();
+  };
   document.head.appendChild(core);
 })();
