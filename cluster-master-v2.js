@@ -1,112 +1,144 @@
 (() => {
-  const artboard = document.querySelector('.artboard');
-  if (!artboard || document.documentElement.classList.contains('cluster-master-active')) return;
+  const boot = async () => {
+    const artboard = document.querySelector('.artboard');
+    const cluster = document.querySelector('.cluster');
+    if (!artboard || !cluster || document.documentElement.classList.contains('cluster-master-active')) return;
 
-  const legacy = {
-    profile: document.querySelector('.hotspot.identity'),
-    method: document.querySelector('.hotspot.method'),
-    experience: document.querySelector('.hotspot.experience'),
-    specialties: document.querySelector('.hotspot.specialties'),
-    value: document.querySelector('.hotspot.value'),
-    impact: document.querySelector('.hotspot.impact'),
-    skills: document.querySelector('.hotspot.skills'),
-    coach: document.getElementById('profileVideoTrigger')
-  };
+    const legacy = {
+      profile: document.querySelector('.hotspot.identity'),
+      method: document.querySelector('.hotspot.method'),
+      experience: document.querySelector('.hotspot.experience'),
+      specialties: document.querySelector('.hotspot.specialties'),
+      value: document.querySelector('.hotspot.value'),
+      impact: document.querySelector('.hotspot.impact'),
+      skills: document.querySelector('.hotspot.skills'),
+      coach: document.getElementById('profileVideoTrigger')
+    };
 
-  document.documentElement.classList.add('cluster-master-active');
+    /* La imagen maestra se almacena en fragmentos de texto para conservarla exacta en GitHub Pages. */
+    const files = [
+      'cluster-master-img/part-00.txt','cluster-master-img/part-01.txt',
+      'cluster-master-img/part-02.txt','cluster-master-img/part-03.txt',
+      'cluster-master-img/p04-00.txt','cluster-master-img/p04-01.txt',
+      'cluster-master-img/p04-02.txt','cluster-master-img/p04-03.txt',
+      'cluster-master-img/p05-00.txt','cluster-master-img/p05-01.txt',
+      'cluster-master-img/p05-02.txt','cluster-master-img/p05-03.txt'
+    ];
 
-  const picture = artboard.querySelector('picture');
-  if (picture) {
-    picture.innerHTML = '<img src="cluster-sport-performance-master.webp" alt="Clúster deportivo interactivo de Ramón Alberto Curbalán Vega" width="1672" height="941" decoding="async" fetchpriority="high">';
-  }
+    const parts = await Promise.all(files.map(async file => {
+      const response = await fetch(`${file}?v=20260917-master3`, { cache: 'force-cache' });
+      if (!response.ok) throw new Error(`No se pudo cargar ${file}`);
+      return (await response.text()).trim();
+    }));
 
-  artboard.querySelectorAll('.coach-natural-layer,.gym-foreground,.mountain-mist').forEach(el => el.remove());
-
-  const existingGym = artboard.querySelector('.scene-gym');
-  const existingSwimmer = artboard.querySelector('.scene-swimmer');
-  [existingGym, existingSwimmer].forEach(zone => {
-    if (!zone) return;
-    zone.removeAttribute('aria-hidden');
-    zone.setAttribute('role','button');
-    zone.setAttribute('tabindex','0');
-  });
-
-  const activateLegacy = key => {
-    const el = legacy[key];
-    if (el) el.click();
-  };
-
-  const addHit = (cls, label, action) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = `master-hotspot ${cls}`;
-    btn.setAttribute('aria-label', label);
-    btn.addEventListener('click', action);
-    btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); action(); } });
-    artboard.appendChild(btn);
-    return btn;
-  };
-
-  addHit('master-gym-hit','Abrir especialidades de fuerza y entrenamiento',() => activateLegacy('specialties'));
-  addHit('master-swimmer-hit','Abrir especialidades de natación y rendimiento',() => activateLegacy('value'));
-  addHit('master-body-hit','Abrir competencias de rendimiento y seguimiento',() => activateLegacy('skills'));
-  addHit('master-evolution-hit','Abrir experiencia y evolución profesional',() => activateLegacy('experience'));
-
-  const downloadHit = addHit('master-download-hit','Descargar CV deportivo',() => {
-    const a = document.createElement('a');
-    a.href = 'CV_Deporte.pdf';
-    a.target = '_blank';
-    a.rel = 'noopener';
-    document.body.appendChild(a); a.click(); a.remove();
-  });
-
-  const ring = document.createElement('div');
-  ring.className = 'master-ring';
-  ring.setAttribute('aria-hidden','true');
-  artboard.appendChild(ring);
-
-  const coachTrigger = artboard.querySelector('.discipline-orbit');
-  if (coachTrigger) {
-    coachTrigger.title = 'Ver presentación';
-    coachTrigger.setAttribute('aria-label','Ver presentación profesional');
-    coachTrigger.addEventListener('click', e => {
-      if (legacy.coach && legacy.coach !== coachTrigger) {
-        e.stopImmediatePropagation();
-        legacy.coach.click();
-      }
-    }, true);
-  }
-
-  const mapMenu = [
-    ['identity','profile'],
-    ['method','method'],
-    ['experience','experience'],
-    ['specialties','specialties'],
-    ['value','value'],
-    ['impact','impact'],
-    ['skills','profile']
-  ];
-  mapMenu.forEach(([cls,key]) => {
-    const btn = artboard.querySelector(`.hotspot.${cls}`);
-    if (!btn) return;
-    btn.style.display = 'block';
-    btn.innerHTML = '';
-    btn.setAttribute('aria-label', cls === 'skills' ? 'Descargar CV' : `Abrir ${key}`);
-    if (cls === 'skills') {
-      btn.onclick = e => { e.preventDefault(); downloadHit.click(); };
+    const masterSrc = `data:image/avif;base64,${parts.join('')}`;
+    const probe = new Image();
+    probe.src = masterSrc;
+    try {
+      await probe.decode();
+    } catch (_) {
+      await new Promise((resolve, reject) => {
+        if (probe.complete && probe.naturalWidth) return resolve();
+        probe.onload = resolve;
+        probe.onerror = reject;
+      });
     }
-  });
+    if (!probe.naturalWidth) throw new Error('La imagen maestra no se pudo decodificar');
 
-  const syncMedia = () => {
-    const paused = document.hidden || document.querySelector('.drawer.open') || document.querySelector('.profile-video-modal.open');
-    artboard.querySelectorAll('.scene-video video').forEach(v => {
-      v.muted = true;
-      v.playbackRate = .82;
-      if (paused) v.pause(); else v.play().catch(() => {});
+    /* No dejamos dos coaches activos: la figura animada antigua se detiene antes de retirar su capa. */
+    artboard.querySelectorAll('.coach-natural-video').forEach(video => video.pause());
+    artboard.querySelectorAll('.coach-natural-layer,.gym-foreground,.mountain-mist').forEach(el => el.remove());
+
+    const picture = artboard.querySelector('picture');
+    if (picture) {
+      const img = document.createElement('img');
+      img.src = masterSrc;
+      img.alt = 'Clúster deportivo interactivo de Ramón Alberto Curbalán Vega';
+      img.width = 1672;
+      img.height = 941;
+      img.decoding = 'async';
+      img.fetchPriority = 'high';
+      picture.replaceChildren(img);
+    }
+    cluster.style.setProperty('--cluster-master-bg', `url("${masterSrc}")`);
+    document.documentElement.classList.add('cluster-master-active');
+
+    const activate = key => {
+      const button = legacy[key];
+      if (button) button.click();
+    };
+
+    const addHit = (cls, label, action) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `master-hotspot ${cls}`;
+      button.setAttribute('aria-label', label);
+      button.addEventListener('click', action);
+      artboard.appendChild(button);
+      return button;
+    };
+
+    const menu = [
+      ['master-menu-profile','Perfil',() => activate('profile')],
+      ['master-menu-method','Método',() => activate('method')],
+      ['master-menu-experience','Experiencia',() => activate('experience')],
+      ['master-menu-specialties','Especialidades',() => activate('specialties')],
+      ['master-menu-talk','Hablemos',() => activate('value')],
+      ['master-menu-contact','Contacto',() => activate('impact')],
+      ['master-menu-cv','Descargar CV',() => window.open('CV_Deporte.pdf','_blank','noopener')]
+    ];
+    const menuButtons = menu.map(([cls,label,action]) => addHit(cls,label,action));
+
+    addHit('master-gym-hit','Entrenamiento de fuerza y cuerdas',() => activate('specialties'));
+    addHit('master-swimmer-hit','Natación y rendimiento',() => activate('specialties'));
+    addHit('master-body-hit','Competencias y rendimiento global',() => activate('skills'));
+    addHit('master-evolution-hit','Experiencia y evolución profesional',() => activate('experience'));
+    addHit('master-coach-hit','Ver presentación profesional',() => legacy.coach?.click());
+
+    const ring = document.createElement('div');
+    ring.className = 'master-ring';
+    ring.setAttribute('aria-hidden','true');
+    artboard.appendChild(ring);
+
+    /* Ritmo deliberadamente más natural que la primera prueba. */
+    const sceneVideos = [...artboard.querySelectorAll('.scene-video video')];
+    sceneVideos.forEach(video => {
+      video.muted = true;
+      video.playbackRate = 0.72;
+      video.playsInline = true;
     });
+
+    const syncMedia = () => {
+      const drawerOpen = document.getElementById('drawer')?.classList.contains('open');
+      const modalOpen = Boolean(document.querySelector('.profile-video-modal.open'));
+      const pause = document.hidden || drawerOpen || modalOpen || matchMedia('(prefers-reduced-motion: reduce)').matches;
+      sceneVideos.forEach(video => {
+        if (pause) video.pause();
+        else video.play().catch(() => {});
+      });
+    };
+    document.addEventListener('visibilitychange', syncMedia);
+    new MutationObserver(syncMedia).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
+    syncMedia();
+
+    /* Pulso secuencial muy suave: el panel se activa, pero nunca aparece una placa nueva. */
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && menuButtons.length) {
+      let current = 0;
+      const pulse = () => {
+        menuButtons.forEach(button => button.classList.remove('ambient'));
+        menuButtons[current].classList.add('ambient');
+        current = (current + 1) % menuButtons.length;
+      };
+      pulse();
+      setInterval(pulse, 2600);
+    }
   };
 
-  document.addEventListener('visibilitychange', syncMedia);
-  new MutationObserver(syncMedia).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
-  syncMedia();
+  const start = () => boot().catch(error => {
+    console.error('[cluster-master]', error);
+    document.documentElement.classList.remove('cluster-master-active');
+  });
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once:true });
+  else start();
 })();
