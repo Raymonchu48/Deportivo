@@ -102,6 +102,24 @@
 
     /* Ritmo deliberadamente más natural que la primera prueba. */
     const sceneVideos = [...artboard.querySelectorAll('.scene-video video')];
+
+    /* Los textos cubiertos por el nuevo encuadre viven dentro del vídeo, sin cajas ni fondos. */
+    const gymZone = artboard.querySelector('.scene-gym');
+    const swimmerZone = artboard.querySelector('.scene-swimmer');
+    const addCaption = (zone, className, html) => {
+      if (!zone || zone.querySelector('.' + className)) return;
+      const caption = document.createElement('span');
+      caption.className = 'scene-caption ' + className;
+      caption.setAttribute('aria-hidden','true');
+      caption.innerHTML = html;
+      zone.appendChild(caption);
+    };
+    addCaption(gymZone,'gym-caption-title','FUERZA<br>MOVIMIENTO<br>DISCIPLINA');
+    addCaption(gymZone,'gym-caption-live','EN VIVO');
+    addCaption(gymZone,'gym-caption-quote','“EL TRABAJO<br>BIEN HECHO,<br>SIEMPRE SUMA.”');
+    addCaption(swimmerZone,'swim-caption-live','EN VIVO');
+    addCaption(swimmerZone,'swim-caption-quote','“EL AGUA TAMBIÉN<br>ENSEÑA DISCIPLINA.”');
+
     sceneVideos.forEach(video => {
       video.muted = true;
       video.playbackRate = 0.72;
