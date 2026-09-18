@@ -144,18 +144,6 @@
     document.addEventListener('visibilitychange', syncMedia);
     new MutationObserver(syncMedia).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});
     syncMedia();
-
-    /* Pulso secuencial muy suave: el panel se activa, pero nunca aparece una placa nueva. */
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && menuButtons.length) {
-      let current = 0;
-      const pulse = () => {
-        menuButtons.forEach(button => button.classList.remove('ambient'));
-        menuButtons[current].classList.add('ambient');
-        current = (current + 1) % menuButtons.length;
-      };
-      pulse();
-      setInterval(pulse, 2600);
-    }
   };
 
   const start = () => boot().catch(error => {
