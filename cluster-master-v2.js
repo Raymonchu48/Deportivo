@@ -90,11 +90,6 @@
     ];
     const menuButtons = menu.map(([cls,label,action]) => addHit(cls,label,action));
 
-    const presentationCover = document.createElement('div');
-    presentationCover.className = 'master-presentation-cover';
-    presentationCover.setAttribute('aria-hidden','true');
-    artboard.appendChild(presentationCover);
-
     const presentationButton = document.createElement('button');
     presentationButton.type = 'button';
     presentationButton.className = 'master-presentation-button';
