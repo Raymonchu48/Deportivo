@@ -114,11 +114,9 @@
       caption.innerHTML = html;
       zone.appendChild(caption);
     };
-    addCaption(gymZone,'gym-caption-title','FUERZA<br>MOVIMIENTO<br>DISCIPLINA');
-    addCaption(gymZone,'gym-caption-live','EN VIVO');
-    addCaption(gymZone,'gym-caption-quote','“EL TRABAJO<br>BIEN HECHO,<br>SIEMPRE SUMA.”');
     addCaption(swimmerZone,'swim-caption-live','EN VIVO');
     addCaption(swimmerZone,'swim-caption-quote','“EL AGUA TAMBIÉN<br>ENSEÑA DISCIPLINA.”');
+    addCaption(swimmerZone,'swim-caption-slogan','MISMO MÉTODO,<br>MÁS VIDA');
 
     sceneVideos.forEach(video => {
       video.muted = true;
