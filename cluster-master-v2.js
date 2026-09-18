@@ -15,8 +15,23 @@
       coach: document.getElementById('profileVideoTrigger')
     };
 
-    /* Imagen maestra limpia editada en Canva y almacenada localmente en el repositorio. */
-    const masterSrc = 'cluster-canva-clean.png?v=20260919-canva-clean18';
+    /* La imagen maestra se almacena en fragmentos de texto para conservarla exacta en GitHub Pages. */
+    const files = [
+      'cluster-master-img/part-00.txt','cluster-master-img/part-01.txt',
+      'cluster-master-img/part-02.txt','cluster-master-img/part-03.txt',
+      'cluster-master-img/p04-00.txt','cluster-master-img/p04-01.txt',
+      'cluster-master-img/p04-02.txt','cluster-master-img/p04-03.txt',
+      'cluster-master-img/p05-00.txt','cluster-master-img/p05-01.txt',
+      'cluster-master-img/p05-02.txt','cluster-master-img/p05-03.txt'
+    ];
+
+    const parts = await Promise.all(files.map(async file => {
+      const response = await fetch(`${file}?v=20260917-master3`, { cache: 'force-cache' });
+      if (!response.ok) throw new Error(`No se pudo cargar ${file}`);
+      return (await response.text()).trim();
+    }));
+
+    const masterSrc = `data:image/avif;base64,${parts.join('')}`;
     const probe = new Image();
     probe.src = masterSrc;
     try {
@@ -39,8 +54,8 @@
       const img = document.createElement('img');
       img.src = masterSrc;
       img.alt = 'Clúster deportivo interactivo de Ramón Alberto Curbalán Vega';
-      img.width = 1809;
-      img.height = 990;
+      img.width = 1672;
+      img.height = 941;
       img.decoding = 'async';
       img.fetchPriority = 'high';
       picture.replaceChildren(img);
@@ -74,11 +89,48 @@
       ['master-menu-cv','Ver presentación',() => legacy.coach?.click()]
     ];
     const menuButtons = menu.map(([cls,label,action]) => addHit(cls,label,action));
+    const presentationMenuButton = menuButtons.find(button => button.classList.contains('master-menu-cv'));
+    if (presentationMenuButton) {
+      presentationMenuButton.innerHTML = `
+        <span class="master-menu-presentation-content" aria-hidden="true">
+          <span class="master-menu-presentation-icon">▶</span>
+          <span class="master-menu-presentation-copy">
+            <strong>Ver presentación</strong>
+            <span>Presentación profesional</span>
+          </span>
+        </span>
+      `;
+    }
+
+    const backgroundRestore = document.createElement('div');
+    backgroundRestore.className = 'master-background-restore';
+    backgroundRestore.setAttribute('aria-hidden','true');
+    artboard.appendChild(backgroundRestore);
+
+    const quoteRestore = document.createElement('div');
+    quoteRestore.className = 'master-quote-restore';
+    quoteRestore.setAttribute('aria-hidden','true');
+    artboard.appendChild(quoteRestore);
 
     const ring = document.createElement('div');
     ring.className = 'master-ring';
     ring.setAttribute('aria-hidden','true');
     artboard.appendChild(ring);
+
+    /* Ritmo deliberadamente más natural que la primera prueba. */
+    const gymZone = artboard.querySelector('.scene-gym');
+    if (gymZone && !gymZone.querySelector('.gym-metrics-overlay')) {
+      const metrics = document.createElement('div');
+      metrics.className = 'gym-metrics-overlay';
+      metrics.setAttribute('aria-hidden','true');
+      metrics.innerHTML = `
+        <div class="gym-metric">FC MEDIA<strong>142</strong><em>lpm</em><span class="gym-metric-bar"></span></div>
+        <div class="gym-metric">POTENCIA<strong>892</strong><em>W</em><span class="gym-metric-bar"></span></div>
+        <div class="gym-metric">ZONA<strong>4</strong><span class="gym-metric-bar"></span></div>
+      `;
+      gymZone.appendChild(metrics);
+    }
+
 
     const sceneVideos = [...artboard.querySelectorAll('.scene-video video')];
 
