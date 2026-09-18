@@ -86,9 +86,21 @@
       ['master-menu-specialties','Especialidades',() => activate('specialties')],
       ['master-menu-talk','Hablemos',() => activate('value')],
       ['master-menu-contact','Contacto',() => activate('impact')],
-      ['master-menu-cv','Descargar CV',() => window.open('CV_Deporte.pdf','_blank','noopener')]
+      ['master-menu-cv','Ver presentación',() => legacy.coach?.click()]
     ];
     const menuButtons = menu.map(([cls,label,action]) => addHit(cls,label,action));
+    const presentationMenuButton = menuButtons.find(button => button.classList.contains('master-menu-cv'));
+    if (presentationMenuButton) {
+      presentationMenuButton.innerHTML = `
+        <span class="master-menu-presentation-content" aria-hidden="true">
+          <span class="master-menu-presentation-icon">▶</span>
+          <span class="master-menu-presentation-copy">
+            <strong>Ver presentación</strong>
+            <span>Presentación profesional</span>
+          </span>
+        </span>
+      `;
+    }
 
     const backgroundRestore = document.createElement('div');
     backgroundRestore.className = 'master-background-restore';
@@ -99,14 +111,6 @@
     quoteRestore.className = 'master-quote-restore';
     quoteRestore.setAttribute('aria-hidden','true');
     artboard.appendChild(quoteRestore);
-
-    const presentationButton = document.createElement('button');
-    presentationButton.type = 'button';
-    presentationButton.className = 'master-presentation-button';
-    presentationButton.textContent = 'Ver presentación';
-    presentationButton.setAttribute('aria-label','Ver presentación profesional');
-    presentationButton.addEventListener('click', () => legacy.coach?.click());
-    artboard.appendChild(presentationButton);
 
     const ring = document.createElement('div');
     ring.className = 'master-ring';
