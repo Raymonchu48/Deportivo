@@ -20,7 +20,7 @@
     const loadScript = () => {
       if (document.querySelector('script[data-cluster-master]')) return;
       const script = document.createElement('script');
-      script.src = 'cluster-master-v2.js?v=20260917-master3';
+      script.src = 'cluster-master-v2.js?v=20260918-masterboot1';
       script.async = false;
       script.dataset.clusterMaster = 'true';
       document.head.appendChild(script);
@@ -33,10 +33,10 @@
     }
     css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = 'cluster-master-v2.css?v=20260917-master3';
+    css.href = 'cluster-master-v2.css?v=20260918-masterboot1';
     css.dataset.clusterMaster = 'true';
     css.onload = loadScript;
-    css.onerror = () => console.error('[cluster-master] No se pudo cargar la hoja de estilos');
+    css.onerror = () => { console.error('[cluster-master] No se pudo cargar la hoja de estilos'); document.documentElement.classList.remove('cluster-master-loading'); };
     document.head.appendChild(css);
   };
 
