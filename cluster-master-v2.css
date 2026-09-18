@@ -58,11 +58,14 @@
 .cluster-master-active .master-menu-cv{left:2.5%;top:69.5%;width:13.2%;height:8.4%}
 
 /* Zonas funcionales integradas en los paneles existentes. */
-.cluster-master-active .master-gym-hit{left:16.7%;top:8.3%;width:24.9%;height:40.9%}
-.cluster-master-active .master-swimmer-hit{left:55.8%;top:52.3%;width:36.2%;height:29.1%}
-.cluster-master-active .master-body-hit{left:69.5%;top:8.3%;width:22.7%;height:40.1%}
-.cluster-master-active .master-evolution-hit{left:16.8%;top:50.7%;width:21.3%;height:19.5%}
-.cluster-master-active .master-coach-hit{left:49.0%;top:43.0%;width:16.3%;height:7.7%;border-radius:999px}
+
+
+/* Las tarjetas grandes dejan de ser botones. La navegación vive en el menú izquierdo. */
+.cluster-master-active .master-presentation-cover{position:absolute;left:49.4%;top:41.7%;width:17.1%;height:8.7%;z-index:6;pointer-events:none;border-radius:999px;background:linear-gradient(90deg,rgba(6,23,17,.74),rgba(7,25,18,.88) 48%,rgba(8,30,21,.76));backdrop-filter:blur(13px) saturate(.82);-webkit-backdrop-filter:blur(13px) saturate(.82);-webkit-mask-image:radial-gradient(ellipse at center,#000 0 62%,rgba(0,0,0,.86) 76%,transparent 100%);mask-image:radial-gradient(ellipse at center,#000 0 62%,rgba(0,0,0,.86) 76%,transparent 100%)}
+.cluster-master-active .master-presentation-button{position:absolute;left:3.0%;top:86.0%;width:12.8%;height:5.7%;z-index:10;border:1px solid rgba(120,255,197,.58);border-radius:999px;background:linear-gradient(180deg,rgba(8,35,25,.88),rgba(5,23,17,.92));color:#eafff3;display:flex;align-items:center;justify-content:center;gap:.72em;padding:0 .9em;cursor:pointer;font:700 clamp(9px,.75vw,14px)/1 Inter,ui-sans-serif,system-ui,sans-serif;letter-spacing:.01em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 0 16px rgba(81,255,184,.18);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.cluster-master-active .master-presentation-button::before{content:'▶';display:grid;place-items:center;width:1.9em;height:1.9em;flex:0 0 auto;border:1px solid rgba(170,255,219,.7);border-radius:50%;font-size:.72em;padding-left:.12em;box-shadow:0 0 10px rgba(101,255,191,.3)}
+.cluster-master-active .master-presentation-button:hover,.cluster-master-active .master-presentation-button:focus-visible{outline:none;transform:translateY(-1px);border-color:rgba(168,255,219,.9);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 0 22px rgba(81,255,184,.3)}
+.cluster-master-active .master-presentation-button:active{transform:translateY(0) scale(.985)}
 
 /* Anillo ambiental: movimiento muy sutil, sin cubrir el coach. */
 .cluster-master-active .master-ring{position:absolute;z-index:3;left:26.5%;top:78.4%;width:39.2%;height:12.4%;border-radius:50%;pointer-events:none;opacity:.7;border:1px solid rgba(255,202,119,.08);animation:master-ring-breathe 5.4s ease-in-out infinite}
