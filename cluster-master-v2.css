@@ -28,15 +28,15 @@
 
 
 /* Columna de métricas del nadador desplazada a la izquierda, integrada sin placas visibles. */
-.cluster-master-active .swimmer-metrics-mask{position:absolute;left:84.15%;top:53.55%;width:8.3%;height:27.9%;z-index:3;pointer-events:none;border-radius:14px;background:linear-gradient(180deg,rgba(4,14,11,.96),rgba(4,14,11,.90));box-shadow:inset 0 0 0 1px rgba(147,245,206,.08),0 0 12px rgba(0,0,0,.18)}
-.cluster-master-active .swimmer-metrics-overlay{position:absolute;left:81.65%;top:55.15%;width:8.45%;height:24.9%;z-index:4;pointer-events:none;color:#f4fff9;font-family:Inter,ui-sans-serif,system-ui,sans-serif;text-shadow:0 2px 5px rgba(0,0,0,.88),0 0 10px rgba(0,0,0,.58)}
-.cluster-master-active .swimmer-metric-title{font-size:clamp(9px,.68vw,13px);font-weight:700;line-height:1.02;text-transform:uppercase;margin-bottom:8px}
-.cluster-master-active .swimmer-wave{font-size:clamp(20px,1.1vw,26px);line-height:1;margin-bottom:10px;color:#dcfff0;opacity:.92}
+.cluster-master-active .swimmer-metrics-mask{position:absolute;left:86.05%;top:53.55%;width:6.55%;height:27.9%;z-index:3;pointer-events:none;border-radius:12px;background:linear-gradient(180deg,rgba(4,14,11,.94),rgba(4,14,11,.88));box-shadow:inset 0 0 0 1px rgba(147,245,206,.06)}
+.cluster-master-active .swimmer-metrics-overlay{position:absolute;left:86.35%;top:55.15%;width:5.75%;height:24.9%;z-index:4;pointer-events:none;color:#f4fff9;font-family:Inter,ui-sans-serif,system-ui,sans-serif;text-shadow:0 2px 5px rgba(0,0,0,.88),0 0 10px rgba(0,0,0,.58)}
+.cluster-master-active .swimmer-metric-title{font-size:clamp(8px,.58vw,11px);font-weight:700;line-height:1.03;text-transform:uppercase;margin-bottom:7px}
+.cluster-master-active .swimmer-wave{font-size:clamp(17px,.95vw,22px);line-height:1;margin-bottom:9px;color:#dcfff0;opacity:.9}
 .cluster-master-active .swimmer-metric{margin-bottom:14px}
 .cluster-master-active .swimmer-metric-label{display:block;font-size:clamp(8px,.58vw,11px);font-weight:700;text-transform:uppercase;line-height:1.05}
-.cluster-master-active .swimmer-metric-value{display:block;font-size:clamp(16px,1.45vw,28px);font-weight:800;line-height:.95;margin-top:4px}
+.cluster-master-active .swimmer-metric-value{display:block;font-size:clamp(14px,1.18vw,23px);font-weight:800;line-height:.95;margin-top:3px}
 .cluster-master-active .swimmer-metric-sub{display:block;font-size:clamp(8px,.52vw,10px);margin-top:3px;opacity:.95}
-.cluster-master-active .swimmer-zone{display:block;margin-top:2px;font-size:clamp(9px,.68vw,13px);font-weight:700;text-transform:uppercase;line-height:1.05}
+.cluster-master-active .swimmer-zone{display:block;margin-top:2px;font-size:clamp(8px,.58vw,11px);font-weight:700;text-transform:uppercase;line-height:1.05}
 .cluster-master-active .swimmer-zone-accent{display:block;width:78%;height:3px;margin-top:6px;background:linear-gradient(90deg,#70ff9d,#d4ff8d);box-shadow:0 0 8px rgba(106,255,158,.45)}
 
 /* Los botones originales siguen siendo los controladores de los drawers, pero no dibujan nada sobre la imagen. */
