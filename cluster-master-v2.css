@@ -11,8 +11,8 @@
 .cluster-master-active .scene-video::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 24px 10px rgba(1,14,10,.48),inset 0 0 0 1px rgba(105,239,192,.18)}
 .cluster-master-active .scene-gym{left:21.0%!important;top:10.55%!important;width:19.35%!important;height:35.1%!important;border-radius:19px!important;clip-path:inset(0 round 19px);background:#07110d!important}
 .cluster-master-active .scene-gym video{object-position:38% 50%!important;transform:scale(1.005)!important;opacity:1!important;filter:saturate(.88) contrast(1.03) brightness(.93)!important}
-.cluster-master-active .scene-swimmer{left:55.85%!important;top:55.25%!important;width:28.90%!important;height:24.0%!important;border-radius:19px!important;clip-path:inset(0 round 19px);background:#06110d!important}
-.cluster-master-active .scene-swimmer video{object-position:49% 50%!important;transform:scale(1.025)!important;opacity:1!important;filter:saturate(.9) contrast(1.03) brightness(.94)!important}
+.cluster-master-active .scene-swimmer{left:55.85%!important;top:53.95%!important;width:29.55%!important;height:26.65%!important;border-radius:19px!important;clip-path:inset(0 round 19px);background:#06110d!important}
+.cluster-master-active .scene-swimmer video{object-position:47.5% 50%!important;transform:scale(1.015)!important;opacity:1!important;filter:saturate(.9) contrast(1.03) brightness(.94)!important}
 
 
 
