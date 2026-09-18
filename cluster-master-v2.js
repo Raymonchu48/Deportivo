@@ -90,6 +90,11 @@
     ];
     const menuButtons = menu.map(([cls,label,action]) => addHit(cls,label,action));
 
+    const backgroundRestore = document.createElement('div');
+    backgroundRestore.className = 'master-background-restore';
+    backgroundRestore.setAttribute('aria-hidden','true');
+    artboard.appendChild(backgroundRestore);
+
     const presentationButton = document.createElement('button');
     presentationButton.type = 'button';
     presentationButton.className = 'master-presentation-button';
