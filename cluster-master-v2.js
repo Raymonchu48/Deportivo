@@ -122,37 +122,6 @@
       gymZone.appendChild(metrics);
     }
 
-    const swimmerZone = artboard.querySelector('.scene-swimmer');
-    if (swimmerZone && !artboard.querySelector('.swimmer-metrics-mask')) {
-      const mask = document.createElement('div');
-      mask.className = 'swimmer-metrics-mask';
-      mask.setAttribute('aria-hidden','true');
-      artboard.appendChild(mask);
-    }
-    if (swimmerZone && !artboard.querySelector('.swimmer-metrics-overlay')) {
-      const overlay = document.createElement('div');
-      overlay.className = 'swimmer-metrics-overlay';
-      overlay.setAttribute('aria-hidden','true');
-      overlay.innerHTML = `
-        <div class="swimmer-metric-title">TÉCNICA<br>CONSTANCIA<br>RESULTADOS</div>
-        <div class="swimmer-wave">〰</div>
-        <div class="swimmer-metric">
-          <span class="swimmer-metric-label">RITMO</span>
-          <span class="swimmer-metric-value">1:52</span>
-          <span class="swimmer-metric-sub">/100 m</span>
-        </div>
-        <div class="swimmer-metric">
-          <span class="swimmer-metric-label">EFICIENCIA</span>
-          <span class="swimmer-metric-value">92%</span>
-        </div>
-        <div class="swimmer-metric">
-          <span class="swimmer-metric-label">ZONA</span>
-          <span class="swimmer-zone">AERÓBICA</span>
-          <span class="swimmer-zone-accent"></span>
-        </div>
-      `;
-      artboard.appendChild(overlay);
-    }
 
     const sceneVideos = [...artboard.querySelectorAll('.scene-video video')];
 
