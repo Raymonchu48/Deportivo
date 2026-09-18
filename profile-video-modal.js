@@ -20,7 +20,7 @@
     const loadScript = () => {
       if (document.querySelector('script[data-cluster-master]')) return;
       const script = document.createElement('script');
-      script.src = 'cluster-master-v2.js?v=20260918-swimclean10';
+      script.src = 'cluster-master-v2.js?v=20260918-menuglow11';
       script.async = false;
       script.dataset.clusterMaster = 'true';
       document.head.appendChild(script);
@@ -33,7 +33,7 @@
     }
     css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = 'cluster-master-v2.css?v=20260918-swimclean10';
+    css.href = 'cluster-master-v2.css?v=20260918-menuglow11';
     css.dataset.clusterMaster = 'true';
     css.onload = loadScript;
     css.onerror = () => { console.error('[cluster-master] No se pudo cargar la hoja de estilos'); document.documentElement.classList.remove('cluster-master-loading'); };
