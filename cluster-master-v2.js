@@ -62,6 +62,7 @@
     }
     cluster.style.setProperty('--cluster-master-bg', `url("${masterSrc}")`);
     document.documentElement.classList.add('cluster-master-active');
+    document.documentElement.classList.remove('cluster-master-loading');
 
     const activate = key => {
       const button = legacy[key];
@@ -139,6 +140,7 @@
   const start = () => boot().catch(error => {
     console.error('[cluster-master]', error);
     document.documentElement.classList.remove('cluster-master-active');
+    document.documentElement.classList.remove('cluster-master-loading');
   });
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once:true });
