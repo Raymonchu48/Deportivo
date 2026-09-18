@@ -102,6 +102,19 @@
     artboard.appendChild(ring);
 
     /* Ritmo deliberadamente más natural que la primera prueba. */
+    const gymZone = artboard.querySelector('.scene-gym');
+    if (gymZone && !gymZone.querySelector('.gym-metrics-overlay')) {
+      const metrics = document.createElement('div');
+      metrics.className = 'gym-metrics-overlay';
+      metrics.setAttribute('aria-hidden','true');
+      metrics.innerHTML = `
+        <div class="gym-metric">FC MEDIA<strong>142</strong><em>lpm</em><span class="gym-metric-bar"></span></div>
+        <div class="gym-metric">POTENCIA<strong>892</strong><em>W</em><span class="gym-metric-bar"></span></div>
+        <div class="gym-metric">ZONA<strong>4</strong><span class="gym-metric-bar"></span></div>
+      `;
+      gymZone.appendChild(metrics);
+    }
+
     const sceneVideos = [...artboard.querySelectorAll('.scene-video video')];
 
 
