@@ -95,6 +95,11 @@
     backgroundRestore.setAttribute('aria-hidden','true');
     artboard.appendChild(backgroundRestore);
 
+    const quoteRestore = document.createElement('div');
+    quoteRestore.className = 'master-quote-restore';
+    quoteRestore.setAttribute('aria-hidden','true');
+    artboard.appendChild(quoteRestore);
+
     const presentationButton = document.createElement('button');
     presentationButton.type = 'button';
     presentationButton.className = 'master-presentation-button';
