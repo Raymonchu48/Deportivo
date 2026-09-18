@@ -90,11 +90,18 @@
     ];
     const menuButtons = menu.map(([cls,label,action]) => addHit(cls,label,action));
 
-    addHit('master-gym-hit','Entrenamiento de fuerza y cuerdas',() => activate('specialties'));
-    addHit('master-swimmer-hit','Natación y rendimiento',() => activate('specialties'));
-    addHit('master-body-hit','Competencias y rendimiento global',() => activate('skills'));
-    addHit('master-evolution-hit','Experiencia y evolución profesional',() => activate('experience'));
-    addHit('master-coach-hit','Ver presentación profesional',() => legacy.coach?.click());
+    const presentationCover = document.createElement('div');
+    presentationCover.className = 'master-presentation-cover';
+    presentationCover.setAttribute('aria-hidden','true');
+    artboard.appendChild(presentationCover);
+
+    const presentationButton = document.createElement('button');
+    presentationButton.type = 'button';
+    presentationButton.className = 'master-presentation-button';
+    presentationButton.textContent = 'Ver presentación';
+    presentationButton.setAttribute('aria-label','Ver presentación profesional');
+    presentationButton.addEventListener('click', () => legacy.coach?.click());
+    artboard.appendChild(presentationButton);
 
     const ring = document.createElement('div');
     ring.className = 'master-ring';
