@@ -9,15 +9,15 @@
 .cluster-master-active .scene-video{display:block!important;position:absolute!important;overflow:hidden!important;z-index:2!important;pointer-events:none!important;border:0!important;background:transparent!important;box-shadow:none!important;isolation:isolate}
 .cluster-master-active .scene-video video{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;opacity:.95;filter:saturate(.84) contrast(1.03) brightness(.91);transition:filter .3s ease,transform .45s ease}
 .cluster-master-active .scene-video::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 24px 10px rgba(1,14,10,.48),inset 0 0 0 1px rgba(105,239,192,.18)}
-.cluster-master-active .scene-gym{left:21.0%!important;top:10.55%!important;width:19.35%!important;height:35.1%!important;border-radius:19px!important;clip-path:inset(0 round 19px);background:#07110d!important}
-.cluster-master-active .scene-gym video{object-position:38% 50%!important;transform:scale(1.005)!important;opacity:1!important;filter:saturate(.88) contrast(1.03) brightness(.93)!important}
+.cluster-master-active .scene-gym{left:17.35%!important;top:8.10%!important;width:23.05%!important;height:39.25%!important;border-radius:20px!important;clip-path:inset(0 round 20px);background:#07110d!important}
+.cluster-master-active .scene-gym video{object-position:46% 57%!important;transform:scale(1.01)!important;opacity:1!important;filter:saturate(.88) contrast(1.03) brightness(.93)!important}
 .cluster-master-active .scene-swimmer{left:55.85%!important;top:53.10%!important;width:30.25%!important;height:27.55%!important;border-radius:19px!important;clip-path:inset(0 round 19px);background:#06110d!important}
 .cluster-master-active .scene-swimmer video{object-position:45.9% 50%!important;transform:scale(1.01)!important;opacity:1!important;filter:saturate(.9) contrast(1.03) brightness(.94)!important}
 
 
 
 /* Métricas del panel de fuerza desplazadas a la derecha, sin placas ni fondos. */
-.cluster-master-active .gym-metrics-overlay{position:absolute;z-index:4;right:2.8%;top:12.5%;width:18%;pointer-events:none;color:#f7fff9;font-family:Inter,ui-sans-serif,system-ui,sans-serif;text-shadow:0 2px 5px rgba(0,0,0,.88),0 0 12px rgba(0,0,0,.58)}
+.cluster-master-active .gym-metrics-overlay{position:absolute;z-index:4;right:1.6%;top:12.2%;width:16.2%;pointer-events:none;color:#f7fff9;font-family:Inter,ui-sans-serif,system-ui,sans-serif;text-shadow:0 2px 5px rgba(0,0,0,.88),0 0 12px rgba(0,0,0,.58)}
 .cluster-master-active .gym-metric{margin:0 0 12%;font-size:clamp(8px,.58vw,11px);line-height:1.02;text-transform:uppercase;letter-spacing:.05em}
 .cluster-master-active .gym-metric strong{display:block;margin:.16em 0 .06em;font-size:clamp(16px,1.45vw,28px);line-height:.95;font-weight:700;letter-spacing:-.03em}
 .cluster-master-active .gym-metric em{display:block;font-style:normal;font-size:.72em;text-transform:none;color:#d7ede0}
