@@ -112,19 +112,40 @@
     bodyLive.setAttribute('aria-hidden','true');
     bodyLive.innerHTML = `
       <div class="body-sport-video-wrap">
-        <video class="body-sport-video" src="clon_sport_web.mp4?v=20260919-bodyfull22" autoplay muted loop playsinline preload="metadata"></video>
-      </div>
-      <div class="body-live-score" style="--score:87">
-        <span class="body-live-score-value">87%</span>
-      </div>
-      <div class="body-live-metrics">
-        <div class="body-live-row"><span>FUERZA</span><strong>85%</strong><span class="body-live-bar"><i class="body-live-fill" style="--value:85%"></i></span></div>
-        <div class="body-live-row"><span>RESISTENCIA</span><strong>78%</strong><span class="body-live-bar"><i class="body-live-fill" style="--value:78%"></i></span></div>
-        <div class="body-live-row"><span>MOVILIDAD</span><strong>92%</strong><span class="body-live-bar"><i class="body-live-fill" style="--value:92%"></i></span></div>
-        <div class="body-live-row"><span>RECUPERACIÓN</span><strong>76%</strong><span class="body-live-bar"><i class="body-live-fill" style="--value:76%"></i></span></div>
+        <video class="body-sport-video" autoplay muted loop playsinline preload="auto"></video>
       </div>
     `;
     artboard.appendChild(bodyLive);
+
+    const bodySportVideo = bodyLive.querySelector('.body-sport-video');
+    if (bodySportVideo) {
+      const bodyVideoParts = [
+        'cluster-body-video/part-00.txt',
+        'cluster-body-video/part-01.txt',
+        'cluster-body-video/part-02.txt'
+      ];
+      Promise.all(
+        bodyVideoParts.map(path =>
+          fetch(path + '?v=20260919-bodyfull23', { cache: 'no-store' }).then(response => {
+            if (!response.ok) throw new Error('No se pudo cargar ' + path + ': ' + response.status);
+            return response.text();
+          })
+        )
+      ).then(parts => {
+        const base64 = parts.join('').replace(/\s+/g, '');
+        const binary = atob(base64);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+        const blob = new Blob([bytes], { type: 'video/mp4' });
+        const objectUrl = URL.createObjectURL(blob);
+        bodySportVideo.dataset.objectUrl = objectUrl;
+        bodySportVideo.src = objectUrl;
+        bodySportVideo.load();
+        bodySportVideo.play().catch(() => {});
+      }).catch(error => {
+        console.error('Error cargando el vídeo del panel CUERPO', error);
+      });
+    }
 
     const evolutionLivePanel = document.createElement('div');
     evolutionLivePanel.className = 'evolution-live-panel';
