@@ -15,23 +15,8 @@
       coach: document.getElementById('profileVideoTrigger')
     };
 
-    /* La imagen maestra se almacena en fragmentos de texto para conservarla exacta en GitHub Pages. */
-    const files = [
-      'cluster-master-img/part-00.txt','cluster-master-img/part-01.txt',
-      'cluster-master-img/part-02.txt','cluster-master-img/part-03.txt',
-      'cluster-master-img/p04-00.txt','cluster-master-img/p04-01.txt',
-      'cluster-master-img/p04-02.txt','cluster-master-img/p04-03.txt',
-      'cluster-master-img/p05-00.txt','cluster-master-img/p05-01.txt',
-      'cluster-master-img/p05-02.txt','cluster-master-img/p05-03.txt'
-    ];
-
-    const parts = await Promise.all(files.map(async file => {
-      const response = await fetch(`${file}?v=20260917-master3`, { cache: 'force-cache' });
-      if (!response.ok) throw new Error(`No se pudo cargar ${file}`);
-      return (await response.text()).trim();
-    }));
-
-    const masterSrc = `data:image/avif;base64,${parts.join('')}`;
+    /* Base visual aprobada por el usuario. */
+    const masterSrc = 'cluster-final-aprobado.avif?v=20260919-approved30';
     const probe = new Image();
     probe.src = masterSrc;
     try {
@@ -54,8 +39,8 @@
       const img = document.createElement('img');
       img.src = masterSrc;
       img.alt = 'Clúster deportivo interactivo de Ramón Alberto Curbalán Vega';
-      img.width = 1672;
-      img.height = 941;
+      img.width = 1881;
+      img.height = 836;
       img.decoding = 'async';
       img.fetchPriority = 'high';
       picture.replaceChildren(img);
