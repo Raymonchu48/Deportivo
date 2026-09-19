@@ -1,0 +1,35 @@
+name: Rebuild HQ body video
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cluster-body-video-hq/**'
+      - '.github/workflows/rebuild-body-hq.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: ${{ !contains(github.event.head_commit.message, '[skip body-hq]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Rebuild exact MP4
+        run: |
+          cat cluster-body-video-hq/part-*.txt | tr -d '\r\n ' | base64 -d > clon_sport_panel_hq.mp4
+          test -s clon_sport_panel_hq.mp4
+          test "$(stat -c%s clon_sport_panel_hq.mp4)" -gt 1300000
+          test "$(stat -c%s clon_sport_panel_hq.mp4)" -lt 1500000
+          file clon_sport_panel_hq.mp4
+      - name: Commit reconstructed video
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add clon_sport_panel_hq.mp4
+          git rm -r cluster-body-video-hq
+          git commit -m "Reconstruye video HQ del panel Cuerpo [skip body-hq]"
+          git push origin main
