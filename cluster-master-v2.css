@@ -488,3 +488,40 @@
 @media(prefers-reduced-motion:reduce){
   .cluster-master-active .body-sport-video{transform:none!important}
 }
+
+/* === PANEL CUERPO · VIDEO A MARCO COMPLETO v22 === */
+.cluster-master-active .body-live-score,
+.cluster-master-active .body-live-metrics,
+.cluster-master-active .body-live-mask,
+.cluster-master-active .body-hologram-wrap{
+  display:none!important;
+}
+.cluster-master-active .body-sport-video-wrap{
+  position:absolute!important;
+  left:70.85%!important;
+  top:9.55%!important;
+  width:23.05%!important;
+  height:40.15%!important;
+  z-index:7!important;
+  overflow:hidden!important;
+  border-radius:26px!important;
+  background:#020806!important;
+  box-shadow:none!important;
+  pointer-events:none!important;
+}
+.cluster-master-active .body-sport-video-wrap::after{
+  display:none!important;
+}
+.cluster-master-active .body-sport-video{
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:50% 50%!important;
+  transform:scale(1.02)!important;
+  filter:none!important;
+  background:#020806!important;
+}
+@media(max-width:1100px){
+  .cluster-master-active .body-sport-video-wrap{display:none!important}
+}
