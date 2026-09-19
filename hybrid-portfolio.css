@@ -481,3 +481,172 @@ body{background:var(--hyb-paper)!important}
   .hybrid-credential-grid{grid-template-columns:1fr!important}
   .hybrid-project-grid{grid-template-columns:1fr!important}
 }
+
+
+/* =========================================================
+   CLUSTER FINAL APROBADO · BASE EXACTA v30
+   ========================================================= */
+@media(min-width:1101px){
+  .stage,.cluster{
+    background:#03100b!important;
+  }
+  .cluster{
+    display:grid!important;
+    place-items:center!important;
+  }
+  .cluster::before{
+    background-image:url('cluster-final-aprobado.avif?v=20260919-approved30')!important;
+    background-position:center!important;
+    background-size:cover!important;
+    filter:blur(28px) saturate(.8)!important;
+    opacity:.38!important;
+  }
+  .cluster-master-active .artboard{
+    width:min(calc(100vw - 8px),calc((100dvh - 8px)*2.25))!important;
+    height:min(calc(100dvh - 8px),calc((100vw - 8px)/2.25))!important;
+    aspect-ratio:1881/836!important;
+    max-height:100dvh!important;
+    background:#03100b!important;
+  }
+  .cluster-master-active .artboard picture{
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    z-index:0!important;
+  }
+  .cluster-master-active .artboard picture img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:fill!important;
+    object-position:center!important;
+    display:block!important;
+  }
+
+  /* Retiramos por completo la composición anterior. */
+  .cluster-master-active .body-live-panel,
+  .cluster-master-active .evolution-live-panel,
+  .cluster-master-active .master-ring,
+  .cluster-master-active .discipline-orbit,
+  .cluster-master-active .mountain-mist,
+  .cluster-master-active .master-hotspot{
+    display:none!important;
+  }
+  .hybrid-hero-cleaner,
+  .hybrid-hero-signature{
+    display:none!important;
+  }
+
+  /* La navegación y CTA siguen siendo clicables, pero visualmente
+     usamos exactamente lo que está dibujado en la imagen maestra. */
+  .hybrid-topnav{
+    opacity:0!important;
+    background:transparent!important;
+    backdrop-filter:none!important;
+  }
+  .hybrid-topnav *{
+    opacity:1!important;
+  }
+  .hybrid-brand,
+  .hybrid-navlinks,
+  .hybrid-topcta{
+    opacity:0!important;
+  }
+  .hybrid-hero-cta{
+    opacity:0!important;
+    pointer-events:auto!important;
+    left:50%!important;
+    bottom:6.3%!important;
+    width:31%!important;
+    transform:translateX(-50%)!important;
+    justify-content:center!important;
+    gap:1.5%!important;
+  }
+  .hybrid-hero-cta a,
+  .hybrid-hero-cta button{
+    flex:1 1 0!important;
+    min-width:0!important;
+    height:44px!important;
+    pointer-events:auto!important;
+  }
+
+  /* Vídeo atleta: solo ocupa la zona de imagen interior para no tapar
+     los textos FUERZA / DISCIPLINA / RESULTADOS ni SIEMPRE SUMA. */
+  .cluster-master-active .scene-gym{
+    display:block!important;
+    left:4.15%!important;
+    top:8.25%!important;
+    width:27.25%!important;
+    height:39.45%!important;
+    z-index:8!important;
+    overflow:hidden!important;
+    border-radius:18px!important;
+    clip-path:inset(0 round 18px)!important;
+    border:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    pointer-events:none!important;
+  }
+  .cluster-master-active .scene-gym::before,
+  .cluster-master-active .scene-gym::after{
+    display:none!important;
+  }
+  .cluster-master-active .scene-gym video{
+    position:absolute!important;
+    left:5.5%!important;
+    top:15%!important;
+    width:91%!important;
+    height:72%!important;
+    object-fit:cover!important;
+    object-position:50% 52%!important;
+    transform:scale(1.015)!important;
+    border-radius:12px!important;
+    opacity:.96!important;
+    filter:saturate(.92) contrast(1.03) brightness(.94)!important;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 90%,transparent 100%)!important;
+    mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 90%,transparent 100%)!important;
+  }
+
+  /* Nadador: el vídeo ocupa la zona acuática y deja visible la columna
+     de texto de la derecha tal como está en la referencia aprobada. */
+  .cluster-master-active .scene-swimmer{
+    display:block!important;
+    left:67.65%!important;
+    top:49.55%!important;
+    width:27.05%!important;
+    height:30.05%!important;
+    z-index:8!important;
+    overflow:hidden!important;
+    border-radius:18px!important;
+    clip-path:inset(0 round 18px)!important;
+    border:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    pointer-events:none!important;
+  }
+  .cluster-master-active .scene-swimmer::before,
+  .cluster-master-active .scene-swimmer::after{
+    display:none!important;
+  }
+  .cluster-master-active .scene-swimmer video{
+    position:absolute!important;
+    left:1.8%!important;
+    top:5%!important;
+    width:74%!important;
+    height:88%!important;
+    object-fit:cover!important;
+    object-position:50% 49%!important;
+    transform:none!important;
+    border-radius:11px!important;
+    opacity:.97!important;
+    filter:saturate(.95) contrast(1.02) brightness(.98)!important;
+    -webkit-mask-image:linear-gradient(90deg,#000 0,#000 92%,transparent 100%)!important;
+    mask-image:linear-gradient(90deg,#000 0,#000 92%,transparent 100%)!important;
+  }
+}
+
+@media(max-width:1100px){
+  .hybrid-topnav{opacity:1!important}
+  .cluster-master-active .body-live-panel,
+  .cluster-master-active .evolution-live-panel,
+  .cluster-master-active .master-ring{display:none!important}
+}
