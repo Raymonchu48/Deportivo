@@ -25,7 +25,7 @@
       'cluster-approved-img/part-05.txt'
     ];
     const approvedParts = await Promise.all(approvedFiles.map(async file => {
-      const response = await fetch(`${file}?v=20260919-approved35`, { cache: 'force-cache' });
+      const response = await fetch(`${file}?v=20260919-approved36`, { cache: 'force-cache' });
       if (!response.ok) throw new Error(`No se pudo cargar ${file}`);
       return (await response.text()).trim();
     }));
