@@ -113,7 +113,7 @@
     bodyLive.innerHTML = `
       <div class="body-sport-video-wrap">
         <video class="body-sport-video"
-          src="clon_sport_panel_hq.mp4?v=20260919-bodyhq25"
+          src="clon_sport_panel_hq.mp4?v=20260919-bodyhq26"
           autoplay muted loop playsinline preload="auto"></video>
       </div>
     `;
@@ -137,6 +137,7 @@
     const evolutionValues = [28,29,27,30,31,29,28];
     let liveStep = 0;
     const updateLivePanels = () => {
+      const evo = evolutionValues[liveStep % evolutionValues.length];
       const evoNode = evolutionLivePanel.querySelector('.evolution-score-live span');
       if (evoNode) evoNode.textContent = evo;
       liveStep += 1;
