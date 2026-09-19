@@ -111,9 +111,8 @@
     bodyLive.className = 'body-live-panel';
     bodyLive.setAttribute('aria-hidden','true');
     bodyLive.innerHTML = `
-      <div class="body-live-mask"></div>
-      <div class="body-hologram-wrap">
-        <div class="body-hologram"><span class="body-hologram-orbit"></span></div>
+      <div class="body-sport-video-wrap">
+        <video class="body-sport-video" src="clon_sport_web.mp4?v=20260919-bodyvideo21" autoplay muted loop playsinline preload="metadata"></video>
       </div>
       <div class="body-live-score" style="--score:87">
         <span class="body-live-score-value">87%</span>
@@ -184,12 +183,12 @@
       window.setInterval(updateLivePanels, 2400);
     }
 
-    const sceneVideos = [...artboard.querySelectorAll('.scene-video video')];
+    const sceneVideos = [...artboard.querySelectorAll('.scene-video video, .body-sport-video')];
 
 
     sceneVideos.forEach(video => {
       video.muted = true;
-      video.playbackRate = 0.72;
+      video.playbackRate = video.classList.contains('body-sport-video') ? 1 : 0.72;
       video.playsInline = true;
     });
 
