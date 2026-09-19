@@ -15,8 +15,21 @@
       coach: document.getElementById('profileVideoTrigger')
     };
 
-    /* Base visual aprobada por el usuario. */
-    const masterSrc = 'cluster-final-aprobado.avif?v=20260919-approved30';
+    /* Base visual aprobada: reconstruida desde fragmentos de texto para evitar corrupción binaria en GitHub. */
+    const approvedFiles = [
+      'cluster-approved-img/part-00.txt',
+      'cluster-approved-img/part-01.txt',
+      'cluster-approved-img/part-02.txt',
+      'cluster-approved-img/part-03.txt',
+      'cluster-approved-img/part-04.txt',
+      'cluster-approved-img/part-05.txt'
+    ];
+    const approvedParts = await Promise.all(approvedFiles.map(async file => {
+      const response = await fetch(`${file}?v=20260919-approved35`, { cache: 'force-cache' });
+      if (!response.ok) throw new Error(`No se pudo cargar ${file}`);
+      return (await response.text()).trim();
+    }));
+    const masterSrc = `data:image/avif;base64,${approvedParts.join('')}`;
     const probe = new Image();
     probe.src = masterSrc;
     try {
