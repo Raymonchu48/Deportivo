@@ -471,3 +471,13 @@ body{background:var(--hyb-paper)!important}
   .hybrid-credential-grid{grid-template-columns:repeat(4,1fr)!important}
   .hybrid-project-grid{grid-template-columns:repeat(3,1fr)!important}
 }
+
+@media(max-width:1179px){
+  .hybrid-profile-scenic{display:none!important}
+}
+@media(max-width:780px){
+  .hybrid-timeline{grid-template-columns:1fr!important}
+  .hybrid-job{padding:5px 0 20px 25px!important}
+  .hybrid-credential-grid{grid-template-columns:1fr!important}
+  .hybrid-project-grid{grid-template-columns:1fr!important}
+}
