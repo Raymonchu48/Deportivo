@@ -112,40 +112,12 @@
     bodyLive.setAttribute('aria-hidden','true');
     bodyLive.innerHTML = `
       <div class="body-sport-video-wrap">
-        <video class="body-sport-video" autoplay muted loop playsinline preload="auto"></video>
+        <video class="body-sport-video"
+          src="clon_sport_panel_hq.mp4?v=20260919-bodyhq25"
+          autoplay muted loop playsinline preload="auto"></video>
       </div>
     `;
     artboard.appendChild(bodyLive);
-
-    const bodySportVideo = bodyLive.querySelector('.body-sport-video');
-    if (bodySportVideo) {
-      const bodyVideoParts = [
-        'cluster-body-video/part-00.txt',
-        'cluster-body-video/part-01.txt',
-        'cluster-body-video/part-02.txt'
-      ];
-      Promise.all(
-        bodyVideoParts.map(path =>
-          fetch(path + '?v=20260919-bodyfull23', { cache: 'no-store' }).then(response => {
-            if (!response.ok) throw new Error('No se pudo cargar ' + path + ': ' + response.status);
-            return response.text();
-          })
-        )
-      ).then(parts => {
-        const base64 = parts.join('').replace(/\s+/g, '');
-        const binary = atob(base64);
-        const bytes = new Uint8Array(binary.length);
-        for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
-        const blob = new Blob([bytes], { type: 'video/mp4' });
-        const objectUrl = URL.createObjectURL(blob);
-        bodySportVideo.dataset.objectUrl = objectUrl;
-        bodySportVideo.src = objectUrl;
-        bodySportVideo.load();
-        bodySportVideo.play().catch(() => {});
-      }).catch(error => {
-        console.error('Error cargando el vídeo del panel CUERPO', error);
-      });
-    }
 
     const evolutionLivePanel = document.createElement('div');
     evolutionLivePanel.className = 'evolution-live-panel';
@@ -162,38 +134,9 @@
     `;
     artboard.appendChild(evolutionLivePanel);
 
-    const scoreValues = [87,89,86,90,88,91,87];
-    const metricSets = [
-      [85,78,92,76],
-      [87,80,91,78],
-      [84,79,94,77],
-      [88,82,93,80],
-      [86,81,92,79]
-    ];
     const evolutionValues = [28,29,27,30,31,29,28];
     let liveStep = 0;
     const updateLivePanels = () => {
-      const score = scoreValues[liveStep % scoreValues.length];
-      const set = metricSets[liveStep % metricSets.length];
-      const evo = evolutionValues[liveStep % evolutionValues.length];
-
-      const scoreNode = bodyLive.querySelector('.body-live-score');
-      const scoreText = bodyLive.querySelector('.body-live-score-value');
-      if (scoreNode && scoreText) {
-        scoreNode.style.setProperty('--score', score);
-        scoreText.textContent = score + '%';
-        scoreText.animate(
-          [{transform:'scale(.94)',opacity:.7},{transform:'scale(1.08)',opacity:1},{transform:'scale(1)',opacity:1}],
-          {duration:420,easing:'ease-out'}
-        );
-      }
-
-      bodyLive.querySelectorAll('.body-live-row').forEach((row,index) => {
-        const value = set[index];
-        row.querySelector('strong').textContent = value + '%';
-        row.querySelector('.body-live-fill').style.setProperty('--value', value + '%');
-      });
-
       const evoNode = evolutionLivePanel.querySelector('.evolution-score-live span');
       if (evoNode) evoNode.textContent = evo;
       liveStep += 1;
