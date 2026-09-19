@@ -102,35 +102,87 @@
       `;
     }
 
-    const backgroundRestore = document.createElement('div');
-    backgroundRestore.className = 'master-background-restore';
-    backgroundRestore.setAttribute('aria-hidden','true');
-    artboard.appendChild(backgroundRestore);
-
-    const quoteRestore = document.createElement('div');
-    quoteRestore.className = 'master-quote-restore';
-    quoteRestore.setAttribute('aria-hidden','true');
-    artboard.appendChild(quoteRestore);
-
     const ring = document.createElement('div');
     ring.className = 'master-ring';
     ring.setAttribute('aria-hidden','true');
     artboard.appendChild(ring);
 
-    /* Ritmo deliberadamente más natural que la primera prueba. */
-    const gymZone = artboard.querySelector('.scene-gym');
-    if (gymZone && !gymZone.querySelector('.gym-metrics-overlay')) {
-      const metrics = document.createElement('div');
-      metrics.className = 'gym-metrics-overlay';
-      metrics.setAttribute('aria-hidden','true');
-      metrics.innerHTML = `
-        <div class="gym-metric">FC MEDIA<strong>142</strong><em>lpm</em><span class="gym-metric-bar"></span></div>
-        <div class="gym-metric">POTENCIA<strong>892</strong><em>W</em><span class="gym-metric-bar"></span></div>
-        <div class="gym-metric">ZONA<strong>4</strong><span class="gym-metric-bar"></span></div>
-      `;
-      gymZone.appendChild(metrics);
-    }
+    const bodyLive = document.createElement('div');
+    bodyLive.className = 'body-live-panel';
+    bodyLive.setAttribute('aria-hidden','true');
+    bodyLive.innerHTML = `
+      <div class="body-live-mask"></div>
+      <div class="body-hologram-wrap">
+        <div class="body-hologram"><span class="body-hologram-orbit"></span></div>
+      </div>
+      <div class="body-live-score" style="--score:87">
+        <span class="body-live-score-value">87%</span>
+      </div>
+      <div class="body-live-metrics">
+        <div class="body-live-row"><span>FUERZA</span><strong>85%</strong><span class="body-live-bar"><i class="body-live-fill" style="--value:85%"></i></span></div>
+        <div class="body-live-row"><span>RESISTENCIA</span><strong>78%</strong><span class="body-live-bar"><i class="body-live-fill" style="--value:78%"></i></span></div>
+        <div class="body-live-row"><span>MOVILIDAD</span><strong>92%</strong><span class="body-live-bar"><i class="body-live-fill" style="--value:92%"></i></span></div>
+        <div class="body-live-row"><span>RECUPERACIÓN</span><strong>76%</strong><span class="body-live-bar"><i class="body-live-fill" style="--value:76%"></i></span></div>
+      </div>
+    `;
+    artboard.appendChild(bodyLive);
 
+    const evolutionLivePanel = document.createElement('div');
+    evolutionLivePanel.className = 'evolution-live-panel';
+    evolutionLivePanel.setAttribute('aria-hidden','true');
+    evolutionLivePanel.innerHTML = `
+      <div class="evolution-live">
+        <svg viewBox="0 0 215 100" preserveAspectRatio="none">
+          <path class="evolution-live-track" d="M 4 88 L 40 65 L 72 79 L 112 52 L 143 66 L 176 49 L 208 19"></path>
+          <circle class="evolution-live-dot" r="4" cx="0" cy="0"></circle>
+        </svg>
+        <div class="evolution-score-live">+ <span>28</span>%</div>
+        <div class="evolution-scan"></div>
+      </div>
+    `;
+    artboard.appendChild(evolutionLivePanel);
+
+    const scoreValues = [87,89,86,90,88,91,87];
+    const metricSets = [
+      [85,78,92,76],
+      [87,80,91,78],
+      [84,79,94,77],
+      [88,82,93,80],
+      [86,81,92,79]
+    ];
+    const evolutionValues = [28,29,27,30,31,29,28];
+    let liveStep = 0;
+    const updateLivePanels = () => {
+      const score = scoreValues[liveStep % scoreValues.length];
+      const set = metricSets[liveStep % metricSets.length];
+      const evo = evolutionValues[liveStep % evolutionValues.length];
+
+      const scoreNode = bodyLive.querySelector('.body-live-score');
+      const scoreText = bodyLive.querySelector('.body-live-score-value');
+      if (scoreNode && scoreText) {
+        scoreNode.style.setProperty('--score', score);
+        scoreText.textContent = score + '%';
+        scoreText.animate(
+          [{transform:'scale(.94)',opacity:.7},{transform:'scale(1.08)',opacity:1},{transform:'scale(1)',opacity:1}],
+          {duration:420,easing:'ease-out'}
+        );
+      }
+
+      bodyLive.querySelectorAll('.body-live-row').forEach((row,index) => {
+        const value = set[index];
+        row.querySelector('strong').textContent = value + '%';
+        row.querySelector('.body-live-fill').style.setProperty('--value', value + '%');
+      });
+
+      const evoNode = evolutionLivePanel.querySelector('.evolution-score-live span');
+      if (evoNode) evoNode.textContent = evo;
+      liveStep += 1;
+    };
+
+    updateLivePanels();
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.setInterval(updateLivePanels, 2400);
+    }
 
     const sceneVideos = [...artboard.querySelectorAll('.scene-video video')];
 
