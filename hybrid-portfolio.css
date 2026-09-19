@@ -495,7 +495,7 @@ body{background:var(--hyb-paper)!important}
     place-items:center!important;
   }
   .cluster::before{
-    background-image:url('cluster-final-aprobado.avif?v=20260919-approved30')!important;
+    background-image:url('cluster-profesional-panoramico.webp')!important;
     background-position:center!important;
     background-size:cover!important;
     filter:blur(28px) saturate(.8)!important;
@@ -649,4 +649,15 @@ body{background:var(--hyb-paper)!important}
   .cluster-master-active .body-live-panel,
   .cluster-master-active .evolution-live-panel,
   .cluster-master-active .master-ring{display:none!important}
+}
+
+/* Corrección de seguridad de la base aprobada */
+@media(min-width:1101px){
+  .cluster::before{
+    background-image:url('cluster-profesional-panoramico.webp')!important;
+  }
+  .cluster-master-active .artboard picture img{
+    object-fit:fill!important;
+    object-position:center!important;
+  }
 }
