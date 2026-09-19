@@ -112,7 +112,7 @@
     bodyLive.setAttribute('aria-hidden','true');
     bodyLive.innerHTML = `
       <div class="body-sport-video-wrap">
-        <video class="body-sport-video" src="clon_sport_web.mp4?v=20260919-bodyvideo21" autoplay muted loop playsinline preload="metadata"></video>
+        <video class="body-sport-video" src="clon_sport_web.mp4?v=20260919-bodyfull22" autoplay muted loop playsinline preload="metadata"></video>
       </div>
       <div class="body-live-score" style="--score:87">
         <span class="body-live-score-value">87%</span>
