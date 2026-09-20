@@ -167,6 +167,34 @@ linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4d
  .exp-role{grid-template-columns:1fr}
 }
 
+
+.specialties-hero{padding:30px;background:
+linear-gradient(120deg,#fbfcfa,#eef4ef 65%,#e6eee7);border-bottom:1px solid #d6ded8;position:relative;overflow:hidden}
+.specialties-hero:after{content:"360º";position:absolute;right:30px;top:12px;font-size:112px;font-weight:950;color:rgba(37,122,62,.055)}
+.specialties-hero .eyeline{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#2d7c42;font-weight:900}
+.specialties-hero h2{margin:8px 0 12px;font-size:clamp(38px,5vw,70px);line-height:.9;text-transform:uppercase;letter-spacing:-.04em}
+.specialties-hero h2 span{display:block;color:#2f8748}
+.specialties-hero p{max-width:950px;color:#5d6962;font-size:13px;line-height:1.7}
+.specialty-pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.specialty-pillar{background:#fff;border:1px solid #d8e1da;border-radius:15px;padding:16px;box-shadow:0 8px 22px rgba(19,52,31,.05)}
+.specialty-pillar .icon{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#e4f0e7;color:#1d6d38;font-weight:900;margin-bottom:10px}
+.specialty-pillar b{display:block;font-size:12px;color:#194e2e}.specialty-pillar small{display:block;margin-top:5px;color:#68746d;font-size:10px;line-height:1.5}
+.cred-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cred-card{background:#fff;border:1px solid #d7dfd9;border-radius:16px;overflow:hidden;position:relative}
+.cred-top{padding:16px;background:linear-gradient(135deg,#0e3423,#255b3a);color:#fff}
+.cred-top .type{font-size:9px;text-transform:uppercase;letter-spacing:.11em;color:#91e09b;font-weight:900}
+.cred-top h4{font-size:19px;line-height:1.05;margin:7px 0 6px}.cred-top small{color:#cfe0d3;font-size:10px}
+.cred-body{padding:15px}.cred-body p{margin:0;color:#5d6861;font-size:11px;line-height:1.65}
+.cred-facts{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.cred-fact{padding:6px 8px;border-radius:999px;background:#edf3ee;border:1px solid #d5e0d7;color:#285f39;font-size:9px;font-weight:800}
+.domain-map{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.domain-card{background:#fff;border:1px solid #d8e1da;border-radius:14px;padding:15px}
+.domain-card b{display:block;color:#1d6d38;font-size:12px;margin-bottom:6px}.domain-card p{margin:0;color:#657169;font-size:10px;line-height:1.55}
+.specialty-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.specialty-chip{background:linear-gradient(135deg,#0f3524,#2c6643);color:#fff;border-radius:13px;padding:13px;text-align:center;font-size:10px;font-weight:800}
+.specialty-note{background:#fff;border:1px solid #d8e1da;border-radius:14px;padding:16px;font-size:10px;color:#5d6861;line-height:1.65}
+@media(max-width:1000px){.specialty-pillar-grid,.specialty-strip{grid-template-columns:repeat(2,1fr)}.domain-map{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.specialty-pillar-grid,.cred-grid,.domain-map,.specialty-strip{grid-template-columns:1fr}.specialties-hero:after{font-size:70px}}
+
 .mobilebar{display:none}
 @media(max-width:1180px){
  .app{grid-template-columns:215px 1fr}.grid{grid-template-columns:1fr 1fr}.impact{grid-column:auto}.hero{grid-template-columns:1fr .7fr}.name{font-size:58px}
@@ -192,7 +220,7 @@ linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4d
     <a href="#perfil-completo" class="profile-trigger"><b>Mi perfil</b><small>Perfil profesional completo</small><i>02</i></a>
     <a href="#metodologia-completa" class="method-trigger"><b>Metodología</b><small>Método Chetesaí Fitness+</small><i>03</i></a>
     <a href="#experiencia-completa" class="experience-trigger"><b>Experiencia</b><small>Trayectoria + vídeos + cartas</small><i>04</i></a>
-    <a href="#especialidades"><b>Especialidades</b><small>Áreas de entrenamiento</small><i>05</i></a>
+    <a href="#especialidades-completas" class="specialties-trigger"><b>Especialidades</b><small>Áreas acreditadas</small><i>05</i></a>
     <a href="#impacto"><b>Resultados</b><small>Impacto y métricas</small><i>06</i></a>
   </nav>
   <div class="sidequote">DISCIPLINA HOY.<span>RESULTADOS MAÑANA.</span></div>
@@ -312,6 +340,144 @@ linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4d
 </main>
 </div>
 
+
+<div class="profile-overlay" id="especialidades-completas" aria-hidden="true">
+  <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="especialidadesTitulo">
+    <header class="profile-panel-head">
+      <div><strong id="especialidadesTitulo">Especialidades profesionales</strong><small>Formación acreditada · aplicación práctica · visión multidisciplinar</small></div>
+      <button class="profile-close specialties-close" type="button" aria-label="Cerrar especialidades">×</button>
+    </header>
+
+    <div class="specialties-hero">
+      <div class="eyeline">Especialización con base formativa</div>
+      <h2>Entrenar a la persona.<span>No solo al cuerpo.</span></h2>
+      <p>Mis especialidades combinan entrenamiento, psicología deportiva, coaching, nutrición y comprensión del contexto social del deportista. Las áreas que aparecen aquí están vinculadas a formación acreditada y a contenidos concretos de los certificados aportados.</p>
+      <div class="specialty-pillar-grid">
+        <div class="specialty-pillar"><div class="icon">Ψ</div><b>Coaching y psicología deportiva</b><small>Comunicación, liderazgo, motivación, dinámica de grupo y evaluación en psicología del deporte.</small></div>
+        <div class="specialty-pillar"><div class="icon">N</div><b>Nutrición y dietética</b><small>Planificación dietética, nutrición deportiva, etapas de la vida y hábitos alimentarios.</small></div>
+        <div class="specialty-pillar"><div class="icon">⚽</div><b>Fútbol y rendimiento</b><small>Entrenamiento de fútbol integrado con contenidos de psicología deportiva.</small></div>
+        <div class="specialty-pillar"><div class="icon">360</div><b>Preparación sociológica</b><small>Disciplina, valores, familia, entorno educativo y contexto social del atleta.</small></div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <article class="cv-card span-12">
+        <h3>Formación que respalda las especialidades</h3>
+        <div class="cv-body cred-grid">
+
+          <div class="cred-card">
+            <div class="cred-top">
+              <div class="type">Coaching · Psicología deportiva</div>
+              <h4>Máster en Coaching y Psicología Deportiva</h4>
+              <small>Masstercursos · 650 horas · Finalizado en febrero de 2024</small>
+            </div>
+            <div class="cred-body">
+              <p>Incluye comunicación, liderazgo y coaching deportivo; deporte y persona; dirección de competición; entrenamiento deportivo; emociones; motivación; habilidades sociales; dinámica de grupo; psicología de la actividad física y del deporte; mentoring y metodología de evaluación.</p>
+              <div class="cred-facts"><span class="cred-fact">650 h</span><span class="cred-fact">Sobresaliente</span><span class="cred-fact">15 módulos</span></div>
+            </div>
+          </div>
+
+          <div class="cred-card">
+            <div class="cred-top">
+              <div class="type">Nutrición · Planificación dietética</div>
+              <h4>Máster Experto en Alimentación y Nutrición</h4>
+              <small>INN Formación · 1.000 horas · 2020</small>
+            </div>
+            <div class="cred-body">
+              <p>Formación en nutrición y planificación dietética, nutrición deportiva, elaboración de dietas y dietoterapia, alimentación saludable, coaching nutricional y alergias e intolerancias alimentarias.</p>
+              <div class="cred-facts"><span class="cred-fact">1.000 h</span><span class="cred-fact">Nutrición deportiva</span><span class="cred-fact">Planificación dietética</span></div>
+            </div>
+          </div>
+
+          <div class="cred-card">
+            <div class="cred-top">
+              <div class="type">Dietética · Nutrición humana</div>
+              <h4>Técnico Superior en Dietética y Nutrición</h4>
+              <small>Euroinnova / INESEM · 300 horas · 2009</small>
+            </div>
+            <div class="cred-body">
+              <p>Contenidos sobre necesidades nutricionales, composición de alimentos, macronutrientes y micronutrientes, evaluación del estado nutricional, dietética, nutrición en diferentes etapas de la vida, nutrición en la práctica deportiva y promoción de la salud.</p>
+              <div class="cred-facts"><span class="cred-fact">300 h</span><span class="cred-fact">Sobresaliente</span><span class="cred-fact">Nutrición deportiva</span></div>
+            </div>
+          </div>
+
+          <div class="cred-card">
+            <div class="cred-top">
+              <div class="type">Nutrición · Coaching</div>
+              <h4>Nutrición y Dietética + Coaching Nutricional</h4>
+              <small>Euroinnova Formación · 60 horas · 2017</small>
+            </div>
+            <div class="cred-body">
+              <p>Curso práctico con contenidos de clasificación de alimentos, sistema gastrointestinal, digestión, necesidades nutricionales y fundamentos e importancia del coaching aplicado al ámbito nutricional.</p>
+              <div class="cred-facts"><span class="cred-fact">60 h</span><span class="cred-fact">Notable</span><span class="cred-fact">Coaching nutricional</span></div>
+            </div>
+          </div>
+
+          <div class="cred-card">
+            <div class="cred-top">
+              <div class="type">Fútbol · Psicología deportiva</div>
+              <h4>Entrenador de Fútbol y Psicología Deportiva</h4>
+              <small>Masstercursos · 200 horas · 2021</small>
+            </div>
+            <div class="cred-body">
+              <p>Formación específica que combina contenidos de entrenamiento de fútbol y psicología deportiva, completada mediante metodología online.</p>
+              <div class="cred-facts"><span class="cred-fact">200 h</span><span class="cred-fact">Fútbol</span><span class="cred-fact">Psicología deportiva</span></div>
+            </div>
+          </div>
+
+          <div class="cred-card">
+            <div class="cred-top">
+              <div class="type">Sociología · Rendimiento</div>
+              <h4>Preparación Sociológica para el Entrenamiento Deportivo</h4>
+              <small>AulaFacil · 8 horas · 2020</small>
+            </div>
+            <div class="cred-body">
+              <p>El temario aborda preparación sociológica del atleta de alto rendimiento, disciplina y autodisciplina, lenguaje deportivo, problemas del entrenador de alta competencia, papel de la familia y del sistema escolar, valores del deporte y cultura axiológica deportiva.</p>
+              <div class="cred-facts"><span class="cred-fact">8 h</span><span class="cred-fact">Calificación 8</span><span class="cred-fact">Alto rendimiento</span></div>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="cv-card span-7">
+        <h3>Mapa de aplicación profesional</h3>
+        <div class="cv-body domain-map">
+          <div class="domain-card"><b>Motivación y adherencia</b><p>Uso de herramientas de coaching, comunicación y comprensión de la persona para favorecer compromiso y continuidad.</p></div>
+          <div class="domain-card"><b>Liderazgo y dinámica de grupo</b><p>Aplicación de contenidos de liderazgo, habilidades sociales y dinámica grupal en entrenamiento y actividades colectivas.</p></div>
+          <div class="domain-card"><b>Nutrición deportiva</b><p>Comprensión de la relación entre alimentación, actividad física y ejercicio, dentro del ámbito formativo acreditado.</p></div>
+          <div class="domain-card"><b>Educación alimentaria</b><p>Conocimientos sobre alimentos, nutrientes, necesidades nutricionales y hábitos saludables.</p></div>
+          <div class="domain-card"><b>Psicología del deporte</b><p>Formación en motivación, emociones, coaching, psicología de la actividad física y preparación del deportista.</p></div>
+          <div class="domain-card"><b>Contexto social del atleta</b><p>Atención a disciplina, familia, valores, educación y entorno social como parte del proceso deportivo.</p></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-5">
+        <h3>Especialidades integradas</h3>
+        <div class="cv-body specialty-strip">
+          <div class="specialty-chip">Coaching deportivo</div>
+          <div class="specialty-chip">Psicología deportiva</div>
+          <div class="specialty-chip">Nutrición deportiva</div>
+          <div class="specialty-chip">Dietética</div>
+          <div class="specialty-chip">Fútbol formativo</div>
+          <div class="specialty-chip">Preparación sociológica</div>
+        </div>
+      </article>
+
+      <article class="cv-card span-12">
+        <h3>Enfoque profesional</h3>
+        <div class="cv-body specialty-note">
+          Esta especialización se presenta como formación y competencia profesional dentro del ámbito deportivo, nutricional y de coaching. No se utiliza para atribuir funciones sanitarias o psicológicas clínicas que requieran una habilitación profesional específica distinta de la formación acreditada aquí mostrada.
+        </div>
+      </article>
+    </div>
+
+    <footer class="profile-footer">
+      <span>Especialidades respaldadas por titulaciones y certificados aportados.</span>
+      <span>Coaching · Psicología deportiva · Nutrición · Dietética · Fútbol · Sociología deportiva</span>
+    </footer>
+  </section>
+</div>
 
 <div class="profile-overlay" id="experiencia-completa" aria-hidden="true">
   <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="experienciaTitulo">
@@ -629,10 +795,10 @@ linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4d
 </div>
 
 <nav class="mobilebar">
-<a href="#inicio">Inicio</a><a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodologia-completa" class="method-trigger">Metodología</a><a href="#experiencia-completa" class="experience-trigger">Experiencia</a><a href="#especialidades">Especialidades</a><a href="#impacto">Resultados</a>
+<a href="#inicio">Inicio</a><a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodologia-completa" class="method-trigger">Metodología</a><a href="#experiencia-completa" class="experience-trigger">Experiencia</a><a href="#especialidades-completas" class="specialties-trigger">Especialidades</a><a href="#impacto">Resultados</a>
 </nav>
 <script>
-const links=[...document.querySelectorAll('.nav a:not(.profile-trigger):not(.method-trigger):not(.experience-trigger)')];
+const links=[...document.querySelectorAll('.nav a:not(.profile-trigger):not(.method-trigger):not(.experience-trigger):not(.specialties-trigger)')];
 const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}});
@@ -708,6 +874,27 @@ closeExperience?.addEventListener('click',hideExperience);
 experienceOverlay?.addEventListener('click',e=>{if(e.target===experienceOverlay)hideExperience()});
 document.querySelector('.experience-to-specialties')?.addEventListener('click',e=>{hideExperience();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&experienceOverlay.classList.contains('open'))hideExperience()});
+
+const specialtiesOverlay=document.getElementById('especialidades-completas');
+const specialtiesTriggers=[...document.querySelectorAll('.specialties-trigger')];
+const closeSpecialties=document.querySelector('.specialties-close');
+function openSpecialties(e){
+  if(e)e.preventDefault();
+  specialtiesOverlay.classList.add('open');
+  specialtiesOverlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  document.querySelector('.nav .specialties-trigger')?.classList.add('active');
+}
+function hideSpecialties(){
+  specialtiesOverlay.classList.remove('open');
+  specialtiesOverlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+specialtiesTriggers.forEach(a=>a.addEventListener('click',openSpecialties));
+closeSpecialties?.addEventListener('click',hideSpecialties);
+specialtiesOverlay?.addEventListener('click',e=>{if(e.target===specialtiesOverlay)hideSpecialties()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&specialtiesOverlay.classList.contains('open'))hideSpecialties()});
 
 </script>
 </body>
