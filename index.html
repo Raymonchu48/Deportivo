@@ -105,6 +105,34 @@ footer{margin-top:14px;background:#102820;color:#fff;border-radius:16px;padding:
 .profile-footer{padding:14px 18px;background:#0d2a20;color:#dce8df;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:10px}
 @media(max-width:900px){.profile-overlay{padding:8px}.profile-hero{grid-template-columns:1fr}.profile-photo{min-height:330px;background-position:center 15%}.profile-content{grid-template-columns:1fr}.span-12,.span-8,.span-7,.span-6,.span-5,.span-4{grid-column:1}.cv-item{grid-template-columns:1fr}.profile-panel-head{position:relative}}
 
+
+.method-panel-hero{padding:30px;background:
+linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4ddd6;position:relative;overflow:hidden}
+.method-panel-hero:after{content:"CHE";position:absolute;right:28px;top:14px;font-size:120px;font-weight:950;color:rgba(33,104,55,.055);letter-spacing:-.08em}
+.method-kicker{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#2d7c42;font-weight:900}
+.method-panel-hero h2{margin:8px 0 10px;font-size:clamp(38px,5vw,72px);line-height:.9;text-transform:uppercase;letter-spacing:-.04em}
+.method-panel-hero h2 span{display:block;color:#2f8a49}
+.method-panel-hero p{max-width:900px;color:#59675f;font-size:14px;line-height:1.7}
+.method-manifest{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+.method-manifest div{background:#fff;border:1px solid #d8e1da;border-radius:14px;padding:14px;box-shadow:0 8px 20px rgba(22,55,35,.05)}
+.method-manifest b{display:block;color:#185f32;font-size:12px;margin-bottom:5px}.method-manifest small{color:#6c786f;font-size:10px;line-height:1.4}
+.method-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.flow-step{background:#fff;border:1px solid #d7e0d9;border-radius:16px;padding:18px;position:relative;min-height:180px}
+.flow-step .num{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#123c28;color:#fff;font-weight:900;margin-bottom:16px;box-shadow:0 0 0 5px #e3eee5}
+.flow-step h4{margin:0 0 8px;font-size:17px;color:#173725}.flow-step p{margin:0;color:#657169;font-size:11px;line-height:1.65}
+.method-services{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.method-service{background:#fff;border:1px solid #d8e1da;border-radius:14px;padding:16px;text-align:center}
+.method-service i{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#e5f0e7;color:#1b6b37;font-style:normal;font-weight:900;margin:0 auto 9px}
+.method-service b{display:block;font-size:12px}.method-service small{display:block;margin-top:5px;color:#6b766f;font-size:10px;line-height:1.45}
+.method-principles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.method-principle{background:linear-gradient(135deg,#0e3323,#1d5637);color:#fff;border-radius:16px;padding:18px}
+.method-principle b{display:block;color:#8ce199;font-size:13px;margin-bottom:6px}.method-principle p{margin:0;color:#dbe7de;font-size:11px;line-height:1.6}
+.method-safety{background:#fff;border:1px solid #d8e1da;border-radius:16px;padding:18px}
+.method-safety p{font-size:11px;color:#5d6962;line-height:1.7;margin:0}
+.method-cta{display:flex;justify-content:space-between;align-items:center;gap:14px;background:#0d2a20;color:#fff;border-radius:16px;padding:18px 20px}
+.method-cta b{font-size:18px}.method-cta a{background:#67d779;color:#0d2a20;text-decoration:none;font-weight:900;padding:10px 14px;border-radius:10px;font-size:11px}
+@media(max-width:900px){.method-manifest,.method-flow,.method-services,.method-principles{grid-template-columns:1fr}.method-panel-hero:after{font-size:72px}.method-cta{align-items:flex-start;flex-direction:column}}
+
 .mobilebar{display:none}
 @media(max-width:1180px){
  .app{grid-template-columns:215px 1fr}.grid{grid-template-columns:1fr 1fr}.impact{grid-column:auto}.hero{grid-template-columns:1fr .7fr}.name{font-size:58px}
@@ -128,7 +156,7 @@ footer{margin-top:14px;background:#102820;color:#fff;border-radius:16px;padding:
   <nav class="nav">
     <a class="active" href="#inicio"><b>Inicio</b><small>Visión general</small><i>01</i></a>
     <a href="#perfil-completo" class="profile-trigger"><b>Mi perfil</b><small>Perfil profesional completo</small><i>02</i></a>
-    <a href="#metodo"><b>Metodología</b><small>Cómo trabajo</small><i>03</i></a>
+    <a href="#metodologia-completa" class="method-trigger"><b>Metodología</b><small>Método Chetesaí Fitness+</small><i>03</i></a>
     <a href="#experiencia"><b>Experiencia</b><small>Trayectoria</small><i>04</i></a>
     <a href="#especialidades"><b>Especialidades</b><small>Áreas de entrenamiento</small><i>05</i></a>
     <a href="#impacto"><b>Resultados</b><small>Impacto y métricas</small><i>06</i></a>
@@ -250,6 +278,96 @@ footer{margin-top:14px;background:#102820;color:#fff;border-radius:16px;padding:
 </main>
 </div>
 
+
+<div class="profile-overlay" id="metodologia-completa" aria-hidden="true">
+  <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="metodoTitulo">
+    <header class="profile-panel-head">
+      <div><strong id="metodoTitulo">Metodología Chetesaí Fitness+</strong><small>Entrena con cabeza · Mejora con método</small></div>
+      <button class="profile-close method-close" type="button" aria-label="Cerrar metodología">×</button>
+    </header>
+
+    <div class="method-panel-hero">
+      <div class="method-kicker">Un enfoque realista, progresivo y medible</div>
+      <h2>Entrena con cabeza.<span>Mejora con método.</span></h2>
+      <p>La metodología Chetesaí Fitness+ parte de una valoración inicial, convierte el punto de partida en una planificación personalizada y mantiene el progreso mediante acompañamiento, medición y ajustes. El objetivo es evitar rutinas genéricas y construir un proceso que encaje en la vida real de cada persona.</p>
+      <div class="method-manifest">
+        <div><b>PERSONALIZADO</b><small>Cada plan parte de objetivos, nivel, disponibilidad y contexto.</small></div>
+        <div><b>PROGRESIVO</b><small>La carga y la dificultad evolucionan de forma estructurada.</small></div>
+        <div><b>MEDIBLE</b><small>El avance se observa, registra y revisa periódicamente.</small></div>
+        <div><b>SOSTENIBLE</b><small>El método prioriza adherencia, técnica y continuidad.</small></div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <article class="cv-card span-12">
+        <h3>Cómo funciona</h3>
+        <div class="cv-body method-flow">
+          <div class="flow-step"><div class="num">01</div><h4>Solicita tu valoración</h4><p>El proceso comienza con una conversación sobre objetivo, disponibilidad y modalidad preferida. Esta primera toma de contacto permite definir qué necesitas y cómo debe encajar el entrenamiento en tu realidad.</p></div>
+          <div class="flow-step"><div class="num">02</div><h4>Valoramos y planificamos</h4><p>Se analiza el punto de partida y se crea una propuesta realista. La valoración y la planificación personalizada sirven de base para estructurar entrenamiento, técnica, frecuencia y seguimiento.</p></div>
+          <div class="flow-step"><div class="num">03</div><h4>Entrenas y progresas</h4><p>El entrenamiento se acompaña, se mide y se ajusta. El plan evoluciona según la respuesta, el progreso y las necesidades que aparecen durante el proceso.</p></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-12">
+        <h3>Los cinco pilares operativos</h3>
+        <div class="cv-body method-services">
+          <div class="method-service"><i>1:1</i><b>Entrenamiento personal</b><small>Sesiones adaptadas a objetivos, nivel y estilo de vida.</small></div>
+          <div class="method-service"><i>2–4</i><b>Grupos reducidos</b><small>Trabajo con atención técnica y calidad sin perder individualización.</small></div>
+          <div class="method-service"><i>↻</i><b>Seguimiento continuo</b><small>Valoraciones periódicas y ajustes para seguir avanzando.</small></div>
+          <div class="method-service"><i>▤</i><b>Rutina adaptada</b><small>Plan realista, progresivo y preparado específicamente para cada persona.</small></div>
+          <div class="method-service"><i>✓</i><b>Técnica y progreso</b><small>Mejorar cómo te mueves y transformar esa mejora en resultados medibles.</small></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-7">
+        <h3>Principios del método</h3>
+        <div class="cv-body method-principles">
+          <div class="method-principle"><b>ATENCIÓN CERCANA</b><p>La planificación no se entrega y se abandona. El acompañamiento forma parte del servicio y permite corregir, ajustar y mantener el rumbo.</p></div>
+          <div class="method-principle"><b>PLANIFICACIÓN PROFESIONAL</b><p>La estructura del trabajo se diseña con criterio: objetivos, punto de partida, frecuencia y evolución del entrenamiento.</p></div>
+          <div class="method-principle"><b>ADAPTACIÓN INDIVIDUAL</b><p>La metodología integra entrenamiento, nutrición y hábitos dentro del ámbito profesional ofrecido, ajustando el proceso al contexto de la persona.</p></div>
+          <div class="method-principle"><b>PROGRESO REAL</b><p>El objetivo es construir una mejora realista, medible y sostenible, no perseguir promesas rápidas ni rutinas genéricas.</p></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-5">
+        <h3>Seguimiento, salud y seguridad</h3>
+        <div class="cv-body method-safety">
+          <p>Chetesaí Fitness+ trabaja con información relevante para adaptar el servicio —objetivos, lesiones, limitaciones, rutinas, cargas, asistencia, planificación alimentaria, hábitos y progreso— y puede adaptar o pausar una actividad cuando existan riesgos que requieran valoración sanitaria previa. Los contenidos y planes son de acondicionamiento físico y educación: no sustituyen diagnóstico, tratamiento, fisioterapia ni atención médica.</p>
+        </div>
+      </article>
+
+      <article class="cv-card span-12">
+        <h3>Qué convierte este método en una experiencia completa</h3>
+        <div class="cv-body">
+          <div class="cv-tags">
+            <span class="cv-tag">Valoración inicial</span>
+            <span class="cv-tag">Planificación personalizada</span>
+            <span class="cv-tag">Entrenamiento personal</span>
+            <span class="cv-tag">Grupos reducidos</span>
+            <span class="cv-tag">Programación de rutinas</span>
+            <span class="cv-tag">Seguimiento técnico</span>
+            <span class="cv-tag">Registro de progreso</span>
+            <span class="cv-tag">Orientación nutricional</span>
+            <span class="cv-tag">Hábitos saludables</span>
+            <span class="cv-tag">Portal privado</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="cv-card span-12">
+        <div class="cv-body method-cta">
+          <div><b>Método práctico, medible y sostenible.</b><div style="font-size:10px;color:#b7c9bd;margin-top:4px">Chetesaí Fitness+ · Entrenamiento personal y grupos reducidos en Mallorca</div></div>
+          <a href="https://www.chetesaifitness.com/" target="_blank" rel="noreferrer">Visitar Chetesaí Fitness+ ↗</a>
+        </div>
+      </article>
+    </div>
+
+    <footer class="profile-footer">
+      <span>Metodología basada en los servicios y proceso publicados por Chetesaí Fitness+.</span>
+      <span>Valoración · Planificación · Entrenamiento · Seguimiento · Ajuste</span>
+    </footer>
+  </section>
+</div>
 
 <div class="profile-overlay" id="perfil-completo" aria-hidden="true">
   <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="perfilTitulo">
@@ -374,10 +492,10 @@ footer{margin-top:14px;background:#102820;color:#fff;border-radius:16px;padding:
 </div>
 
 <nav class="mobilebar">
-<a href="#inicio">Inicio</a><a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodo">Método</a><a href="#experiencia">Experiencia</a><a href="#especialidades">Especialidades</a><a href="#impacto">Resultados</a>
+<a href="#inicio">Inicio</a><a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodologia-completa" class="method-trigger">Metodología</a><a href="#experiencia">Experiencia</a><a href="#especialidades">Especialidades</a><a href="#impacto">Resultados</a>
 </nav>
 <script>
-const links=[...document.querySelectorAll('.nav a:not(.profile-trigger)')];
+const links=[...document.querySelectorAll('.nav a:not(.profile-trigger):not(.method-trigger)')];
 const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}});
@@ -403,7 +521,32 @@ function hideProfile(){
 profileTriggers.forEach(a=>a.addEventListener('click',openProfile));
 closeProfile?.addEventListener('click',hideProfile);
 profileOverlay?.addEventListener('click',e=>{if(e.target===profileOverlay)hideProfile()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&profileOverlay.classList.contains('open'))hideProfile()});
+
+const methodOverlay=document.getElementById('metodologia-completa');
+const methodTriggers=[...document.querySelectorAll('.method-trigger')];
+const closeMethod=document.querySelector('.method-close');
+function openMethod(e){
+  if(e)e.preventDefault();
+  methodOverlay.classList.add('open');
+  methodOverlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  document.querySelector('.nav .method-trigger')?.classList.add('active');
+}
+function hideMethod(){
+  methodOverlay.classList.remove('open');
+  methodOverlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+methodTriggers.forEach(a=>a.addEventListener('click',openMethod));
+closeMethod?.addEventListener('click',hideMethod);
+methodOverlay?.addEventListener('click',e=>{if(e.target===methodOverlay)hideMethod()});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(profileOverlay.classList.contains('open'))hideProfile();
+    if(methodOverlay.classList.contains('open'))hideMethod();
+  }
+});
 </script>
 </body>
 </html>
