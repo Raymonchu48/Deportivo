@@ -56,48 +56,39 @@
     <section class="hybrid-section hybrid-profile" id="perfil">
       <article class="hybrid-profile-card">
         <img src="Mi_imagen.png" alt="Ramón Alberto Curbalán Vega" loading="lazy">
-        <div class="hybrid-profile-quote">“La disciplina convierte objetivos en realidades.”</div>
+        <div class="hybrid-profile-quote">“Método, seguridad y seguimiento para convertir objetivos en resultados sostenibles.”</div>
       </article>
       <div class="hybrid-profile-main">
-        <span class="hybrid-kicker">Profesional del rendimiento</span>
+        <span class="hybrid-kicker">Profesional del acondicionamiento físico</span>
         <h1>Ramón Alberto<br>Curbalán Vega</h1>
         <h2>Acondicionamiento físico y entrenamiento personal</h2>
-        <p>Profesional del acondicionamiento físico y el entrenamiento personal, con experiencia en actividades dirigidas, enseñanza de natación, formación deportiva infantil, trabajo con grupos reducidos y personas mayores. Mi enfoque combina método, seguridad y seguimiento individualizado para mejorar la salud, el rendimiento y la calidad de vida de cada persona.</p>
+        <p>Profesional del sector deportivo con experiencia en entrenamiento personal, actividades dirigidas, enseñanza de natación y formación deportiva infantil. Planificación de sesiones adaptadas a distintas edades y niveles, incluidas personas mayores y grupos reducidos, con atención a la seguridad y al seguimiento del usuario.</p>
         <div class="hybrid-profile-actions">
           <a class="hybrid-btn" href="CV_Deporte.pdf" target="_blank" rel="noopener">Descargar CV</a>
           <a class="hybrid-btn green" href="mailto:ramonalberto.curbalvega@gmail.com">Hablemos →</a>
         </div>
       </div>
       <div class="hybrid-quickgrid" aria-label="Áreas profesionales">
-        <div class="hybrid-quick"><i>◎</i><strong>Entrenamiento personal y grupal</strong></div>
-        <div class="hybrid-quick"><i>↗</i><strong>Rendimiento deportivo</strong></div>
-        <div class="hybrid-quick"><i>▦</i><strong>Planificación deportiva</strong></div>
-        <div class="hybrid-quick"><i>⌁</i><strong>Análisis y seguimiento</strong></div>
-        <div class="hybrid-quick"><i>♡</i><strong>Prevención y readaptación</strong></div>
-        <div class="hybrid-quick"><i>≈</i><strong>Natación y medio acuático</strong></div>
+        <div class="hybrid-quick"><i>◎</i><strong>Entrenamiento personal</strong><span>Individual y grupos reducidos</span></div>
+        <div class="hybrid-quick"><i>↗</i><strong>Rendimiento deportivo</strong><span>Planificación y seguimiento</span></div>
+        <div class="hybrid-quick"><i>≈</i><strong>Natación</strong><span>Enseñanza y medio acuático</span></div>
+        <div class="hybrid-quick"><i>▦</i><strong>Planificación</strong><span>Rutinas adaptadas</span></div>
+        <div class="hybrid-quick"><i>⌁</i><strong>Análisis</strong><span>Progreso y control de cargas</span></div>
+        <div class="hybrid-quick"><i>♡</i><strong>Prevención</strong><span>Seguridad y readaptación</span></div>
       </div>
-      <aside class="hybrid-profile-scenic" aria-label="Identidad Mallorca">
-        <div class="hybrid-profile-scenic-copy">“Personas más fuertes,<br>vidas más plenas”</div>
-        <div class="hybrid-profile-scenic-foot">Mallorca<br>es más que un lugar,<br>es una forma de vida</div>
-      </aside>
     </section>
 
     <section class="hybrid-dark" id="experiencia">
       <div class="hybrid-section hybrid-experience">
         <div class="hybrid-headingrow">
-          <div>
-            <h3>Experiencia profesional</h3>
-            <span class="hybrid-subline">Una trayectoria al servicio del rendimiento</span>
-          </div>
-          <p>Experiencia · aprendizaje · resultados</p>
+          <h3>Experiencia profesional</h3>
+          <p>Trayectoria · aprendizaje · servicio</p>
         </div>
         <div class="hybrid-timeline">
-          <article class="hybrid-job"><time>2024 - 2025</time><h4>Monitor de Pilates, yoga y taichí</h4><p>Centros de Manacor y Petra.</p></article>
-          <article class="hybrid-job"><time>2024</time><h4>Entrenador personal</h4><p>Estudio Progreso · Cala Millor.</p></article>
-          <article class="hybrid-job"><time>2023 - 2024</time><h4>Monitor deportivo y profesor de natación</h4><p>Cap Vermell Country Club.</p></article>
-          <article class="hybrid-job"><time>2023</time><h4>Monitor de actividades acuáticas y socorrista</h4><p>Centro Deportivo Capdepera.</p></article>
-          <article class="hybrid-job"><time>2022 - 2023</time><h4>Monitor deportivo y profesor de natación</h4><p>Cap Vermell Country Club.</p></article>
-          <article class="hybrid-job"><time>Temp. 2020/21</time><h4>Entrenador y responsable de prebenjamines</h4><p>Club Esportiu Artà.</p></article>
+          <article class="hybrid-job"><time>2024 - 2025</time><h4>Monitor de Pilates, yoga y taichí</h4><p>Centros de Manacor y Petra. Sesiones dirigidas a personas mayores, adaptadas a sus necesidades y condición física.</p></article>
+          <article class="hybrid-job"><time>2024</time><h4>Entrenador personal</h4><p>Estudio Progreso · Cala Millor. Entrenamiento individual y sesiones en grupos reducidos de hasta 8 personas.</p></article>
+          <article class="hybrid-job"><time>2022 - 2024</time><h4>Monitor deportivo y profesor de natación</h4><p>Cap Vermell Country Club. Funcional, cycling, Pilates, Body Pump, core, GAP, socorrismo y natación.</p></article>
+          <article class="hybrid-job"><time>2020/21 - 2023</time><h4>Deporte base y medio acuático</h4><p>Responsable de prebenjamines en Club Esportiu Artà y monitor de actividades acuáticas y socorrismo en Capdepera.</p></article>
         </div>
       </div>
     </section>
@@ -145,16 +136,12 @@
     </section>
 
     <section class="hybrid-section hybrid-projects" id="proyectos">
-      <div class="hybrid-headingrow hybrid-headingrow-light">
-        <div><h3>Proyectos destacados</h3><span class="hybrid-subline">Ideas en acción, resultados tangibles</span></div>
-        <span class="hybrid-viewall">Ver todos →</span>
-      </div>
+      <h3>Proyectos destacados</h3>
       <div class="hybrid-project-grid">
-        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('cluster-profesional-battle-rope.webp')"></div><h4>Planificación integral de pretemporada</h4><p>Mejora del rendimiento y reducción de lesiones.</p></article>
-        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('cluster-performance-clean-wide.webp')"></div><h4>Monitoreo y control de cargas</h4><p>Optimización del entrenamiento mediante análisis de datos.</p></article>
-        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('sport-cluster-gym.webp')"></div><h4>Prevención y readaptación de lesiones</h4><p>Programas específicos para una vuelta segura.</p></article>
-        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('coach-motion-poster.png')"></div><h4>Rendimiento y entrenamiento personal</h4><p>Planificación individual y grupos reducidos.</p></article>
-        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('cluster-reading-poster-wide.webp')"></div><h4>Natación y trabajo acuático</h4><p>Técnica, seguridad y rendimiento en el medio acuático.</p></article>
+        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('cluster-profesional-battle-rope.webp')"></div><h4>Planificación integral</h4><p>Sesiones estructuradas para mejorar la condición física y la adherencia.</p></article>
+        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('cluster-performance-clean-wide.webp')"></div><h4>Control de cargas</h4><p>Seguimiento del progreso y adaptación del entrenamiento.</p></article>
+        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('sport-cluster-gym.webp')"></div><h4>Prevención y readaptación</h4><p>Trabajo orientado a seguridad, técnica y recuperación funcional.</p></article>
+        <article class="hybrid-project"><div class="hybrid-project-media" style="background-image:url('coach-motion-poster.png')"></div><h4>Entrenamiento personal</h4><p>Programas individualizados y grupos reducidos.</p></article>
         <article class="hybrid-project video"><div class="hybrid-project-media" style="background-image:url('cluster-profesional-panoramico.webp')"></div><div class="hybrid-project-copy"><h4>El deporte como herramienta de transformación</h4><p>Disciplina, ciencia y personas para construir resultados sostenibles.</p></div></article>
       </div>
     </section>
