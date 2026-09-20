@@ -133,6 +133,40 @@ linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4d
 .method-cta b{font-size:18px}.method-cta a{background:#67d779;color:#0d2a20;text-decoration:none;font-weight:900;padding:10px 14px;border-radius:10px;font-size:11px}
 @media(max-width:900px){.method-manifest,.method-flow,.method-services,.method-principles{grid-template-columns:1fr}.method-panel-hero:after{font-size:72px}.method-cta{align-items:flex-start;flex-direction:column}}
 
+
+.experience-hero{padding:28px;background:linear-gradient(120deg,#fbfcfa,#eef4ef);border-bottom:1px solid #d7dfd8}
+.experience-hero .eyeline{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#2b7b42;font-weight:900}
+.experience-hero h2{margin:8px 0 10px;font-size:clamp(36px,4.8vw,68px);line-height:.92;text-transform:uppercase;letter-spacing:-.04em}
+.experience-hero h2 span{display:block;color:#2f8747}
+.experience-hero p{max-width:950px;color:#5e6b63;font-size:13px;line-height:1.7}
+.exp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.exp-stat{background:#fff;border:1px solid #d8e1da;border-radius:13px;padding:12px}
+.exp-stat b{display:block;color:#176533;font-size:21px}.exp-stat small{color:#6b766f;font-size:9px;text-transform:uppercase;letter-spacing:.07em}
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.exp-video-card{background:#0d2a20;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(13,42,32,.16)}
+.exp-video-card video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#0a1712}
+.exp-video-copy{padding:13px 14px;color:#fff}.exp-video-copy b{display:block;font-size:14px}.exp-video-copy small{display:block;color:#a8bdb0;font-size:10px;margin-top:4px;line-height:1.5}
+.exp-video-tag{display:inline-flex;margin-bottom:8px;background:#76d984;color:#0d2a20;padding:4px 7px;border-radius:999px;font-size:8px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.exp-timeline{display:grid;gap:0}
+.exp-role{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid #e1e7e2}
+.exp-role:last-child{border-bottom:0}
+.exp-role time{font-size:9px;font-weight:900;color:#2c7f43;text-transform:uppercase;letter-spacing:.05em}
+.exp-role b{font-size:12px}.exp-role small{display:block;color:#67736b;font-size:10px;margin-top:2px}.exp-role p{font-size:10px;color:#5d6962;line-height:1.55;margin:5px 0 0}
+.rec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.rec-card{background:#fff;border:1px solid #d6ded8;border-radius:16px;padding:18px;position:relative;overflow:hidden}
+.rec-card:before{content:"“";position:absolute;right:14px;top:-10px;font-size:100px;font-family:Georgia,serif;color:rgba(42,126,66,.08)}
+.rec-card .club{font-size:10px;color:#2b7c42;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
+.rec-card h4{font-size:20px;line-height:1.05;margin:7px 0}.rec-card p{font-size:11px;line-height:1.65;color:#5b675f}
+.rec-proof{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #e1e6e2;font-size:9px;color:#607068}
+.rec-proof i{width:24px;height:24px;border-radius:50%;background:#e4f0e6;display:grid;place-items:center;color:#23783d;font-style:normal;font-weight:900}
+.exp-values{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.exp-value{background:linear-gradient(135deg,#0f3524,#285d3d);color:#fff;border-radius:14px;padding:16px}
+.exp-value b{display:block;color:#82df91;font-size:12px;margin-bottom:5px}.exp-value p{margin:0;color:#dce9df;font-size:10px;line-height:1.55}
+@media(max-width:900px){
+ .exp-stats,.video-grid,.rec-grid,.exp-values{grid-template-columns:1fr}
+ .exp-role{grid-template-columns:1fr}
+}
+
 .mobilebar{display:none}
 @media(max-width:1180px){
  .app{grid-template-columns:215px 1fr}.grid{grid-template-columns:1fr 1fr}.impact{grid-column:auto}.hero{grid-template-columns:1fr .7fr}.name{font-size:58px}
@@ -157,7 +191,7 @@ linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4d
     <a class="active" href="#inicio"><b>Inicio</b><small>Visión general</small><i>01</i></a>
     <a href="#perfil-completo" class="profile-trigger"><b>Mi perfil</b><small>Perfil profesional completo</small><i>02</i></a>
     <a href="#metodologia-completa" class="method-trigger"><b>Metodología</b><small>Método Chetesaí Fitness+</small><i>03</i></a>
-    <a href="#experiencia"><b>Experiencia</b><small>Trayectoria</small><i>04</i></a>
+    <a href="#experiencia-completa" class="experience-trigger"><b>Experiencia</b><small>Trayectoria + vídeos + cartas</small><i>04</i></a>
     <a href="#especialidades"><b>Especialidades</b><small>Áreas de entrenamiento</small><i>05</i></a>
     <a href="#impacto"><b>Resultados</b><small>Impacto y métricas</small><i>06</i></a>
   </nav>
@@ -278,6 +312,103 @@ linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4d
 </main>
 </div>
 
+
+<div class="profile-overlay" id="experiencia-completa" aria-hidden="true">
+  <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="experienciaTitulo">
+    <header class="profile-panel-head">
+      <div><strong id="experienciaTitulo">Experiencia profesional deportiva</strong><small>Trayectoria · práctica real · trabajo con personas · acreditaciones</small></div>
+      <button class="profile-close experience-close" type="button" aria-label="Cerrar experiencia">×</button>
+    </header>
+
+    <div class="experience-hero">
+      <div class="eyeline">Experiencia aplicada</div>
+      <h2>Del conocimiento a la práctica.<span>Personas, técnica y contexto.</span></h2>
+      <p>Mi experiencia deportiva combina entrenamiento personal, actividades dirigidas, natación, trabajo acuático, Pilates, fútbol formativo y atención a perfiles de distintas edades. Esta sección reúne una muestra audiovisual de ese trabajo y acreditaciones emitidas por entidades deportivas.</p>
+      <div class="exp-stats">
+        <div class="exp-stat"><b>4</b><small>contextos profesionales en vídeo</small></div>
+        <div class="exp-stat"><b>1:1 + grupos</b><small>entrenamiento individual y colectivo</small></div>
+        <div class="exp-stat"><b>5–14</b><small>edades acreditadas en acrobacia</small></div>
+        <div class="exp-stat"><b>2020→</b><small>experiencia deportiva acreditada</small></div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <article class="cv-card span-12">
+        <h3>Experiencia en movimiento</h3>
+        <div class="cv-body video-grid">
+          <div class="exp-video-card">
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/00e9197f-3d48-404a-a5f3-84f23a625f6b.mp4" muted loop playsinline controls preload="metadata"></video>
+            <div class="exp-video-copy"><span class="exp-video-tag">Natación</span><b>Monitor y profesor de natación</b><small>Trabajo técnico junto a piscina, acompañamiento del aprendizaje y adaptación a diferentes edades.</small></div>
+          </div>
+          <div class="exp-video-card">
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/f2c78d52-767c-4a11-a0f1-ae5320228d60.mp4" muted loop playsinline controls preload="metadata"></video>
+            <div class="exp-video-copy"><span class="exp-video-tag">Body Pump</span><b>Actividades dirigidas y fuerza</b><small>Dirección de clase, demostración técnica, control del grupo y ejecución con barra dentro de una sesión colectiva.</small></div>
+          </div>
+          <div class="exp-video-card">
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/8cf4c476-4a8f-49bc-986e-437eff489d97.mp4" muted loop playsinline controls preload="metadata"></video>
+            <div class="exp-video-copy"><span class="exp-video-tag">Fútbol formativo</span><b>Entrenador y responsable de grupo</b><small>Acompañamiento técnico y educativo en campo, orientado al aprendizaje y al desarrollo del deportista infantil.</small></div>
+          </div>
+          <div class="exp-video-card">
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/1aded65c-a6b7-4bf2-a247-672e73167df7.mp4" muted loop playsinline controls preload="metadata"></video>
+            <div class="exp-video-copy"><span class="exp-video-tag">Pilates · 3ª edad</span><b>Movimiento adaptado y atención individual</b><small>Corrección técnica, movilidad y acompañamiento cercano dentro de sesiones adaptadas a personas mayores.</small></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cv-card span-7">
+        <h3>Trayectoria deportiva</h3>
+        <div class="cv-body exp-timeline">
+          <div class="exp-role"><time>Nov 2024 – Mar 2025</time><div><b>Monitor de Pilates, yoga y taichí</b><small>Centros de Manacor y Petra · Mallorca</small><p>Sesiones dirigidas a personas mayores y adaptadas a sus necesidades y condición física.</p></div></div>
+          <div class="exp-role"><time>Nov 2024</time><div><b>Entrenador personal</b><small>Estudio Progreso · Cala Millor</small><p>Entrenamiento individual y grupos reducidos de hasta ocho personas.</p></div></div>
+          <div class="exp-role"><time>Nov 2023 – Feb 2024</time><div><b>Monitor deportivo y profesor de natación</b><small>Intersport · Cap Vermell Country Club</small><p>Funcional, cycling, Pilates, Body Pump, core, espalda sana, GAP, entrenamiento personal, socorrismo y natación.</p></div></div>
+          <div class="exp-role"><time>Jun 2023</time><div><b>Monitor de actividades acuáticas y socorrista</b><small>Radstar · Centro Deportivo Capdepera</small><p>Actividades acuáticas y funciones de socorrismo en instalación deportiva.</p></div></div>
+          <div class="exp-role"><time>Dic 2022 – Feb 2023</time><div><b>Monitor deportivo y profesor de natación</b><small>Intersport · Cap Vermell Country Club</small><p>Entrenamiento funcional, cycling, Pilates, sesiones personales, socorrismo y enseñanza de natación.</p></div></div>
+          <div class="exp-role"><time>Temp. 2020/21</time><div><b>Entrenador y responsable de prebenjamines</b><small>Club Esportiu Artà</small><p>Colaboración en la formación integral del grupo de prebenjamines.</p></div></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-5">
+        <h3>Competencias demostradas</h3>
+        <div class="cv-body exp-values">
+          <div class="exp-value"><b>ADAPTACIÓN</b><p>Trabajo con edades, niveles y contextos diferentes.</p></div>
+          <div class="exp-value"><b>TÉCNICA</b><p>Demostración, corrección y supervisión del movimiento.</p></div>
+          <div class="exp-value"><b>GRUPO</b><p>Dirección de sesiones colectivas y grupos reducidos.</p></div>
+          <div class="exp-value"><b>SEGURIDAD</b><p>Experiencia en entorno acuático, socorrismo y seguimiento.</p></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-12">
+        <h3>Cartas y acreditaciones profesionales</h3>
+        <div class="cv-body rec-grid">
+          <div class="rec-card">
+            <div class="club">Club Esportiu Artà · Temporada 2020/21</div>
+            <h4>Entrenador y responsable de PreBenjamines</h4>
+            <p>La dirección deportiva del Club Esportiu Artà certifica la colaboración de Ramón Alberto Curbalán en la formación integral del grupo de PreBenjamines como entrenador y responsable del grupo. La acreditación está firmada el 1 de febrero de 2021.</p>
+            <div class="rec-proof"><i>✓</i><span>Documento original aportado y verificado · Club Esportiu Artà</span></div>
+          </div>
+          <div class="rec-card">
+            <div class="club">Club Acrobàcies Artà</div>
+            <h4>Entrenador y responsable de grupos de acrobacia</h4>
+            <p>La presidencia del Club Acrobàcies Artà certifica la colaboración en la formación integral del grupo de acrobacia como entrenador y responsable de distintos grupos desde enero de 2020, asistiendo a clases con edades comprendidas entre 5 y 14 años.</p>
+            <div class="rec-proof"><i>✓</i><span>Documento original aportado y verificado · Club Acrobàcies Artà</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="cv-card span-12">
+        <div class="cv-body method-cta">
+          <div><b>Experiencia que no se queda en el papel.</b><div style="font-size:10px;color:#b7c9bd;margin-top:4px">Entrenamiento · actividades dirigidas · natación · fútbol · Pilates · atención a distintas edades</div></div>
+          <a href="#especialidades" class="experience-to-specialties">Ver especialidades →</a>
+        </div>
+      </article>
+    </div>
+
+    <footer class="profile-footer">
+      <span>Experiencia profesional + evidencia audiovisual + acreditaciones deportivas.</span>
+      <span>Ramón Alberto Curbalán Vega · Mallorca</span>
+    </footer>
+  </section>
+</div>
 
 <div class="profile-overlay" id="metodologia-completa" aria-hidden="true">
   <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="metodoTitulo">
@@ -492,10 +623,10 @@ linear-gradient(120deg,#f9fbf9,#eef4ef 65%,#e4ece6);border-bottom:1px solid #d4d
 </div>
 
 <nav class="mobilebar">
-<a href="#inicio">Inicio</a><a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodologia-completa" class="method-trigger">Metodología</a><a href="#experiencia">Experiencia</a><a href="#especialidades">Especialidades</a><a href="#impacto">Resultados</a>
+<a href="#inicio">Inicio</a><a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodologia-completa" class="method-trigger">Metodología</a><a href="#experiencia-completa" class="experience-trigger">Experiencia</a><a href="#especialidades">Especialidades</a><a href="#impacto">Resultados</a>
 </nav>
 <script>
-const links=[...document.querySelectorAll('.nav a:not(.profile-trigger):not(.method-trigger)')];
+const links=[...document.querySelectorAll('.nav a:not(.profile-trigger):not(.method-trigger):not(.experience-trigger)')];
 const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}});
@@ -547,6 +678,31 @@ document.addEventListener('keydown',e=>{
     if(methodOverlay.classList.contains('open'))hideMethod();
   }
 });
+
+const experienceOverlay=document.getElementById('experiencia-completa');
+const experienceTriggers=[...document.querySelectorAll('.experience-trigger')];
+const closeExperience=document.querySelector('.experience-close');
+function openExperience(e){
+  if(e)e.preventDefault();
+  experienceOverlay.classList.add('open');
+  experienceOverlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  document.querySelector('.nav .experience-trigger')?.classList.add('active');
+  experienceOverlay.querySelectorAll('video').forEach(v=>{v.currentTime=0;v.play().catch(()=>{});});
+}
+function hideExperience(){
+  experienceOverlay.classList.remove('open');
+  experienceOverlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  experienceOverlay.querySelectorAll('video').forEach(v=>v.pause());
+}
+experienceTriggers.forEach(a=>a.addEventListener('click',openExperience));
+closeExperience?.addEventListener('click',hideExperience);
+experienceOverlay?.addEventListener('click',e=>{if(e.target===experienceOverlay)hideExperience()});
+document.querySelector('.experience-to-specialties')?.addEventListener('click',e=>{hideExperience();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&experienceOverlay.classList.contains('open'))hideExperience()});
+
 </script>
 </body>
 </html>
