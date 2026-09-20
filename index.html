@@ -107,7 +107,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="hybrid-portfolio.css?v=20260919-reference3">\n</head>
+  <link rel="stylesheet" href="hybrid-portfolio.css?v=20260919-hybrid2">\n</head>
 <body>
   <main class="app">
     <section class="stage" aria-label="Clúster deportivo interactivo">
@@ -163,7 +163,7 @@
     function closePanel(){drawer.classList.remove('open');veil.classList.remove('on');drawer.setAttribute('aria-hidden','true');allButtons.forEach(b=>b.classList.remove('active'))}
     allButtons.forEach(b=>b.addEventListener('click',()=>openPanel(b.dataset.panel)));close.addEventListener('click',closePanel);veil.addEventListener('click',closePanel);document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel()});
   </script>
-  <script src="profile-video-modal.js?v=20260919-reference3"></script>
+  <script src="profile-video-modal.js?v=20260919-hybrid2"></script>
   <script>
     (()=>{
       const videos=[...document.querySelectorAll('.scene-video video')];
@@ -184,5 +184,5 @@
       sync();
     })();
   </script>
-  <script src="hybrid-portfolio.js?v=20260919-reference3"></script>\n</body>
+  <script src="hybrid-portfolio.js?v=20260919-hybrid2"></script>\n</body>
 </html>
