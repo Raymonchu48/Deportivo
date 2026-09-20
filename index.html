@@ -79,6 +79,32 @@ display:grid;place-items:center;font-weight:900;color:#1d6f34;box-shadow:0 0 0 4
 .banner{margin-top:14px;border-radius:18px;overflow:hidden;background:linear-gradient(90deg,#0d2d20,#1d4a32);color:#fff;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:16px 22px}
 .banner b{font-size:18px;font-style:italic}.banner span{color:#6fce76;font-weight:900;font-size:24px}.banner div:last-child{text-align:right}
 footer{margin-top:14px;background:#102820;color:#fff;border-radius:16px;padding:13px 18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px}
+
+.profile-overlay{position:fixed;inset:0;background:rgba(6,20,14,.78);backdrop-filter:blur(10px);z-index:100;display:none;padding:24px;overflow:auto}
+.profile-overlay.open{display:block}
+.profile-panel{max-width:1420px;margin:0 auto;background:#eef2ee;border:1px solid rgba(255,255,255,.18);border-radius:24px;box-shadow:0 40px 120px rgba(0,0,0,.35);overflow:hidden}
+.profile-panel-head{position:sticky;top:0;z-index:5;background:linear-gradient(90deg,#0b2a1e,#22563a 70%,#4f8d5d);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.profile-panel-head strong{font-size:18px;text-transform:uppercase;letter-spacing:.04em}
+.profile-panel-head small{display:block;color:#d9e8dc;margin-top:3px;font-size:10px;letter-spacing:.12em}
+.profile-close{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;width:38px;height:38px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}
+.profile-hero{display:grid;grid-template-columns:260px 1fr;background:linear-gradient(120deg,#fbfcfa,#f0f4f0);border-bottom:1px solid #d6ddd7}
+.profile-photo{min-height:300px;background-image:linear-gradient(180deg,transparent 58%,rgba(13,42,32,.08)),url("data:image/webp;base64,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");background-size:cover;background-position:center 12%}
+.profile-summary{padding:28px}.profile-summary .eyeline{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#277642;font-weight:800}
+.profile-summary h2{font-size:clamp(34px,4vw,62px);line-height:.92;margin:8px 0 12px;text-transform:uppercase;letter-spacing:-.04em}.profile-summary h2 span{display:block;color:#2c7f42}
+.profile-summary p{color:#56645c;max-width:900px;font-size:14px;line-height:1.7}
+.profile-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.profile-chip{background:#e2ebe4;border:1px solid #c7d4ca;color:#1e4a31;padding:7px 10px;border-radius:999px;font-size:10px;font-weight:800}
+.profile-content{padding:18px;display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.cv-card{background:#fff;border:1px solid #d6ded8;border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(25,50,35,.06)}
+.cv-card h3{margin:0;background:linear-gradient(90deg,#103b28,#356e49 72%,#d9e2db);color:#fff;padding:10px 13px;text-transform:uppercase;font-size:13px;letter-spacing:.04em}
+.cv-body{padding:14px}.cv-body p{margin:0;color:#5a675f;font-size:12px;line-height:1.65}
+.cv-list{display:grid;gap:10px}.cv-item{display:grid;grid-template-columns:110px 1fr;gap:12px;padding-bottom:10px;border-bottom:1px solid #e5e9e6}.cv-item:last-child{border-bottom:0;padding-bottom:0}
+.cv-date{font-size:10px;font-weight:900;color:#2a7b40;text-transform:uppercase}.cv-item b{font-size:12px}.cv-item small{display:block;color:#69756e;font-size:10px;margin-top:2px}.cv-item p{margin-top:4px}
+.cv-bullets{display:grid;gap:7px}.cv-bullets div{font-size:11px;color:#56635b;display:flex;gap:8px}.cv-bullets div:before{content:"●";color:#2e8545;font-size:9px;margin-top:2px}
+.cv-tags{display:flex;flex-wrap:wrap;gap:7px}.cv-tag{background:#edf3ee;color:#205c35;border:1px solid #d2ded5;padding:7px 9px;border-radius:10px;font-size:10px;font-weight:750}
+.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}
+.profile-footer{padding:14px 18px;background:#0d2a20;color:#dce8df;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:10px}
+@media(max-width:900px){.profile-overlay{padding:8px}.profile-hero{grid-template-columns:1fr}.profile-photo{min-height:330px;background-position:center 15%}.profile-content{grid-template-columns:1fr}.span-12,.span-8,.span-7,.span-6,.span-5,.span-4{grid-column:1}.cv-item{grid-template-columns:1fr}.profile-panel-head{position:relative}}
+
 .mobilebar{display:none}
 @media(max-width:1180px){
  .app{grid-template-columns:215px 1fr}.grid{grid-template-columns:1fr 1fr}.impact{grid-column:auto}.hero{grid-template-columns:1fr .7fr}.name{font-size:58px}
@@ -101,7 +127,7 @@ footer{margin-top:14px;background:#102820;color:#fff;border-radius:16px;padding:
   <div class="sideclaim">Personas más sanas.<br>Más fuertes.<br>Más libres.</div>
   <nav class="nav">
     <a class="active" href="#inicio"><b>Inicio</b><small>Visión general</small><i>01</i></a>
-    <a href="#perfil"><b>Mi perfil</b><small>Identidad y valores</small><i>02</i></a>
+    <a href="#perfil-completo" class="profile-trigger"><b>Mi perfil</b><small>Perfil profesional completo</small><i>02</i></a>
     <a href="#metodo"><b>Metodología</b><small>Cómo trabajo</small><i>03</i></a>
     <a href="#experiencia"><b>Experiencia</b><small>Trayectoria</small><i>04</i></a>
     <a href="#especialidades"><b>Especialidades</b><small>Áreas de entrenamiento</small><i>05</i></a>
@@ -224,16 +250,160 @@ footer{margin-top:14px;background:#102820;color:#fff;border-radius:16px;padding:
 </main>
 </div>
 
+
+<div class="profile-overlay" id="perfil-completo" aria-hidden="true">
+  <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="perfilTitulo">
+    <header class="profile-panel-head">
+      <div><strong>Perfil profesional completo</strong><small>Ramón Alberto Curbalán Vega · Deporte · Salud · Rendimiento</small></div>
+      <button class="profile-close" type="button" aria-label="Cerrar perfil">×</button>
+    </header>
+
+    <div class="profile-hero">
+      <div class="profile-photo" aria-label="Retrato profesional de Ramón Curbalán"></div>
+      <div class="profile-summary">
+        <div class="eyeline">Profesional del acondicionamiento físico y entrenamiento personal</div>
+        <h2>Ramón Alberto <span>Curbalán Vega</span></h2>
+        <p>Profesional del sector deportivo con experiencia en entrenamiento personal, actividades dirigidas, enseñanza de natación y formación deportiva infantil. Planificación de sesiones adaptadas a distintas edades y niveles, incluidas personas mayores y grupos reducidos. Formación complementaria en dirección de instalaciones, coaching deportivo e inclusión, con atención a la seguridad y al seguimiento del usuario.</p>
+        <div class="profile-meta">
+          <span class="profile-chip">Certificado profesional Nivel 3 · AFDA0210</span>
+          <span class="profile-chip">Porto Cristo · Manacor · Mallorca</span>
+          <span class="profile-chip">Carnet de conducir y vehículo propio</span>
+          <span class="profile-chip">Entrenamiento · Natación · Actividades dirigidas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <article class="cv-card span-8">
+        <h3>Experiencia deportiva</h3>
+        <div class="cv-body cv-list">
+          <div class="cv-item"><div class="cv-date">Nov 2024 – Mar 2025</div><div><b>Monitor de Pilates, yoga y taichí</b><small>Centros de Manacor y Petra · Mallorca</small><p>Sesiones dirigidas a personas mayores, adaptadas a sus necesidades y nivel de condición física.</p></div></div>
+          <div class="cv-item"><div class="cv-date">Nov 2024</div><div><b>Entrenador personal</b><small>Estudio Progreso · Cala Millor</small><p>Sustitución por vacaciones. Entrenamiento individual y sesiones en grupos reducidos de hasta 8 personas.</p></div></div>
+          <div class="cv-item"><div class="cv-date">Nov 2023 – Feb 2024</div><div><b>Monitor deportivo y profesor de natación</b><small>Intersport · Cap Vermell Country Club</small><p>Entrenamiento funcional, cycling, Pilates, Body Pump, core, espalda sana y GAP; entrenamiento personal, socorrismo y clases de natación para diferentes edades.</p></div></div>
+          <div class="cv-item"><div class="cv-date">Jun 2023</div><div><b>Monitor de actividades acuáticas y socorrista</b><small>Radstar · Centro Deportivo Capdepera</small><p>Desarrollo de actividades acuáticas y funciones de socorrismo en instalaciones deportivas.</p></div></div>
+          <div class="cv-item"><div class="cv-date">Dic 2022 – Feb 2023</div><div><b>Monitor deportivo y profesor de natación</b><small>Intersport · Cap Vermell Country Club</small><p>Entrenamiento funcional, cycling, Pilates, sesiones personales, socorrismo y enseñanza de natación a distintas edades.</p></div></div>
+          <div class="cv-item"><div class="cv-date">Temp. 2020/21</div><div><b>Entrenador y responsable de prebenjamines</b><small>Club Esportiu Artà · Colaboración deportiva</small><p>Colaboración en la formación integral del grupo de prebenjamines, acreditada por la dirección deportiva del club.</p></div></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-4">
+        <h3>Competencias clave</h3>
+        <div class="cv-body cv-bullets">
+          <div><b>Entrenamiento y seguimiento.</b>&nbsp;Evaluación inicial, diseño de rutinas adaptadas, supervisión técnica y seguimiento de progresos.</div>
+          <div><b>Trabajo con grupos.</b>&nbsp;Dirección de actividades, coordinación de grupos reducidos y gestión del material deportivo.</div>
+          <div><b>Atención al usuario.</b>&nbsp;Trato empático, motivación, adaptación y trabajo en equipo, con orientación a la seguridad.</div>
+        </div>
+      </article>
+
+      <article class="cv-card span-6">
+        <h3>Certificaciones profesionales</h3>
+        <div class="cv-body cv-list">
+          <div class="cv-item"><div class="cv-date">2024</div><div><b>Acondicionamiento físico en sala de entrenamiento polivalente</b><small>Certificado Profesional Nivel 3 · AFDA0210 · Govern de les Illes Balears</small></div></div>
+          <div class="cv-item"><div class="cv-date">2022</div><div><b>Socorrismo en instalaciones acuáticas</b><small>Certificado de Profesionalidad Nivel 2 · AFDP0109 · Govern de les Illes Balears</small></div></div>
+          <div class="cv-item"><div class="cv-date">2023</div><div><b>Acreditación de competencias en acondicionamiento físico</b><small>IQPIB · UC0273_3 · UC0274_3 · UC0275_3</small></div></div>
+          <div class="cv-item"><div class="cv-date">2011</div><div><b>Bachillerato homologado</b><small>Cádiz</small></div></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-6">
+        <h3>Entrenamiento, seguridad e inclusión</h3>
+        <div class="cv-body cv-list">
+          <div class="cv-item"><div class="cv-date">2026</div><div><b>El deporte como motor de inclusión y sostenibilidad</b><small>eFundae · 13 h</small></div></div>
+          <div class="cv-item"><div class="cv-date">2024</div><div><b>Primeros auxilios en instalaciones deportivas</b><small>Grupo Insem · 50 h · AFDP015PO</small></div></div>
+          <div class="cv-item"><div class="cv-date">2023</div><div><b>Actividad física para colectivos especiales y tercera edad</b><small>Aspasia · 100 h · AFDA001PO</small></div></div>
+          <div class="cv-item"><div class="cv-date">2021</div><div><b>Entrenador de CrossTraining y Entrenamiento Funcional</b><small>Instituto IFIC · 50 h</small></div></div>
+          <div class="cv-item"><div class="cv-date">2021</div><div><b>Entrenador de fútbol y psicología deportiva</b><small>Masstercursos · 200 h</small></div></div>
+          <div class="cv-item"><div class="cv-date">2010 / 2003</div><div><b>Musculación, fitness y entrenamiento con sobrecargas</b><small>Euroinnova / INESEM · IPEF</small></div></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-6">
+        <h3>Dirección, gestión y coaching</h3>
+        <div class="cv-body cv-list">
+          <div class="cv-item"><div class="cv-date">2024</div><div><b>Máster en Coaching y Psicología Deportiva</b><small>Masstercursos · 650 h</small></div></div>
+          <div class="cv-item"><div class="cv-date">2021</div><div><b>Gestión de instalaciones deportivas</b><small>Grupo Femxa · 45 h · ADGD121PO</small></div></div>
+          <div class="cv-item"><div class="cv-date">2018</div><div><b>Director Deportivo</b><small>Universidad Antonio de Nebrija · 110 h · 4 ECTS</small></div></div>
+          <div class="cv-item"><div class="cv-date">2018</div><div><b>Curso Práctico de Marketing Deportivo</b><small>Euroinnova Formación · 40 h</small></div></div>
+          <div class="cv-item"><div class="cv-date">2013</div><div><b>Técnico Superior en Dirección y Gestión de Instalaciones Deportivas</b><small>Euroinnova / INESEM · 300 h</small></div></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-6">
+        <h3>Nutrición y hábitos saludables</h3>
+        <div class="cv-body cv-list">
+          <div class="cv-item"><div class="cv-date">2020</div><div><b>Máster Experto en Alimentación y Nutrición</b><small>INN Formación · 1.000 h</small></div></div>
+          <div class="cv-item"><div class="cv-date">2017</div><div><b>Nutrición y Dietética y Coaching Nutricional Práctico</b><small>Euroinnova Formación · 60 h</small></div></div>
+          <div class="cv-item"><div class="cv-date">2009</div><div><b>Técnico Superior en Dietética y Nutrición</b><small>Euroinnova / INESEM · 300 h</small></div></div>
+        </div>
+      </article>
+
+      <article class="cv-card span-7">
+        <h3>Preparación deportiva, fútbol y gestión</h3>
+        <div class="cv-body">
+          <div class="cv-tags">
+            <span class="cv-tag">Preparación sociológica para el entrenamiento deportivo · 2020</span>
+            <span class="cv-tag">Lesiones y readaptación deportiva del futbolista · 2020</span>
+            <span class="cv-tag">Preparación física y planificación en el fútbol · 2020</span>
+            <span class="cv-tag">Dirección y administración de empresas · 175 h</span>
+            <span class="cv-tag">Gestión de pymes</span>
+            <span class="cv-tag">Gestión comercial en inglés</span>
+            <span class="cv-tag">Salario y contratación</span>
+            <span class="cv-tag">Comercio electrónico</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="cv-card span-5">
+        <h3>Idiomas y referencias</h3>
+        <div class="cv-body">
+          <div class="cv-tags">
+            <span class="cv-tag">Inglés · alto</span>
+            <span class="cv-tag">Italiano · medio</span>
+            <span class="cv-tag">Portugués · medio</span>
+          </div>
+          <p style="margin-top:14px"><b>Cartas de recomendación:</b> Club Esportiu Artà, Club de Acrobacia Artà, Euroinnova Formación e Intersport.</p>
+        </div>
+      </article>
+    </div>
+
+    <footer class="profile-footer">
+      <span>Perfil construido a partir del CV deportivo actualizado.</span>
+      <span>Entrenamiento · Salud · Dirección deportiva · Nutrición · Coaching</span>
+    </footer>
+  </section>
+</div>
+
 <nav class="mobilebar">
-<a href="#inicio">Inicio</a><a href="#perfil">Perfil</a><a href="#metodo">Método</a><a href="#experiencia">Experiencia</a><a href="#especialidades">Especialidades</a><a href="#impacto">Resultados</a>
+<a href="#inicio">Inicio</a><a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodo">Método</a><a href="#experiencia">Experiencia</a><a href="#especialidades">Especialidades</a><a href="#impacto">Resultados</a>
 </nav>
 <script>
-const links=[...document.querySelectorAll('.nav a')];
+const links=[...document.querySelectorAll('.nav a:not(.profile-trigger)')];
 const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}});
 },{rootMargin:'-35% 0px -55% 0px',threshold:0});
 sections.forEach(s=>io.observe(s));
+
+const profileOverlay=document.getElementById('perfil-completo');
+const profileTriggers=[...document.querySelectorAll('.profile-trigger')];
+const closeProfile=document.querySelector('.profile-close');
+function openProfile(e){
+  if(e)e.preventDefault();
+  profileOverlay.classList.add('open');
+  profileOverlay.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  document.querySelector('.nav .profile-trigger')?.classList.add('active');
+}
+function hideProfile(){
+  profileOverlay.classList.remove('open');
+  profileOverlay.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+profileTriggers.forEach(a=>a.addEventListener('click',openProfile));
+closeProfile?.addEventListener('click',hideProfile);
+profileOverlay?.addEventListener('click',e=>{if(e.target===profileOverlay)hideProfile()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&profileOverlay.classList.contains('open'))hideProfile()});
 </script>
 </body>
 </html>
