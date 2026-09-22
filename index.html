@@ -29,6 +29,28 @@ color:#fff;border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direct
 .nav{display:grid;gap:8px}.nav a{color:#eaf5ee;text-decoration:none;padding:11px 12px;border:1px solid transparent;border-radius:12px;
 display:grid;grid-template-columns:1fr auto;gap:3px;transition:.2s}
 .nav a:hover,.nav a.active{background:linear-gradient(90deg,rgba(86,184,101,.18),rgba(255,255,255,.03));border-color:#63c974}.projects-nav{margin-top:10px;border-top:1px solid rgba(117,217,132,.18)!important;padding-top:13px!important}.projects-nav b{color:#8be099}
+.projects-hero{padding:30px;background:linear-gradient(120deg,#fbfcfa,#edf4ef);border-bottom:1px solid #d6ded8}
+.projects-hero .eyeline{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#2e7c43;font-weight:900}
+.projects-hero h2{margin:8px 0 10px;font-size:clamp(38px,4.8vw,68px);line-height:.92;text-transform:uppercase;letter-spacing:-.04em}
+.projects-hero h2 span{display:block;color:#2f8748}
+.projects-hero p{max-width:920px;color:#5c6961;font-size:13px;line-height:1.7}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.project-card{background:#fff;border:1px solid #d6dfd8;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(24,53,35,.08);display:flex;flex-direction:column}
+.project-cover{min-height:180px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.project-cover:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.0))}
+.project-cover.nutrition{background:linear-gradient(140deg,#0d3a48,#16667a 56%,#dceff1)}
+.project-cover.management{background:linear-gradient(140deg,#0c3124,#2e7048 58%,#ddeade)}
+.project-cover .project-number{position:absolute;right:18px;top:10px;font-size:78px;font-weight:950;color:rgba(255,255,255,.10);line-height:1}
+.project-cover .project-type{position:relative;color:#9de4ac;font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.project-cover h4{position:relative;color:#fff;font-size:24px;line-height:1.02;margin:8px 0 0;max-width:460px}
+.project-body{padding:18px;display:flex;flex-direction:column;gap:14px;flex:1}
+.project-body p{margin:0;color:#5c6861;font-size:11px;line-height:1.65}
+.project-points{display:grid;gap:7px}.project-points span{font-size:10px;color:#536159;display:flex;gap:7px}.project-points span:before{content:"✓";color:#2f8748;font-weight:900}
+.project-meta{display:flex;flex-wrap:wrap;gap:7px}.project-meta span{background:#edf3ee;border:1px solid #d5e0d7;color:#245e37;padding:6px 8px;border-radius:999px;font-size:9px;font-weight:800}
+.project-actions{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}.project-actions a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:10px 12px;border-radius:10px;font-size:10px;font-weight:900}
+.project-actions .primary{background:#123c28;color:#fff}.project-actions .secondary{background:#e7f1e8;color:#205c35;border:1px solid #d2dfd4}
+.projects-footer-note{margin-top:14px;background:#0d2a20;color:#dce9df;border-radius:14px;padding:14px 16px;font-size:10px;line-height:1.6}
+@media(max-width:850px){.projects-grid{grid-template-columns:1fr}.project-cover{min-height:160px}}
 .nav b{font-size:13px}.nav small{font-size:10px;color:#98aaa2;grid-column:1}.nav i{grid-column:2;grid-row:1/3;align-self:center;font-style:normal;color:#75d984;font-weight:800}
 .sidequote{margin-top:auto;font-weight:900;font-size:21px;line-height:1.05;font-style:italic}
 .sidequote span{display:block;color:#77d880}.sidefoot{margin-top:18px;color:#a7b6b0;font-size:10px;display:grid;gap:6px}
@@ -378,17 +400,81 @@ linear-gradient(120deg,#fbfcfa,#eef4ef 65%,#e6eee7);border-bottom:1px solid #d6d
 <div class="profile-overlay" id="proyectos" aria-hidden="true">
   <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="proyectosTitulo">
     <header class="profile-panel-head">
-      <div><strong id="proyectosTitulo">Proyectos</strong><small>Ideas · desarrollo · evolución profesional</small></div>
-      <button class="profile-close projects-close" type="button" aria-label="Cerrar trabajos finales">×</button>
+      <div><strong id="proyectosTitulo">Proyectos</strong><small>Trabajos finales · aplicación práctica · desarrollo profesional</small></div>
+      <button class="profile-close projects-close" type="button" aria-label="Cerrar proyectos">×</button>
     </header>
-    <div class="specialties-hero">
-      <div class="eyeline">Próxima sección</div>
-      <h2>Proyectos que convierten ideas.<span>En trabajo real.</span></h2>
-      <p>Este espacio queda preparado para incorporar proyectos propios, desarrollos deportivos, propuestas profesionales e iniciativas que quieras presentar como parte de tu evolución.</p>
+
+    <div class="projects-hero">
+      <div class="eyeline">Trabajo aplicado</div>
+      <h2>Del aprendizaje.<span>A proyectos concretos.</span></h2>
+      <p>Esta sección reúne trabajos finales en los que aplico conocimientos de nutrición, actividad física, gestión deportiva, planificación, sostenibilidad y diseño de servicios. Cada proyecto refleja una forma distinta de abordar problemas reales desde una perspectiva estructurada.</p>
     </div>
+
+    <div class="profile-content">
+      <article class="cv-card span-12">
+        <h3>Proyectos finales</h3>
+        <div class="cv-body projects-grid">
+
+          <section class="project-card">
+            <div class="project-cover nutrition">
+              <div class="project-number">01</div>
+              <div class="project-type">Nutrición · Educación alimentaria · Actividad física</div>
+              <h4>Intervención nutricional y cambio de hábitos saludables</h4>
+            </div>
+            <div class="project-body">
+              <p>Análisis de dos casos —Manuel y Claudia— con valoración del estado nutricional, propuestas de cambio dietético, educación alimentaria y planificación progresiva de actividad física.</p>
+              <div class="project-points">
+                <span>Valoración nutricional y análisis de hábitos.</span>
+                <span>Propuestas de alimentación y menús adaptados.</span>
+                <span>Educación nutricional y estrategias familiares.</span>
+                <span>Plan de actividad física progresivo en tres fases.</span>
+              </div>
+              <div class="project-meta">
+                <span>13 páginas</span><span>2 casos</span><span>Nutrición</span><span>Actividad física</span>
+              </div>
+              <div class="project-actions">
+                <a class="primary" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/1ea0cb40-207d-479c-bb6f-d79fd7af2b3b.pdf" target="_blank" rel="noreferrer">Ver proyecto PDF ↗</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="project-card">
+            <div class="project-cover management">
+              <div class="project-number">02</div>
+              <div class="project-type">Gestión deportiva · Instalaciones · Sostenibilidad</div>
+              <h4>Planificación de una instalación polideportiva en ayuntamiento</h4>
+            </div>
+            <div class="project-body">
+              <p>Proyecto de planificación y gestión de un complejo polideportivo municipal con enfoque social, estudio de viabilidad, definición de espacios deportivos, sostenibilidad energética y simulación económica.</p>
+              <div class="project-points">
+                <span>Objetivos sociales, deportivos y de convivencia.</span>
+                <span>Estudio de viabilidad, gastos, ingresos y servicios.</span>
+                <span>Diseño de piscina, gimnasio, fútbol, spa y zonas complementarias.</span>
+                <span>Sostenibilidad, ahorro energético y proyección económica simulada.</span>
+              </div>
+              <div class="project-meta">
+                <span>13 páginas</span><span>Gestión deportiva</span><span>Instalaciones</span><span>Sostenibilidad</span>
+              </div>
+              <div class="project-actions">
+                <a class="primary" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/33220cb8-8d1d-44d0-ac30-910debce1a5f.pdf" target="_blank" rel="noreferrer">Ver proyecto PDF ↗</a>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <div class="projects-footer-note">
+          Dos proyectos con enfoques complementarios: uno centrado en la persona, los hábitos y la actividad física; otro orientado a la planificación, gestión y diseño de servicios e instalaciones deportivas.
+        </div>
+      </article>
+    </div>
+
+    <footer class="profile-footer">
+      <span>Proyectos académicos y profesionales · Ramón Alberto Curbalán Vega</span>
+      <span>Nutrición · actividad física · gestión deportiva · instalaciones</span>
+    </footer>
   </section>
 </div>
-
 <div class="profile-overlay" id="resultados-completos" aria-hidden="true">
   <section class="profile-panel" role="dialog" aria-modal="true" aria-labelledby="resultadosTitulo">
     <header class="profile-panel-head">
