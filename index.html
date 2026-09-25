@@ -445,6 +445,18 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
 .diploma-link:focus-visible{outline:3px solid #3e9a52;outline-offset:3px}
 .diploma-pending{margin-top:8px;color:#67736e;font-style:italic}
 @media(max-width:480px){#perfil-completo .cv-item{grid-template-columns:1fr;gap:6px}}
+
+/* Let the complete video occupy the available height of the objectives card. */
+.impact{display:flex;flex-direction:column}
+.impact .cardbody{display:flex;flex-direction:column;flex:1;min-height:0}
+.impact .impactgrid{flex:none}
+.impact .impact-video{display:flex;flex-direction:column;flex:1;min-height:220px}
+.impact .impact-video video{flex:1;min-height:0;width:100%;height:100%;object-fit:contain;object-position:center;aspect-ratio:auto}
+.impact .impact-video-caption{flex:none}
+@media(max-width:800px){
+  .impact .impact-video{flex:none;min-height:0}
+  .impact .impact-video video{flex:none;height:auto;max-height:none}
+}
 </style>
 </head>
 <body>
@@ -601,7 +613,7 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
 <div class="banner">
   <div class="banner-message"><b>UN ESTILO DE VIDA,<br>NO UNA MODA.</b></div>
   <div class="banner-copy">Acompaño a personas reales a construir una versión más fuerte, sana y consciente de sí mismas, con estrategias aplicadas a la vida real.</div>
-  <a class="banner-cta" href="https://www.chetesaifitness.com/#reserva" target="_blank" rel="noreferrer">SOLICITAR VALORACIÓN <span>→</span></a>
+  <a class="banner-cta" href="https://www.chetesaifitness.com/#reserva" target="_blank" rel="noopener noreferrer">SOLICITAR VALORACIÓN <span>→</span></a>
   <div class="banner-message banner-message-right"><b>EL PROGRESO EMPIEZA<br>CON UNA CONVERSACIÓN.</b></div>
 </div>
 <footer><span>Ramón Alberto Curbalán Vega · Entrenamiento con propósito</span><span>SALUD · FUERZA · MOVIMIENTO · RENDIMIENTO · VIDA</span></footer>
