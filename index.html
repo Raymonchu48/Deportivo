@@ -462,6 +462,102 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
 #especialidades-completas .cred-card,#especialidades-completas .management-mini-card{min-width:0;overflow-wrap:anywhere}
 #especialidades-completas .diploma-actions{align-items:flex-start}
 #especialidades-completas .diploma-link span{background:none;color:inherit;padding:0;margin:0;font-size:inherit}
+
+/* === Exact hero + methodology correction · approved reference === */
+@media(min-width:1181px){
+  .hero{
+    min-height:0;
+    aspect-ratio:3.28/1;
+    padding:20px 22px;
+    border-radius:9px;
+    overflow:hidden;
+  }
+  .hero-copy{
+    width:55%;
+    max-width:760px;
+    align-self:center;
+  }
+  .hero-visual{
+    width:54%;
+    top:0;
+    right:0;
+    bottom:0;
+    left:auto;
+    background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2588f041-34bc-4d6c-9518-35e5ae112a2c.png");
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+  }
+  .hero-visual:after{
+    background:linear-gradient(90deg,rgba(248,250,248,.68) 0%,rgba(248,250,248,.18) 9%,rgba(248,250,248,0) 19%);
+  }
+  .hero:before{
+    background:linear-gradient(90deg,
+      #f8faf8 0%,
+      rgba(248,250,248,1) 40%,
+      rgba(248,250,248,.98) 45%,
+      rgba(248,250,248,.78) 49%,
+      rgba(248,250,248,.28) 53%,
+      rgba(248,250,248,0) 58%);
+  }
+  .kicker{font-size:9px}
+  .name{font-size:clamp(58px,4.7vw,76px);line-height:.80;margin:8px 0 3px}
+  .role{font-size:9px;margin-bottom:9px}
+  .hero h1{font-size:clamp(46px,3.9vw,62px);line-height:.82;margin:3px 0 7px}
+  .hero p{font-size:10px;line-height:1.42;max-width:560px}
+  .promise-row{margin-top:12px}
+
+  .experience .cardbody{min-height:205px}
+  .checklist{gap:6px;font-size:8.5px}
+
+  #metodo .cardbody{padding-bottom:7px}
+  .method-card-image{
+    min-height:96px;
+    height:96px;
+    margin-top:5px;
+    border-radius:7px;
+    background:#0c241a;
+    overflow:hidden;
+  }
+  .method-card-image img{
+    width:100%;
+    height:100%;
+    min-height:0;
+    max-height:none;
+    object-fit:cover;
+    object-position:center center;
+    transform:none!important;
+  }
+}
+@media(max-width:1180px) and (min-width:801px){
+  .hero{min-height:390px}
+  .hero-visual{
+    width:54%;
+    background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2588f041-34bc-4d6c-9518-35e5ae112a2c.png");
+    background-position:center center;
+  }
+  .method-card-image img{object-position:center center}
+}
+@media(max-width:800px){
+  .hero-visual{
+    background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2588f041-34bc-4d6c-9518-35e5ae112a2c.png");
+    background-position:center center;
+  }
+  .method-card-image{
+    height:auto;
+    min-height:0;
+    aspect-ratio:311/77;
+  }
+  .method-card-image img{
+    width:100%;
+    height:100%;
+    min-height:0;
+    max-height:none;
+    object-fit:cover;
+    object-position:center center;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -508,14 +604,12 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
     <div class="cardbody">
       <div class="bigyears">+5 años<small>de experiencia deportiva acreditada</small></div>
       <div class="checklist">
-        <div>Trabajo individual y grupal</div>
-        <div>Adultos, tercera edad y perfiles diversos</div>
-        <div>Enfoque integral: salud, forma física y adherencia</div>
-        <div>Experiencia en salas polivalentes</div>
-        <div>Natación, actividades acuáticas y socorrismo</div>
-        <div>Pilates, yoga, taichí, cycling y entrenamiento funcional</div>
-        <div>Trabajo con grupos reducidos y atención personalizada</div>
-        <div>Experiencia profesional desarrollada en centros de Mallorca</div>
+        <div>Entrenamiento individual y grupal</div>
+        <div>Actividades dirigidas (pilates, cycling, funcional)</div>
+        <div>Fitness, natación y actividades acuáticas</div>
+        <div>Programas para adultos y tercera edad</div>
+        <div>Preparación física y acondicionamiento</div>
+        <div>Seguimiento y atención personalizada</div>
       </div>
     </div>
   </section>
@@ -530,7 +624,7 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
       </div>
       <div class="methodline">MEDIR · AJUSTAR · PROGRESAR</div>
       <div class="method-card-image">
-        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/1bff1815-41e7-4b0b-9f5d-e55945b8350d.jpg" alt="Entrenamiento personal Chetesaí Fitness+">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/a45f79a9-aa87-4ecd-8757-76b35deff534.png" alt="Metodología de entrenamiento: medir, ajustar y progresar">
       </div>
     </div>
   </section>
