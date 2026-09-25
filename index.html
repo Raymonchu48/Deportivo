@@ -3,15 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0d241c">
+<meta name="theme-color" content="#FAF7F2">
 <title>Ramón Alberto Curbalán Vega · Perfil Profesional Deportivo</title>
 <meta name="description" content="Portfolio profesional deportivo de Ramón Alberto Curbalán Vega: entrenamiento personal, nutrición deportiva, movilidad, hábitos y rendimiento.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap');
 :root{
-  --forest:#0d2a20;--forest2:#12382a;--forest3:#1e5639;--green:#3e9a52;--lime:#79c66b;
-  --ink:#111715;--muted:#67736e;--paper:#f3f5f2;--card:#fbfcfa;--line:#d8ded9;--white:#fff;
-  --shadow:0 20px 50px rgba(21,43,32,.12);--r:18px
+  --bg:#FAF7F2;--surface:#FFFFFF;--border:#E8E1D6;
+  --ink:#2A2420;--muted:#7A7267;--muted-warm:#756D62;
+  --accent:#8C5A3C;--cta:#5C6B4F;--chip-bg:#EFE6D8;--chip-text:#6B4426;
+  --forest:#5C6B4F;--forest2:#8C5A3C;--forest3:#6B4426;--green:#8C5A3C;--lime:#5C6B4F;
+  --paper:#FAF7F2;--card:#FFFFFF;--line:#E8E1D6;--white:#FFFFFF;
+  --shadow:0 14px 34px rgba(74,58,45,.08);--r:18px
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#e9eeea;color:var(--ink);
 font-family:'Manrope',Arial,Helvetica,sans-serif;line-height:1.45}
@@ -236,10 +239,11 @@ linear-gradient(120deg,#fbfcfa,#eef4ef 65%,#e6eee7);border-bottom:1px solid #d6d
  .mobilebar a{color:#dce9df;text-decoration:none;min-width:90px;text-align:center;padding:9px 7px;border-radius:10px;font-size:10px}.mobilebar a:focus,.mobilebar a:hover{background:#245d3b}
 }
 
-/* === Typography system: Barlow Condensed + Manrope === */
+/* === Typography system: Fraunces + Inter + IBM Plex Mono === */
 :root{
-  --font-display:'Barlow Condensed',Arial,sans-serif;
-  --font-body:'Manrope',Arial,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Inter',Arial,Helvetica,sans-serif;
+  --font-mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
 }
 body{font-family:var(--font-body);font-weight:500}
 .brand-r,.identity strong,.sideclaim,.sidequote,.nav b,.nav i,
@@ -682,6 +686,236 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
   .cv-doc-contact{text-align:left}
   .cv-doc-grid>.cv-doc-section{border-right:0}
 }
+
+/* === Warm editorial palette · Fraunces / Inter / IBM Plex Mono === */
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:var(--font-body);font-weight:400}
+main,.page{background:var(--bg)}
+p{color:var(--muted);text-transform:none!important}
+h1,h2,h3,.name,.projects-hero h2,.profile-summary h2,.method-panel-hero h2,
+.experience-hero h2,.specialties-hero h2,.cv-doc-header h2,.cv-doc-section h3{
+  font-family:var(--font-display)!important;
+  font-weight:600!important;
+  color:var(--ink);
+  text-transform:none!important;
+  letter-spacing:-.02em!important;
+}
+.name,.hero h1{font-weight:600!important}
+.name span,.hero h1 em,.projects-hero h2 span,.profile-summary h2 span,
+.method-panel-hero h2 span,.experience-hero h2 span,.specialties-hero h2 span{
+  color:var(--accent)!important;
+  background:none!important;
+  -webkit-background-clip:initial!important;
+}
+button,a,.nav,.cardhead,.role,.kicker,.eyeline,.type,.tag{font-family:var(--font-body)}
+button,.project-actions a,.diploma-link,.method-cta a,.banner-cta,.chetesai-banner-cta a,
+.cv-doc-trigger,.cv-document-actions button{font-weight:500!important}
+
+/* AA note: #7A7267 passes on white; warm background uses a slightly darker companion. */
+.topstrip,.kicker,.role,.projects-hero p,.method-panel-hero p,.experience-hero p,
+.specialties-hero p{color:var(--muted-warm)!important}
+.card p,.cv-card p,.domain-card p,.cred-body p,.specialty-note,.project-body p,
+.rec-card p,.flow-step p,.method-safety p,.nutrition-slide p,.cv-doc-section p,
+.cv-doc-list,.cv-reference-group p{color:var(--muted)!important}
+
+/* Light, warm surfaces */
+.sidebar{
+  background:var(--surface)!important;
+  color:var(--ink)!important;
+  border-right:1px solid var(--border)!important;
+}
+.brand-sigil{background:var(--chip-bg)!important;border-color:var(--border)!important;box-shadow:none!important}
+.brand-r{background:var(--accent)!important;color:#fff!important;box-shadow:none!important;font-family:var(--font-mono)!important;font-weight:500!important}
+.brand-lines b,.identity strong,.sideclaim,.sidequote{color:var(--ink)!important}
+.brand-lines span,.identity small,.nav small,.sideclaim small,.sidefoot{color:var(--muted)!important}
+.identity{border-bottom-color:var(--border)!important}
+.nav a{color:var(--ink)!important}
+.nav a:hover,.nav a.active{background:var(--chip-bg)!important;border-color:var(--accent)!important}
+.nav i{color:var(--accent)!important;font-family:var(--font-mono)!important;font-weight:500!important}
+.projects-nav{border-top-color:var(--border)!important}
+.projects-nav b,.sidequote span{color:var(--accent)!important}
+.sidefoot div{display:flex;align-items:center;gap:8px}
+.sidefoot div:before{content:"";width:11px;height:11px;border:1.5px solid var(--accent);border-radius:50%;flex:0 0 11px}
+
+.topstrip{background:var(--bg)!important;border-color:var(--border)!important}
+.status:before{background:var(--cta)!important;box-shadow:0 0 0 4px rgba(92,107,79,.12)!important}
+
+.hero,.projects-hero,.profile-hero,.method-panel-hero,.experience-hero,.specialties-hero{
+  background:var(--surface)!important;
+  border-color:var(--border)!important;
+}
+.hero{box-shadow:var(--shadow)!important}
+.hero:before{opacity:.22}
+.hero-visual:after{background:linear-gradient(90deg,rgba(250,247,242,.78) 0%,rgba(250,247,242,.18) 14%,rgba(250,247,242,0) 28%)!important}
+.hero p{color:var(--muted)!important}
+.promise{border-color:var(--border)!important}
+.promise i{
+  font-size:0!important;color:transparent!important;border:1.5px solid var(--accent)!important;
+  background:transparent!important;
+}
+.promise i:before{
+  content:"";width:17px;height:17px;display:block;background:center/contain no-repeat
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238C5A3C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3Cpath d='m8.5 12 2.2 2.2 4.8-5'/%3E%3C/svg%3E");
+}
+
+.card,.project-card,.flow-step,.method-service,.method-safety,.rec-card,.specialty-pillar,
+.cred-card,.domain-card,.management-mini-card,.specialty-note,.nutrition-showcase,
+.cv-document-sheet,.cv-card{
+  background:var(--surface)!important;
+  border-color:var(--border)!important;
+  box-shadow:none!important;
+}
+.cardhead,.cv-card h3{
+  background:var(--chip-bg)!important;
+  color:var(--chip-text)!important;
+  border-color:var(--border)!important;
+}
+.cardhead{font-weight:500!important}
+.bigyears,.ring strong,.project-cover .project-number,.stepnum,.flow-step .num,
+.exp-stat b,.cred-fact,.cv-date,.nav i,.spartan-badge b,.specialties-hero:after,
+.barline b,.comp b,.impactgrid b{
+  font-family:var(--font-mono)!important;
+  font-weight:500!important;
+}
+.bigyears,.exp-stat b{color:var(--accent)!important}
+.bigyears small{color:var(--ink)!important;font-family:var(--font-body)!important;font-weight:500!important}
+.checklist div:before,.project-points span:before{color:var(--accent)!important}
+.methodline{background:var(--chip-bg)!important;color:var(--chip-text)!important}
+.stepnum{border-color:var(--accent)!important;color:var(--accent)!important;box-shadow:0 0 0 4px var(--chip-bg)!important}
+
+.profile,.profile-resume,.projects-footer-note,.method-principle,.method-cta,
+.exp-video-card,.spartan-story,.exp-value,.specialty-chip,.cred-top,
+.banner,footer,.cv-presentation-body,.impact-video-caption{
+  background:var(--surface)!important;
+  color:var(--ink)!important;
+  border:1px solid var(--border)!important;
+  box-shadow:none!important;
+}
+.profile .cardhead{background:var(--chip-bg)!important;border-color:var(--border)!important}
+.profilequote,.profile-resume h4,.profile-resume p,.profile-resume .resume-points span,
+.projects-footer-note,.method-principle p,.method-principle b,.method-cta b,
+.exp-video-copy,.exp-video-copy b,.exp-video-copy small,.spartan-story p,
+.exp-value p,.cred-top h4,.cred-top small,.banner,.banner b,footer,
+.cv-presentation-copy,.cv-presentation-copy p,.impact-video-caption,
+.impact-video-caption small{
+  color:var(--ink)!important;
+}
+.profile-resume .resume-kicker,.method-principle b,.spartan-story .tag,.exp-value b,
+.cred-top .type,.cv-presentation-kicker{color:var(--accent)!important}
+.ring{background:conic-gradient(var(--accent) 0 100%)!important}
+.ring:after{background:var(--surface)!important}
+.track,.comp .track{background:#EEE8DF!important}
+.track i{background:var(--cta)!important}
+
+.value,.sp{border-color:var(--border)!important}
+.value small,.specialty-pillar small,.management-mini-card small,.domain-card p,
+.exp-role small,.spartan-note{color:var(--muted)!important}
+.value i,.sp i,.specialty-pillar .icon,.rec-proof i,.method-service i{
+  font-size:0!important;color:transparent!important;background:var(--chip-bg)!important;
+  border:0!important;
+}
+.value i:before,.sp i:before,.specialty-pillar .icon:before,.rec-proof i:before,.method-service i:before{
+  content:"";display:block;width:18px;height:18px;margin:auto;background:center/contain no-repeat
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238C5A3C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8'/%3E%3Cpath d='M8 12h8M12 8v8'/%3E%3C/svg%3E");
+}
+.sp i,.value i,.specialty-pillar .icon,.rec-proof i,.method-service i{display:grid!important;place-items:center!important}
+.specialty-pillar .icon,.method-service i{width:40px;height:40px;border-radius:50%}
+.rec-proof i{width:24px;height:24px;border-radius:50%}
+
+.project-meta span,.cred-fact,.profile-chip,.cv-tag,.management-mini-card span,
+.exp-video-tag,.spartan-story .tag{
+  background:var(--chip-bg)!important;
+  color:var(--chip-text)!important;
+  border-color:var(--border)!important;
+}
+.project-actions .primary,.diploma-link,.method-cta a,.banner-cta,.chetesai-banner-cta a,
+.cv-doc-trigger,.cv-print-button{
+  background:var(--cta)!important;color:#fff!important;border-color:var(--cta)!important;
+}
+.project-actions .secondary,.cv-document-back{
+  background:var(--surface)!important;color:var(--accent)!important;border:1px solid var(--border)!important;
+}
+.project-cover.nutrition,.project-cover.management{
+  background:linear-gradient(135deg,var(--accent),#6B4426)!important;
+}
+.project-cover .project-type{color:#F5EDE5!important}
+.project-cover h4{color:#fff!important}
+.projects-footer-note{color:var(--muted)!important}
+
+.profile-overlay,.cv-document-overlay{background:rgba(42,36,32,.56)!important}
+.profile-panel{background:var(--bg)!important;border-color:var(--border)!important}
+.profile-panel-head{
+  background:var(--surface)!important;color:var(--ink)!important;border-bottom:1px solid var(--border)!important;
+}
+.profile-panel-head strong{color:var(--ink)!important}
+.profile-panel-head small{color:var(--muted)!important}
+.profile-close{border-color:var(--border)!important;background:var(--chip-bg)!important;color:var(--chip-text)!important}
+.profile-summary .eyeline,.method-kicker,.experience-hero .eyeline,.specialties-hero .eyeline,
+.projects-hero .eyeline,.nutrition-kicker,.cv-doc-kicker{color:var(--accent)!important}
+.profile-chip{font-weight:500!important}
+.cv-date,.cv-doc-entry span{color:var(--accent)!important}
+.cv-bullets div{color:var(--muted)!important}
+.cv-bullets div:before{color:var(--accent)!important}
+.profile-resume .resume-points span:before,.cv-mini-points span:before{display:none!important}
+.profile-footer{background:var(--surface)!important;color:var(--muted)!important;border-top:1px solid var(--border)!important}
+
+.method-panel-hero:after,.specialties-hero:after{color:rgba(140,90,60,.07)!important}
+.flow-step .num{background:var(--accent)!important;color:#fff!important;box-shadow:0 0 0 5px var(--chip-bg)!important}
+.flow-step h4,.domain-card b,.specialty-pillar b,.management-mini-card b{color:var(--ink)!important}
+.method-service b{color:var(--ink)!important}
+.method-principle{border-color:var(--border)!important}
+
+.exp-video-card video,.impact-video{background:#F1ECE4!important}
+.exp-video-tag{font-weight:500!important}
+.exp-role time,.rec-card .club{color:var(--accent)!important}
+.rec-card:before{color:rgba(140,90,60,.08)!important}
+.rec-proof{border-color:var(--border)!important;color:var(--muted)!important}
+.spartan-badge{border-color:var(--border)!important;background:var(--chip-bg)!important}
+.spartan-badge small{color:var(--muted)!important}
+.spartan-gallery figure{background:#EEE8DF!important}
+.spartan-gallery figcaption{background:rgba(42,36,32,.82)!important;color:#fff!important}
+
+.cred-top{background:var(--chip-bg)!important}
+.cred-top h4{color:var(--ink)!important}
+.cred-top small{color:var(--muted)!important}
+.cred-top .type{color:var(--accent)!important}
+.management-mini{border-top-color:var(--border)!important}
+.management-mini-title,#especialidades-completas .diploma-category{color:var(--accent)!important}
+
+.mobilebar{background:var(--surface)!important;border-color:var(--border)!important}
+.mobilebar a{color:var(--ink)!important}
+.mobilebar a:focus,.mobilebar a:hover{background:var(--chip-bg)!important}
+
+/* Long copy stays sentence case; uppercase is reserved for compact labels. */
+p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
+.specialties-hero p,.cred-body p,.domain-card p,.rec-card p,.cv-doc-section p{
+  text-transform:none!important;letter-spacing:normal!important;
+}
+.cardhead,.eyeline,.kicker,.type,.tag,.exp-video-tag,.management-mini-title,
+.cv-doc-kicker,.nutrition-kicker{ text-transform:uppercase; }
+
+/* Formal profile/CV areas: no decorative loose icons. */
+#perfil-completo .profile-resume .resume-points span:before,
+#perfil-completo .cv-bullets div:before,
+#cv-documento .cv-mini-points span:before{display:none!important}
+
+/* Print/PDF typography and palette */
+@media print{
+  html,body{background:#fff!important;color:var(--ink)!important;font-family:var(--font-body)!important}
+  #cv-documento,#cv-documento .profile-panel,#cv-documento .cv-document-sheet,
+  #cv-documento .cv-doc-header,#cv-documento .cv-doc-section{
+    background:#fff!important;color:var(--ink)!important;
+  }
+  #cv-documento h1,#cv-documento h2,#cv-documento h3{
+    font-family:var(--font-display)!important;color:var(--ink)!important;text-transform:none!important;
+  }
+  #cv-documento p,#cv-documento small,#cv-documento span{font-family:var(--font-body)!important;color:var(--muted)!important}
+  #cv-documento .cv-date,#cv-documento .cv-doc-entry span{font-family:var(--font-mono)!important;color:var(--accent)!important}
+  #cv-documento i,#cv-documento .icon,#cv-documento [class*="badge"]:before,
+  #cv-documento [class*="badge"]:after{display:none!important}
+  #cv-documento *{box-shadow:none!important}
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -707,7 +941,7 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
     <a href="#proyectos" class="projects-trigger projects-nav"><b>Proyectos</b><small>Ideas, desarrollo, evolución</small><i>06</i></a>
   </nav>
   <div class="sidequote">ENTRENAR PARA<span>VIVIR MEJOR.</span></div>
-  <div class="sidefoot"><div>● Mallorca, España</div><div>◎ Online / Presencial</div></div>
+  <div class="sidefoot"><div>Mallorca, España</div><div>Online / Presencial</div></div>
 </aside>
 
 <main>
