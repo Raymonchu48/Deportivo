@@ -558,6 +558,82 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
   }
 }
 
+
+/* === Hero framing correction · full head/body === */
+@media(min-width:1181px){
+  .hero{
+    min-height:430px!important;
+    height:430px!important;
+    aspect-ratio:auto!important;
+    padding:22px 24px!important;
+  }
+  .hero-copy{
+    width:55%!important;
+    max-width:760px!important;
+    align-self:center!important;
+  }
+  .hero-visual{
+    width:52%!important;
+    top:0!important;
+    right:0!important;
+    bottom:0!important;
+    left:auto!important;
+    background-size:contain!important;
+    background-position:right center!important;
+    background-repeat:no-repeat!important;
+    background-color:#eef5f4!important;
+  }
+  .hero-visual:after{
+    background:linear-gradient(90deg,
+      rgba(248,250,248,.72) 0%,
+      rgba(248,250,248,.22) 10%,
+      rgba(248,250,248,0) 22%)!important;
+  }
+  .hero:before{
+    background:linear-gradient(90deg,
+      #f8faf8 0%,
+      rgba(248,250,248,1) 39%,
+      rgba(248,250,248,.98) 45%,
+      rgba(248,250,248,.82) 50%,
+      rgba(248,250,248,.32) 55%,
+      rgba(248,250,248,0) 61%)!important;
+  }
+  .name{
+    font-size:clamp(58px,4.55vw,74px)!important;
+  }
+  .hero h1{
+    font-size:clamp(44px,3.7vw,59px)!important;
+  }
+}
+@media(max-width:1180px) and (min-width:801px){
+  .hero{
+    min-height:430px!important;
+    height:auto!important;
+  }
+  .hero-visual{
+    width:50%!important;
+    background-size:contain!important;
+    background-position:right center!important;
+    background-repeat:no-repeat!important;
+    background-color:#eef5f4!important;
+  }
+}
+@media(max-width:800px){
+  .hero-visual{
+    background-size:contain!important;
+    background-position:center bottom!important;
+    background-repeat:no-repeat!important;
+    background-color:#eef5f4!important;
+  }
+}
+
+/* methodology image: preserve the full approved crop */
+.method-card-image img{
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:#0c241a!important;
+}
+
 </style>
 </head>
 <body>
