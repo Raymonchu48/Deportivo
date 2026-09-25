@@ -684,6 +684,77 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
   }
 }
 
+
+/* === CV presentation module === */
+.cv-presentation-card{min-height:430px}
+.cv-presentation-card h3{position:relative;z-index:2}
+.cv-presentation-body{display:grid;grid-template-columns:minmax(170px,.82fr) 1.18fr;min-height:390px;background:linear-gradient(135deg,#071e17,#123c2a)}
+.cv-presentation-media{position:relative;min-height:390px;overflow:hidden;background:#071812}
+.cv-presentation-media video{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center 18%}
+.cv-presentation-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 56%,rgba(5,24,17,.72))}
+.cv-video-badge{position:absolute;left:10px;bottom:10px;z-index:2;color:#dff5e4;background:rgba(9,43,29,.88);border:1px solid rgba(118,222,139,.35);padding:6px 8px;border-radius:8px;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.cv-presentation-copy{padding:24px 20px;display:flex;flex-direction:column;justify-content:center;color:#fff}
+.cv-presentation-kicker{color:#7dde8d;font-size:9px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.cv-presentation-copy h4{font-family:var(--font-display);font-size:32px;line-height:.9;text-transform:uppercase;margin:8px 0 12px}
+.cv-presentation-copy h4 span{color:#72d883}
+.cv-presentation-copy p{color:#d2e2d7!important;font-size:10px!important;line-height:1.55!important}
+.cv-mini-points{display:grid;gap:7px;margin:15px 0}
+.cv-mini-points span{display:flex;gap:7px;color:#eef7f0;font-size:9px}
+.cv-mini-points span:before{content:"✓";color:#73dd86;font-weight:900}
+.cv-doc-trigger{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#72dc84;color:#082619;text-decoration:none;border-radius:10px;padding:11px 12px;font-family:var(--font-display);font-size:15px;font-weight:800;letter-spacing:.03em}
+.cv-doc-trigger b{font-size:20px}
+
+.cv-languages-card{min-height:0}
+.cv-languages-body{display:grid;grid-template-columns:.85fr 1.65fr;gap:22px;padding:14px 16px;align-items:center}
+.cv-language-group,.cv-reference-group{display:grid;gap:7px}
+.cv-language-label{font-family:var(--font-display);font-size:14px;font-weight:800;text-transform:uppercase;color:#143e2a}
+.cv-reference-group{border-left:1px solid #dce3dd;padding-left:22px}
+.cv-reference-group p{margin:0;color:#5b6860;font-size:11px;line-height:1.55}
+
+.cv-document-overlay{z-index:1200}
+.cv-document-panel{max-width:1320px}
+.cv-document-actions{display:flex;justify-content:space-between;gap:10px;padding:12px 18px;background:#edf2ee;border-bottom:1px solid #d7dfd9}
+.cv-document-actions button{border:0;border-radius:9px;padding:9px 12px;font-family:var(--font-body);font-size:10px;font-weight:800;cursor:pointer}
+.cv-document-back{background:#fff;color:#173e2a;border:1px solid #cfdbd2!important}
+.cv-print-button{background:#67d779;color:#0c2b1d}
+.cv-document-sheet{margin:20px;background:#fff;border:1px solid #d6ded8;border-radius:16px;box-shadow:0 16px 38px rgba(16,47,31,.09);overflow:hidden}
+.cv-doc-header{display:grid;grid-template-columns:1.5fr .7fr;gap:22px;padding:26px 28px;background:linear-gradient(135deg,#f9fbf9,#eef5ef);border-bottom:4px solid #2f8747}
+.cv-doc-kicker{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:#287640}
+.cv-doc-header h2{font-family:var(--font-display);font-size:52px;line-height:.86;text-transform:uppercase;margin:8px 0;color:#101713}
+.cv-doc-header h2 span{display:block;color:#2e8546}
+.cv-doc-header p{margin:0;color:#56645c;font-size:11px}
+.cv-doc-contact{display:flex;flex-direction:column;justify-content:center;gap:8px;color:#405048;font-size:10px;text-align:right}
+.cv-doc-section{padding:18px 20px}
+.cv-doc-section h3{font-family:var(--font-display);font-size:18px;text-transform:uppercase;margin:0 0 10px;color:#17482f;border-bottom:2px solid #dfe8e1;padding-bottom:5px}
+.cv-doc-section p{font-size:10px;line-height:1.65;color:#55635b;margin:0}
+.cv-doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #e1e6e2}
+.cv-doc-grid>.cv-doc-section{border-right:1px solid #e1e6e2;border-bottom:1px solid #e1e6e2}
+.cv-doc-grid>.cv-doc-section:nth-child(even){border-right:0}
+.cv-doc-entry{padding:9px 0;border-bottom:1px solid #edf0ee}
+.cv-doc-entry:last-child{border-bottom:0}
+.cv-doc-entry b{display:block;font-size:11px;color:#1c2821}
+.cv-doc-entry span{display:block;margin-top:2px;color:#2d8245;font-size:8px;font-weight:800;text-transform:uppercase}
+.cv-doc-entry p{margin-top:4px!important;font-size:9px!important}
+.cv-doc-list{padding-left:17px;margin:0 0 18px;color:#55635b;font-size:10px;line-height:1.55}
+.cv-doc-list li{margin-bottom:6px}
+
+@media(max-width:900px){
+  .cv-presentation-body{grid-template-columns:1fr;min-height:0}
+  .cv-presentation-media{min-height:440px}
+  .cv-presentation-copy{padding:20px}
+  .cv-languages-body,.cv-doc-header,.cv-doc-grid{grid-template-columns:1fr}
+  .cv-reference-group{border-left:0;border-top:1px solid #dce3dd;padding-left:0;padding-top:12px}
+  .cv-doc-contact{text-align:left}
+  .cv-doc-grid>.cv-doc-section{border-right:0}
+}
+@media print{
+  body>*{display:none!important}
+  #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
+  #cv-documento .profile-panel{display:block!important;max-width:none!important;max-height:none!important;box-shadow:none!important;border:0!important}
+  #cv-documento .profile-panel-head,#cv-documento .cv-document-actions{display:none!important}
+  #cv-documento .cv-document-sheet{margin:0!important;box-shadow:none!important;border:0!important}
+}
+
 </style>
 </head>
 <body>
@@ -1455,15 +1526,42 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
 <div class="cv-item"><div class="cv-date"></div><div><b>Salario y contratación</b></div></div>
 <div class="cv-item"><div class="cv-date"></div><div><b>Comercio electrónico</b></div></div></div></article>
 
-      <article class="cv-card span-5">
-        <h3>Idiomas y referencias</h3>
-        <div class="cv-body">
-          <div class="cv-tags">
-            <span class="cv-tag">Inglés · alto</span>
-            <span class="cv-tag">Italiano · medio</span>
-            <span class="cv-tag">Portugués · medio</span>
+      <article class="cv-card span-5 cv-presentation-card">
+        <h3>Presentación del CV</h3>
+        <div class="cv-presentation-body">
+          <div class="cv-presentation-media">
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/b96eaed3-4a99-4e5e-aa24-26eed9d27de8.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Presentación profesional de Ramón Curbalán"></video>
+            <div class="cv-video-badge">20 s · Perfil profesional</div>
           </div>
-          <p style="margin-top:14px"><b>Cartas de recomendación:</b> Club Esportiu Artà, Club de Acrobacia Artà, Euroinnova Formación e Intersport.</p>
+          <div class="cv-presentation-copy">
+            <div class="cv-presentation-kicker">CV deportivo · 2026</div>
+            <h4>Mi perfil,<br><span>en movimiento.</span></h4>
+            <p>Una presentación breve de mi trayectoria, metodología y enfoque profesional en entrenamiento, salud y rendimiento.</p>
+            <div class="cv-mini-points">
+              <span>Entrenamiento personal</span>
+              <span>Natación y actividades dirigidas</span>
+              <span>Nutrición, coaching y gestión deportiva</span>
+            </div>
+            <a href="#cv-documento" class="cv-doc-trigger">VER CV COMPLETO <b>→</b></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cv-card span-12 cv-languages-card">
+        <h3>Idiomas y referencias</h3>
+        <div class="cv-languages-body">
+          <div class="cv-language-group">
+            <span class="cv-language-label">Idiomas</span>
+            <div class="cv-tags">
+              <span class="cv-tag">Inglés · alto</span>
+              <span class="cv-tag">Italiano · medio</span>
+              <span class="cv-tag">Portugués · medio</span>
+            </div>
+          </div>
+          <div class="cv-reference-group">
+            <span class="cv-language-label">Referencias profesionales</span>
+            <p>Cartas de recomendación: <b>Club Esportiu Artà</b>, <b>Club de Acrobacia Artà</b>, <b>Euroinnova Formación</b> e <b>Intersport</b>.</p>
+          </div>
         </div>
       </article>
     </div>
@@ -1474,6 +1572,114 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
     </footer>
   </section>
 </div>
+
+
+<div class="profile-overlay cv-document-overlay" id="cv-documento" aria-hidden="true">
+  <section class="profile-panel cv-document-panel" role="dialog" aria-modal="true" aria-labelledby="cvDocumentoTitulo">
+    <header class="profile-panel-head">
+      <div><strong id="cvDocumentoTitulo">Currículum deportivo completo</strong><small>Ramón Alberto Curbalán Vega · Perfil profesional deportivo</small></div>
+      <button class="profile-close cv-document-close" type="button" aria-label="Cerrar CV">×</button>
+    </header>
+
+    <div class="cv-document-actions">
+      <button type="button" class="cv-document-back">← Volver al perfil</button>
+      <button type="button" class="cv-print-button">Imprimir / guardar PDF</button>
+    </div>
+
+    <article class="cv-document-sheet">
+      <header class="cv-doc-header">
+        <div>
+          <div class="cv-doc-kicker">Profesional del acondicionamiento físico y entrenamiento personal</div>
+          <h2>Ramón Alberto <span>Curbalán Vega</span></h2>
+          <p>Certificado profesional de acondicionamiento físico · Nivel 3 · Porto Cristo · Manacor · Mallorca</p>
+        </div>
+        <div class="cv-doc-contact">
+          <span>640 724 160</span>
+          <span>ramonalberto.curbalvega@gmail.com</span>
+          <span>Carnet de conducir y vehículo propio</span>
+        </div>
+      </header>
+
+      <section class="cv-doc-section">
+        <h3>Perfil profesional</h3>
+        <p>Profesional del sector deportivo con experiencia en entrenamiento personal, actividades dirigidas, enseñanza de natación y formación deportiva infantil. Planificación de sesiones adaptadas a distintas edades y niveles, incluidas personas mayores y grupos reducidos. Formación complementaria en dirección de instalaciones, coaching deportivo e inclusión, con atención a la seguridad y al seguimiento del usuario.</p>
+      </section>
+
+      <div class="cv-doc-grid">
+        <section class="cv-doc-section">
+          <h3>Experiencia deportiva</h3>
+          <div class="cv-doc-entry"><b>Monitor de Pilates, yoga y taichí</b><span>NOV 2024 – MAR 2025 · Centros de Manacor y Petra</span><p>Sesiones dirigidas a personas mayores, adaptadas a sus necesidades y nivel de condición física.</p></div>
+          <div class="cv-doc-entry"><b>Entrenador personal</b><span>NOV 2024 · Estudio Progreso · Cala Millor</span><p>Entrenamiento individual y sesiones en grupos reducidos de hasta 8 personas.</p></div>
+          <div class="cv-doc-entry"><b>Monitor deportivo y profesor de natación</b><span>NOV 2023 – FEB 2024 · Intersport · Cap Vermell Country Club</span><p>Entrenamiento funcional, cycling, Pilates, Body Pump, core, espalda sana, GAP, entrenamiento personal, socorrismo y clases de natación.</p></div>
+          <div class="cv-doc-entry"><b>Monitor de actividades acuáticas y socorrista</b><span>JUN 2023 · Radstar · Centro Deportivo Capdepera</span><p>Actividades acuáticas y funciones de socorrismo en instalaciones deportivas.</p></div>
+          <div class="cv-doc-entry"><b>Monitor deportivo y profesor de natación</b><span>DIC 2022 – FEB 2023 · Intersport · Cap Vermell Country Club</span><p>Entrenamiento funcional, cycling, Pilates, sesiones personales, socorrismo y enseñanza de natación.</p></div>
+          <div class="cv-doc-entry"><b>Entrenador y responsable de prebenjamines</b><span>TEMP. 2020/21 · Club Esportiu Artà</span><p>Colaboración en la formación integral del grupo de prebenjamines.</p></div>
+        </section>
+
+        <section class="cv-doc-section">
+          <h3>Competencias clave</h3>
+          <ul class="cv-doc-list">
+            <li><b>Entrenamiento y seguimiento.</b> Evaluación inicial, diseño de rutinas adaptadas, supervisión técnica y seguimiento de progresos.</li>
+            <li><b>Trabajo con grupos.</b> Dirección de actividades, coordinación de grupos reducidos y gestión del material deportivo.</li>
+            <li><b>Atención al usuario.</b> Trato empático, motivación, adaptación y trabajo en equipo, con orientación a la seguridad.</li>
+          </ul>
+
+          <h3>Certificaciones profesionales</h3>
+          <div class="cv-doc-entry"><b>Acondicionamiento físico en sala de entrenamiento polivalente</b><span>2024 · Certificado Profesional Nivel 3 · AFDA0210</span></div>
+          <div class="cv-doc-entry"><b>Socorrismo en instalaciones acuáticas</b><span>2022 · Certificado de Profesionalidad Nivel 2 · AFDP0109</span></div>
+          <div class="cv-doc-entry"><b>Acreditación de competencias en acondicionamiento físico</b><span>2023 · IQPIB · UC0273_3, UC0274_3 y UC0275_3</span></div>
+          <div class="cv-doc-entry"><b>Bachillerato homologado</b><span>2011 · Cádiz</span></div>
+        </section>
+
+        <section class="cv-doc-section">
+          <h3>Entrenamiento, seguridad e inclusión</h3>
+          <div class="cv-doc-entry"><b>El deporte como motor de inclusión y sostenibilidad</b><span>2026 · eFundae · 13 h</span></div>
+          <div class="cv-doc-entry"><b>Primeros auxilios en instalaciones deportivas</b><span>2024 · Grupo Insem · 50 h</span></div>
+          <div class="cv-doc-entry"><b>Actividad física para colectivos especiales y tercera edad</b><span>2023 · Aspasia · 100 h</span></div>
+          <div class="cv-doc-entry"><b>Entrenador de CrossTraining y Entrenamiento Funcional</b><span>2021 · Instituto IFIC · 50 h</span></div>
+          <div class="cv-doc-entry"><b>Entrenador de fútbol y psicología deportiva</b><span>2021 · Masstercursos · 200 h</span></div>
+          <div class="cv-doc-entry"><b>Monitor de Musculación y Fitness</b><span>2010 · Euroinnova / INESEM · 300 h</span></div>
+          <div class="cv-doc-entry"><b>Personal Trainer y técnico en entrenamiento con sobrecargas</b><span>2003 · IPEF</span></div>
+        </section>
+
+        <section class="cv-doc-section">
+          <h3>Dirección, gestión y coaching</h3>
+          <div class="cv-doc-entry"><b>Máster en Coaching y Psicología Deportiva</b><span>2024 · Masstercursos · 650 h</span></div>
+          <div class="cv-doc-entry"><b>Gestión de instalaciones deportivas</b><span>2021 · NRED / Grupo Femxa · 45 h</span></div>
+          <div class="cv-doc-entry"><b>Director Deportivo</b><span>2018 · Universidad Antonio de Nebrija · 110 h · 4 ECTS</span></div>
+          <div class="cv-doc-entry"><b>Curso Práctico de Marketing Deportivo</b><span>2018 · Euroinnova · 40 h</span></div>
+          <div class="cv-doc-entry"><b>Técnico Superior en Dirección y Gestión de Instalaciones Deportivas</b><span>2013 · Euroinnova / INESEM · 300 h</span></div>
+
+          <h3>Nutrición y hábitos saludables</h3>
+          <div class="cv-doc-entry"><b>Máster Experto en Alimentación y Nutrición</b><span>2020 · INN Formación · 1.000 h</span></div>
+          <div class="cv-doc-entry"><b>Nutrición y Dietética y Coaching Nutricional Práctico</b><span>2017 · Euroinnova · 60 h</span></div>
+          <div class="cv-doc-entry"><b>Técnico Superior en Dietética y Nutrición</b><span>2009 · Euroinnova / INESEM · 300 h</span></div>
+        </section>
+
+        <section class="cv-doc-section">
+          <h3>Preparación deportiva y fútbol</h3>
+          <div class="cv-doc-entry"><b>Preparación sociológica para el entrenamiento deportivo</b><span>2020 · Aula Fácil · 8 h</span></div>
+          <div class="cv-doc-entry"><b>Lesiones y readaptación deportiva del futbolista</b><span>2020 · Aula Fácil · 20 h</span></div>
+          <div class="cv-doc-entry"><b>Preparación física y planificación en el fútbol</b><span>2020 · Aula Fácil · 20 h</span></div>
+        </section>
+
+        <section class="cv-doc-section">
+          <h3>Otra formación en gestión</h3>
+          <p>Dirección y administración de empresas · 175 h. Formación adicional en gestión de pymes, gestión comercial en inglés, salario y contratación y comercio electrónico.</p>
+
+          <h3>Idiomas y referencias</h3>
+          <div class="cv-tags">
+            <span class="cv-tag">Inglés · alto</span>
+            <span class="cv-tag">Italiano · medio</span>
+            <span class="cv-tag">Portugués · medio</span>
+          </div>
+          <p style="margin-top:10px">Cartas de recomendación: Club Esportiu Artà, Club de Acrobacia Artà, Euroinnova Formación e Intersport.</p>
+        </section>
+      </div>
+    </article>
+  </section>
+</div>
+
 
 <nav class="mobilebar">
 <a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodologia-completa" class="method-trigger">Metodología</a><a href="#experiencia-completa" class="experience-trigger">Experiencia</a><a href="#especialidades-completas" class="specialties-trigger">Especialidades</a><a href="#resultados-completos" class="results-trigger">Resultados</a><a href="#proyectos" class="projects-trigger">Proyectos</a>
@@ -1501,10 +1707,46 @@ function hideProfile(){
   profileOverlay.classList.remove('open');
   profileOverlay.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
+  profileOverlay.querySelectorAll('video').forEach(v=>v.pause());
 }
 profileTriggers.forEach(a=>a.addEventListener('click',openProfile));
 closeProfile?.addEventListener('click',hideProfile);
 profileOverlay?.addEventListener('click',e=>{if(e.target===profileOverlay)hideProfile()});
+
+
+const cvDocumentOverlay=document.getElementById('cv-documento');
+const cvDocTriggers=[...document.querySelectorAll('.cv-doc-trigger')];
+const cvDocClose=document.querySelector('.cv-document-close');
+const cvDocBack=document.querySelector('.cv-document-back');
+const cvPrint=document.querySelector('.cv-print-button');
+
+function openCvDocument(e){
+  if(e)e.preventDefault();
+  profileOverlay?.classList.remove('open');
+  profileOverlay?.setAttribute('aria-hidden','true');
+  cvDocumentOverlay?.classList.add('open');
+  cvDocumentOverlay?.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function hideCvDocument(reopenProfile=false){
+  cvDocumentOverlay?.classList.remove('open');
+  cvDocumentOverlay?.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  if(reopenProfile){
+    profileOverlay?.classList.add('open');
+    profileOverlay?.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+}
+cvDocTriggers.forEach(a=>a.addEventListener('click',openCvDocument));
+cvDocClose?.addEventListener('click',()=>hideCvDocument(false));
+cvDocBack?.addEventListener('click',()=>hideCvDocument(true));
+cvPrint?.addEventListener('click',()=>window.print());
+cvDocumentOverlay?.addEventListener('click',e=>{if(e.target===cvDocumentOverlay)hideCvDocument(false)});
+
+profileTriggers.forEach(a=>a.addEventListener('click',()=>{
+  profileOverlay?.querySelectorAll('video').forEach(v=>v.play().catch(()=>{}));
+}));
 
 const methodOverlay=document.getElementById('metodologia-completa');
 const methodTriggers=[...document.querySelectorAll('.method-trigger')];
@@ -1528,6 +1770,7 @@ methodOverlay?.addEventListener('click',e=>{if(e.target===methodOverlay)hideMeth
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     if(profileOverlay.classList.contains('open'))hideProfile();
+    if(cvDocumentOverlay?.classList.contains('open'))hideCvDocument(false);
     if(methodOverlay.classList.contains('open'))hideMethod();
   }
 });
