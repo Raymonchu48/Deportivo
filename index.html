@@ -646,6 +646,44 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
 .nutrition-controls span{font-size:10px;color:#536159}
 .nutrition-download{font-size:11px}
 @media(max-width:700px){.nutrition-slide{min-height:110px}.nutrition-content{padding:14px}.nutrition-content h4{font-size:24px}}
+
+/* === Full-width dashboard alignment · reference match === */
+@media(min-width:1181px){
+  .app{
+    grid-template-columns:220px minmax(0,1fr)!important;
+  }
+  .sidebar{
+    width:220px!important;
+  }
+  main{
+    width:100%!important;
+    min-width:0!important;
+  }
+  .topstrip{
+    width:100%!important;
+    margin:0!important;
+    padding-left:18px!important;
+    padding-right:18px!important;
+  }
+  .page{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:8px 10px 12px!important;
+  }
+  .hero{
+    width:100%!important;
+    margin:0!important;
+  }
+  .grid{
+    width:100%!important;
+  }
+  .banner,
+  footer{
+    width:100%!important;
+  }
+}
+
 </style>
 </head>
 <body>
