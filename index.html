@@ -3448,6 +3448,66 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     padding-bottom:8px!important;
   }
 }
+
+/* === Encabezados jerárquicos unificados · Experiencia + Metodología === */
+#experiencia-completa .section-title-card,
+#metodologia-completa .section-title-card{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+
+#experiencia-completa .section-title-card>.section-inline-title,
+#metodologia-completa .section-title-card>.section-inline-title{
+  display:inline-block!important;
+  width:auto!important;
+  margin:0 0 24px!important;
+  padding:0 0 10px!important;
+  background:none!important;
+  border:0!important;
+  border-bottom:3px solid #5B6B3E!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#3A3226!important;
+  font-family:var(--font-display, Georgia, serif)!important;
+  font-size:23px!important;
+  font-weight:600!important;
+  line-height:1.2!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+
+#experiencia-completa .section-title-card>.cv-body,
+#metodologia-completa .section-title-card>.cv-body{
+  padding:0!important;
+}
+
+/* La tarjeta legal conserva su cuerpo cálido, pero ya no usa cabecera-banner */
+#metodologia-completa .method-safety-section{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+#metodologia-completa .method-safety-section>.method-safety{
+  padding:22px 24px!important;
+  border:1px solid #E8DED0!important;
+  border-radius:12px!important;
+  background:#FAF6F0!important;
+  box-shadow:0 1px 3px rgba(0,0,0,.05)!important;
+}
+
+@media(max-width:700px){
+  #experiencia-completa .section-title-card>.section-inline-title,
+  #metodologia-completa .section-title-card>.section-inline-title{
+    font-size:21px!important;
+    margin-bottom:20px!important;
+    padding-bottom:8px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3991,8 +4051,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     </div>
 
     <div class="profile-content">
-      <article class="cv-card span-12">
-        <h3>Experiencia en movimiento</h3>
+      <article class="cv-card span-12 section-title-card experience-motion-section">
+        <h3 class="section-inline-title">Experiencia en movimiento</h3>
         <div class="cv-body video-grid">
           <div class="exp-video-card">
             <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/00e9197f-3d48-404a-a5f3-84f23a625f6b.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
@@ -4013,8 +4073,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-7">
-        <h3>Trayectoria deportiva</h3>
+      <article class="cv-card span-7 section-title-card experience-timeline-section">
+        <h3 class="section-inline-title">Trayectoria deportiva</h3>
         <div class="cv-body exp-timeline">
           <div class="exp-role"><time>Nov 2024 – Mar 2025</time><div><b>Monitor de Pilates, yoga y taichí</b><small>Centros de Manacor y Petra · Mallorca</small><p>Sesiones dirigidas a personas mayores y adaptadas a sus necesidades y condición física.</p></div></div>
           <div class="exp-role"><time>Nov 2024</time><div><b>Entrenador personal</b><small>Estudio Progreso · Cala Millor</small><p>Entrenamiento individual y grupos reducidos de hasta ocho personas.</p></div></div>
@@ -4025,8 +4085,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-5">
-        <h3>Competencias demostradas</h3>
+      <article class="cv-card span-5 section-title-card experience-skills-section">
+        <h3 class="section-inline-title">Competencias demostradas</h3>
         <div class="cv-body exp-values">
           <div class="exp-value"><b>ADAPTACIÓN</b><p>Trabajo con edades, niveles y contextos diferentes.</p></div>
           <div class="exp-value"><b>TÉCNICA</b><p>Demostración, corrección y supervisión del movimiento.</p></div>
@@ -4053,8 +4113,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </section>
       </article>
 
-      <article class="cv-card span-12">
-        <h3>Cartas y acreditaciones profesionales</h3>
+      <article class="cv-card span-12 section-title-card experience-letters-section">
+        <h3 class="section-inline-title">Cartas y acreditaciones profesionales</h3>
         <div class="cv-body rec-grid">
           <div class="rec-card">
             <div class="club">Club Esportiu Artà · Temporada 2020/21</div>
@@ -4109,8 +4169,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-12">
-        <h3>Los cinco pilares operativos</h3>
+      <article class="cv-card span-12 section-title-card method-pillars-section">
+        <h3 class="section-inline-title">Los cinco pilares operativos</h3>
         <div class="cv-body method-services">
           <div class="method-service"><i>1:1</i><b>Entrenamiento personal</b><small>Sesiones adaptadas a objetivos, nivel y estilo de vida.</small></div>
           <div class="method-service"><i>2–4</i><b>Grupos reducidos</b><small>Trabajo con atención técnica y calidad sin perder individualización.</small></div>
@@ -4120,8 +4180,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-7">
-        <h3>Principios del método</h3>
+      <article class="cv-card span-7 section-title-card method-principles-section">
+        <h3 class="section-inline-title">Principios del método</h3>
         <div class="cv-body method-principles">
           <div class="method-principle"><b>ATENCIÓN CERCANA</b><p>La planificación no se entrega y se abandona. El acompañamiento forma parte del servicio y permite corregir, ajustar y mantener el rumbo.</p></div>
           <div class="method-principle"><b>PLANIFICACIÓN PROFESIONAL</b><p>La estructura del trabajo se diseña con criterio: objetivos, punto de partida, frecuencia y evolución del entrenamiento.</p></div>
@@ -4130,16 +4190,16 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-5 method-safety-card">
-        <h3>Seguimiento, salud y seguridad</h3>
+      <article class="cv-card span-5 method-safety-card section-title-card method-safety-section">
+        <h3 class="section-inline-title">Seguimiento, salud y seguridad</h3>
         <div class="cv-body method-safety">
           <p>Chetesaí Fitness+ recoge la información necesaria para personalizar tu plan: objetivos, lesiones o limitaciones, rutinas, cargas, asistencia, alimentación, hábitos y progreso. Si detectamos algún riesgo que requiera valoración sanitaria, podemos adaptar o pausar una actividad.</p>
           <p class="method-safety__notice">Aviso: los contenidos y planes son de acondicionamiento físico y educación. No sustituyen diagnóstico, tratamiento, fisioterapia ni atención médica.</p>
         </div>
       </article>
 
-      <article class="cv-card span-12">
-        <h3>Qué convierte este método en una experiencia completa</h3>
+      <article class="cv-card span-12 section-title-card method-experience-section">
+        <h3 class="section-inline-title">Qué convierte este método en una experiencia completa</h3>
         <div class="cv-body">
           <div class="cv-tags method-experience-tags">
             <span class="cv-tag">Valoración inicial</span>
