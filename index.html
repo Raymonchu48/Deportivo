@@ -1618,6 +1618,44 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === CV / idiomas · chips texturizados a juego con perfil === */
+.cv-tags .cv-tag{
+  background-color:#EFE6D8!important;
+  background-image:
+    linear-gradient(135deg,#F2EAE0,#E9DFD1),
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")!important;
+  background-blend-mode:overlay!important;
+  color:#596849!important;
+  font-family:var(--font-body)!important;
+  font-size:12px!important;
+  font-weight:600!important;
+  line-height:1.25!important;
+  padding:8px 14px!important;
+  border-radius:8px!important;
+  border:0!important;
+  border-bottom:2px solid!important;
+  border-image:linear-gradient(90deg,#C7CACF,#9DA1A8) 1!important;
+  display:inline-block!important;
+  box-shadow:none!important;
+  text-transform:none!important;
+}
+
+.cv-tags{
+  gap:7px!important;
+}
+
+@media print{
+  .cv-tags .cv-tag{
+    background:#fff!important;
+    background-image:none!important;
+    color:#333!important;
+    border:1px solid #bbb!important;
+    border-radius:4px!important;
+    box-shadow:none!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
