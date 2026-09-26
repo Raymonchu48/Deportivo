@@ -9,12 +9,44 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap');
 :root{
-  --bg:#FAF7F2;--surface:#FFFFFF;--border:#E8E1D6;
-  --ink:#2A2420;--muted:#7A7267;--muted-warm:#756D62;
-  --accent:#8C5A3C;--cta:#5C6B4F;--chip-bg:#EFE6D8;--chip-text:#6B4426;
-  --forest:#5C6B4F;--forest2:#8C5A3C;--forest3:#6B4426;--green:#8C5A3C;--lime:#5C6B4F;
-  --paper:#FAF7F2;--card:#FFFFFF;--line:#E8E1D6;--white:#FFFFFF;
-  --shadow:0 14px 34px rgba(74,58,45,.08);--r:18px
+  --bg-start:#FAF7F2;
+  --bg-end:#F3EFE7;
+  --surface-start:#FFFFFF;
+  --surface-end:#F5F1EA;
+  --ink:#2A2420;
+  --muted:#7A7267;
+  --muted-aa:#6F675D;
+  --accent:#8C5A3C;
+  --cta-start:#6B7A5E;
+  --cta-end:#5C6B4F;
+  --cta-shadow:0 3px 10px rgba(92,107,79,.35);
+  --chip-bg:#EFE6D8;
+  --chip-text:#6B4426;
+  --chip2-start:#FFFFFF;
+  --chip2-end:#F0F0F1;
+  --chip2-text:#5A5E64;
+  --chip2-border:#DCDEE1;
+  --silver-light:#E4E6EA;
+  --silver-mid:#C7CACF;
+  --silver:#B8BCC2;
+  --silver-dark:#9DA1A8;
+  --silver-text-start:#3A3A3C;
+  --silver-text-end:#787C82;
+  --bg:var(--bg-start);
+  --surface:var(--surface-start);
+  --border:#E8E1D6;
+  --cta:var(--cta-end);
+  --paper:var(--bg-start);
+  --card:var(--surface-start);
+  --line:#E8E1D6;
+  --white:#FFFFFF;
+  --forest:#5C6B4F;
+  --forest2:#8C5A3C;
+  --forest3:#6B4426;
+  --green:#8C5A3C;
+  --lime:#5C6B4F;
+  --shadow:0 2px 10px rgba(42,36,32,.06);
+  --r:18px
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#e9eeea;color:var(--ink);
 font-family:'Manrope',Arial,Helvetica,sans-serif;line-height:1.45}
@@ -687,6 +719,174 @@ footer{margin-top:6px;border-radius:9px;padding:8px 12px;font-size:8px}
   .cv-doc-grid>.cv-doc-section{border-right:0}
 }
 
+
+
+/* === Premium warm + silver palette overrides === */
+html,body,main,.page{
+  background:linear-gradient(180deg,var(--bg-start) 0%,var(--bg-end) 100%)!important;
+  color:var(--ink)!important;
+}
+
+.card,.project-card,.flow-step,.method-service,.method-safety,.rec-card,.specialty-pillar,
+.cred-card,.domain-card,.management-mini-card,.specialty-note,.nutrition-showcase,
+.cv-document-sheet,.cv-card,.profile-resume,.profile-panel,.profile-hero,
+.profile-panel-head,.projects-hero,.method-panel-hero,.experience-hero,.specialties-hero,
+.exp-video-card,.spartan-story,.exp-value,.banner,footer,.cv-presentation-body{
+  background:linear-gradient(160deg,var(--surface-start) 0%,var(--surface-end) 100%)!important;
+  border-color:transparent!important;
+  box-shadow:var(--shadow)!important;
+}
+
+.sidebar,.topstrip,.mobilebar{
+  background:linear-gradient(180deg,var(--surface-start) 0%,var(--surface-end) 100%)!important;
+  color:var(--ink)!important;
+}
+
+.card,.project-card,.flow-step,.method-service,.method-safety,.rec-card,.specialty-pillar,
+.cred-card,.domain-card,.management-mini-card,.specialty-note,.nutrition-showcase,
+.cv-document-sheet,.cv-card{
+  border:0!important;
+}
+
+/* Silver premium depth */
+.card.metrics,.metric-card,.exp-stat,.impactgrid .sp,.cv-card.stat-card,
+.bigyears,.ring strong,.project-cover .project-number,.stepnum,.flow-step .num,
+.cred-fact,.cv-date,.spartan-badge b,.barline b,.comp b,.impactgrid b{
+  font-family:var(--font-mono)!important;
+  font-weight:500!important;
+}
+
+.bigyears,.ring strong,.project-cover .project-number,.flow-step .num,
+.exp-stat b,.cred-fact,.cv-date,.spartan-badge b,.barline b,.comp b,.impactgrid b{
+  color:#5A5E64!important; /* fallback for browsers without text background-clip */
+  background:linear-gradient(180deg,var(--silver-text-start),var(--silver-text-end))!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;
+}
+
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .bigyears,.ring strong,.project-cover .project-number,.flow-step .num,
+  .exp-stat b,.cred-fact,.cv-date,.spartan-badge b,.barline b,.comp b,.impactgrid b{
+    color:#5A5E64!important;
+    background:none!important;
+  }
+}
+
+.experience,.competencies,.impact,.profile,.results-summary,.metric-card,.stats-card{
+  border-top:2px solid var(--silver-mid)!important;
+}
+
+.cred-card,.rec-card,.cv-card,.certificate-card,.achievement-card{
+  border-left:3px solid var(--silver)!important;
+}
+
+/* Decorative silver rule beside compact labels */
+.eyeline,.kicker,.type,.tag,.management-mini-title,.cv-doc-kicker,.nutrition-kicker,
+.projects-hero .eyeline,.experience-hero .eyeline,.specialties-hero .eyeline{
+  position:relative!important;
+  padding-left:30px!important;
+}
+.eyeline:before,.kicker:before,.type:before,.tag:before,.management-mini-title:before,
+.cv-doc-kicker:before,.nutrition-kicker:before,.projects-hero .eyeline:before,
+.experience-hero .eyeline:before,.specialties-hero .eyeline:before{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  top:50%!important;
+  width:22px!important;
+  height:2px!important;
+  transform:translateY(-50%)!important;
+  border-radius:999px!important;
+  background:linear-gradient(90deg,var(--silver-light),var(--silver-dark))!important;
+}
+
+/* CTA gradient and shadow */
+.project-actions .primary,.diploma-link,.method-cta a,.banner-cta,.chetesai-banner-cta a,
+.cv-doc-trigger,.cv-print-button,button.primary,.cta{
+  background:linear-gradient(180deg,var(--cta-start),var(--cta-end))!important;
+  color:#fff!important;
+  border-color:transparent!important;
+  box-shadow:var(--cta-shadow)!important;
+}
+
+/* Secondary chips */
+.sidefoot div,.secondary-chip,.availability-chip,.mode-chip{
+  background:linear-gradient(180deg,var(--chip2-start),var(--chip2-end))!important;
+  color:var(--chip2-text)!important;
+  border:1px solid var(--chip2-border)!important;
+  box-shadow:0 2px 6px rgba(42,36,32,.05)!important;
+  border-radius:999px!important;
+  padding:5px 9px!important;
+}
+
+.project-meta span,.profile-chip,.cv-tag,.management-mini-card span,.exp-video-tag,
+.spartan-story .tag,.cred-fact{
+  background:var(--chip-bg)!important;
+  color:var(--chip-text)!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+
+/* AA-safe secondary copy on warm gradients */
+body,.topstrip,.kicker,.role,.projects-hero p,.method-panel-hero p,.experience-hero p,
+.specialties-hero p,.project-body p,.profile-summary p,.specialty-note,.domain-card p,
+.rec-card p,.flow-step p,.method-safety p,.nutrition-slide p,.cv-doc-section p,
+.cv-doc-list,.cv-reference-group p,.value small,.management-mini-card small,.exp-role small{
+  color:var(--muted-aa)!important;
+}
+.card p,.cv-card p,.cred-body p{color:var(--muted)!important}
+
+/* Formal typography stays editorial */
+h1,h2,h3,.name,.projects-hero h2,.profile-summary h2,.method-panel-hero h2,
+.experience-hero h2,.specialties-hero h2,.cv-doc-header h2,.cv-doc-section h3{
+  font-family:var(--font-display)!important;
+  font-weight:600!important;
+}
+body,button,a,.nav,.cardhead,.role,.kicker,.eyeline,.type,.tag{
+  font-family:var(--font-body)!important;
+}
+
+/* Keep long copy sentence case; compact labels may remain uppercase */
+p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
+.specialties-hero p,.cred-body p,.domain-card p,.rec-card p,.cv-doc-section p{
+  text-transform:none!important;
+}
+
+/* Outline icon treatment */
+.promise i,.value i,.sp i,.specialty-pillar .icon,.rec-proof i,.method-service i{
+  border-color:var(--silver)!important;
+  color:#5A5E64!important;
+}
+.promise i:before,.value i:before,.sp i:before,.specialty-pillar .icon:before,
+.rec-proof i:before,.method-service i:before{
+  filter:grayscale(1) contrast(.85)!important;
+}
+
+/* Print/PDF: pure white, no gradients, no shadows */
+@media print{
+  html,body,main,.page,#cv-documento,#cv-documento *{
+    background:#fff!important;
+    background-image:none!important;
+    box-shadow:none!important;
+    text-shadow:none!important;
+  }
+  #cv-documento *{
+    border-color:#D9D9D9!important;
+  }
+  #cv-documento h1,#cv-documento h2,#cv-documento h3{
+    color:#222!important;
+    -webkit-text-fill-color:#222!important;
+  }
+  #cv-documento p,#cv-documento small,#cv-documento span,#cv-documento li{
+    color:#444!important;
+    -webkit-text-fill-color:#444!important;
+  }
+  #cv-documento i,#cv-documento .icon,
+  #cv-documento [class*="badge"]:before,#cv-documento [class*="badge"]:after{
+    display:none!important;
+  }
+}
 
 /* === Warm editorial palette · Fraunces / Inter / IBM Plex Mono === */
 html,body{background:var(--bg);color:var(--ink)}
