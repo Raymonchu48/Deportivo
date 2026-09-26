@@ -1118,205 +1118,67 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 }
 
 
-/* === HERO FINAL · altura corregida y más aire inferior === */
-.topstrip{
-  display:flex!important;
-}
+/* === HERO EXACTO · referencia 2048x732 sin reinterpretación === */
+.topstrip{display:none!important}
 
 .hero{
   position:relative!important;
   display:block!important;
   width:100%!important;
-  height:clamp(390px,27vw,455px)!important;
+  height:auto!important;
   min-height:0!important;
-  max-height:455px!important;
+  max-height:none!important;
   aspect-ratio:auto!important;
   padding:0!important;
+  margin:0!important;
   overflow:hidden!important;
   border-radius:12px!important;
   border:1px solid var(--border)!important;
-  background-color:var(--surface)!important;
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(250,247,242,.995) 0%,
-      rgba(250,247,242,.985) 35%,
-      rgba(250,247,242,.88) 44%,
-      rgba(250,247,242,.46) 52%,
-      rgba(250,247,242,.10) 60%,
-      rgba(250,247,242,0) 66%
-    ),
-    url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2b34e6ee-ac2b-4103-a625-0e74333b39d7.png")!important;
-  background-size:
-    100% 100%,
-    auto 92%!important;
-  background-position:
-    center center,
-    right 4px center!important;
-  background-repeat:
-    no-repeat,
-    no-repeat!important;
+  background:none!important;
   box-shadow:var(--shadow)!important;
 }
 
-.hero::before,
-.hero::after{
+.hero:before,
+.hero:after,
+.hero-visual{
   content:none!important;
   display:none!important;
 }
 
-.hero-final-image,
-.hero-visual{
-  display:none!important;
+.hero-exact-reference{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  max-width:none!important;
+  aspect-ratio:2048/732!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  margin:0!important;
+  padding:0!important;
 }
 
 .hero-copy{
   position:absolute!important;
-  inset:0 auto 0 0!important;
-  z-index:2!important;
-  width:49%!important;
-  max-width:none!important;
-  height:100%!important;
-  padding:3.4% 0 2.8% 3.4%!important;
-  margin:0!important;
-  display:flex!important;
-  flex-direction:column!important;
-  justify-content:center!important;
-  background:transparent!important;
-  overflow:visible!important;
-  clip:auto!important;
-  white-space:normal!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0 0 0 0)!important;
+  white-space:nowrap!important;
   border:0!important;
 }
 
-.hero .name,
-.hero h1{
-  font-family:var(--font-display)!important;
-  font-weight:600!important;
-  text-transform:none!important;
-  letter-spacing:-.02em!important;
-}
-
-.hero .kicker,
-.hero .role,
-.hero p,
-.hero .promise{
-  font-family:var(--font-body)!important;
-}
-
-.hero .name{
-  color:var(--ink)!important;
-  margin:0 0 .4%!important;
-  font-size:clamp(52px,3.9vw,82px)!important;
-  line-height:.90!important;
-}
-
-.hero .name span{
-  color:var(--accent)!important;
-}
-
-.hero .role{
-  color:var(--muted-aa)!important;
-  margin-bottom:1%!important;
-  font-size:clamp(9px,.68vw,13px)!important;
-  letter-spacing:.08em!important;
-  text-transform:uppercase!important;
-}
-
-.hero h1{
-  color:var(--ink)!important;
-  margin:0 0 .8%!important;
-  font-size:clamp(40px,3.05vw,64px)!important;
-  line-height:.93!important;
-}
-
-.hero h1 em{
-  display:block!important;
-  color:var(--accent)!important;
-  font-style:normal!important;
-}
-
-.hero p{
-  color:var(--muted-aa)!important;
-  max-width:90%!important;
-  margin:0!important;
-  font-size:clamp(9px,.68vw,13px)!important;
-  line-height:1.4!important;
-}
-
-.hero .promise-row{
-  display:flex!important;
-  align-items:center!important;
-  gap:16px!important;
-  margin-top:1.35%!important;
-  flex-wrap:nowrap!important;
-}
-
-/* Give the dashboard below the hero breathing room */
-.hero + .grid{
-  margin-top:18px!important;
-}
-
-@media(max-width:1180px) and (min-width:801px){
-  .hero{
-    height:clamp(370px,34vw,430px)!important;
-    max-height:430px!important;
-    background-size:
-      100% 100%,
-      auto 88%!important;
-    background-position:
-      center center,
-      right 6px center!important;
-  }
-
-  .hero-copy{
-    width:54%!important;
-    padding:3.8% 0 3% 3%!important;
-  }
-}
+.hero + .grid{margin-top:18px!important}
 
 @media(max-width:800px){
-  .hero{
-    height:auto!important;
-    max-height:none!important;
-    min-height:650px!important;
-    border-radius:10px!important;
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(250,247,242,.995) 0%,
-        rgba(250,247,242,.99) 48%,
-        rgba(250,247,242,.86) 57%,
-        rgba(250,247,242,.20) 70%,
-        rgba(250,247,242,0) 80%
-      ),
-      url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2b34e6ee-ac2b-4103-a625-0e74333b39d7.png")!important;
-    background-size:
-      100% 100%,
-      auto 42%!important;
-    background-position:
-      center center,
-      center bottom!important;
-    background-repeat:
-      no-repeat,
-      no-repeat!important;
-  }
-
-  .hero-copy{
-    position:relative!important;
-    inset:auto!important;
+  .hero{border-radius:10px!important}
+  .hero-exact-reference{
     width:100%!important;
     height:auto!important;
-    padding:24px 22px 0!important;
+    object-fit:contain!important;
   }
-
-  .hero .promise-row{
-    flex-wrap:wrap!important;
-  }
-
-  .hero + .grid{
-    margin-top:16px!important;
-  }
+  .hero + .grid{margin-top:16px!important}
 }
 
 @media print{
@@ -1352,6 +1214,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 <div class="page">
 
 <section class="hero" id="inicio">
+  <img class="hero-exact-reference" src="https://d2jqrm6oza8nb6.cloudfront.net/datasets/d07c7d53-2588-491d-9a81-33c46c85f509.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZDZiN2E5OGEwZTI0OTMxYiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDU1MjcxNH0.Ca-U1sokA_7x0VWha-uPXTWcNdsurLHn7RDdqzRfNRw" alt="Hero de Ramón Alberto Curbalán Vega">
   <div class="hero-copy">
     <div class="kicker">Perfil profesional deportivo</div>
     <div class="name">Ramón Alberto <span>Curbalán Vega</span></div>
