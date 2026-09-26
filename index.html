@@ -1118,20 +1118,33 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 }
 
 
-/* === HERO FINAL · composición gráfica aprobada === */
-.topstrip{display:none!important}
+/* === HERO FINAL · composición nativa estable === */
+.topstrip{display:flex!important}
 
 .hero{
   position:relative!important;
   display:block!important;
+  width:100%!important;
+  aspect-ratio:2098/750!important;
   min-height:0!important;
   height:auto!important;
-  aspect-ratio:auto!important;
   padding:0!important;
   overflow:hidden!important;
   border-radius:12px!important;
   border:1px solid var(--border)!important;
-  background:var(--surface)!important;
+  background-color:var(--surface)!important;
+  background-image:
+    linear-gradient(90deg,
+      rgba(250,247,242,.995) 0%,
+      rgba(250,247,242,.985) 33%,
+      rgba(250,247,242,.90) 42%,
+      rgba(250,247,242,.54) 50%,
+      rgba(250,247,242,.16) 58%,
+      rgba(250,247,242,0) 65%),
+    url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2b34e6ee-ac2b-4103-a625-0e74333b39d7.png")!important;
+  background-size:100% 100%,auto 100%!important;
+  background-position:center center,right center!important;
+  background-repeat:no-repeat,no-repeat!important;
   box-shadow:var(--shadow)!important;
 }
 
@@ -1141,40 +1154,136 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   display:none!important;
 }
 
-.hero-final-image{
-  display:block!important;
-  width:100%!important;
-  height:auto!important;
-  max-width:none!important;
-  object-fit:contain!important;
-  object-position:center center!important;
+.hero-final-image,
+.hero-visual{
+  display:none!important;
 }
 
 .hero-copy{
   position:absolute!important;
-  width:1px!important;
-  height:1px!important;
-  padding:0!important;
-  margin:-1px!important;
-  overflow:hidden!important;
-  clip:rect(0 0 0 0)!important;
-  white-space:nowrap!important;
+  inset:0 auto 0 0!important;
+  z-index:2!important;
+  width:50%!important;
+  max-width:none!important;
+  height:100%!important;
+  padding:4.4% 0 3.5% 3.2%!important;
+  margin:0!important;
+  overflow:visible!important;
+  clip:auto!important;
+  white-space:normal!important;
   border:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  background:transparent!important;
 }
 
-.hero-visual{display:none!important}
+.hero .name,
+.hero h1{
+  font-family:var(--font-display)!important;
+  font-weight:600!important;
+  text-transform:none!important;
+  letter-spacing:-.02em!important;
+}
+
+.hero .kicker,
+.hero .role,
+.hero p,
+.hero .promise{
+  font-family:var(--font-body)!important;
+}
+
+.hero .name{
+  color:var(--ink)!important;
+  margin:0 0 .5%!important;
+  font-size:clamp(54px,4.3vw,92px)!important;
+  line-height:.9!important;
+}
+
+.hero .name span,
+.hero h1 em{
+  color:var(--accent)!important;
+}
+
+.hero .role{
+  color:var(--muted-aa)!important;
+  margin-bottom:1.2%!important;
+  font-size:clamp(9px,.72vw,14px)!important;
+  letter-spacing:.08em!important;
+  text-transform:uppercase!important;
+}
+
+.hero h1{
+  color:var(--ink)!important;
+  margin:0 0 1%!important;
+  font-size:clamp(42px,3.45vw,74px)!important;
+  line-height:.93!important;
+}
+
+.hero h1 em{
+  display:block!important;
+  font-style:normal!important;
+}
+
+.hero p{
+  color:var(--muted-aa)!important;
+  max-width:90%!important;
+  margin:0!important;
+  font-size:clamp(9px,.72vw,14px)!important;
+  line-height:1.4!important;
+}
+
+.hero .promise-row{
+  display:flex!important;
+  align-items:center!important;
+  gap:18px!important;
+  margin-top:1.8%!important;
+  flex-wrap:nowrap!important;
+}
+
+@media(max-width:1180px) and (min-width:801px){
+  .hero{
+    background-size:100% 100%,auto 100%!important;
+    background-position:center center,right center!important;
+  }
+
+  .hero-copy{
+    width:55%!important;
+    padding:4.8% 0 3.8% 3%!important;
+  }
+
+  .hero .promise-row{gap:10px!important}
+}
 
 @media(max-width:800px){
   .page{padding-top:10px!important}
+
   .hero{
-    min-height:0!important;
     aspect-ratio:auto!important;
+    min-height:720px!important;
     border-radius:10px!important;
+    background-image:
+      linear-gradient(180deg,
+        rgba(250,247,242,.995) 0%,
+        rgba(250,247,242,.99) 48%,
+        rgba(250,247,242,.86) 57%,
+        rgba(250,247,242,.20) 70%,
+        rgba(250,247,242,0) 80%),
+      url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2b34e6ee-ac2b-4103-a625-0e74333b39d7.png")!important;
+    background-size:100% 100%,auto 48%!important;
+    background-position:center center,center bottom!important;
+    background-repeat:no-repeat,no-repeat!important;
   }
-  .hero-final-image{
+
+  .hero-copy{
+    position:relative!important;
+    inset:auto!important;
     width:100%!important;
     height:auto!important;
+    padding:26px 22px 0!important;
   }
+
+  .hero .promise-row{flex-wrap:wrap!important}
 }
 
 @media print{
@@ -1210,7 +1319,6 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 <div class="page">
 
 <section class="hero" id="inicio">
-  <img class="hero-final-image" src="assets/hero/hero-final-warm.jpg" alt="Ramón Alberto Curbalán Vega · Entrena con criterio, evoluciona con método">
   <div class="hero-copy">
     <div class="kicker">Perfil profesional deportivo</div>
     <div class="name">Ramón Alberto <span>Curbalán Vega</span></div>
