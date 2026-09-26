@@ -3262,6 +3262,36 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Spartan · composición inferior aprobada === */
+.spartan-gallery .spartan-gallery__wide-set{
+  grid-column:1 / -1!important;
+  grid-row:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  border-radius:12px!important;
+  overflow:hidden!important;
+  background:#000!important;
+}
+
+.spartan-gallery .spartan-gallery__wide-set img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:none!important;
+}
+
+.spartan-gallery .spartan-gallery__wide-set:hover img{
+  transform:none!important;
+}
+
+@media(max-width:900px){
+  .spartan-gallery .spartan-gallery__wide-set{
+    grid-column:1 / -1!important;
+  }
+}
 </style>
 </head>
 <body>
@@ -3548,9 +3578,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
                 <figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/ab5a2fd4-f326-4730-9718-70cbf29af60f.jpg" alt="Ramón Curbalán superando un obstáculo en Spartan Race"><figcaption>Obstáculos</figcaption></figure>
                 <figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/23877f4d-e66e-4d85-996c-71988a18191b.jpg" alt="Ramón Curbalán en prueba Spartan Race"><figcaption>Resistencia</figcaption></figure>
                 <figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/d59acf7c-218a-4924-882d-2b5a53497874.png" alt="Ramón Curbalán durante una prueba Spartan"><figcaption>Superación</figcaption></figure>
-                <figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/e368f2fd-cd03-472f-8118-1e881d0936f5.jpg" alt="Ramón Curbalán con medalla Spartan Finisher"><figcaption>Finisher</figcaption></figure>
-                <figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/e59b7957-5bb3-46da-a89c-a99f13535681.jpg" alt="Dorsal Spartan 58152"><figcaption>Dorsal 58152</figcaption></figure>
-                <figure><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/e9e49f7d-17e1-4276-ba8f-cebddbecbfd3.jpg" alt="Dorsal Spartan 49205"><figcaption>Dorsal 49205</figcaption></figure>
+                <figure class="spartan-gallery__wide-set"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/4a59823b-f577-4071-aaf3-ca77bc001f3a.png" alt="Galería Spartan con finisher y dorsales 58152 y 49205"></figure>
               </div>
               <div class="spartan-note">Galería personal aportada por Ramón Curbalán. Las imágenes de Sportograf se muestran con sus marcas de agua originales.</div>
             </div>
