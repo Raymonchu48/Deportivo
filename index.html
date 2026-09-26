@@ -1181,6 +1181,156 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   .hero + .grid{margin-top:16px!important}
 }
 
+
+/* === Certification cards · premium paper/metal header + diploma CTA === */
+#especialidades-completas .cred-card .cred-top{
+  background-color:#EFE6D8!important;
+  background-image:
+    radial-gradient(140% 160% at 100% 0%,#E3E5E1,transparent 60%),
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E")!important;
+  background-blend-mode:overlay!important;
+  padding:14px 16px!important;
+  border-bottom:1px solid #D6D2C8!important;
+  box-shadow:none!important;
+}
+
+#especialidades-completas .cred-card .cred-top .type{
+  color:#5B6A4E!important;
+  font-family:var(--font-body)!important;
+  font-weight:600!important;
+  font-size:10.5px!important;
+  line-height:1.25!important;
+  letter-spacing:1px!important;
+  text-transform:uppercase!important;
+  padding-left:0!important;
+}
+
+#especialidades-completas .cred-card .cred-top .type:before{
+  display:none!important;
+  content:none!important;
+}
+
+#especialidades-completas .cred-card .cred-top h4{
+  font-family:var(--font-display)!important;
+  font-weight:600!important;
+  color:#2A2420!important;
+  font-size:19px!important;
+  line-height:1.08!important;
+  letter-spacing:-.015em!important;
+  text-transform:none!important;
+  margin:7px 0 6px!important;
+}
+
+#especialidades-completas .cred-card .cred-top small{
+  font-family:var(--font-body)!important;
+  font-weight:400!important;
+  color:#7A7267!important;
+  font-size:11px!important;
+  line-height:1.35!important;
+}
+
+/* Keep certification body untouched; only button appearance changes. */
+#especialidades-completas .diploma-link.btn-diploma{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:0!important;
+  min-height:0!important;
+  background:linear-gradient(180deg,#7C8B70 0%,#5B6A4E 40%,#4A5740 100%)!important;
+  color:#FFFFFF!important;
+  border:none!important;
+  font-family:var(--font-body)!important;
+  font-weight:500!important;
+  font-size:12.5px!important;
+  line-height:1.2!important;
+  padding:8px 16px!important;
+  border-radius:6px!important;
+  cursor:pointer!important;
+  position:relative!important;
+  overflow:hidden!important;
+  text-decoration:none!important;
+  box-shadow:
+    0 3px 10px rgba(91,106,78,.28),
+    0 6px 18px rgba(160,163,158,.40)!important;
+  transition:box-shadow 150ms ease,transform 150ms ease!important;
+}
+
+#especialidades-completas .btn-diploma__text{
+  position:relative!important;
+  z-index:2!important;
+  color:#FFFFFF!important;
+  background:none!important;
+  padding:0!important;
+  margin:0!important;
+  font:inherit!important;
+}
+
+#especialidades-completas .btn-diploma__shine{
+  position:absolute!important;
+  z-index:1!important;
+  top:0!important;
+  left:-30%!important;
+  width:30%!important;
+  height:100%!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent)!important;
+  transform:skewX(-20deg)!important;
+  pointer-events:none!important;
+  transition:left 420ms ease!important;
+}
+
+#especialidades-completas .diploma-link.btn-diploma:hover{
+  background:linear-gradient(180deg,#7C8B70 0%,#5B6A4E 40%,#4A5740 100%)!important;
+  box-shadow:
+    0 4px 14px rgba(91,106,78,.35),
+    0 8px 22px rgba(160,163,158,.50)!important;
+  transform:translateY(-1px)!important;
+}
+
+#especialidades-completas .diploma-link.btn-diploma:hover .btn-diploma__shine{
+  left:115%!important;
+}
+
+#especialidades-completas .diploma-link.btn-diploma:focus-visible{
+  outline:3px solid rgba(91,106,78,.38)!important;
+  outline-offset:3px!important;
+}
+
+/* Reduced motion: keep the premium finish without sweeping animation. */
+@media (prefers-reduced-motion:reduce){
+  #especialidades-completas .diploma-link.btn-diploma,
+  #especialidades-completas .btn-diploma__shine{
+    transition:none!important;
+  }
+}
+
+/* Print: certification headers and buttons flatten cleanly. */
+@media print{
+  #especialidades-completas .cred-card .cred-top{
+    background:#fff!important;
+    background-image:none!important;
+    border-bottom:1px solid #bbb!important;
+    box-shadow:none!important;
+  }
+  #especialidades-completas .cred-card .cred-top .type,
+  #especialidades-completas .cred-card .cred-top h4,
+  #especialidades-completas .cred-card .cred-top small{
+    color:#222!important;
+    -webkit-text-fill-color:#222!important;
+  }
+  #especialidades-completas .diploma-link.btn-diploma{
+    background:#fff!important;
+    color:#222!important;
+    border:1px solid #999!important;
+    box-shadow:none!important;
+  }
+  #especialidades-completas .btn-diploma__text{
+    color:#222!important;
+  }
+  #especialidades-completas .btn-diploma__shine{
+    display:none!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -1527,7 +1677,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
             <div class="cred-body">
               <p>Incluye comunicación, liderazgo y coaching deportivo; deporte y persona; dirección de competición; entrenamiento deportivo; emociones; motivación; habilidades sociales; dinámica de grupo; psicología de la actividad física y del deporte; mentoring y metodología de evaluación.</p>
               <div class="cred-facts"><span class="cred-fact">650 h</span><span class="cred-fact">Sobresaliente</span><span class="cred-fact">15 módulos</span></div>
-<div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/coaching-psicologia.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Máster en Coaching y Psicología Deportiva (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div>
+<div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/coaching-psicologia.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Máster en Coaching y Psicología Deportiva (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div>
             </div>
           </div>
 
@@ -1540,7 +1690,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
             <div class="cred-body">
               <p>Formación en nutrición y planificación dietética, nutrición deportiva, elaboración de dietas y dietoterapia, alimentación saludable, coaching nutricional y alergias e intolerancias alimentarias.</p>
               <div class="cred-facts"><span class="cred-fact">1.000 h</span><span class="cred-fact">Nutrición deportiva</span><span class="cred-fact">Planificación dietética</span></div>
-<div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/master-nutricion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Máster Experto en Alimentación y Nutrición (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div>
+<div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/master-nutricion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Máster Experto en Alimentación y Nutrición (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div>
             </div>
           </div>
 
@@ -1553,7 +1703,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
             <div class="cred-body">
               <p>Contenidos sobre necesidades nutricionales, composición de alimentos, macronutrientes y micronutrientes, evaluación del estado nutricional, dietética, nutrición en diferentes etapas de la vida, nutrición en la práctica deportiva y promoción de la salud.</p>
               <div class="cred-facts"><span class="cred-fact">300 h</span><span class="cred-fact">Sobresaliente</span><span class="cred-fact">Nutrición deportiva</span></div>
-<div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/dietetica-nutricion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Técnico Superior en Dietética y Nutrición (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div>
+<div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/dietetica-nutricion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Técnico Superior en Dietética y Nutrición (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div>
             </div>
           </div>
 
@@ -1566,7 +1716,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
             <div class="cred-body">
               <p>Curso práctico con contenidos de clasificación de alimentos, sistema gastrointestinal, digestión, necesidades nutricionales y fundamentos e importancia del coaching aplicado al ámbito nutricional.</p>
               <div class="cred-facts"><span class="cred-fact">60 h</span><span class="cred-fact">Notable</span><span class="cred-fact">Coaching nutricional</span></div>
-<div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/coaching-nutricional.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Nutrición y Dietética y Coaching Nutricional Práctico (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div>
+<div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/coaching-nutricional.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Nutrición y Dietética y Coaching Nutricional Práctico (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div>
             </div>
           </div>
 
@@ -1579,7 +1729,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
             <div class="cred-body">
               <p>Formación específica que combina contenidos de entrenamiento de fútbol y psicología deportiva, completada mediante metodología online.</p>
               <div class="cred-facts"><span class="cred-fact">200 h</span><span class="cred-fact">Fútbol</span><span class="cred-fact">Psicología deportiva</span></div>
-<div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/futbol-psicologia.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Entrenador de fútbol y psicología deportiva (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div>
+<div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/futbol-psicologia.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Entrenador de fútbol y psicología deportiva (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div>
             </div>
           </div>
 
@@ -1596,26 +1746,26 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
           </div>
 
 <div class="diploma-category">Certificaciones profesionales</div>
-<div class="cred-card"><div class="cred-top"><div class="type">Certificaciones profesionales</div><h4>Acondicionamiento físico en sala de entrenamiento polivalente</h4><small>Certificado Profesional Nivel 3 · AFDA0210 · Govern de les Illes Balears · 2024</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/acondicionamiento-fisico.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Acondicionamiento físico en sala de entrenamiento polivalente (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Certificaciones profesionales</div><h4>Socorrismo en instalaciones acuáticas</h4><small>Certificado de Profesionalidad Nivel 2 · AFDP0109 · Govern de les Illes Balears · 2022</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/socorrismo.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Socorrismo en instalaciones acuáticas (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Certificaciones profesionales</div><h4>Acondicionamiento físico en sala de entrenamiento polivalente</h4><small>Certificado Profesional Nivel 3 · AFDA0210 · Govern de les Illes Balears · 2024</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/acondicionamiento-fisico.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Acondicionamiento físico en sala de entrenamiento polivalente (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Certificaciones profesionales</div><h4>Socorrismo en instalaciones acuáticas</h4><small>Certificado de Profesionalidad Nivel 2 · AFDP0109 · Govern de les Illes Balears · 2022</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/socorrismo.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Socorrismo en instalaciones acuáticas (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
 <div class="cred-card"><div class="cred-top"><div class="type">Certificaciones profesionales</div><h4>Acreditación de competencias en acondicionamiento físico</h4><small>IQPIB · UC0273_3 · UC0274_3 · UC0275_3 · 2023</small></div></div>
 <div class="cred-card"><div class="cred-top"><div class="type">Certificaciones profesionales</div><h4>Bachillerato homologado</h4><small>Cádiz · 2011</small></div></div>
 <div class="diploma-category">Entrenamiento, seguridad e inclusión</div>
-<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>El deporte como motor de inclusión y sostenibilidad</h4><small>eFundae · 13 h · 2026</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/deporte-inclusion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: El deporte como motor de inclusión y sostenibilidad (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Primeros auxilios en instalaciones deportivas</h4><small>Grupo Insem · 50 h · AFDP015PO · 2024</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/primeros-auxilios.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Primeros auxilios en instalaciones deportivas (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Actividad física para colectivos especiales y tercera edad</h4><small>Aspasia · 100 h · AFDA001PO · 2023</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/actividad-fisica-tercera-edad.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Actividad física para colectivos especiales y tercera edad (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Prevención de riesgos laborales para monitor deportivo</h4><small>ASPY Prevención · 2 h · 2023</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/prevencion-riesgos.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Prevención de riesgos laborales para monitor deportivo (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Entrenador de CrossTraining y Entrenamiento Funcional</h4><small>Instituto IFIC · 50 h · 2021</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/crosstraining-funcional.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Entrenador de CrossTraining y Entrenamiento Funcional (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Monitor de Musculación y Fitness</h4><small>Euroinnova / INESEM · 300 h · 2010</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/musculacion-fitness.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Monitor de Musculación y Fitness (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Personal Trainer en Entrenamiento con Sobrecarga</h4><small>IPEF · Argentina · Egreso 2003, expedición 2004 · 2003 / 2004</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/personal-trainer.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Personal Trainer en Entrenamiento con Sobrecarga (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Técnico en Entrenamiento con Sobrecarga</h4><small>IPEF · Argentina · Egreso 2003, expedición 2004 · 2003 / 2004</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/tecnico-sobrecarga.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Técnico en Entrenamiento con Sobrecarga (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a><a class="diploma-link" href="assets/diplomas/credencial-sobrecarga.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver credencial: Técnico en Entrenamiento con Sobrecarga (PDF, nueva pestaña)">Ver credencial <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card cred-card-full"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Instructor de AeroKickboxing</h4><small>IPEF · Argentina · 2003</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/aerokickboxing.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Instructor de AeroKickboxing (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>El deporte como motor de inclusión y sostenibilidad</h4><small>eFundae · 13 h · 2026</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/deporte-inclusion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: El deporte como motor de inclusión y sostenibilidad (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Primeros auxilios en instalaciones deportivas</h4><small>Grupo Insem · 50 h · AFDP015PO · 2024</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/primeros-auxilios.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Primeros auxilios en instalaciones deportivas (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Actividad física para colectivos especiales y tercera edad</h4><small>Aspasia · 100 h · AFDA001PO · 2023</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/actividad-fisica-tercera-edad.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Actividad física para colectivos especiales y tercera edad (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Prevención de riesgos laborales para monitor deportivo</h4><small>ASPY Prevención · 2 h · 2023</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/prevencion-riesgos.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Prevención de riesgos laborales para monitor deportivo (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Entrenador de CrossTraining y Entrenamiento Funcional</h4><small>Instituto IFIC · 50 h · 2021</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/crosstraining-funcional.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Entrenador de CrossTraining y Entrenamiento Funcional (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Monitor de Musculación y Fitness</h4><small>Euroinnova / INESEM · 300 h · 2010</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/musculacion-fitness.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Monitor de Musculación y Fitness (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Personal Trainer en Entrenamiento con Sobrecarga</h4><small>IPEF · Argentina · Egreso 2003, expedición 2004 · 2003 / 2004</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/personal-trainer.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Personal Trainer en Entrenamiento con Sobrecarga (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Técnico en Entrenamiento con Sobrecarga</h4><small>IPEF · Argentina · Egreso 2003, expedición 2004 · 2003 / 2004</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/tecnico-sobrecarga.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Técnico en Entrenamiento con Sobrecarga (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a><a class="diploma-link" href="assets/diplomas/credencial-sobrecarga.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver credencial: Técnico en Entrenamiento con Sobrecarga (PDF, nueva pestaña)">Ver credencial <span aria-hidden="true">↗</span></a></div></div></div>
+<div class="cred-card cred-card-full"><div class="cred-top"><div class="type">Entrenamiento, seguridad e inclusión</div><h4>Instructor de AeroKickboxing</h4><small>IPEF · Argentina · 2003</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/aerokickboxing.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Instructor de AeroKickboxing (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
 <div class="diploma-category">Dirección, gestión y coaching</div>
-<div class="cred-card"><div class="cred-top"><div class="type">Dirección, gestión y coaching</div><h4>Curso Práctico de Marketing Deportivo</h4><small>Euroinnova Formación · 40 h · 2018</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/marketing-deportivo.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Curso Práctico de Marketing Deportivo (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a><a class="diploma-link" href="assets/diplomas/carta-marketing.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver carta: Curso Práctico de Marketing Deportivo (PDF, nueva pestaña)">Ver carta <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Dirección, gestión y coaching</div><h4>Técnico Superior en Dirección y Gestión de Instalaciones Deportivas</h4><small>Euroinnova / INESEM · 300 h · 2013</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/direccion-gestion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Técnico Superior en Dirección y Gestión de Instalaciones Deportivas (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Dirección, gestión y coaching</div><h4>Curso Práctico de Marketing Deportivo</h4><small>Euroinnova Formación · 40 h · 2018</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/marketing-deportivo.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Curso Práctico de Marketing Deportivo (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a><a class="diploma-link" href="assets/diplomas/carta-marketing.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver carta: Curso Práctico de Marketing Deportivo (PDF, nueva pestaña)">Ver carta <span aria-hidden="true">↗</span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Dirección, gestión y coaching</div><h4>Técnico Superior en Dirección y Gestión de Instalaciones Deportivas</h4><small>Euroinnova / INESEM · 300 h · 2013</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/direccion-gestion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Técnico Superior en Dirección y Gestión de Instalaciones Deportivas (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
 <div class="diploma-category">Preparación deportiva y fútbol</div>
-<div class="cred-card"><div class="cred-top"><div class="type">Preparación deportiva y fútbol</div><h4>Lesiones y readaptación deportiva del futbolista</h4><small>AulaFácil · 20 h · 2020</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/lesiones-readaptacion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Lesiones y readaptación deportiva del futbolista (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
-<div class="cred-card"><div class="cred-top"><div class="type">Preparación deportiva y fútbol</div><h4>Preparación física y planificación en el fútbol</h4><small>AulaFácil · 20 h · 2020</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/preparacion-futbol.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Preparación física y planificación en el fútbol (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Preparación deportiva y fútbol</div><h4>Lesiones y readaptación deportiva del futbolista</h4><small>AulaFácil · 20 h · 2020</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/lesiones-readaptacion.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Lesiones y readaptación deportiva del futbolista (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
+<div class="cred-card"><div class="cred-top"><div class="type">Preparación deportiva y fútbol</div><h4>Preparación física y planificación en el fútbol</h4><small>AulaFácil · 20 h · 2020</small></div><div class="cred-body"><div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/preparacion-futbol.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Preparación física y planificación en el fútbol (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div></div></div>
         </div>
       </article>
 
@@ -1650,19 +1800,19 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
                 <b>Director Deportivo</b>
                 <small>Planificación del sector deportivo, habilidades directivas, liderazgo, estrategia, dirección económico-financiera, emprendimiento y marketing deportivo.</small>
                 <span>110 h · 4 ECTS</span>
-<div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/director-deportivo.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Director Deportivo (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div>
+<div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/director-deportivo.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Director Deportivo (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div>
               </div>
               <div class="management-mini-card">
                 <b>Gestión de instalaciones deportivas</b>
                 <small>Legislación deportiva, planificación y diseño de instalaciones, infraestructuras y gestión deportiva municipal.</small>
                 <span>45 h</span>
-<div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/gestion-instalaciones.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Gestión de instalaciones deportivas (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div>
+<div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/gestion-instalaciones.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Gestión de instalaciones deportivas (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div>
               </div>
               <div class="management-mini-card">
                 <b>Financiación y fondos verdes</b>
                 <small>Normativa y financiación pública, fondos verdes aplicados al deporte y elaboración de propuestas y buenas prácticas.</small>
                 <span>12 h · 2026</span>
-<div class="diploma-actions"><a class="diploma-link" href="assets/diplomas/ayudas-empresa-deportiva.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Ayudas públicas y fondos verdes para impulsar tu empresa deportiva (PDF, nueva pestaña)">Ver diploma <span aria-hidden="true">↗</span></a></div>
+<div class="diploma-actions"><a class="diploma-link btn-diploma" href="assets/diplomas/ayudas-empresa-deportiva.pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver diploma: Ayudas públicas y fondos verdes para impulsar tu empresa deportiva (PDF, nueva pestaña)"><span class="btn-diploma__text">Ver diploma ↗</span><span class="btn-diploma__shine" aria-hidden="true"></span></a></div>
               </div>
             </div>
           </div>
