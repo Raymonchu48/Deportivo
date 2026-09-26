@@ -2188,6 +2188,92 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Metodología Chetesaí · visual de marca integrado === */
+.method-panel-hero--branded{
+  position:relative!important;
+  overflow:hidden!important;
+  padding-right:38%!important;
+  min-height:430px!important;
+}
+
+.method-panel-hero--branded::after{
+  content:none!important;
+  display:none!important;
+}
+
+.method-panel-hero__brand-visual{
+  position:absolute!important;
+  top:28px!important;
+  right:28px!important;
+  bottom:28px!important;
+  width:34%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:16px!important;
+  overflow:hidden!important;
+  background:#FAF7F2!important;
+}
+
+.method-panel-hero__brand-visual img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:#FAF7F2!important;
+}
+
+.method-panel-hero--branded .method-manifest{
+  position:relative!important;
+  z-index:2!important;
+}
+
+@media(max-width:1100px){
+  .method-panel-hero--branded{
+    padding-right:34%!important;
+  }
+  .method-panel-hero__brand-visual{
+    width:30%!important;
+    right:20px!important;
+  }
+}
+
+@media(max-width:900px){
+  .method-panel-hero--branded{
+    padding-right:24px!important;
+    padding-top:24px!important;
+    min-height:0!important;
+  }
+
+  .method-panel-hero__brand-visual{
+    position:relative!important;
+    top:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    aspect-ratio:16/9!important;
+    margin:0 0 22px!important;
+    border-radius:14px!important;
+  }
+
+  .method-panel-hero__brand-visual img{
+    width:100%!important;
+    height:100%!important;
+  }
+}
+
+@media print{
+  .method-panel-hero__brand-visual{
+    display:none!important;
+  }
+  .method-panel-hero--branded{
+    padding-right:24px!important;
+    min-height:0!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -2834,7 +2920,10 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
       <button class="profile-close method-close" type="button" aria-label="Cerrar metodología">×</button>
     </header>
 
-    <div class="method-panel-hero">
+    <div class="method-panel-hero method-panel-hero--branded">
+      <div class="method-panel-hero__brand-visual" aria-hidden="true">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/b4246399-c305-4fa1-a015-508832f88e01.png" alt="">
+      </div>
       <div class="method-kicker">Un enfoque realista, progresivo y medible</div>
       <h2>Entrena con cabeza.<span>Mejora con método.</span></h2>
       <p>La metodología Chetesaí Fitness+ parte de una valoración inicial, convierte el punto de partida en una planificación personalizada y mantiene el progreso mediante acompañamiento, medición y ajustes. El objetivo es evitar rutinas genéricas y construir un proceso que encaje en la vida real de cada persona.</p>
