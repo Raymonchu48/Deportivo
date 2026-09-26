@@ -1477,6 +1477,107 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Formación complementaria · insignias grabadas === */
+.formation-complementaria .cv-list{
+  gap:0!important;
+}
+
+.formation-complementaria .cv-item{
+  grid-template-columns:82px 46px minmax(0,1fr)!important;
+  column-gap:18px!important;
+  align-items:center!important;
+  min-height:62px!important;
+  padding:8px 0!important;
+  border-bottom:0!important;
+  position:relative!important;
+}
+
+.formation-complementaria .cv-item:not(:last-child)::after{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent 0%,#E4E6EA 10%,#B8BCC2 50%,#E4E6EA 90%,transparent 100%)!important;
+}
+
+.formation-complementaria .cv-date{
+  font-family:var(--font-mono)!important;
+  font-size:10px!important;
+  font-weight:500!important;
+  color:#5A5E64!important;
+  text-transform:none!important;
+  align-self:center!important;
+}
+
+.formation-complementaria .cv-medal{
+  width:46px!important;
+  height:46px!important;
+  display:grid!important;
+  place-items:center!important;
+  flex:0 0 46px!important;
+}
+
+.formation-complementaria .cv-medal svg{
+  display:block!important;
+  width:46px!important;
+  height:46px!important;
+  overflow:visible!important;
+}
+
+.formation-complementaria .cv-item b{
+  display:block!important;
+  font-family:var(--font-display)!important;
+  font-size:13.5px!important;
+  line-height:1.18!important;
+  font-weight:500!important;
+  color:var(--ink)!important;
+}
+
+.formation-complementaria .cv-item small{
+  display:block!important;
+  margin-top:3px!important;
+  font-family:var(--font-body)!important;
+  font-size:10px!important;
+  line-height:1.2!important;
+  font-weight:500!important;
+  color:var(--accent)!important;
+}
+
+@media(max-width:480px){
+  .formation-complementaria .cv-item{
+    grid-template-columns:46px 38px minmax(0,1fr)!important;
+    column-gap:12px!important;
+    min-height:54px!important;
+    padding:7px 0!important;
+  }
+
+  .formation-complementaria .cv-date{
+    font-size:9px!important;
+  }
+
+  .formation-complementaria .cv-medal,
+  .formation-complementaria .cv-medal svg{
+    width:38px!important;
+    height:38px!important;
+  }
+
+  .formation-complementaria .cv-item b{
+    font-size:12.5px!important;
+  }
+}
+
+@media print{
+  .formation-complementaria .cv-medal svg{
+    filter:grayscale(1)!important;
+  }
+  .formation-complementaria .cv-item:not(:last-child)::after{
+    background:#bbb!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -2249,12 +2350,31 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-<article class="cv-card span-7"><h3>Formación complementaria</h3><div class="cv-body cv-list"><div class="cv-item"><div class="cv-date">2020</div><div><b>Preparación sociológica para el entrenamiento deportivo</b></div></div>
-<div class="cv-item"><div class="cv-date"></div><div><b>Dirección y administración de empresas</b><small>175 h</small></div></div>
-<div class="cv-item"><div class="cv-date"></div><div><b>Gestión de pymes</b></div></div>
-<div class="cv-item"><div class="cv-date"></div><div><b>Gestión comercial en inglés</b></div></div>
-<div class="cv-item"><div class="cv-date"></div><div><b>Salario y contratación</b></div></div>
-<div class="cv-item"><div class="cv-date"></div><div><b>Comercio electrónico</b></div></div></div></article>
+<article class="cv-card span-7 formation-complementaria"><h3>Formación complementaria</h3><div class="cv-body cv-list">
+<div class="cv-item"><div class="cv-date">2020</div><div class="cv-medal" aria-hidden="true">
+<svg width="46" height="46" viewBox="0 0 46 46" focusable="false"><defs><radialGradient id="bg1" cx="35%" cy="25%"><stop offset="0%" stop-color="#F8F4ED"/><stop offset="100%" stop-color="#E7DFCF"/></radialGradient></defs><circle cx="23" cy="23" r="21" fill="url(#bg1)"/><circle cx="23" cy="23" r="21" fill="none" stroke="#B9BCB6" stroke-width="0.9"/><circle cx="23" cy="23" r="18.3" fill="none" stroke="#C7CACF" stroke-width="0.6" stroke-dasharray="0.4 2.2"/><g stroke="#DCD5C7" stroke-width="0.7"><line x1="23" y1="1.4" x2="23" y2="3.6"/><line x1="34" y1="4.3" x2="32.8" y2="6.2"/><line x1="42" y1="12" x2="39.8" y2="13.2"/><line x1="44.6" y1="23" x2="42.4" y2="23"/><line x1="42" y1="34" x2="39.8" y2="32.8"/><line x1="34" y1="41.7" x2="32.8" y2="39.8"/><line x1="12" y1="42" x2="13.2" y2="39.8"/><line x1="12" y1="4.3" x2="13.2" y2="6.2"/><line x1="1.4" y1="23" x2="3.6" y2="23"/><line x1="4" y1="34" x2="6.2" y2="32.8"/><line x1="4" y1="12" x2="6.2" y2="13.2"/></g><g transform="translate(11,20)"><path d="M2.2 13c0-4 3-7.2 6.6-7.2s6.6 3.2 6.6 7.2" fill="none" stroke="#8C5A3C" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.8" cy="2.4" r="3.1" fill="none" stroke="#8C5A3C" stroke-width="1.5"/><path d="M2.2 13.2h4.4M2.2 11.7h3.6M2.2 10.2h2.6" stroke="#8C5A3C" stroke-width="0.6" opacity="0.5"/><circle cx="17.3" cy="3.9" r="2.2" fill="none" stroke="#9DA1A8" stroke-width="1.3"/><path d="M13.7 13.4c0-3.2 1.8-5.8 4-5.8s4 2.6 4 5.8" fill="none" stroke="#9DA1A8" stroke-width="1.3" stroke-linecap="round"/></g><g stroke="#A6AE97" stroke-width="0.8" fill="none" opacity="0.55"><path d="M9 41c2.5 1.4 5 1.8 7 1.4"/><path d="M10.5 39.5c1.2 1 2.4 1.4 3.4 1.3"/><path d="M37 41c-2.5 1.4-5 1.8-7 1.4"/><path d="M35.5 39.5c-1.2 1-2.4 1.4-3.4 1.3"/></g></svg>
+</div><div><b>Preparación sociológica para el entrenamiento deportivo</b></div></div>
+
+<div class="cv-item"><div class="cv-date"></div><div class="cv-medal" aria-hidden="true">
+<svg width="46" height="46" viewBox="0 0 46 46" focusable="false"><defs><radialGradient id="bg2" cx="35%" cy="25%"><stop offset="0%" stop-color="#F8F4ED"/><stop offset="100%" stop-color="#E7DFCF"/></radialGradient></defs><circle cx="23" cy="23" r="21" fill="url(#bg2)"/><circle cx="23" cy="23" r="21" fill="none" stroke="#B9BCB6" stroke-width="0.9"/><circle cx="23" cy="23" r="18.3" fill="none" stroke="#C7CACF" stroke-width="0.6" stroke-dasharray="0.4 2.2"/><g transform="translate(10,10)"><path d="M2 24V14l11-8 11 8v10" fill="none" stroke="#8C5A3C" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 24v-7h3.4v7M15.6 24v-5h3.4v5" fill="none" stroke="#9DA1A8" stroke-width="1.2"/><path d="M4.2 22h17.6M4.2 20.5h17.6M4.2 19h17.6" stroke="#DCD5C7" stroke-width="0.4" opacity="0.7"/><path d="M13 6V3.4" stroke="#8C5A3C" stroke-width="1.4" stroke-linecap="round"/><circle cx="13" cy="2.6" r="1" fill="#8C5A3C"/></g></svg>
+</div><div><b>Dirección y administración de empresas</b><small>175 h</small></div></div>
+
+<div class="cv-item"><div class="cv-date"></div><div class="cv-medal" aria-hidden="true">
+<svg width="46" height="46" viewBox="0 0 46 46" focusable="false"><defs><radialGradient id="bg3" cx="35%" cy="25%"><stop offset="0%" stop-color="#F8F4ED"/><stop offset="100%" stop-color="#E7DFCF"/></radialGradient></defs><circle cx="23" cy="23" r="21" fill="url(#bg3)"/><circle cx="23" cy="23" r="21" fill="none" stroke="#B9BCB6" stroke-width="0.9"/><circle cx="23" cy="23" r="18.3" fill="none" stroke="#C7CACF" stroke-width="0.6" stroke-dasharray="0.4 2.2"/><g stroke="#DCD5C7" stroke-width="0.7"><line x1="23" y1="1.4" x2="23" y2="3.6"/><line x1="34" y1="4.3" x2="32.8" y2="6.2"/><line x1="42" y1="12" x2="39.8" y2="13.2"/><line x1="44.6" y1="23" x2="42.4" y2="23"/><line x1="42" y1="34" x2="39.8" y2="32.8"/><line x1="34" y1="41.7" x2="32.8" y2="39.8"/><line x1="12" y1="42" x2="13.2" y2="39.8"/><line x1="12" y1="4.3" x2="13.2" y2="6.2"/><line x1="1.4" y1="23" x2="3.6" y2="23"/><line x1="4" y1="34" x2="6.2" y2="32.8"/><line x1="4" y1="12" x2="6.2" y2="13.2"/></g><g transform="translate(10,10)"><rect x="3" y="10" width="7" height="14" rx="1.2" fill="none" stroke="#8C5A3C" stroke-width="1.4"/><rect x="11.5" y="6" width="6.5" height="18" rx="1.2" fill="none" stroke="#9DA1A8" stroke-width="1.2"/><rect x="19.5" y="2.5" width="5.5" height="21.5" rx="1.1" fill="none" stroke="#8C5A3C" stroke-width="1.35"/><g stroke="#9DA1A8" stroke-width=".5" opacity=".65"><path d="M5 13h3M5 16h3M5 19h3M13.2 9h3.1M13.2 12h3.1M13.2 15h3.1M21 6h2.5M21 9h2.5M21 12h2.5M21 15h2.5"/></g><circle cx="22.2" cy="1.4" r="1" fill="#8C5A3C"/></g></svg>
+</div><div><b>Gestión de pymes</b></div></div>
+
+<div class="cv-item"><div class="cv-date"></div><div class="cv-medal" aria-hidden="true">
+<svg width="46" height="46" viewBox="0 0 46 46" focusable="false"><defs><radialGradient id="bg4" cx="35%" cy="25%"><stop offset="0%" stop-color="#F8F4ED"/><stop offset="100%" stop-color="#E7DFCF"/></radialGradient></defs><circle cx="23" cy="23" r="21" fill="url(#bg4)"/><circle cx="23" cy="23" r="21" fill="none" stroke="#B9BCB6" stroke-width="0.9"/><circle cx="23" cy="23" r="18.3" fill="none" stroke="#C7CACF" stroke-width="0.6" stroke-dasharray="0.4 2.2"/><g stroke="#DCD5C7" stroke-width="0.7"><line x1="23" y1="1.4" x2="23" y2="3.6"/><line x1="34" y1="4.3" x2="32.8" y2="6.2"/><line x1="42" y1="12" x2="39.8" y2="13.2"/><line x1="44.6" y1="23" x2="42.4" y2="23"/><line x1="42" y1="34" x2="39.8" y2="32.8"/><line x1="34" y1="41.7" x2="32.8" y2="39.8"/><line x1="12" y1="42" x2="13.2" y2="39.8"/><line x1="12" y1="4.3" x2="13.2" y2="6.2"/><line x1="1.4" y1="23" x2="3.6" y2="23"/><line x1="4" y1="34" x2="6.2" y2="32.8"/><line x1="4" y1="12" x2="6.2" y2="13.2"/></g><g transform="translate(10,10)" fill="none"><circle cx="13" cy="13" r="10.5" stroke="#8C5A3C" stroke-width="1.45"/><ellipse cx="13" cy="13" rx="4.3" ry="10.5" stroke="#9DA1A8" stroke-width="1"/><path d="M2.8 13h20.4M4.8 7.5h16.4M4.8 18.5h16.4" stroke="#9DA1A8" stroke-width=".7" opacity=".75"/><path d="M13 2.5c2.1 2.4 3.2 5.9 3.2 10.5S15.1 21.1 13 23.5" stroke="#8C5A3C" stroke-width="1.05"/><circle cx="13" cy="1.2" r="1" fill="#8C5A3C" stroke="none"/></g></svg>
+</div><div><b>Gestión comercial en inglés</b></div></div>
+
+<div class="cv-item"><div class="cv-date"></div><div class="cv-medal" aria-hidden="true">
+<svg width="46" height="46" viewBox="0 0 46 46" focusable="false"><defs><radialGradient id="bg5" cx="35%" cy="25%"><stop offset="0%" stop-color="#F8F4ED"/><stop offset="100%" stop-color="#E7DFCF"/></radialGradient></defs><circle cx="23" cy="23" r="21" fill="url(#bg5)"/><circle cx="23" cy="23" r="21" fill="none" stroke="#B9BCB6" stroke-width="0.9"/><circle cx="23" cy="23" r="18.3" fill="none" stroke="#C7CACF" stroke-width="0.6" stroke-dasharray="0.4 2.2"/><g stroke="#DCD5C7" stroke-width="0.7"><line x1="23" y1="1.4" x2="23" y2="3.6"/><line x1="34" y1="4.3" x2="32.8" y2="6.2"/><line x1="42" y1="12" x2="39.8" y2="13.2"/><line x1="44.6" y1="23" x2="42.4" y2="23"/><line x1="42" y1="34" x2="39.8" y2="32.8"/><line x1="34" y1="41.7" x2="32.8" y2="39.8"/><line x1="12" y1="42" x2="13.2" y2="39.8"/><line x1="12" y1="4.3" x2="13.2" y2="6.2"/><line x1="1.4" y1="23" x2="3.6" y2="23"/><line x1="4" y1="34" x2="6.2" y2="32.8"/><line x1="4" y1="12" x2="6.2" y2="13.2"/></g><g transform="translate(11,10)"><rect x="2.5" y="3.5" width="21" height="20" rx="1.8" fill="none" stroke="#8C5A3C" stroke-width="1.4"/><path d="M6 8h9M6 11h12M6 14h7M6 17h9" stroke="#9DA1A8" stroke-width=".75" opacity=".8"/><circle cx="19.2" cy="17" r="3.1" fill="none" stroke="#8C5A3C" stroke-width="1.25"/><path d="M18 17l1 1 2-2.3" fill="none" stroke="#8C5A3C" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 3.5V1.6" stroke="#8C5A3C" stroke-width="1.2" stroke-linecap="round"/><circle cx="13" cy="1" r="1" fill="#8C5A3C"/></g></svg>
+</div><div><b>Salario y contratación</b></div></div>
+
+<div class="cv-item"><div class="cv-date"></div><div class="cv-medal" aria-hidden="true">
+<svg width="46" height="46" viewBox="0 0 46 46" focusable="false"><defs><radialGradient id="bg6" cx="35%" cy="25%"><stop offset="0%" stop-color="#F8F4ED"/><stop offset="100%" stop-color="#E7DFCF"/></radialGradient></defs><circle cx="23" cy="23" r="21" fill="url(#bg6)"/><circle cx="23" cy="23" r="21" fill="none" stroke="#B9BCB6" stroke-width="0.9"/><circle cx="23" cy="23" r="18.3" fill="none" stroke="#C7CACF" stroke-width="0.6" stroke-dasharray="0.4 2.2"/><g transform="translate(11,11)"><path d="M1.5 4h3.6l2 15.6a3 3 0 0 0 3 2.6h11a3 3 0 0 0 3-2.5l1.6-10.5H6.7" fill="none" stroke="#8C5A3C" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 9.2h14.4M9 12.4h12.2" stroke="#9DA1A8" stroke-width="0.8"/><circle cx="11.3" cy="25" r="1.9" fill="none" stroke="#8C5A3C" stroke-width="1.3"/><circle cx="20.3" cy="25" r="1.9" fill="none" stroke="#8C5A3C" stroke-width="1.3"/><path d="M11.3 23.1v3.8M20.3 23.1v3.8" stroke="#DCD5C7" stroke-width="0.5"/></g></svg>
+</div><div><b>Comercio electrónico</b></div></div>
+</div></article>
 
       <article class="cv-card span-5 cv-presentation-card">
         <h3>Presentación del CV</h3>
