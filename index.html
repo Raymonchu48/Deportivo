@@ -3292,6 +3292,41 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     grid-column:1 / -1!important;
   }
 }
+
+/* === Spartan · subir y dar más altura a la composición inferior === */
+.spartan-gallery .spartan-gallery__wide-set{
+  height:190px!important;
+  min-height:190px!important;
+  background:#000!important;
+}
+
+.spartan-gallery .spartan-gallery__wide-set img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center 47%!important;
+}
+
+@media(max-width:1180px){
+  .spartan-gallery .spartan-gallery__wide-set{
+    height:165px!important;
+    min-height:165px!important;
+  }
+  .spartan-gallery .spartan-gallery__wide-set img{
+    object-position:center 47%!important;
+  }
+}
+
+@media(max-width:700px){
+  .spartan-gallery .spartan-gallery__wide-set{
+    height:135px!important;
+    min-height:135px!important;
+  }
+  .spartan-gallery .spartan-gallery__wide-set img{
+    object-position:center 46%!important;
+  }
+}
+
 </style>
 </head>
 <body>
