@@ -2901,6 +2901,124 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   #cv-documento .cv-document-sheet{margin:0!important;box-shadow:none!important;border:0!important}
 }
 
+
+/* === iPad landscape hard-fix · 2026-09-26 === */
+@media (min-width:901px) and (max-width:1366px){
+  .app{
+    grid-template-columns:220px minmax(0,1fr)!important;
+    width:100%!important;
+    max-width:100vw!important;
+    overflow-x:hidden!important;
+  }
+
+  main,
+  .page{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+
+  .page{
+    padding:8px 10px 16px!important;
+  }
+
+  .grid{
+    width:100%!important;
+    min-width:0!important;
+    grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr) minmax(0,.92fr)!important;
+    gap:8px!important;
+    align-items:stretch!important;
+  }
+
+  .grid > *{
+    min-width:0!important;
+    max-width:100%!important;
+  }
+
+  /* La imagen de metodología debe verse completa en iPad, sin crop lateral. */
+  .home-method-card .method-card-image{
+    min-height:0!important;
+    height:auto!important;
+    overflow:hidden!important;
+    background:#F5F0E6!important;
+  }
+
+  .home-method-card .method-card-image img{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    transform:none!important;
+    background:#F5F0E6!important;
+  }
+
+  /* Infografía completa: conserva su relación real y no recorta ningún borde. */
+  .portfolio-visual-banner{
+    grid-column:1 / 3!important;
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:auto!important;
+    overflow:hidden!important;
+    align-self:stretch!important;
+  }
+
+  .portfolio-visual-banner img{
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+
+  /* El bloque de vídeo permanece en la tercera columna y no puede salir del viewport. */
+  .impact{
+    grid-column:3!important;
+    min-width:0!important;
+    max-width:100%!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-self:stretch!important;
+  }
+
+  .impact .cardbody{
+    min-width:0!important;
+    display:flex!important;
+    flex:1 1 auto!important;
+    flex-direction:column!important;
+  }
+
+  .impact .impact-video{
+    width:100%!important;
+    min-width:0!important;
+    min-height:190px!important;
+    display:flex!important;
+    flex:1 1 auto!important;
+    flex-direction:column!important;
+    overflow:hidden!important;
+  }
+
+  .impact .impact-video video{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:190px!important;
+    flex:1 1 auto!important;
+    aspect-ratio:16/9!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    background:#0B0D0C!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3042,7 +3160,9 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         <div class="sp"><i>▣</i>Hábitos saludables</div>
       </div>
       <div class="impact-video">
-        <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/684be8a8-cc78-436a-9f38-b73cd768b150.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <video id="impact-video-main" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Vídeo de sala, movimiento y rendimiento">
+          <source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/684be8a8-cc78-436a-9f38-b73cd768b150.mp4" type="video/mp4">
+        </video>
         <div class="impact-video-caption">
           <b>SALA · MOVIMIENTO · RENDIMIENTO</b>
           <small>Ver mi galería completa →</small>
@@ -4102,19 +4222,43 @@ document.addEventListener('keydown',e=>{
 
 function prepareMobileVideos(root=document){
   root.querySelectorAll('video').forEach(v=>{
+    v.defaultMuted=true;
     v.muted=true;
     v.setAttribute('muted','');
     v.setAttribute('playsinline','');
     v.setAttribute('webkit-playsinline','');
     v.playsInline=true;
+
     if(v.hasAttribute('autoplay')){
-      const tryPlay=()=>v.play().catch(()=>{});
+      const tryPlay=()=>{
+        const p=v.play();
+        if(p&&typeof p.catch==='function'){
+          p.catch(()=>{
+            /* Safari/iPad puede bloquear autoplay en ciertos estados:
+               en ese caso dejamos controles para que el vídeo nunca desaparezca. */
+            v.controls=true;
+          });
+        }
+      };
+
       if(v.readyState>=2)tryPlay();
-      else v.addEventListener('canplay',tryPlay,{once:true});
+      else{
+        v.addEventListener('loadeddata',tryPlay,{once:true});
+        v.addEventListener('canplay',tryPlay,{once:true});
+      }
     }
   });
 }
 prepareMobileVideos();
+
+/* Reintento tras la primera interacción táctil: evita el bloqueo de autoplay de Safari. */
+document.addEventListener('touchstart',()=>{
+  document.querySelectorAll('video[autoplay]').forEach(v=>{
+    v.muted=true;
+    const p=v.play();
+    if(p&&typeof p.catch==='function')p.catch(()=>{v.controls=true;});
+  });
+},{once:true,passive:true});
 
 document.addEventListener('visibilitychange',()=>{
   if(!document.hidden)prepareMobileVideos();
