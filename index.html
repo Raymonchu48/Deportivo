@@ -2428,6 +2428,215 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Especialidades · integración nativa basada en la referencia === */
+#especialidades-completas .specialties-integrated{
+  margin:28px 30px 0!important;
+  overflow:hidden!important;
+  border-radius:24px!important;
+  background:linear-gradient(160deg,#F7F1E8,#EDE3D5)!important;
+  box-shadow:0 12px 34px rgba(42,36,32,.10)!important;
+  border:1px solid rgba(199,202,207,.55)!important;
+}
+
+#especialidades-completas .specialties-integrated__top{
+  display:grid!important;
+  grid-template-columns:1.15fr .85fr!important;
+  align-items:stretch!important;
+  min-height:420px!important;
+  border-bottom:1px solid rgba(157,161,168,.35)!important;
+}
+
+#especialidades-completas .specialties-integrated__copy{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  padding:42px 46px!important;
+}
+
+#especialidades-completas .specialties-integrated__eyeline{
+  display:flex!important;
+  align-items:center!important;
+  gap:12px!important;
+  margin:0 0 18px!important;
+  font-family:var(--font-body)!important;
+  font-size:12px!important;
+  font-weight:700!important;
+  letter-spacing:.14em!important;
+  text-transform:uppercase!important;
+  color:#8C5A3C!important;
+}
+
+#especialidades-completas .specialties-integrated__eyeline::before{
+  content:""!important;
+  width:18px!important;
+  height:2px!important;
+  background:linear-gradient(90deg,#C7CACF,#8C5A3C)!important;
+}
+
+#especialidades-completas .specialties-integrated__copy h2{
+  margin:0 0 24px!important;
+  font-family:var(--font-display)!important;
+  font-size:clamp(46px,5vw,78px)!important;
+  font-weight:600!important;
+  line-height:.98!important;
+  letter-spacing:-.035em!important;
+  text-transform:none!important;
+  color:#2A2420!important;
+}
+
+#especialidades-completas .specialties-integrated__copy h2 span{
+  display:block!important;
+  color:#8C5A3C!important;
+}
+
+#especialidades-completas .specialties-integrated__copy p{
+  max-width:720px!important;
+  margin:0!important;
+  font-family:var(--font-body)!important;
+  font-size:17px!important;
+  line-height:1.6!important;
+  color:#5F5751!important;
+}
+
+#especialidades-completas .specialties-integrated__visual{
+  min-width:0!important;
+  overflow:hidden!important;
+  background:#F5F0E6!important;
+}
+
+#especialidades-completas .specialties-integrated__visual img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+
+#especialidades-completas .specialties-integrated__areas{
+  display:grid!important;
+  grid-template-columns:repeat(4,1fr)!important;
+  gap:0!important;
+  padding:28px 36px 24px!important;
+}
+
+#especialidades-completas .specialties-integrated__areas article{
+  min-width:0!important;
+  padding:0 26px!important;
+  border-right:1px solid rgba(157,161,168,.32)!important;
+}
+
+#especialidades-completas .specialties-integrated__areas article:first-child{
+  padding-left:0!important;
+}
+
+#especialidades-completas .specialties-integrated__areas article:last-child{
+  padding-right:0!important;
+  border-right:0!important;
+}
+
+#especialidades-completas .specialties-integrated__plus{
+  width:44px!important;
+  height:44px!important;
+  display:grid!important;
+  place-items:center!important;
+  margin:0 0 16px!important;
+  border-radius:50%!important;
+  background:linear-gradient(160deg,#EFE6D8,#DED1C1)!important;
+  color:#8C5A3C!important;
+  font-family:var(--font-body)!important;
+  font-size:20px!important;
+  line-height:1!important;
+}
+
+#especialidades-completas .specialties-integrated__areas h3{
+  margin:0 0 10px!important;
+  font-family:var(--font-display)!important;
+  font-size:22px!important;
+  font-weight:600!important;
+  line-height:1.1!important;
+  color:#2A2420!important;
+}
+
+#especialidades-completas .specialties-integrated__areas p{
+  margin:0!important;
+  font-family:var(--font-body)!important;
+  font-size:14px!important;
+  line-height:1.55!important;
+  color:#6F665F!important;
+}
+
+#especialidades-completas .specialties-integrated__footer{
+  padding:18px 30px 16px!important;
+  text-align:center!important;
+  border-top:1px solid rgba(157,161,168,.32)!important;
+}
+
+#especialidades-completas .specialties-integrated__footer strong{
+  display:block!important;
+  font-family:var(--font-display)!important;
+  font-size:clamp(20px,2.1vw,32px)!important;
+  font-weight:600!important;
+  letter-spacing:.01em!important;
+  text-transform:uppercase!important;
+  color:#7B351E!important;
+}
+
+#especialidades-completas .specialties-integrated__footer small{
+  display:block!important;
+  margin-top:5px!important;
+  font-family:var(--font-body)!important;
+  font-size:11px!important;
+  letter-spacing:.18em!important;
+  text-transform:uppercase!important;
+  color:#5F5751!important;
+}
+
+@media(max-width:1050px){
+  #especialidades-completas .specialties-integrated__top{
+    grid-template-columns:1fr!important;
+  }
+  #especialidades-completas .specialties-integrated__visual{
+    aspect-ratio:16/9!important;
+  }
+  #especialidades-completas .specialties-integrated__areas{
+    grid-template-columns:repeat(2,1fr)!important;
+    row-gap:28px!important;
+  }
+  #especialidades-completas .specialties-integrated__areas article:nth-child(2){
+    border-right:0!important;
+  }
+}
+
+@media(max-width:620px){
+  #especialidades-completas .specialties-integrated{
+    margin:16px 12px 0!important;
+    border-radius:18px!important;
+  }
+  #especialidades-completas .specialties-integrated__copy{
+    padding:28px 22px!important;
+  }
+  #especialidades-completas .specialties-integrated__copy h2{
+    font-size:clamp(38px,12vw,54px)!important;
+  }
+  #especialidades-completas .specialties-integrated__copy p{
+    font-size:14px!important;
+  }
+  #especialidades-completas .specialties-integrated__areas{
+    grid-template-columns:1fr!important;
+    padding:24px 22px!important;
+  }
+  #especialidades-completas .specialties-integrated__areas article{
+    padding:0 0 22px!important;
+    border-right:0!important;
+    border-bottom:1px solid rgba(157,161,168,.28)!important;
+  }
+  #especialidades-completas .specialties-integrated__areas article:last-child{
+    padding-bottom:0!important;
+    border-bottom:0!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -2747,8 +2956,45 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
       <button class="profile-close specialties-close" type="button" aria-label="Cerrar especialidades">×</button>
     </header>
 
-    <div class="specialties-reference-panel">
-      <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/1f8f5a14-666a-4980-89e8-4c1dabe3f3e9.png" alt="Especialidades profesionales: entrenar a la persona, no solo al cuerpo" class="specialties-reference-panel__img">
+    <div class="specialties-integrated">
+      <div class="specialties-integrated__top">
+        <div class="specialties-integrated__copy">
+          <div class="specialties-integrated__eyeline">Especialización con base formativa</div>
+          <h2>Entrenar a la persona.<span>No solo al cuerpo.</span></h2>
+          <p>Mis especialidades combinan entrenamiento, psicología deportiva, coaching, nutrición y comprensión del contexto social del deportista.</p>
+        </div>
+        <div class="specialties-integrated__visual">
+          <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/33df5e6f-735c-4af5-bb23-62e6d97ce3bd.webp" alt="Entrenador con indicadores de salud, hábitos y rendimiento">
+        </div>
+      </div>
+
+      <div class="specialties-integrated__areas">
+        <article>
+          <div class="specialties-integrated__plus">+</div>
+          <h3>Coaching y psicología deportiva</h3>
+          <p>Comunicación, liderazgo, motivación, dinámica de grupo y evaluación en psicología del deporte.</p>
+        </article>
+        <article>
+          <div class="specialties-integrated__plus">+</div>
+          <h3>Nutrición y dietética</h3>
+          <p>Planificación dietética, nutrición deportiva, etapas de la vida y hábitos alimentarios.</p>
+        </article>
+        <article>
+          <div class="specialties-integrated__plus">+</div>
+          <h3>Fútbol y rendimiento</h3>
+          <p>Entrenamiento de fútbol integrado con contenidos de psicología deportiva.</p>
+        </article>
+        <article>
+          <div class="specialties-integrated__plus">+</div>
+          <h3>Preparación sociológica</h3>
+          <p>Disciplina, valores, familia, entorno educativo y contexto social del atleta.</p>
+        </article>
+      </div>
+
+      <div class="specialties-integrated__footer">
+        <strong>El futuro de la salud no es una talla única. Es personal.</strong>
+        <small>Sus datos. Su cuerpo. Su camino. Salud inteligente. Resultados personales.</small>
+      </div>
     </div>
 
     <div class="profile-content">
