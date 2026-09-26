@@ -3095,6 +3095,173 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Dashboard: banner sin espacio muerto + MP4 sin franjas === */
+@media(min-width:901px){
+  .grid{
+    align-items:stretch!important;
+  }
+
+  .portfolio-visual-banner{
+    align-self:stretch!important;
+    height:100%!important;
+    min-height:0!important;
+    aspect-ratio:auto!important;
+    display:flex!important;
+    overflow:hidden!important;
+    background:#FAF7F2!important;
+  }
+
+  .portfolio-visual-banner img{
+    flex:1 1 auto!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:100%!important;
+    max-height:none!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    background:#FAF7F2!important;
+  }
+
+  .impact{
+    align-self:stretch!important;
+  }
+
+  .impact .cardbody{
+    display:flex!important;
+    flex-direction:column!important;
+    height:100%!important;
+    min-height:0!important;
+  }
+
+  .impact .impact-video{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    margin-top:6px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    background:#0B0D0C!important;
+    border-color:#D8D2C8!important;
+  }
+
+  .impact .impact-video video{
+    flex:1 1 auto!important;
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    background:#0B0D0C!important;
+  }
+
+  .impact-video-caption{
+    flex:0 0 auto!important;
+    display:flex!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+    gap:10px!important;
+    padding:8px 10px!important;
+    background:linear-gradient(90deg,#2A2420,#4A4038)!important;
+    color:#FFFFFF!important;
+  }
+
+  .impact-video-caption b{
+    font-size:9px!important;
+    line-height:1.25!important;
+    letter-spacing:.055em!important;
+    color:#FFFFFF!important;
+  }
+
+  .impact-video-caption small{
+    font-size:8px!important;
+    line-height:1.25!important;
+    color:#F1E8DD!important;
+    text-align:right!important;
+    white-space:nowrap!important;
+  }
+}
+
+/* iPad: llenar el bloque sin bandas, conservando el centro de la escena */
+@media(min-width:901px) and (max-width:1536px){
+  .portfolio-visual-banner{
+    height:100%!important;
+    align-self:stretch!important;
+  }
+
+  .portfolio-visual-banner img{
+    height:100%!important;
+    min-height:100%!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+
+  .impact .impact-video video{
+    height:100%!important;
+    min-height:0!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+
+  .impact-video-caption{
+    padding:7px 8px!important;
+  }
+
+  .impact-video-caption b{
+    font-size:8px!important;
+  }
+
+  .impact-video-caption small{
+    font-size:7px!important;
+  }
+}
+
+/* Móvil: sin barras laterales/verticales y leyenda legible */
+@media(max-width:900px){
+  .portfolio-visual-banner{
+    height:auto!important;
+    aspect-ratio:auto!important;
+  }
+
+  .portfolio-visual-banner img{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    object-fit:contain!important;
+  }
+
+  .impact .impact-video{
+    min-height:0!important;
+    background:#0B0D0C!important;
+  }
+
+  .impact .impact-video video{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:16/9!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+    background:#0B0D0C!important;
+  }
+
+  .impact-video-caption{
+    padding:8px 10px!important;
+    background:linear-gradient(90deg,#2A2420,#4A4038)!important;
+  }
+
+  .impact-video-caption b{
+    font-size:9px!important;
+    color:#fff!important;
+  }
+
+  .impact-video-caption small{
+    font-size:8px!important;
+    color:#F1E8DD!important;
+  }
+}
+
 </style>
 </head>
 <body>
