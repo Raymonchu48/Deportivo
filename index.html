@@ -1884,6 +1884,160 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Ajuste fino tarjetas "Cómo funciona" === */
+.method-flow.steps-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:20px!important;
+}
+
+.method-flow .step-card{
+  position:relative!important;
+  min-height:340px!important;
+  padding:20px 20px 18px!important;
+  border:0!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  background-color:#0B0D0C!important;
+  background-image:var(--step-image)!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  box-shadow:0 8px 24px rgba(42,36,32,.18)!important;
+  transition:transform 200ms ease,box-shadow 200ms ease!important;
+}
+
+.method-flow .step-card::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:linear-gradient(
+    180deg,
+    rgba(11,13,12,.03) 0%,
+    rgba(11,13,12,.18) 38%,
+    rgba(11,13,12,.52) 68%,
+    rgba(11,13,12,.82) 100%
+  )!important;
+  pointer-events:none!important;
+}
+
+.method-flow .step-card__number{
+  position:absolute!important;
+  top:16px!important;
+  left:16px!important;
+  z-index:2!important;
+  padding:5px 10px!important;
+  border-radius:20px!important;
+  border:1px solid rgba(245,240,230,.35)!important;
+  background:rgba(245,240,230,.12)!important;
+  color:#F5F0E6!important;
+  font-family:var(--font-mono)!important;
+  font-weight:500!important;
+  font-size:13px!important;
+  line-height:1.1!important;
+  letter-spacing:1px!important;
+  backdrop-filter:blur(6px)!important;
+  -webkit-backdrop-filter:blur(6px)!important;
+}
+
+.method-flow .step-card__content{
+  position:relative!important;
+  z-index:2!important;
+  width:min(100%,72%)!important;
+}
+
+.method-flow .step-card__content::before{
+  content:""!important;
+  display:block!important;
+  width:28px!important;
+  height:2px!important;
+  margin:0 0 10px!important;
+  border-radius:2px!important;
+  background:linear-gradient(90deg,#C7CACF,#9DA1A8)!important;
+}
+
+.method-flow .step-card h4{
+  margin:0 0 8px!important;
+  font-family:var(--font-display)!important;
+  font-weight:600!important;
+  font-size:18px!important;
+  line-height:1.15!important;
+  color:#FFFFFF!important;
+  text-shadow:0 1px 8px rgba(0,0,0,.22)!important;
+}
+
+.method-flow .step-card p{
+  margin:0!important;
+  font-family:var(--font-body)!important;
+  font-size:12px!important;
+  line-height:1.55!important;
+  color:rgba(245,240,230,.92)!important;
+  text-shadow:0 1px 8px rgba(0,0,0,.24)!important;
+  max-width:44ch!important;
+}
+
+/* Reencuadre individual para conservar las UI laterales */
+.method-flow .step-card:nth-child(1){
+  background-position:52% center!important;
+}
+.method-flow .step-card:nth-child(2){
+  background-position:74% center!important;
+}
+.method-flow .step-card:nth-child(3){
+  background-position:72% center!important;
+}
+
+.method-flow .step-card:hover{
+  transform:translateY(-3px)!important;
+  box-shadow:0 12px 30px rgba(42,36,32,.24)!important;
+}
+
+@media(max-width:1100px){
+  .method-flow .step-card__content{
+    width:min(100%,80%)!important;
+  }
+}
+
+@media(max-width:900px){
+  .method-flow.steps-grid{
+    grid-template-columns:1fr!important;
+  }
+
+  .method-flow .step-card{
+    min-height:300px!important;
+  }
+
+  .method-flow .step-card__content{
+    width:100%!important;
+  }
+
+  .method-flow .step-card:nth-child(1),
+  .method-flow .step-card:nth-child(2),
+  .method-flow .step-card:nth-child(3){
+    background-position:center center!important;
+  }
+}
+
+@media(max-width:768px){
+  .method-flow .step-card{
+    min-height:260px!important;
+    padding:18px 18px 16px!important;
+  }
+
+  .method-flow .step-card h4{
+    font-size:17px!important;
+  }
+
+  .method-flow .step-card p{
+    font-size:11.5px!important;
+    line-height:1.5!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
