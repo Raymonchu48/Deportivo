@@ -2638,72 +2638,6 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 }
 
 
-/* === Hero · corrección de año integrado === */
-.hero{
-  position:relative!important;
-}
-
-.hero-year-fix{
-  position:absolute!important;
-  top:3.1%!important;
-  right:2.35%!important;
-  z-index:6!important;
-  min-width:285px!important;
-  height:34px!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:flex-end!important;
-  padding:0 2px 0 34px!important;
-  font-family:var(--font-body)!important;
-  font-size:12px!important;
-  font-weight:500!important;
-  letter-spacing:.14em!important;
-  text-transform:uppercase!important;
-  color:#4E4B48!important;
-  background:
-    linear-gradient(90deg,
-      rgba(250,247,242,0) 0%,
-      rgba(250,247,242,.82) 12%,
-      rgba(250,247,242,.96) 30%,
-      rgba(250,247,242,.98) 100%)!important;
-  pointer-events:none!important;
-}
-
-.hero-year-fix::before{
-  content:""!important;
-  width:8px!important;
-  height:8px!important;
-  margin-right:10px!important;
-  border-radius:50%!important;
-  background:#5C6B4F!important;
-  box-shadow:0 0 0 3px rgba(92,107,79,.10)!important;
-  flex:0 0 auto!important;
-}
-
-@media(max-width:800px){
-  .hero-year-fix{
-    top:2.8%!important;
-    right:2.2%!important;
-    min-width:210px!important;
-    height:26px!important;
-    font-size:8px!important;
-    letter-spacing:.12em!important;
-  }
-  .hero-year-fix::before{
-    width:6px!important;
-    height:6px!important;
-    margin-right:7px!important;
-  }
-}
-
-@media print{
-  .hero-year-fix{
-    color:#2A2420!important;
-    background:#fff!important;
-    box-shadow:none!important;
-  }
-}
-
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -2737,8 +2671,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 <div class="page">
 
 <section class="hero" id="inicio">
-  <img class="hero-exact-reference" src="https://d2jqrm6oza8nb6.cloudfront.net/datasets/d07c7d53-2588-491d-9a81-33c46c85f509.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZDZiN2E5OGEwZTI0OTMxYiIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDU1MjcxNH0.Ca-U1sokA_7x0VWha-uPXTWcNdsurLHn7RDdqzRfNRw" alt="Hero de Ramón Alberto Curbalán Vega">
-  <div class="hero-year-fix" aria-label="Portfolio profesional 2026">Portfolio profesional 2026</div>
+  <img class="hero-exact-reference" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/fa25713b-ca3b-4fb4-9f88-3df3c4b23cdd.png" alt="Hero de Ramón Alberto Curbalán Vega">
   <div class="hero-copy">
     <div class="kicker">Perfil profesional deportivo</div>
     <div class="name">Ramón Alberto <span>Curbalán Vega</span></div>
