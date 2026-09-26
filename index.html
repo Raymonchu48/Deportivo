@@ -1118,7 +1118,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 }
 
 
-/* === HERO FINAL · referencia exacta, sin zoom agresivo === */
+/* === HERO FINAL · altura corregida y más aire inferior === */
 .topstrip{
   display:flex!important;
 }
@@ -1127,9 +1127,10 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   position:relative!important;
   display:block!important;
   width:100%!important;
-  aspect-ratio:2048/732!important;
+  height:clamp(390px,27vw,455px)!important;
   min-height:0!important;
-  height:auto!important;
+  max-height:455px!important;
+  aspect-ratio:auto!important;
   padding:0!important;
   overflow:hidden!important;
   border-radius:12px!important;
@@ -1148,10 +1149,10 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2b34e6ee-ac2b-4103-a625-0e74333b39d7.png")!important;
   background-size:
     100% 100%,
-    auto 100%!important;
+    auto 92%!important;
   background-position:
     center center,
-    right center!important;
+    right 4px center!important;
   background-repeat:
     no-repeat,
     no-repeat!important;
@@ -1176,7 +1177,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   width:49%!important;
   max-width:none!important;
   height:100%!important;
-  padding:4.7% 0 3.6% 3.4%!important;
+  padding:3.4% 0 2.8% 3.4%!important;
   margin:0!important;
   display:flex!important;
   flex-direction:column!important;
@@ -1205,8 +1206,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 
 .hero .name{
   color:var(--ink)!important;
-  margin:0 0 .5%!important;
-  font-size:clamp(56px,4.2vw,92px)!important;
+  margin:0 0 .4%!important;
+  font-size:clamp(52px,3.9vw,82px)!important;
   line-height:.90!important;
 }
 
@@ -1216,16 +1217,16 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 
 .hero .role{
   color:var(--muted-aa)!important;
-  margin-bottom:1.15%!important;
-  font-size:clamp(9px,.72vw,14px)!important;
+  margin-bottom:1%!important;
+  font-size:clamp(9px,.68vw,13px)!important;
   letter-spacing:.08em!important;
   text-transform:uppercase!important;
 }
 
 .hero h1{
   color:var(--ink)!important;
-  margin:0 0 1%!important;
-  font-size:clamp(42px,3.35vw,72px)!important;
+  margin:0 0 .8%!important;
+  font-size:clamp(40px,3.05vw,64px)!important;
   line-height:.93!important;
 }
 
@@ -1239,38 +1240,46 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   color:var(--muted-aa)!important;
   max-width:90%!important;
   margin:0!important;
-  font-size:clamp(9px,.72vw,14px)!important;
+  font-size:clamp(9px,.68vw,13px)!important;
   line-height:1.4!important;
 }
 
 .hero .promise-row{
   display:flex!important;
   align-items:center!important;
-  gap:18px!important;
-  margin-top:1.8%!important;
+  gap:16px!important;
+  margin-top:1.35%!important;
   flex-wrap:nowrap!important;
+}
+
+/* Give the dashboard below the hero breathing room */
+.hero + .grid{
+  margin-top:18px!important;
 }
 
 @media(max-width:1180px) and (min-width:801px){
   .hero{
+    height:clamp(370px,34vw,430px)!important;
+    max-height:430px!important;
     background-size:
       100% 100%,
-      auto 96%!important;
+      auto 88%!important;
     background-position:
       center center,
-      right 8px center!important;
+      right 6px center!important;
   }
 
   .hero-copy{
     width:54%!important;
-    padding:4.8% 0 3.8% 3%!important;
+    padding:3.8% 0 3% 3%!important;
   }
 }
 
 @media(max-width:800px){
   .hero{
-    aspect-ratio:auto!important;
-    min-height:720px!important;
+    height:auto!important;
+    max-height:none!important;
+    min-height:650px!important;
     border-radius:10px!important;
     background-image:
       linear-gradient(
@@ -1284,7 +1293,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
       url("https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/2b34e6ee-ac2b-4103-a625-0e74333b39d7.png")!important;
     background-size:
       100% 100%,
-      auto 46%!important;
+      auto 42%!important;
     background-position:
       center center,
       center bottom!important;
@@ -1298,11 +1307,15 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     inset:auto!important;
     width:100%!important;
     height:auto!important;
-    padding:26px 22px 0!important;
+    padding:24px 22px 0!important;
   }
 
   .hero .promise-row{
     flex-wrap:wrap!important;
+  }
+
+  .hero + .grid{
+    margin-top:16px!important;
   }
 }
 
