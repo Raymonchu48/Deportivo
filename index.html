@@ -3368,6 +3368,46 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Encabezados jerárquicos sin banner: mapa, especialidades y enfoque === */
+#especialidades-completas .section-title-card{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+
+#especialidades-completas .section-title-card>.section-inline-title{
+  display:inline-block!important;
+  width:auto!important;
+  margin:0 0 24px!important;
+  padding:0 0 10px!important;
+  background:none!important;
+  border:0!important;
+  border-bottom:3px solid #5B6B3E!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#3A3226!important;
+  font-family:var(--font-display, Georgia, serif)!important;
+  font-size:23px!important;
+  font-weight:600!important;
+  line-height:1.2!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+
+#especialidades-completas .section-title-card>.cv-body{
+  padding:0!important;
+}
+
+@media(max-width:700px){
+  #especialidades-completas .section-title-card>.section-inline-title{
+    font-size:21px!important;
+    margin-bottom:20px!important;
+    padding-bottom:8px!important;
+  }
+}
 </style>
 </head>
 <body>
@@ -3826,8 +3866,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-7">
-        <h3>Mapa de aplicación profesional</h3>
+      <article class="cv-card span-7 section-title-card">
+        <h3 class="section-inline-title">Mapa de aplicación profesional</h3>
         <div class="cv-body domain-map">
           <div class="domain-card"><b>Motivación y adherencia</b><p>Uso de herramientas de coaching, comunicación y comprensión de la persona para favorecer compromiso y continuidad.</p></div>
           <div class="domain-card"><b>Liderazgo y dinámica de grupo</b><p>Aplicación de contenidos de liderazgo, habilidades sociales y dinámica grupal en entrenamiento y actividades colectivas.</p></div>
@@ -3838,8 +3878,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-5">
-        <h3>Especialidades integradas</h3>
+      <article class="cv-card span-5 section-title-card">
+        <h3 class="section-inline-title">Especialidades integradas</h3>
         <div class="cv-body">
           <div class="specialty-strip">
             <div class="specialty-chip">Coaching deportivo</div>
@@ -3876,8 +3916,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-12">
-        <h3>Enfoque profesional</h3>
+      <article class="cv-card span-12 section-title-card">
+        <h3 class="section-inline-title">Enfoque profesional</h3>
         <div class="cv-body specialty-note">
           Esta especialización se presenta como formación y competencia profesional dentro del ámbito deportivo, nutricional y de coaching. No se utiliza para atribuir funciones sanitarias o psicológicas clínicas que requieran una habilitación profesional específica distinta de la formación acreditada aquí mostrada.
         </div>
