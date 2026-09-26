@@ -2893,6 +2893,82 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Seguimiento, salud y seguridad · tarjeta cálida Chetesaí === */
+#metodologia-completa .method-safety-card{
+  overflow:hidden!important;
+  border:1px solid #E8DED0!important;
+  border-radius:12px!important;
+  background:#FAF6F0!important;
+  box-shadow:0 1px 3px rgba(0,0,0,.05)!important;
+}
+
+#metodologia-completa .method-safety-card>h3{
+  margin:0!important;
+  padding:12px 16px!important;
+  background:#E8DCC8!important;
+  color:#5A4632!important;
+  font-family:var(--font-display)!important;
+  font-size:16px!important;
+  font-weight:600!important;
+  line-height:1.25!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  border:0!important;
+}
+
+#metodologia-completa .method-safety{
+  padding:24px 28px!important;
+  background:#FAF6F0!important;
+  border:0!important;
+  border-radius:0!important;
+}
+
+#metodologia-completa .method-safety p{
+  margin:0!important;
+  font-family:var(--font-body)!important;
+  font-size:15px!important;
+  font-weight:400!important;
+  line-height:1.65!important;
+  color:#4A4038!important;
+}
+
+#metodologia-completa .method-safety__notice{
+  margin-top:18px!important;
+  padding-top:14px!important;
+  border-top:1px solid #E3D8C8!important;
+  font-size:13.5px!important;
+  line-height:1.6!important;
+  font-style:italic!important;
+  color:#6A5D53!important;
+}
+
+@media(max-width:600px){
+  #metodologia-completa .method-safety-card{
+    width:100%!important;
+    max-width:600px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+
+  #metodologia-completa .method-safety-card>h3{
+    padding:11px 14px!important;
+    font-size:15px!important;
+  }
+
+  #metodologia-completa .method-safety{
+    padding:20px 18px!important;
+  }
+
+  #metodologia-completa .method-safety p{
+    font-size:14px!important;
+  }
+
+  #metodologia-completa .method-safety__notice{
+    font-size:13px!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -3703,10 +3779,11 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-5">
+      <article class="cv-card span-5 method-safety-card">
         <h3>Seguimiento, salud y seguridad</h3>
         <div class="cv-body method-safety">
-          <p>Chetesaí Fitness+ trabaja con información relevante para adaptar el servicio —objetivos, lesiones, limitaciones, rutinas, cargas, asistencia, planificación alimentaria, hábitos y progreso— y puede adaptar o pausar una actividad cuando existan riesgos que requieran valoración sanitaria previa. Los contenidos y planes son de acondicionamiento físico y educación: no sustituyen diagnóstico, tratamiento, fisioterapia ni atención médica.</p>
+          <p>Chetesaí Fitness+ recoge la información necesaria para personalizar tu plan: objetivos, lesiones o limitaciones, rutinas, cargas, asistencia, alimentación, hábitos y progreso. Si detectamos algún riesgo que requiera valoración sanitaria, podemos adaptar o pausar una actividad.</p>
+          <p class="method-safety__notice">Aviso: los contenidos y planes son de acondicionamiento físico y educación. No sustituyen diagnóstico, tratamiento, fisioterapia ni atención médica.</p>
         </div>
       </article>
 
