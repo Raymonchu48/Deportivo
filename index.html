@@ -2638,6 +2638,261 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 }
 
 
+
+/* === iPad + móvil · revisión responsive y navegación lateral === */
+.mobile-side-nav{display:none}
+
+@media(max-width:1024px){
+  /* Imágenes completas: evitar recortes en tablet/móvil */
+  .hero{
+    min-height:0!important;
+    height:auto!important;
+    padding:0!important;
+    overflow:hidden!important;
+  }
+  .hero-exact-reference{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+
+  .method-card-image{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:16/9!important;
+    overflow:hidden!important;
+    background:#F5F0E6!important;
+  }
+  .method-card-image img{
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    max-height:none!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+
+  .portfolio-visual-banner{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:16/9!important;
+    overflow:hidden!important;
+  }
+  .portfolio-visual-banner img{
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+
+  #especialidades-completas .specialties-integrated__visual{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:16/9!important;
+    background:#F5F0E6!important;
+  }
+  #especialidades-completas .specialties-integrated__visual img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+
+  .profile-photo,
+  .profile-photo-custom{
+    background-size:contain!important;
+    background-position:center top!important;
+    background-repeat:no-repeat!important;
+    background-color:#FAF7F2!important;
+  }
+
+  /* Vídeos: mantener encuadre y relación de aspecto */
+  video{
+    max-width:100%!important;
+  }
+  .impact-video video,
+  .exp-video-card video,
+  .cv-presentation-media video,
+  .profile-video video{
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:16/9!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    background:#0B0D0C!important;
+  }
+  .profile-video,
+  .cv-presentation-media,
+  .impact-video{
+    min-height:0!important;
+    height:auto!important;
+  }
+}
+
+@media(max-width:900px){
+  .sidebar,
+  .mobilebar{display:none!important}
+
+  .page{
+    padding-bottom:24px!important;
+  }
+
+  .mobile-side-nav{
+    display:block!important;
+    position:fixed!important;
+    top:50%!important;
+    right:10px!important;
+    transform:translateY(-50%)!important;
+    z-index:120!important;
+  }
+
+  .mobile-side-nav__toggle{
+    width:48px!important;
+    height:48px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:5px!important;
+    padding:0!important;
+    border:1px solid rgba(140,90,60,.24)!important;
+    border-radius:14px!important;
+    background:rgba(250,247,242,.94)!important;
+    backdrop-filter:blur(12px)!important;
+    box-shadow:0 8px 24px rgba(42,36,32,.16)!important;
+    cursor:pointer!important;
+  }
+  .mobile-side-nav__toggle span{
+    width:20px!important;
+    height:2px!important;
+    display:block!important;
+    border-radius:999px!important;
+    background:#8C5A3C!important;
+    transition:transform .2s ease,opacity .2s ease!important;
+  }
+  .mobile-side-nav.open .mobile-side-nav__toggle span:nth-child(1){
+    transform:translateY(7px) rotate(45deg)!important;
+  }
+  .mobile-side-nav.open .mobile-side-nav__toggle span:nth-child(2){
+    opacity:0!important;
+  }
+  .mobile-side-nav.open .mobile-side-nav__toggle span:nth-child(3){
+    transform:translateY(-7px) rotate(-45deg)!important;
+  }
+
+  .mobile-side-nav__menu{
+    position:absolute!important;
+    top:50%!important;
+    right:58px!important;
+    transform:translateY(-50%) translateX(14px)!important;
+    width:min(290px,calc(100vw - 90px))!important;
+    display:grid!important;
+    gap:6px!important;
+    padding:10px!important;
+    border:1px solid rgba(140,90,60,.18)!important;
+    border-radius:16px!important;
+    background:rgba(250,247,242,.97)!important;
+    backdrop-filter:blur(16px)!important;
+    box-shadow:0 16px 40px rgba(42,36,32,.20)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transition:opacity .2s ease,transform .2s ease,visibility .2s ease!important;
+  }
+  .mobile-side-nav.open .mobile-side-nav__menu{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:translateY(-50%) translateX(0)!important;
+  }
+
+  .mobile-side-nav__menu a{
+    display:grid!important;
+    grid-template-columns:36px 1fr!important;
+    align-items:center!important;
+    min-height:46px!important;
+    padding:8px 10px!important;
+    border-radius:10px!important;
+    text-decoration:none!important;
+    color:#2A2420!important;
+    background:transparent!important;
+    transition:background .15s ease,transform .15s ease!important;
+  }
+  .mobile-side-nav__menu a:hover,
+  .mobile-side-nav__menu a:focus{
+    background:#EFE6D8!important;
+    transform:translateX(-2px)!important;
+  }
+  .mobile-side-nav__menu b{
+    font-family:var(--font-mono)!important;
+    font-size:12px!important;
+    font-weight:500!important;
+    color:#8C5A3C!important;
+  }
+  .mobile-side-nav__menu span{
+    font-family:var(--font-body)!important;
+    font-size:14px!important;
+    font-weight:600!important;
+    color:#2A2420!important;
+  }
+
+  /* Overlays utilizables en pantallas pequeñas */
+  .profile-overlay{
+    padding:0!important;
+    align-items:stretch!important;
+  }
+  .profile-panel{
+    width:100%!important;
+    max-width:none!important;
+    max-height:100dvh!important;
+    min-height:100dvh!important;
+    border-radius:0!important;
+    overflow:auto!important;
+  }
+}
+
+@media(max-width:560px){
+  .mobile-side-nav{
+    right:8px!important;
+  }
+  .mobile-side-nav__toggle{
+    width:44px!important;
+    height:44px!important;
+    border-radius:13px!important;
+  }
+  .mobile-side-nav__menu{
+    right:52px!important;
+    width:min(270px,calc(100vw - 72px))!important;
+  }
+
+  #especialidades-completas .specialties-integrated__copy h2{
+    font-size:clamp(34px,11vw,48px)!important;
+  }
+  #especialidades-completas .specialties-integrated__areas h3{
+    font-size:20px!important;
+  }
+}
+
+/* iPad landscape: conservar dos columnas sin recortar multimedia */
+@media(min-width:901px) and (max-width:1180px){
+  .hero-exact-reference,
+  .portfolio-visual-banner img,
+  #especialidades-completas .specialties-integrated__visual img{
+    object-fit:contain!important;
+  }
+  .impact-video video,
+  .exp-video-card video{
+    object-fit:contain!important;
+    height:auto!important;
+    aspect-ratio:16/9!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -3193,19 +3448,19 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         <h3>Experiencia en movimiento</h3>
         <div class="cv-body video-grid">
           <div class="exp-video-card">
-            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/00e9197f-3d48-404a-a5f3-84f23a625f6b.mp4" muted loop playsinline controls preload="metadata"></video>
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/00e9197f-3d48-404a-a5f3-84f23a625f6b.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
             <div class="exp-video-copy"><span class="exp-video-tag">Natación</span><b>Monitor y profesor de natación</b><small>Trabajo técnico junto a piscina, acompañamiento del aprendizaje y adaptación a diferentes edades.</small></div>
           </div>
           <div class="exp-video-card">
-            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/f2c78d52-767c-4a11-a0f1-ae5320228d60.mp4" muted loop playsinline controls preload="metadata"></video>
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/f2c78d52-767c-4a11-a0f1-ae5320228d60.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
             <div class="exp-video-copy"><span class="exp-video-tag">Body Pump</span><b>Actividades dirigidas y fuerza</b><small>Dirección de clase, demostración técnica, control del grupo y ejecución con barra dentro de una sesión colectiva.</small></div>
           </div>
           <div class="exp-video-card">
-            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/8cf4c476-4a8f-49bc-986e-437eff489d97.mp4" muted loop playsinline controls preload="metadata"></video>
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/8cf4c476-4a8f-49bc-986e-437eff489d97.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
             <div class="exp-video-copy"><span class="exp-video-tag">Fútbol formativo</span><b>Entrenador y responsable de grupo</b><small>Acompañamiento técnico y educativo en campo, orientado al aprendizaje y al desarrollo del deportista infantil.</small></div>
           </div>
           <div class="exp-video-card">
-            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/1aded65c-a6b7-4bf2-a247-672e73167df7.mp4" muted loop playsinline controls preload="metadata"></video>
+            <video src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/1aded65c-a6b7-4bf2-a247-672e73167df7.mp4" autoplay muted loop playsinline controls preload="metadata"></video>
             <div class="exp-video-copy"><span class="exp-video-tag">Pilates · 3ª edad</span><b>Movimiento adaptado y atención individual</b><small>Corrección técnica, movilidad y acompañamiento cercano dentro de sesiones adaptadas a personas mayores.</small></div>
           </div>
         </div>
@@ -3608,9 +3863,19 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 </div>
 
 
-<nav class="mobilebar">
-<a href="#perfil-completo" class="profile-trigger">Mi perfil</a><a href="#metodologia-completa" class="method-trigger">Metodología</a><a href="#experiencia-completa" class="experience-trigger">Experiencia</a><a href="#especialidades-completas" class="specialties-trigger">Especialidades</a><a href="#resultados-completos" class="results-trigger">Resultados</a><a href="#proyectos" class="projects-trigger">Proyectos</a>
-</nav>
+<div class="mobile-side-nav" aria-label="Navegación móvil">
+  <button class="mobile-side-nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-side-menu" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="mobile-side-nav__menu" id="mobile-side-menu" aria-hidden="true">
+    <a href="#perfil-completo" class="profile-trigger"><b>01</b><span>Mi perfil</span></a>
+    <a href="#metodologia-completa" class="method-trigger"><b>02</b><span>Metodología</span></a>
+    <a href="#experiencia-completa" class="experience-trigger"><b>03</b><span>Experiencia</span></a>
+    <a href="#especialidades-completas" class="specialties-trigger"><b>04</b><span>Especialidades</span></a>
+    <a href="#resultados-completos" class="results-trigger"><b>05</b><span>Resultados</span></a>
+    <a href="#proyectos" class="projects-trigger"><b>06</b><span>Proyectos</span></a>
+  </nav>
+</div>
 <script>
 const links=[...document.querySelectorAll('.nav a:not(.profile-trigger):not(.method-trigger):not(.experience-trigger):not(.specialties-trigger):not(.results-trigger):not(.projects-trigger)')];
 const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
@@ -3809,6 +4074,67 @@ function showNutritionSlide(index){
 }
 document.getElementById('nutrition-prev').addEventListener('click',()=>showNutritionSlide(nutritionIndex-1));
 document.getElementById('nutrition-next').addEventListener('click',()=>showNutritionSlide(nutritionIndex+1));
+
+
+/* === Mobile/iPad navigation + media recovery === */
+const mobileSideNav=document.querySelector('.mobile-side-nav');
+const mobileSideToggle=document.querySelector('.mobile-side-nav__toggle');
+const mobileSideMenu=document.querySelector('.mobile-side-nav__menu');
+
+function setMobileSideNav(open){
+  if(!mobileSideNav||!mobileSideToggle||!mobileSideMenu)return;
+  mobileSideNav.classList.toggle('open',open);
+  mobileSideToggle.setAttribute('aria-expanded',String(open));
+  mobileSideMenu.setAttribute('aria-hidden',String(!open));
+  mobileSideToggle.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+}
+mobileSideToggle?.addEventListener('click',e=>{
+  e.stopPropagation();
+  setMobileSideNav(!mobileSideNav.classList.contains('open'));
+});
+mobileSideMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMobileSideNav(false)));
+document.addEventListener('click',e=>{
+  if(mobileSideNav?.classList.contains('open')&&!mobileSideNav.contains(e.target))setMobileSideNav(false);
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')setMobileSideNav(false);
+});
+
+function prepareMobileVideos(root=document){
+  root.querySelectorAll('video').forEach(v=>{
+    v.muted=true;
+    v.setAttribute('muted','');
+    v.setAttribute('playsinline','');
+    v.setAttribute('webkit-playsinline','');
+    v.playsInline=true;
+    if(v.hasAttribute('autoplay')){
+      const tryPlay=()=>v.play().catch(()=>{});
+      if(v.readyState>=2)tryPlay();
+      else v.addEventListener('canplay',tryPlay,{once:true});
+    }
+  });
+}
+prepareMobileVideos();
+
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden)prepareMobileVideos();
+});
+
+const mediaObserver=('IntersectionObserver' in window)?new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    const v=entry.target;
+    if(entry.isIntersecting&&v.hasAttribute('autoplay')){
+      v.play().catch(()=>{});
+    }else if(!entry.isIntersecting&&window.innerWidth<=1024){
+      v.pause();
+    }
+  });
+},{threshold:.15}):null;
+
+if(mediaObserver){
+  document.querySelectorAll('video[autoplay]').forEach(v=>mediaObserver.observe(v));
+}
+
 </script>
 </body>
 </html>
