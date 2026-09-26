@@ -1728,6 +1728,162 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Cómo funciona · tarjetas fotográficas editoriales === */
+.method-flow.steps-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:20px!important;
+}
+
+.method-flow .step-card{
+  position:relative!important;
+  min-height:340px!important;
+  padding:24px 22px!important;
+  border:0!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  background-color:#0B0D0C!important;
+  background-image:var(--step-image)!important;
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  box-shadow:0 8px 24px rgba(42,36,32,.18)!important;
+  transition:transform 200ms ease,box-shadow 200ms ease!important;
+}
+
+.method-flow .step-card:hover{
+  transform:translateY(-3px)!important;
+  box-shadow:0 12px 30px rgba(42,36,32,.24)!important;
+}
+
+.method-flow .step-card::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:linear-gradient(
+    180deg,
+    rgba(11,13,12,.05) 0%,
+    rgba(11,13,12,.35) 55%,
+    rgba(11,13,12,.88) 100%
+  )!important;
+  pointer-events:none!important;
+}
+
+.method-flow .step-card__number{
+  position:absolute!important;
+  top:18px!important;
+  left:18px!important;
+  z-index:2!important;
+  width:auto!important;
+  height:auto!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:5px 10px!important;
+  border-radius:20px!important;
+  border:1px solid rgba(245,240,230,.35)!important;
+  background:rgba(245,240,230,.12)!important;
+  color:#F5F0E6!important;
+  -webkit-text-fill-color:#F5F0E6!important;
+  background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  box-shadow:none!important;
+  backdrop-filter:blur(6px)!important;
+  -webkit-backdrop-filter:blur(6px)!important;
+  font-family:var(--font-mono)!important;
+  font-weight:500!important;
+  font-size:13px!important;
+  line-height:1.1!important;
+  letter-spacing:1px!important;
+}
+
+.method-flow .step-card__content{
+  position:relative!important;
+  z-index:2!important;
+}
+
+.method-flow .step-card__content::before{
+  content:""!important;
+  display:block!important;
+  width:28px!important;
+  height:2px!important;
+  margin:0 0 12px!important;
+  border-radius:2px!important;
+  background:linear-gradient(90deg,#C7CACF,#9DA1A8)!important;
+}
+
+.method-flow .step-card h4{
+  margin:0 0 8px!important;
+  font-family:var(--font-display)!important;
+  font-weight:600!important;
+  font-size:19px!important;
+  line-height:1.15!important;
+  color:#FFFFFF!important;
+  text-shadow:0 1px 8px rgba(0,0,0,.22)!important;
+}
+
+.method-flow .step-card p{
+  margin:0!important;
+  font-family:var(--font-body)!important;
+  font-size:13px!important;
+  line-height:1.6!important;
+  color:rgba(245,240,230,.92)!important;
+  text-shadow:0 1px 8px rgba(0,0,0,.24)!important;
+}
+
+@media(max-width:900px){
+  .method-flow.steps-grid{
+    grid-template-columns:1fr!important;
+  }
+  .method-flow .step-card{
+    min-height:300px!important;
+  }
+}
+
+@media(max-width:768px){
+  .method-flow .step-card{
+    min-height:260px!important;
+    background-position:center center!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .method-flow .step-card{
+    transition:none!important;
+  }
+}
+
+@media print{
+  .method-flow .step-card{
+    min-height:auto!important;
+    background:#fff!important;
+    box-shadow:none!important;
+    border:1px solid #bbb!important;
+    color:#222!important;
+  }
+  .method-flow .step-card::before{
+    display:none!important;
+  }
+  .method-flow .step-card__number,
+  .method-flow .step-card h4,
+  .method-flow .step-card p{
+    color:#222!important;
+    -webkit-text-fill-color:#222!important;
+    text-shadow:none!important;
+  }
+  .method-flow .step-card__number{
+    position:static!important;
+    display:inline-block!important;
+    border:1px solid #999!important;
+    background:#fff!important;
+    margin-bottom:10px!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -2373,10 +2529,10 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     <div class="profile-content">
       <article class="cv-card span-12">
         <h3>Cómo funciona</h3>
-        <div class="cv-body method-flow">
-          <div class="flow-step"><div class="num">01</div><h4>Solicita tu valoración</h4><p>El proceso comienza con una conversación sobre objetivo, disponibilidad y modalidad preferida. Esta primera toma de contacto permite definir qué necesitas y cómo debe encajar el entrenamiento en tu realidad.</p></div>
-          <div class="flow-step"><div class="num">02</div><h4>Valoramos y planificamos</h4><p>Se analiza el punto de partida y se crea una propuesta realista. La valoración y la planificación personalizada sirven de base para estructurar entrenamiento, técnica, frecuencia y seguimiento.</p></div>
-          <div class="flow-step"><div class="num">03</div><h4>Entrenas y progresas</h4><p>El entrenamiento se acompaña, se mide y se ajusta. El plan evoluciona según la respuesta, el progreso y las necesidades que aparecen durante el proceso.</p></div>
+        <div class="cv-body method-flow steps-grid">
+          <div class="flow-step step-card" style="--step-image:url('https://d2jqrm6oza8nb6.cloudfront.net/datasets/e1733bd5-c441-48c1-b55c-ec90ad1eb7bd.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiY2UxZGE5YTdhODkwMTNkNCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUzMDQ3MX0.Ajsu5a7R6EDA-3euqcL9w8RVaPgtu2UEgyGfwjRGexA')"><div class="num step-card__number">01</div><div class="step-card__content"><h4>Solicita tu valoración</h4><p>El proceso comienza con una conversación sobre objetivo, disponibilidad y modalidad preferida. Esta primera toma de contacto permite definir qué necesitas y cómo debe encajar el entrenamiento en tu realidad.</p></div></div>
+          <div class="flow-step step-card" style="--step-image:url('https://d2jqrm6oza8nb6.cloudfront.net/datasets/bc64fe3a-3f79-4e79-bb51-15c5da0df2ea.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYzQwNDY5ZWIzNjk4ZWZhMSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUzMzk5NX0.5nFbMIUtP6vzB6_vcMkuK15uht6XF7eOTYi1GyrD4mE')"><div class="num step-card__number">02</div><div class="step-card__content"><h4>Valoramos y planificamos</h4><p>Se analiza el punto de partida y se crea una propuesta realista. La valoración y la planificación personalizada sirven de base para estructurar entrenamiento, técnica, frecuencia y seguimiento.</p></div></div>
+          <div class="flow-step step-card" style="--step-image:url('https://d2jqrm6oza8nb6.cloudfront.net/datasets/54ef6aee-ca6e-4666-97a6-451afd53ea5b.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZWE0NDQ1YjUwYTY2MGE0OCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDU2MDQzN30.1f0ckSQ4kmXJW1-NjnytMjlRWTJhbPVUdhMAcbsAJIM')"><div class="num step-card__number">03</div><div class="step-card__content"><h4>Entrenas y progresas</h4><p>El entrenamiento se acompaña, se mide y se ajusta. El plan evoluciona según la respuesta, el progreso y las necesidades que aparecen durante el proceso.</p></div></div>
         </div>
       </article>
 
