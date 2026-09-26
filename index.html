@@ -3408,6 +3408,46 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     padding-bottom:8px!important;
   }
 }
+
+/* === Resultados · encabezado Spartan con el mismo criterio jerárquico === */
+#resultados-completos .spartan-section-card{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+
+#resultados-completos .spartan-section-card>.section-inline-title{
+  display:inline-block!important;
+  width:auto!important;
+  margin:0 0 24px!important;
+  padding:0 0 10px!important;
+  background:none!important;
+  border:0!important;
+  border-bottom:3px solid #5B6B3E!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#3A3226!important;
+  font-family:var(--font-display, Georgia, serif)!important;
+  font-size:23px!important;
+  font-weight:600!important;
+  line-height:1.2!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+
+#resultados-completos .spartan-section-card>.cv-body{
+  padding:0!important;
+}
+
+@media(max-width:700px){
+  #resultados-completos .spartan-section-card>.section-inline-title{
+    font-size:21px!important;
+    margin-bottom:20px!important;
+    padding-bottom:8px!important;
+  }
+}
 </style>
 </head>
 <body>
@@ -3671,8 +3711,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     </div>
 
     <div class="profile-content">
-      <article class="cv-card span-12">
-        <h3>Experiencia deportiva personal · Spartan Race</h3>
+      <article class="cv-card span-12 section-title-card spartan-section-card">
+        <h3 class="section-inline-title">Experiencia deportiva personal · Spartan Race</h3>
         <div class="cv-body">
           <div class="spartan-wrap">
             <div class="spartan-story">
