@@ -3327,6 +3327,47 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Especialidades · encabezado jerárquico de formación === */
+#especialidades-completas .specialties-training-section{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+
+#especialidades-completas .specialties-training-title{
+  display:inline-block!important;
+  width:auto!important;
+  margin:0 0 24px!important;
+  padding:0 0 10px!important;
+  background:none!important;
+  border:0!important;
+  border-bottom:3px solid #5B6B3E!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#3A3226!important;
+  font-family:var(--font-display, Georgia, serif)!important;
+  font-size:23px!important;
+  font-weight:600!important;
+  line-height:1.2!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+
+#especialidades-completas .specialties-training-section>.cv-body{
+  padding:0!important;
+}
+
+@media(max-width:700px){
+  #especialidades-completas .specialties-training-title{
+    font-size:21px!important;
+    margin-bottom:20px!important;
+    padding-bottom:8px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3680,8 +3721,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     </div>
 
     <div class="profile-content">
-      <article class="cv-card span-12">
-        <h3>Formación que respalda las especialidades</h3>
+      <article class="cv-card span-12 specialties-training-section">
+        <h3 class="specialties-training-title">Formación que respalda las especialidades</h3>
         <div class="cv-body cred-grid">
 
           <div class="cred-card">
