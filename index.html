@@ -2038,6 +2038,119 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Especialidades profesionales · serie fotográfica 4 áreas === */
+.specialties-hero .specialty-pillar-grid.specialties-visual-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:18px!important;
+  margin-top:18px!important;
+  align-items:start!important;
+}
+
+.specialties-hero .specialty-area{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  text-align:left!important;
+  min-width:0!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+.specialties-hero .specialty-area .icon{
+  display:none!important;
+}
+
+.specialties-hero .specialty-area__label{
+  display:flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  min-height:34px!important;
+  margin:0 0 10px!important;
+  font-family:var(--font-body)!important;
+  font-weight:700!important;
+  font-size:13px!important;
+  line-height:1.3!important;
+  color:var(--ink)!important;
+}
+
+.specialties-hero .specialty-area__dot{
+  flex:0 0 auto!important;
+  color:#596849!important;
+  font-size:9px!important;
+  line-height:1!important;
+}
+
+.specialties-hero .specialty-area__image{
+  position:relative!important;
+  width:100%!important;
+  aspect-ratio:16/9!important;
+  margin:0 0 12px!important;
+  overflow:hidden!important;
+  border-radius:12px!important;
+  background:#F5F0E6!important;
+  border:1px solid rgba(157,161,168,.35)!important;
+  box-shadow:0 6px 18px rgba(42,36,32,.15)!important;
+  transition:transform 200ms ease,box-shadow 200ms ease!important;
+}
+
+.specialties-hero .specialty-area__image:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 10px 24px rgba(42,36,32,.20)!important;
+}
+
+.specialties-hero .specialty-area__image img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  background:#F5F0E6!important;
+}
+
+.specialties-hero .specialty-area small{
+  display:block!important;
+  margin:0!important;
+  font-family:var(--font-body)!important;
+  font-size:12.5px!important;
+  line-height:1.6!important;
+  color:var(--muted)!important;
+}
+
+@media(max-width:1024px){
+  .specialties-hero .specialty-pillar-grid.specialties-visual-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+
+@media(max-width:560px){
+  .specialties-hero .specialty-pillar-grid.specialties-visual-grid{
+    grid-template-columns:1fr!important;
+  }
+  .specialties-hero .specialty-area__label{
+    min-height:0!important;
+    font-size:12.5px!important;
+  }
+  .specialties-hero .specialty-area small{
+    font-size:12px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .specialties-hero .specialty-area__image{
+    transition:none!important;
+  }
+}
+
+@media print{
+  .specialties-hero .specialty-area__image{
+    display:none!important;
+  }
+}
+
 @media print{
   body>*{display:none!important}
   #cv-documento{display:block!important;position:static!important;inset:auto!important;background:#fff!important;padding:0!important;overflow:visible!important}
@@ -2361,11 +2474,27 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
       <div class="eyeline">Especialización con base formativa</div>
       <h2>Entrenar a la persona.<span>No solo al cuerpo.</span></h2>
       <p>Mis especialidades combinan entrenamiento, psicología deportiva, coaching, nutrición y comprensión del contexto social del deportista. Las áreas que aparecen aquí están vinculadas a formación acreditada y a contenidos concretos de los certificados aportados.</p>
-      <div class="specialty-pillar-grid">
-        <div class="specialty-pillar"><div class="icon">Ψ</div><b>Coaching y psicología deportiva</b><small>Comunicación, liderazgo, motivación, dinámica de grupo y evaluación en psicología del deporte.</small></div>
-        <div class="specialty-pillar"><div class="icon">N</div><b>Nutrición y dietética</b><small>Planificación dietética, nutrición deportiva, etapas de la vida y hábitos alimentarios.</small></div>
-        <div class="specialty-pillar"><div class="icon">⚽</div><b>Fútbol y rendimiento</b><small>Entrenamiento de fútbol integrado con contenidos de psicología deportiva.</small></div>
-        <div class="specialty-pillar"><div class="icon">360</div><b>Preparación sociológica</b><small>Disciplina, valores, familia, entorno educativo y contexto social del atleta.</small></div>
+      <div class="specialty-pillar-grid specialties-visual-grid">
+        <div class="specialty-pillar specialty-area">
+          <b class="specialty-area__label"><span class="specialty-area__dot" aria-hidden="true">●</span>Coaching y psicología deportiva</b>
+          <div class="specialty-area__image"><img src="images/area1.webp" loading="lazy" alt="Coaching y psicología deportiva"></div>
+          <small>Comunicación, liderazgo, motivación, dinámica de grupo y evaluación en psicología del deporte.</small>
+        </div>
+        <div class="specialty-pillar specialty-area">
+          <b class="specialty-area__label"><span class="specialty-area__dot" aria-hidden="true">●</span>Nutrición y dietética</b>
+          <div class="specialty-area__image"><img src="images/area2.webp" loading="lazy" alt="Nutrición y dietética"></div>
+          <small>Planificación dietética, nutrición deportiva, etapas de la vida y hábitos alimentarios.</small>
+        </div>
+        <div class="specialty-pillar specialty-area">
+          <b class="specialty-area__label"><span class="specialty-area__dot" aria-hidden="true">●</span>Fútbol y rendimiento</b>
+          <div class="specialty-area__image"><img src="images/area3.webp" loading="lazy" alt="Fútbol y rendimiento"></div>
+          <small>Entrenamiento de fútbol integrado con contenidos de psicología deportiva.</small>
+        </div>
+        <div class="specialty-pillar specialty-area">
+          <b class="specialty-area__label"><span class="specialty-area__dot" aria-hidden="true">●</span>Preparación sociológica</b>
+          <div class="specialty-area__image"><img src="images/area4.webp" loading="lazy" alt="Preparación sociológica"></div>
+          <small>Disciplina, valores, familia, entorno educativo y contexto social del atleta.</small>
+        </div>
       </div>
     </div>
 
