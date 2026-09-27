@@ -3841,6 +3841,28 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     object-position:76% 50%!important;
   }
 }
+
+/* === MP4 principal · controles y tamaño estables en iPad/móvil === */
+#impact-video-main{
+  display:block!important;
+  width:100%!important;
+  background:#0c251a!important;
+}
+
+@media(max-width:1180px){
+  #impact-video-main{
+    height:auto!important;
+    aspect-ratio:16/9!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+}
+
+@supports (-webkit-touch-callout:none){
+  #impact-video-main{
+    controls:true;
+  }
+}
 </style>
 </head>
 <body>
@@ -3982,8 +4004,9 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         <div class="sp"><i>▣</i>Hábitos saludables</div>
       </div>
       <div class="impact-video">
-        <video id="impact-video-main" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-label="Vídeo de sala, movimiento y rendimiento">
+        <video id="impact-video-main" autoplay muted loop playsinline webkit-playsinline preload="metadata" controls aria-label="Vídeo de sala, movimiento y rendimiento">
           <source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/684be8a8-cc78-436a-9f38-b73cd768b150.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este vídeo.
         </video>
         <div class="impact-video-caption">
           <b>SALA · MOVIMIENTO · RENDIMIENTO</b>
@@ -5101,6 +5124,41 @@ if(mediaObserver){
   document.querySelectorAll('video[autoplay]').forEach(v=>mediaObserver.observe(v));
 }
 
+
+/* === Reproducción robusta del MP4 principal en iPad/iPhone/Android === */
+(function(){
+  const v=document.getElementById('impact-video-main');
+  if(!v) return;
+
+  v.defaultMuted=true;
+  v.muted=true;
+  v.playsInline=true;
+  v.setAttribute('playsinline','');
+  v.setAttribute('webkit-playsinline','');
+  v.setAttribute('muted','');
+  v.controls=true;
+
+  const safePlay=()=>{
+    try{
+      v.muted=true;
+      const p=v.play();
+      if(p&&typeof p.catch==='function') p.catch(()=>{ v.controls=true; });
+    }catch(_e){
+      v.controls=true;
+    }
+  };
+
+  ['loadedmetadata','loadeddata','canplay','canplaythrough'].forEach(evt=>{
+    v.addEventListener(evt,safePlay,{once:true});
+  });
+
+  document.addEventListener('touchstart',safePlay,{once:true,passive:true});
+  document.addEventListener('pointerdown',safePlay,{once:true,passive:true});
+  window.addEventListener('pageshow',safePlay);
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) safePlay(); });
+
+  if(v.readyState>=2) safePlay();
+})();
 </script>
 </body>
 </html>
