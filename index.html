@@ -3539,6 +3539,88 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 #especialidades-completas .specialties-integrated__areas p{
   color:#6F685F!important;
 }
+
+/* === Dashboard principal · encabezados jerárquicos sin banner beige === */
+.page .grid > .card > .cardhead,
+.page .experience-specialties-head{
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+  padding:0 2px!important;
+  margin:0 0 18px!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  min-height:0!important;
+}
+
+.page .grid > .card > .cardhead > span,
+.page .experience-specialties-head > span{
+  display:inline-block!important;
+  width:auto!important;
+  padding:0 0 8px!important;
+  margin:0!important;
+  background:none!important;
+  border:0!important;
+  border-bottom:3px solid #5B6B3E!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#3A3226!important;
+  font-family:var(--font-display, Georgia, serif)!important;
+  font-size:clamp(17px,1.25vw,23px)!important;
+  font-weight:600!important;
+  line-height:1.15!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  white-space:nowrap!important;
+}
+
+.page .grid > .card > .cardhead > span:last-child,
+.page .experience-specialties-head > span:last-child{
+  text-align:right!important;
+}
+
+/* La tarjeta comienza directamente después del título, sin franja intermedia */
+.page .grid > .card > .cardbody{
+  border-top:0!important;
+}
+
+.page .experience-specialties{
+  margin-top:18px!important;
+}
+
+@media(max-width:1180px){
+  .page .grid > .card > .cardhead,
+  .page .experience-specialties-head{
+    gap:12px!important;
+    margin-bottom:14px!important;
+  }
+
+  .page .grid > .card > .cardhead > span,
+  .page .experience-specialties-head > span{
+    font-size:clamp(15px,1.7vw,20px)!important;
+    padding-bottom:7px!important;
+  }
+}
+
+@media(max-width:700px){
+  .page .grid > .card > .cardhead,
+  .page .experience-specialties-head{
+    flex-wrap:wrap!important;
+    align-items:flex-start!important;
+    gap:8px 14px!important;
+    margin-bottom:14px!important;
+  }
+
+  .page .grid > .card > .cardhead > span,
+  .page .experience-specialties-head > span{
+    font-size:18px!important;
+    padding-bottom:6px!important;
+    white-space:normal!important;
+  }
+}
 </style>
 </head>
 <body>
