@@ -3801,6 +3801,46 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     object-fit:contain!important;
   }
 }
+
+/* === Metodología · original, sin barras negras y sin cortar coach/atleta === */
+.home-method-card .method-card-image{
+  background:#F5F0E6!important;
+  overflow:hidden!important;
+}
+
+.home-method-card .method-card-image img{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  object-fit:cover!important;
+  object-position:72% 50%!important;
+  transform:none!important;
+}
+
+.home-method-card .method-card-image:hover img{
+  transform:none!important;
+}
+
+@media(max-width:1180px){
+  .home-method-card .method-card-image img{
+    object-fit:cover!important;
+    object-position:74% 50%!important;
+  }
+}
+
+@media(max-width:800px){
+  .home-method-card .method-card-image{
+    height:auto!important;
+    aspect-ratio:16/9!important;
+  }
+  .home-method-card .method-card-image img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:76% 50%!important;
+  }
+}
 </style>
 </head>
 <body>
