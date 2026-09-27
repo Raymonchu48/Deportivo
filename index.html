@@ -3671,6 +3671,46 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     padding-bottom:8px!important;
   }
 }
+
+/* === Mi perfil · Idiomas y referencias con encabezado jerárquico === */
+#perfil-completo .profile-languages-section{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+
+#perfil-completo .profile-languages-section>.section-inline-title{
+  display:inline-block!important;
+  width:auto!important;
+  margin:0 0 24px!important;
+  padding:0 0 10px!important;
+  background:none!important;
+  border:0!important;
+  border-bottom:3px solid #5B6B3E!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  color:#3A3226!important;
+  font-family:var(--font-display, Georgia, serif)!important;
+  font-size:23px!important;
+  font-weight:600!important;
+  line-height:1.2!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+}
+
+#perfil-completo .profile-languages-section>.cv-languages-body{
+  padding-top:0!important;
+}
+
+@media(max-width:700px){
+  #perfil-completo .profile-languages-section>.section-inline-title{
+    font-size:21px!important;
+    margin-bottom:20px!important;
+    padding-bottom:8px!important;
+  }
+}
 </style>
 </head>
 <body>
@@ -4500,8 +4540,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         </div>
       </article>
 
-      <article class="cv-card span-12 cv-languages-card">
-        <h3>Idiomas y referencias</h3>
+      <article class="cv-card span-12 cv-languages-card section-title-card profile-languages-section">
+        <h3 class="section-inline-title">Idiomas y referencias</h3>
         <div class="cv-languages-body">
           <div class="cv-language-group">
             <span class="cv-language-label">Idiomas</span>
