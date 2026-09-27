@@ -3903,6 +3903,42 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Móvil · especialidades a ancho completo · 2026-09-27 === */
+@media(max-width:900px){
+  .page .experience .cardbody{
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  .page .experience-specialties{
+    grid-column:1 / -1!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    justify-self:stretch!important;
+  }
+
+  .page .experience-specialties .specialgrid{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .page .experience-specialties .sp{
+    width:100%!important;
+    min-width:0!important;
+  }
+}
+
+@media(max-width:700px){
+  .page .experience-specialties{
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+}
+
 </style>
 </head>
 <body>
