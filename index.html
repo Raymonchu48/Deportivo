@@ -3763,6 +3763,44 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     font-size:11px!important;
   }
 }
+
+/* === Metodología · mostrar la imagen completa del coach sin recorte === */
+.home-method-card .method-card-image{
+  background:#F5F0E6!important;
+  overflow:hidden!important;
+}
+
+.home-method-card .method-card-image img{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  transform:none!important;
+}
+
+.home-method-card .method-card-image:hover img{
+  transform:none!important;
+}
+
+@media(max-width:1180px){
+  .home-method-card .method-card-image img{
+    object-fit:contain!important;
+    object-position:center center!important;
+  }
+}
+
+@media(max-width:800px){
+  .home-method-card .method-card-image{
+    height:auto!important;
+    aspect-ratio:auto!important;
+  }
+  .home-method-card .method-card-image img{
+    height:auto!important;
+    object-fit:contain!important;
+  }
+}
 </style>
 </head>
 <body>
