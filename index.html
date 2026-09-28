@@ -3961,6 +3961,64 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 @media(max-width:700px){
   .legal-notice{font-size:8px;padding:10px 12px}
 }
+
+/* === Acceso a perfil digital === */
+.digital-profile-link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  width:100%;
+  margin:12px 0 0;
+  padding:10px 12px;
+  border:1px solid rgba(140,90,60,.28);
+  border-radius:10px;
+  background:linear-gradient(135deg,#F7F0E6,#EFE3D3);
+  color:var(--ink);
+  text-decoration:none;
+  box-shadow:0 4px 14px rgba(42,36,32,.07);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.digital-profile-link:hover,
+.digital-profile-link:focus-visible{
+  transform:translateY(-1px);
+  border-color:var(--accent);
+  box-shadow:0 7px 18px rgba(42,36,32,.11);
+  outline:none;
+}
+.digital-profile-link__copy{
+  min-width:0;
+  display:grid;
+  gap:2px;
+}
+.digital-profile-link__copy b{
+  font-family:var(--font-display);
+  font-size:15px;
+  font-weight:600;
+  line-height:1;
+  color:var(--ink);
+}
+.digital-profile-link__copy small{
+  font-family:var(--font-body);
+  font-size:8px;
+  line-height:1.25;
+  color:var(--muted);
+}
+.digital-profile-link__arrow{
+  flex:0 0 auto;
+  font-family:var(--font-mono);
+  font-size:18px;
+  color:var(--accent);
+}
+@media(min-width:901px) and (max-width:1536px){
+  .digital-profile-link{
+    padding:9px 10px;
+    margin-top:10px;
+  }
+  .digital-profile-link__copy b{font-size:14px}
+  .digital-profile-link__copy small{font-size:7.5px}
+}
+
 </style>
 </head>
 <body>
@@ -3977,6 +4035,13 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     <a href="#resultados-completos" class="results-trigger"><b>Resultados</b><small>Datos, objetivos, superación</small><i>05</i></a>
     <a href="#proyectos" class="projects-trigger projects-nav"><b>Proyectos</b><small>Ideas, desarrollo, evolución</small><i>06</i></a>
   </nav>
+  <a class="digital-profile-link" href="https://raymonchu48.github.io/Portfolio/" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil digital de Ramón Alberto Curbalán Vega en una nueva pestaña">
+    <span class="digital-profile-link__copy">
+      <b>Perfil digital</b>
+      <small>IT · sistemas · proyectos</small>
+    </span>
+    <span class="digital-profile-link__arrow" aria-hidden="true">↗</span>
+  </a>
   <div class="sidequote">ENTRENAR PARA<span>VIVIR MEJOR.</span></div>
   <div class="sidefoot"><div>Mallorca, España</div><div>Online / Presencial</div></div>
 </aside>
@@ -4953,6 +5018,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
     <a href="#especialidades-completas" class="specialties-trigger"><b>04</b><span>Especialidades</span></a>
     <a href="#resultados-completos" class="results-trigger"><b>05</b><span>Resultados</span></a>
     <a href="#proyectos" class="projects-trigger"><b>06</b><span>Proyectos</span></a>
+    <a href="https://raymonchu48.github.io/Portfolio/" target="_blank" rel="noopener noreferrer"><b>↗</b><span>Perfil digital</span></a>
   </nav>
 </div>
 <script>
