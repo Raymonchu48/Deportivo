@@ -4019,6 +4019,170 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   .digital-profile-link__copy small{font-size:7.5px}
 }
 
+
+/* === Tipografía con profundidad y luminosidad · referencia editorial 2026-10-10 === */
+:root{
+  --type-depth-dark:rgba(42,36,32,.20);
+  --type-depth-mid:rgba(92,76,64,.13);
+  --type-highlight:rgba(255,255,255,.92);
+  --type-glow:rgba(255,255,255,.46);
+}
+
+/* Profundidad editorial para los títulos principales, conservando sus colores actuales. */
+.identity strong,
+.sideclaim,
+.sidequote,
+.name,
+.name span,
+.hero h1,
+.hero h1 em,
+.projects-hero h2,
+.projects-hero h2 span,
+.profile-summary h2,
+.profile-summary h2 span,
+.method-panel-hero h2,
+.method-panel-hero h2 span,
+.experience-hero h2,
+.experience-hero h2 span,
+.specialties-hero h2,
+.specialties-hero h2 span,
+.profile-hero h2,
+.profile-panel-head strong{
+  text-shadow:
+    -1px -1px 0 var(--type-highlight),
+     0 1px 0 rgba(255,255,255,.72),
+     0 2px 1px var(--type-depth-mid),
+     0 5px 9px var(--type-depth-dark),
+     0 0 12px var(--type-glow)!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
+
+/* Títulos de tarjetas del dashboard y de las secciones interiores. */
+.page .grid > .card > .cardhead > span,
+.page .experience-specialties-head > span,
+#perfil-completo .section-inline-title,
+#perfil-completo .profile-languages-section>.section-inline-title,
+#especialidades-completas .specialties-training-title,
+#especialidades-completas .section-title-card>.section-inline-title,
+#resultados-completos .spartan-section-card>.section-inline-title,
+#experiencia-completa .section-title-card>.section-inline-title,
+#metodologia-completa .section-title-card>.section-inline-title,
+.diploma-category,
+.project-cover h4,
+.profilequote,
+.banner b{
+  text-shadow:
+    -1px -1px 0 rgba(255,255,255,.86),
+     0 1px 0 rgba(255,255,255,.64),
+     0 2px 2px rgba(92,76,64,.12),
+     0 4px 7px rgba(42,36,32,.14),
+     0 0 8px rgba(255,255,255,.34)!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
+
+/* La etiqueta superior adopta el acabado de placa luminosa de la referencia. */
+.topstrip .status{
+  padding:5px 10px!important;
+  border:1px solid rgba(140,90,60,.16)!important;
+  border-radius:999px!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(245,240,230,.58))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(157,161,168,.16),
+    0 2px 4px rgba(42,36,32,.10),
+    0 0 12px rgba(255,255,255,.55)!important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.95),
+    0 2px 3px rgba(42,36,32,.14)!important;
+}
+
+/* El botón de perfil digital mantiene la paleta y gana la misma lectura en relieve. */
+.digital-profile-link__copy b{
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.92),
+    0 2px 2px rgba(92,76,64,.12),
+    0 3px 6px rgba(42,36,32,.12)!important;
+}
+
+/* Escala del efecto en tablet/móvil para evitar que las sombras engorden la tipografía. */
+@media(max-width:900px){
+  .identity strong,
+  .sideclaim,
+  .sidequote,
+  .name,
+  .name span,
+  .hero h1,
+  .hero h1 em,
+  .projects-hero h2,
+  .projects-hero h2 span,
+  .profile-summary h2,
+  .profile-summary h2 span,
+  .method-panel-hero h2,
+  .method-panel-hero h2 span,
+  .experience-hero h2,
+  .experience-hero h2 span,
+  .specialties-hero h2,
+  .specialties-hero h2 span,
+  .profile-hero h2,
+  .profile-panel-head strong{
+    text-shadow:
+      -1px -1px 0 rgba(255,255,255,.80),
+       0 1px 0 rgba(255,255,255,.60),
+       0 2px 1px rgba(92,76,64,.10),
+       0 3px 6px rgba(42,36,32,.14),
+       0 0 8px rgba(255,255,255,.30)!important;
+  }
+
+  .page .grid > .card > .cardhead > span,
+  .page .experience-specialties-head > span,
+  #perfil-completo .section-inline-title,
+  #perfil-completo .profile-languages-section>.section-inline-title,
+  #especialidades-completas .specialties-training-title,
+  #especialidades-completas .section-title-card>.section-inline-title,
+  #resultados-completos .spartan-section-card>.section-inline-title,
+  #experiencia-completa .section-title-card>.section-inline-title,
+  #metodologia-completa .section-title-card>.section-inline-title,
+  .diploma-category,
+  .profilequote{
+    text-shadow:
+      0 1px 0 rgba(255,255,255,.82),
+      0 2px 2px rgba(42,36,32,.11),
+      0 0 6px rgba(255,255,255,.24)!important;
+  }
+}
+
+@media print{
+  .identity strong,
+  .sideclaim,
+  .sidequote,
+  .name,
+  .name span,
+  .hero h1,
+  .hero h1 em,
+  .projects-hero h2,
+  .profile-summary h2,
+  .method-panel-hero h2,
+  .experience-hero h2,
+  .specialties-hero h2,
+  .profile-hero h2,
+  .profile-panel-head strong,
+  .page .grid > .card > .cardhead > span,
+  .page .experience-specialties-head > span,
+  .section-inline-title,
+  .specialties-training-title,
+  .diploma-category,
+  .profilequote,
+  .banner b{
+    text-shadow:none!important;
+  }
+  .topstrip .status{
+    box-shadow:none!important;
+    background:#fff!important;
+  }
+}
+
 </style>
 </head>
 <body>
