@@ -4183,6 +4183,233 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
   }
 }
 
+
+/* === Sidebar cápsulas luminosas · referencia 2026-10-10 === */
+
+/* Panel de marca: volumen suave, borde luminoso y relieve manteniendo la paleta actual. */
+.brand-sigil{
+  position:relative!important;
+  overflow:hidden!important;
+  border:1px solid rgba(140,90,60,.16)!important;
+  border-radius:14px!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.82),rgba(239,230,216,.90))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    inset 0 -2px 4px rgba(140,90,60,.08),
+    0 2px 4px rgba(42,36,32,.10),
+    0 8px 18px rgba(42,36,32,.10),
+    0 0 14px rgba(255,255,255,.72)!important;
+}
+.brand-sigil::after{
+  content:""!important;
+  position:absolute!important;
+  inset:1px!important;
+  border-radius:12px!important;
+  pointer-events:none!important;
+  background:linear-gradient(115deg,rgba(255,255,255,.55),rgba(255,255,255,0) 38%,rgba(255,255,255,.18) 72%,rgba(255,255,255,0))!important;
+}
+.brand-r{
+  position:relative!important;
+  z-index:1!important;
+  background:linear-gradient(145deg,#9B6748 0%,#8C5A3C 52%,#74452D 100%)!important;
+  color:#fff!important;
+  border:1px solid rgba(255,255,255,.30)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 -2px 4px rgba(42,36,32,.18),
+    0 3px 8px rgba(42,36,32,.18),
+    0 0 9px rgba(255,255,255,.36)!important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.20),
+    0 2px 3px rgba(42,36,32,.32)!important;
+}
+.brand-lines{
+  position:relative!important;
+  z-index:1!important;
+}
+.brand-lines b{
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.92),
+    0 2px 3px rgba(42,36,32,.12)!important;
+}
+
+/* Navegación con cápsulas individuales, inspirada en las etiquetas flotantes de la referencia. */
+.nav{
+  position:relative!important;
+  gap:7px!important;
+  padding:4px 0!important;
+}
+.nav::before{
+  content:""!important;
+  position:absolute!important;
+  left:7px!important;
+  top:14px!important;
+  bottom:14px!important;
+  width:1px!important;
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(140,90,60,.16) 10%,
+    rgba(140,90,60,.16) 90%,
+    transparent 100%
+  )!important;
+  box-shadow:0 0 7px rgba(255,255,255,.75)!important;
+  pointer-events:none!important;
+}
+.nav a{
+  position:relative!important;
+  z-index:1!important;
+  min-height:47px!important;
+  margin:0!important;
+  padding:8px 9px 8px 14px!important;
+  border:1px solid rgba(140,90,60,.12)!important;
+  border-radius:11px!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.80),rgba(245,239,231,.82))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    inset 0 -1px 2px rgba(140,90,60,.06),
+    0 2px 4px rgba(42,36,32,.07),
+    0 5px 11px rgba(42,36,32,.07),
+    0 0 9px rgba(255,255,255,.58)!important;
+  transform:translateZ(0)!important;
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease,
+    background .18s ease!important;
+}
+.nav a::before{
+  content:""!important;
+  position:absolute!important;
+  left:4px!important;
+  top:50%!important;
+  width:6px!important;
+  height:6px!important;
+  transform:translateY(-50%)!important;
+  border-radius:50%!important;
+  background:#F7F0E6!important;
+  border:1px solid rgba(140,90,60,.44)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.94),
+    0 0 7px rgba(255,255,255,.75)!important;
+}
+.nav a:hover,
+.nav a:focus-visible,
+.nav a.active{
+  transform:translateY(-1px)!important;
+  border-color:rgba(140,90,60,.34)!important;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.94),rgba(239,230,216,.94))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -2px 3px rgba(140,90,60,.09),
+    0 3px 7px rgba(42,36,32,.10),
+    0 8px 16px rgba(42,36,32,.10),
+    0 0 14px rgba(255,255,255,.82)!important;
+  outline:none!important;
+}
+.nav a b{
+  color:var(--ink)!important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.94),
+    0 2px 3px rgba(42,36,32,.10)!important;
+}
+.nav a small{
+  color:var(--muted)!important;
+  text-shadow:0 1px 0 rgba(255,255,255,.78)!important;
+}
+.nav a i{
+  min-width:31px!important;
+  min-height:25px!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:3px 6px!important;
+  border:1px solid rgba(140,90,60,.20)!important;
+  border-radius:999px!important;
+  background:linear-gradient(180deg,#F9F5EE,#EDE4D8)!important;
+  color:var(--accent)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    inset 0 -1px 2px rgba(140,90,60,.07),
+    0 2px 4px rgba(42,36,32,.08),
+    0 0 7px rgba(255,255,255,.58)!important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.96),
+    0 2px 2px rgba(42,36,32,.10)!important;
+}
+
+/* El acceso a Perfil digital usa la misma familia visual que las cápsulas. */
+.digital-profile-link{
+  border:1px solid rgba(140,90,60,.18)!important;
+  border-radius:11px!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(239,230,216,.92))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.96),
+    inset 0 -2px 3px rgba(140,90,60,.07),
+    0 2px 4px rgba(42,36,32,.08),
+    0 6px 13px rgba(42,36,32,.08),
+    0 0 10px rgba(255,255,255,.64)!important;
+}
+.digital-profile-link:hover,
+.digital-profile-link:focus-visible{
+  border-color:rgba(140,90,60,.36)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(239,230,216,.96))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,1),
+    inset 0 -2px 3px rgba(140,90,60,.09),
+    0 3px 7px rgba(42,36,32,.11),
+    0 8px 16px rgba(42,36,32,.10),
+    0 0 14px rgba(255,255,255,.80)!important;
+}
+.digital-profile-link__arrow{
+  width:28px!important;
+  height:24px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:999px!important;
+  border:1px solid rgba(140,90,60,.20)!important;
+  background:linear-gradient(180deg,#FAF7F2,#EDE4D8)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 2px 4px rgba(42,36,32,.08)!important;
+}
+
+/* Mobile menu: conserva la misma lectura táctil sin introducir brillos excesivos. */
+@media(max-width:900px){
+  .mobile-side-nav__menu a{
+    border:1px solid rgba(140,90,60,.14)!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(245,239,231,.94))!important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.98),
+      0 2px 5px rgba(42,36,32,.08)!important;
+  }
+  .mobile-side-nav__menu a b{
+    display:grid!important;
+    place-items:center!important;
+    border-radius:999px!important;
+    background:#EFE6D8!important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.92)!important;
+  }
+}
+
+@media print{
+  .brand-sigil,
+  .brand-r,
+  .nav a,
+  .nav a i,
+  .digital-profile-link,
+  .digital-profile-link__arrow{
+    box-shadow:none!important;
+    text-shadow:none!important;
+  }
+  .nav::before,
+  .nav a::before{
+    display:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
