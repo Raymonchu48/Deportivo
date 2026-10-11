@@ -4515,7 +4515,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 }
 
 </style>
-</head>
+<style>.language-bar{display:flex;justify-content:flex-end;padding:10px 30px 8px;gap:0}.language-switch{display:flex;gap:5px;align-items:center;padding:4px;border:1px solid var(--border);border-radius:9px;background:#fffaf4}.language-switch a,.language-switch span{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;color:var(--ink);font-size:12px;font-weight:700;text-decoration:none}.language-switch [aria-current]{background:#e9e0d0}.language-switch a:hover{background:#f1eadf}.language-switch svg{width:23px;height:16px;border-radius:2px;box-shadow:0 0 0 1px #0001}.language-switch a:focus-visible{outline:2px solid var(--forest);outline-offset:2px}@media(max-width:800px){.language-bar{padding:8px 16px}.language-switch a,.language-switch span{padding:5px 8px}}</style></head>
 <body>
 <div class="app">
 <aside class="sidebar">
@@ -4542,6 +4542,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 </aside>
 
 <main>
+<div class="language-bar"><nav class="language-switch" aria-label="Idioma"><span aria-current="page" aria-label="Español"><svg viewBox="0 0 30 20" aria-hidden="true"><path fill="#AA151B" d="M0 0h30v20H0z"/><path fill="#F1BF00" d="M0 5h30v10H0z"/><path fill="#AA151B" d="M8 8h4v5H8z"/></svg> ES</span><a href="en/index.html" lang="en" aria-label="English"><svg viewBox="0 0 60 40" aria-hidden="true"><defs><clipPath id="flag-clip"><path d="M0 0h60v40H0z"/></clipPath></defs><g clip-path="url(#flag-clip)"><path fill="#012169" d="M0 0h60v40H0z"/><path stroke="#fff" stroke-width="8" d="m0 0 60 40M60 0 0 40"/><path stroke="#C8102E" stroke-width="3" d="m0 0 60 40M60 0 0 40"/><path stroke="#fff" stroke-width="13" d="M30 0v40M0 20h60"/><path stroke="#C8102E" stroke-width="8" d="M30 0v40M0 20h60"/></g></svg> EN</a></nav></div>
 <div class="topstrip"><span>Preparación física · Nutrición deportiva · Salud · Hábitos · Rendimiento real</span><span class="status">Portfolio profesional 2026</span></div>
 <div class="page">
 
@@ -5865,5 +5866,5 @@ if(mediaObserver){
   if(v.readyState>=2) safePlay();
 })();
 </script>
-</body>
+<script>document.querySelectorAll('.language-switch a').forEach(a=>a.addEventListener('click',()=>{const panel=document.querySelector('.profile-overlay.open');a.href=a.getAttribute('href').split('#')[0]+(panel?'#'+panel.id:location.hash)}));const languagePanelOpeners={'#perfil-completo':openProfile,'#metodologia-completa':openMethod,'#experiencia-completa':openExperience,'#especialidades-completas':openSpecialties,'#resultados-completos':openResults,'#proyectos':openProjects,'#cv-documento':openCvDocument};if(languagePanelOpeners[location.hash])languagePanelOpeners[location.hash]();</script></body>
 </html>
