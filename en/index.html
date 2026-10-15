@@ -4533,7 +4533,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 @media(max-width:700px){.methodology-english__principles{grid-template-columns:repeat(2,minmax(0,1fr))}.methodology-english__intro{padding:30px 20px}.methodology-english__header strong{font-size:19px}}
 @media(max-width:420px){.methodology-english__principles{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="../responsive.css?v=20261015-devices">
+<link rel="stylesheet" href="../responsive.css?v=20261015-video">
 </head>
 <body>
 <div class="app">
@@ -4692,8 +4692,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         <div class="sp"><i>▣</i>Healthy habits</div>
       </div>
       <div class="impact-video">
-        <video id="impact-video-main" autoplay muted loop playsinline webkit-playsinline preload="metadata" controls aria-label="Video of gym training, movement and performance">
-          <source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/684be8a8-cc78-436a-9f38-b73cd768b150.mp4" type="video/mp4">
+        <video id="impact-video-main" poster="../assets/training-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" controls aria-label="Video of gym training, movement and performance">
+          <source src="../assets/training-main.mp4" type="video/mp4">
           Your browser cannot play this video.
         </video>
         <div class="impact-video-caption">
@@ -5904,5 +5904,5 @@ if(mediaObserver){
   if(v.readyState>=2) safePlay();
 })();
 </script>
-<script>document.querySelectorAll('.language-switch a').forEach(a=>a.addEventListener('click',()=>{const panel=document.querySelector('.profile-overlay.open');a.href=a.getAttribute('href').split('#')[0]+(panel?'#'+panel.id:location.hash)}));const languagePanelOpeners={'#perfil-completo':openProfile,'#metodologia-completa':openMethod,'#experiencia-completa':openExperience,'#especialidades-completas':openSpecialties,'#resultados-completos':openResults,'#proyectos':openProjects,'#cv-documento':openCvDocument};if(languagePanelOpeners[location.hash])languagePanelOpeners[location.hash]();</script></body>
+<script>document.querySelectorAll('.language-switch a').forEach(a=>a.addEventListener('click',()=>{const panel=document.querySelector('.profile-overlay.open');a.href=a.getAttribute('href').split('#')[0]+(panel?'#'+panel.id:location.hash)}));const languagePanelOpeners={'#perfil-completo':openProfile,'#metodologia-completa':openMethod,'#experiencia-completa':openExperience,'#especialidades-completas':openSpecialties,'#resultados-completos':openResults,'#proyectos':openProjects,'#cv-documento':openCvDocument};if(languagePanelOpeners[location.hash])languagePanelOpeners[location.hash]();</script><script src="../video-player.js?v=20261015"></script></body>
 </html>

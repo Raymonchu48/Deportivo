@@ -4515,7 +4515,7 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
 }
 
 </style>
-<style>.language-bar{display:flex;justify-content:flex-end;padding:10px 30px 8px;gap:0}.language-switch{display:flex;gap:5px;align-items:center;padding:4px;border:1px solid var(--border);border-radius:9px;background:#fffaf4}.language-switch a,.language-switch span{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;color:var(--ink);font-size:12px;font-weight:700;text-decoration:none}.language-switch [aria-current]{background:#e9e0d0}.language-switch a:hover{background:#f1eadf}.language-switch svg{width:23px;height:16px;border-radius:2px;box-shadow:0 0 0 1px #0001}.language-switch a:focus-visible{outline:2px solid var(--forest);outline-offset:2px}@media(max-width:800px){.language-bar{padding:8px 16px}.language-switch a,.language-switch span{padding:5px 8px}}</style><link rel="stylesheet" href="responsive.css?v=20261015-devices">
+<style>.language-bar{display:flex;justify-content:flex-end;padding:10px 30px 8px;gap:0}.language-switch{display:flex;gap:5px;align-items:center;padding:4px;border:1px solid var(--border);border-radius:9px;background:#fffaf4}.language-switch a,.language-switch span{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:6px;color:var(--ink);font-size:12px;font-weight:700;text-decoration:none}.language-switch [aria-current]{background:#e9e0d0}.language-switch a:hover{background:#f1eadf}.language-switch svg{width:23px;height:16px;border-radius:2px;box-shadow:0 0 0 1px #0001}.language-switch a:focus-visible{outline:2px solid var(--forest);outline-offset:2px}@media(max-width:800px){.language-bar{padding:8px 16px}.language-switch a,.language-switch span{padding:5px 8px}}</style><link rel="stylesheet" href="responsive.css?v=20261015-video">
 </head>
 <body>
 <div class="app">
@@ -4664,8 +4664,8 @@ p,.project-body p,.profile-summary p,.method-panel-hero p,.experience-hero p,
         <div class="sp"><i>▣</i>Hábitos saludables</div>
       </div>
       <div class="impact-video">
-        <video id="impact-video-main" autoplay muted loop playsinline webkit-playsinline preload="metadata" controls aria-label="Vídeo de sala, movimiento y rendimiento">
-          <source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IHAZtjGdFzomzk5Pp0lAW9zg6A/684be8a8-cc78-436a-9f38-b73cd768b150.mp4" type="video/mp4">
+        <video id="impact-video-main" poster="assets/training-poster.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata" controls aria-label="Vídeo de sala, movimiento y rendimiento">
+          <source src="assets/training-main.mp4" type="video/mp4">
           Tu navegador no puede reproducir este vídeo.
         </video>
         <div class="impact-video-caption">
@@ -5867,5 +5867,5 @@ if(mediaObserver){
   if(v.readyState>=2) safePlay();
 })();
 </script>
-<script>document.querySelectorAll('.language-switch a').forEach(a=>a.addEventListener('click',()=>{const panel=document.querySelector('.profile-overlay.open');a.href=a.getAttribute('href').split('#')[0]+(panel?'#'+panel.id:location.hash)}));const languagePanelOpeners={'#perfil-completo':openProfile,'#metodologia-completa':openMethod,'#experiencia-completa':openExperience,'#especialidades-completas':openSpecialties,'#resultados-completos':openResults,'#proyectos':openProjects,'#cv-documento':openCvDocument};if(languagePanelOpeners[location.hash])languagePanelOpeners[location.hash]();</script></body>
+<script>document.querySelectorAll('.language-switch a').forEach(a=>a.addEventListener('click',()=>{const panel=document.querySelector('.profile-overlay.open');a.href=a.getAttribute('href').split('#')[0]+(panel?'#'+panel.id:location.hash)}));const languagePanelOpeners={'#perfil-completo':openProfile,'#metodologia-completa':openMethod,'#experiencia-completa':openExperience,'#especialidades-completas':openSpecialties,'#resultados-completos':openResults,'#proyectos':openProjects,'#cv-documento':openCvDocument};if(languagePanelOpeners[location.hash])languagePanelOpeners[location.hash]();</script><script src="video-player.js?v=20261015"></script></body>
 </html>
